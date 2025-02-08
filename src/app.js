@@ -125,11 +125,21 @@
  
  
 // const express = require('express');
+import { config } from 'dotenv';
+config();
+import fs from 'fs';
+const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
+
+if (credentials) {
+    fs.writeFileSync('/tmp/service-account.json', credentials);
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = '/tmp/service-account.json';
+}
+  
+
 import express from "express";
 import agenRoutes from "./routes/agenRoutes.js";
 const app = express();
-const port = 3000;
-   
+
  
 app.use(express.json());
 
