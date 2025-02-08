@@ -141,7 +141,7 @@ app.get('/' , (req, res) => {
 
 app.listen(() => {
   // console.log(' Example app ');
-})
+}) 
 
 module.exports = app;
 // let chat_history = [];
