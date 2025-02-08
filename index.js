@@ -84,7 +84,7 @@
 //                 Gunakan kamu sebagai kata ganti pelanggan.
 //                 Jangan mengaku sebagai bot jika ada yang bertanya akan tetapi informasikan anda sebagai customer service dari konek market`
 //             }
-//         ]
+//         ] 
 //       },
 
 //       tools: [
