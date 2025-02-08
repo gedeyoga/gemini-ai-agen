@@ -22,21 +22,32 @@ router.post('/chat' , checkValidation, async (req, res) => {
     }
 
     const { session_id, chat } = req.body;
+    let output = null;
 
-    await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'user', '"+chat+"');");
-    const [chat_history] = await mysql.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '"+session_id+"'");
     
+    mysql.connect();
 
-    const response = await agen.invoke({ 
-        chat_history: chat_history,
-        input: chat
-    });
+    try {
+        await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'user', '"+chat+"');");
+        const [chat_history] = await mysql.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '"+session_id+"'");
+        
 
-    await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'assistant', '"+response.output+"');");
+        const response = await agen.invoke({ 
+            chat_history: chat_history,
+            input: chat
+        });
+
+        await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'assistant', '"+response.output+"');");
+
+        output = response.output;
+    } catch (error) {
+        mysql.end();
+        console.log(error);
+    }
     
     res.status(201).json({ 
         role: "assistant", 
-        content: response.output
+        content: output
     });
   
 });
