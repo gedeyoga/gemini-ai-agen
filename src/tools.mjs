@@ -1,7 +1,7 @@
 
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
-import { fetchProductDigitals, orderProductDigital } from "./openaccess-client.js";
+import { fetchProductDigitals, orderProductDigital } from "./openaccess-client.mjs";
 
 const listProductDigital = tool(async () => {
    

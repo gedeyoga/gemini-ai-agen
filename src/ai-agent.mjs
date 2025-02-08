@@ -1,7 +1,7 @@
 import { ChatVertexAI } from "@langchain/google-vertexai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { createToolCallingAgent , AgentExecutor  } from "langchain/agents";
-import { orderProduct, listProductDigital } from "./tools.js";
+import { orderProduct, listProductDigital } from "./tools.mjs";
 
 const model = new ChatVertexAI({
     model: "gemini-1.5-flash-001",

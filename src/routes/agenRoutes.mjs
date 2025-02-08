@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body, validationResult } from 'express-validator';
-import { agentExecutor } from '../ai-agent.js';
+import { agentExecutor } from '../ai-agent.mjs';
 import  db  from "../services/mysql.js";
 import { z } from "zod";
 

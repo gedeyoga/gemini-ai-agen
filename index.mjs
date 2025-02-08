@@ -125,7 +125,7 @@
 
 
 import express from "express";
-import agenRoutes from "./src/routes/agenRoutes.js";
+import agenRoutes from "./src/routes/agenRoutes.mjs";
 const app = express();
 const port = 3000;
 
