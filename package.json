@@ -1,0 +1,25 @@
+{
+  "name": "gemini-ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/vertexai": "^1.9.3",
+    "@langchain/core": "^0.3.37",
+    "@langchain/google-vertexai": "^0.1.8",
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "langchain": "^0.3.15",
+    "mysql2": "^3.12.0"
+  }
+}
