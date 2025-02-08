@@ -131,8 +131,8 @@ import fs from 'fs';
 const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
 
 if (credentials) {
-    fs.writeFileSync('./tmp/service-account.json', credentials);
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = './tmp/service-account.json';
+    fs.writeFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE, credentials);
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE;
 }
   
 
