@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body, validationResult } from 'express-validator';
-import { agentExecutor } from '../ai-agent.mjs';
+import { agentExecutor } from '../aiAgen.js';
 import  db  from "../services/mysql.js";
 
 const router = Router();
@@ -14,6 +14,8 @@ const checkValidation = [
 router.post('/chat' , checkValidation, async (req, res) => {
 
     const errors = validationResult(req);
+    const mysql = await db;
+    const agen = await agentExecutor();
 
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -21,18 +23,19 @@ router.post('/chat' , checkValidation, async (req, res) => {
 
     const { session_id, chat } = req.body;
 
-    await db.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'user', '"+chat+"');");
-    const [chat_history] = await db.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '"+session_id+"'");
+    await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'user', '"+chat+"');");
+    const [chat_history] = await mysql.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '"+session_id+"'");
+    
 
-    const response = await agentExecutor.invoke({ 
+    const response = await agen.invoke({ 
         chat_history: chat_history,
         input: chat
     });
 
-    await db.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'assistant', '"+response.output+"');");
+    await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'assistant', '"+response.output+"');");
     
     res.status(201).json({ 
-        role: "assistants", 
+        role: "assistant", 
         content: response.output
     });
   

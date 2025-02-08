@@ -124,24 +124,26 @@
 // sendChat();
 
 
+// const express = require('express');
 import express from "express";
-// import agenRoutes from "./src/routes/agenRoutes.mjs";
+import agenRoutes from "./src/routes/agenRoutes.js";
 const app = express();
 const port = 3000;
   
 
 app.use(express.json());
 
-// app.use('/agent', agenRoutes);
+app.use('/agent', agenRoutes);
 
 app.get('/' , (req, res) => {
   res.send('Konek Market');
 })
 
-app.listen(port, () => {
+app.listen(() => {
   // console.log(' Example app ');
 })
 
+module.exports = app;
 // let chat_history = [];
 
 // const response = await agentExecutor.invoke({ 

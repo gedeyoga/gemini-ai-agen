@@ -1,7 +1,7 @@
 import { ChatVertexAI } from "@langchain/google-vertexai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { orderProduct, listProductDigital } from "./tools.js";
 import { createToolCallingAgent , AgentExecutor  } from "langchain/agents";
-import { orderProduct, listProductDigital } from "./tools.mjs";
 
 const model = new ChatVertexAI({
     model: "gemini-1.5-flash-001",
@@ -35,10 +35,14 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 
-const agent = await createToolCallingAgent({ llm: model, tools, prompt });
-const agentExecutor = new AgentExecutor({
-    agent,
-    tools,
-});
+const agentExecutor = async () => {
+    const agent = await createToolCallingAgent({ llm: model, tools, prompt });
+    const agentExecutor = new AgentExecutor({
+        agent,
+        tools,
+    });
+
+    return agentExecutor;
+}
 
 export { agentExecutor }
