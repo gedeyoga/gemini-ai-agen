@@ -7,7 +7,6 @@ const model = new ChatVertexAI({
     model: "gemini-1.5-flash-001",
     temperature: 0,
     location: 'us-central1',
-
 });
 
 const tools = [listProductDigital, orderProduct ]

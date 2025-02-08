@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { config } from 'dotenv';
+config();
 
-const base_url = 'https://debug.openaccess.co.id/api/';
+const base_url = process.env.OA_API;
 const headers = {
-    "Authorization": "Bearer 523fbb3e-a803-446b-ae57-35756c2662fb",
+    "Authorization": "Bearer " + process.env.OA_TOKEN,
     "Accept": "application/json"
 };
 
