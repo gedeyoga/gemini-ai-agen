@@ -126,7 +126,7 @@
 
 // const express = require('express');
 import express from "express";
-import agenRoutes from "./src/routes/agenRoutes.js";
+import agenRoutes from "./routes/agenRoutes.js";
 const app = express();
 const port = 3000;
    

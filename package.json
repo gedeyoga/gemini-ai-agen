@@ -4,14 +4,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "build": "esbuild src/app.js --bundle --platform=node --target=node14 --outfile=index.js"
+
   },
   "engines": {
-    "node" : "18.x"
+    "node": "18.x"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC", 
+  "license": "ISC",
   "description": "",
   "dependencies": {
     "@google-cloud/vertexai": "^1.9.3",
@@ -23,5 +25,8 @@
     "express-validator": "^7.2.1",
     "langchain": "^0.3.15",
     "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
   }
 }
