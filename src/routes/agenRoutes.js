@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { body, validationResult } from 'express-validator';
 import { askAgen } from '../repositories/agenRepository';
 import { sendWhatsapp } from '../services/fonnteClient';
+import { removeTrailingNewlines } from '../helpers/stringHelper';
 
 const router = Router();
 
@@ -15,29 +16,21 @@ const checkValidationFonnte = [
     body('message').notEmpty().isString().withMessage('Message is required'),
 ];
 
-router.post('/webhook-fonnte' , checkValidationFonnte, async (req, res) => {
+router.all('/webhook-fonnte' , async (req, res) => {
 
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { sender, message } = req.body; 
+    const { sender, message } = req.method == 'GET' ? req.query : req.body; 
 
     //create agen
     const response = await askAgen(sender, message);
 
+    const output = removeTrailingNewlines(response.output);
+
     //Balas pesan user
-    const responseNotif = await sendWhatsapp(sender, response.output);
-
-    console.log('Fonnte :' , responseNotif.data);
-
-
+    const responseNotif = await sendWhatsapp(sender, output);
 
     res.status(201).json({ 
         role: "assistant", 
-        content: response.output
+        content: output
     });
   
 }); 

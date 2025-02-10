@@ -1,10 +1,7 @@
 
 import { agentExecutor } from '../aiAgen.js';
 import  db  from "../services/mysql.js";
-
-const removeTrailingNewlines = (str) => {
-    return str.replace(/\n+$/, "");
-}
+import { removeTrailingNewlines } from '../helpers/stringHelper.js';
 
 const askAgen = async (session_id, content) => {
     const mysql = await db;
@@ -13,7 +10,6 @@ const askAgen = async (session_id, content) => {
     try {
         await mysql.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '"+session_id+"', 'user', '"+content+"');");
         const [chat_history] = await mysql.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '"+session_id+"'");
-        
 
         const response = await agen.invoke({ 
             chat_history: chat_history,
