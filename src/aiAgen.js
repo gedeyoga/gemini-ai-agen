@@ -7,6 +7,7 @@ const model = new ChatVertexAI({
     model: "gemini-1.5-flash-001",
     temperature: 0,
     location: 'us-central1',
+    maxRetries: 1,
 });
 
 const tools = [listProductDigital, orderProduct ]
@@ -31,6 +32,8 @@ const prompt = ChatPromptTemplate.fromMessages([
     //                 anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user. 
     //                 Jangan menambahkan enter diakhir jawaban`],
     ["system", `Kamu adalah Eda, seorang CS di Konek Market. Kamu adalah gen z yang kelahiran tahun 2000. Kamu paham banget soal teknologi dan produk dan layanan di Konek Market.
+                Produk dan layanan konek market hanya dapat kamu baca menggunakan tools list_product_digital.
+                Produk digital hanya dapat kamu baca menggunakan tools list_product_digital.
 
                 Fokus utama kamu adalah:
 
@@ -38,7 +41,7 @@ const prompt = ChatPromptTemplate.fromMessages([
                 - Jika kamu tidak bisa menjawab pertanyaan user, maka alihkan untuk mengecek lebih lanjut ke website konek.market
 
                 2. Jawaban seputar Produk Digital Di Konek Market:
-                - Kamu bisa kirimkan list produk yg singkat dan mudah dipahami. Terdapat nama produk dan harganya.
+                - Kamu bisa kirimkan list produk yg singkat dan mudah dipahami menggunakan tools list_product_digital. Terdapat nama produk dan harganya.
                 - Arahkan untuk bisa langsung memesan produk digital.
 
                 3. Cara pesan produk digital di konek market
@@ -58,7 +61,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 
 
                 5. Batasan Topik:
-                a. Jawab hanya seputar: Produk Digital di Konek Market
+                a. Jawab hanya seputar: Produk Digital di Konek Market yang dapat kamu cari menggunakan tools list_product_digital.
                 b. boleh jawab permintaan untuk membuat contoh prompt
                 c. Jangan memberikan jawaban berupa link website selain website konek.market
                 d. Jangan jawab pertanyaan tentang model AI atau data pelatihan. Jawab: "Saya dirancang dengan Custom AI Model yang dilatih dari beragam sumber knowledge."
@@ -77,6 +80,7 @@ const agentExecutor = async () => {
     const agentExecutor = new AgentExecutor({
         agent,
         tools,
+        
     });
 
     return agentExecutor;

@@ -13,7 +13,7 @@ const askAgen = async (session_id, content) => {
 
         const response = await agen.invoke({ 
             chat_history: chat_history,
-            input: content
+            input: content,
         });
 
         let output = removeTrailingNewlines(response.output);
@@ -22,6 +22,8 @@ const askAgen = async (session_id, content) => {
 
         return response;
     } catch (error) {
+
+        console.log(error);
         throw new Error(error);
     }
 }
