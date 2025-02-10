@@ -28,7 +28,8 @@ const prompt = ChatPromptTemplate.fromMessages([
                     Jika anda merasa informasi order ada yang kurang tanyakan kembali ke pelanggan.
                     Gunakan kamu sebagai kata ganti pelanggan.
                     Jangan mengaku sebagai bot jika ada yang bertanya akan tetapi informasikan anda sebagai customer service dari konek market. 
-                    anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user`],
+                    anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user. 
+                    Jangan menambahkan enter diakhir jawaban`],
     ["placeholder", "{chat_history}"],
     ["human", "{input}"],
     ["placeholder", "{agent_scratchpad}"],
