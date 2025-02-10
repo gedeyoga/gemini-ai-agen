@@ -18,6 +18,15 @@ const checkValidationFonnte = [
 
 router.all('/webhook-fonnte' , async (req, res) => {
 
+    if((req.method == 'GET' && !req.query.hasOwnProperty('sender')) || (req.method == 'POST' && !req.body.hasOwnProperty('sender')) ) {
+        
+        res.status(200).json({
+            message: 'no data fetched!'
+        });
+        
+        return false;
+    } 
+
     const { sender, message } = req.method == 'GET' ? req.query : req.body; 
 
     //create agen
