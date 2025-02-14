@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js",
+    "start": "npm run build && vercel dev",
     "build": "esbuild src/app.js --bundle --platform=node --target=node18 --outfile=index.js"
 
   },

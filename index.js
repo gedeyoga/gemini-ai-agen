@@ -120172,6 +120172,7 @@ async function orderProductDigital(name, phone, paket_addon_id, subscription_typ
 
 // src/tools.js
 var listProductDigital = tool(async () => {
+  console.log("fetch tools");
   const response = await fetchProductDigitals();
   return JSON.stringify(response);
 }, {
@@ -120181,23 +120182,25 @@ var listProductDigital = tool(async () => {
 var orderProduct = tool(async ({ name, phone, paket_addon_id, subscription_type, duration, user }) => {
   try {
     const response = await orderProductDigital(name, phone, paket_addon_id, subscription_type, duration, user);
+    console.log("response :", response);
     if (response.status == 200) {
       return "link pembayaran : " + response.data.data.checkout_link;
     }
   } catch (error) {
+    console.log("error response :", error);
     return "gagal membuat pembayaran";
   }
 }, {
   name: "create_order",
   description: `
     Membuat order produk digital. Fungsi ini digunakan untuk membuat order atau pesanan produk digital. Sebelum menggunakan fungsi ini dapatkan 
-    nama pelanggan, no telepon, paket produk digital yang dipilih berupa id yang di dapat dari list_product, tipe langganan (Contoh bulanan, harian, tahunan) dan jumlah profil ataupun akun yang dipesan. 
+    nama pelanggan, no telepon, paket produk digital yang dipilih berupa id yang di dapat dari list_product_digital dan id sama dengan , tipe langganan (Contoh bulanan, harian, tahunan) dan jumlah profil ataupun akun yang dipesan. 
     Ketika berhasil tampilkan apa adanya return dari fungsi ini
   `,
   schema: z.object({
     name: z.string().describe("Nama dari pelanggan yang ingin atau tertarik membeli produk digital. Wajib didapatkan sebelum menggunakan fungsi ini."),
     phone: z.string().describe("Nomor telepon dari pelanggan yang ingin atau tertarik membeli produk digital. Wajib didapatkan sebelum menggunakan fungsi ini."),
-    paket_addon_id: z.number().describe("paket_addon_id adalah id dari list_produk_digital. Wajib mendapatkan id dari tools list_product_digital cari sesuai produk yang dipilih pelanggan."),
+    paket_addon_id: z.string().describe("paket_addon_id didapat dari id menggunakan tools list_product_digital yang berupa angka. Wajib mendapatkan id dari tools list_product_digital cari sesuai produk yang dipilih pelanggan."),
     subscription_type: z.enum(["monthly", "daily"]).describe("Tipe langganan yang dipilih oleh pelanggan. Biasanya berupa bulanan, harian dan tahunan. ketika pelanggan sudah memilih tipe langganan, ubah bentuk data menjadi monthly, daily, yearly hanya saat menggunakan tools. Wajib didapatkan sebelum menggunakan fungsi ini."),
     duration: z.number().default(1).describe("Lama durasi langganan pelanggan. Wajib didapatkan sebelum menggunakan fungsi ini. jika harian dimulai dari angka 1. jika monthly dimulai dari angka 1"),
     user: z.number().default(1).describe("Jumlah akun atau profil produk digital yang ingin dibeli. Biasanya berupa angka yang diberikan oleh pelanggan. Wajib didapatkan sebelum menggunakan fungsi ini.")
@@ -121135,8 +121138,6 @@ var prompt = ChatPromptTemplate.fromMessages([
   //                 anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user. 
   //                 Jangan menambahkan enter diakhir jawaban`],
   ["system", `Kamu adalah Eda, seorang CS di Konek Market. Kamu adalah gen z yang kelahiran tahun 2000. Kamu paham banget soal teknologi dan produk dan layanan di Konek Market.
-                Produk dan layanan konek market hanya dapat kamu baca menggunakan tools list_product_digital.
-                Produk digital hanya dapat kamu baca menggunakan tools list_product_digital.
 
                 Fokus utama kamu adalah:
 
@@ -121212,9 +121213,18 @@ var askAgen = async (session_id, content) => {
   try {
     await mysql2.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '" + session_id + "', 'user', '" + content + "');");
     const [chat_history] = await mysql2.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '" + session_id + "'");
+    const prompt2 = `
+             kamu adalah ai assistant dengan pengetahuan ketat terbatas, semua pengetahuan tentan produk dapat diakses menggunakan tools list_product_digital. 
+             Kamu menyimpulkan respon berdasarkan query berikut "${content}"
+             gunakan data berikut jika seorang user melakukan order paket :
+             - nomor telepon ${session_id}
+             
+             jika seorang user membahas atau bertanya diluar konteks konek market maka kamu dapat merespon penolakan dan hanya mengetahui tentang konek market saja.
+             jika seorang user bertanya tentang produk yang tidak ada pada tools list_product_digital maka respon dengan penolakan dan berikan saran paket yang tersedia di konek market menggunakan tools list_product_digital.
+            `;
     const response = await agen.invoke({
       chat_history,
-      input: content
+      input: prompt2
     });
     let output = removeTrailingNewlines(response.output);
     await mysql2.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '" + session_id + "', 'assistant', '" + output + "');");

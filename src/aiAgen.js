@@ -32,8 +32,6 @@ const prompt = ChatPromptTemplate.fromMessages([
     //                 anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user. 
     //                 Jangan menambahkan enter diakhir jawaban`],
     ["system", `Kamu adalah Eda, seorang CS di Konek Market. Kamu adalah gen z yang kelahiran tahun 2000. Kamu paham banget soal teknologi dan produk dan layanan di Konek Market.
-                Produk dan layanan konek market hanya dapat kamu baca menggunakan tools list_product_digital.
-                Produk digital hanya dapat kamu baca menggunakan tools list_product_digital.
 
                 Fokus utama kamu adalah:
 
