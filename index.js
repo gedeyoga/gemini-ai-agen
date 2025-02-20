@@ -282,7 +282,7 @@ var require_main = __commonJS({
         return { parsed: parsedAll };
       }
     }
-    function config4(options) {
+    function config5(options) {
       if (_dotenvKey(options).length === 0) {
         return DotenvModule.configDotenv(options);
       }
@@ -349,7 +349,7 @@ var require_main = __commonJS({
       configDotenv,
       _configVault,
       _parseVault,
-      config: config4,
+      config: config5,
       decrypt,
       parse: parse3,
       populate
@@ -1548,7 +1548,7 @@ var require_node = __commonJS({
     var tty = require("tty");
     var util4 = require("util");
     exports2 = module2.exports = require_debug();
-    exports2.init = init;
+    exports2.init = init2;
     exports2.log = log;
     exports2.formatArgs = formatArgs;
     exports2.save = save;
@@ -1651,7 +1651,7 @@ var require_node = __commonJS({
       stream5._isStdio = true;
       return stream5;
     }
-    function init(debug) {
+    function init2(debug) {
       debug.inspectOpts = {};
       var keys = Object.keys(exports2.inspectOpts);
       for (var i = 0; i < keys.length; i++) {
@@ -18046,7 +18046,7 @@ var require_route = __commonJS({
   "node_modules/express/lib/router/route.js"(exports2, module2) {
     "use strict";
     var debug = require_src()("express:router:route");
-    var flatten = require_array_flatten();
+    var flatten2 = require_array_flatten();
     var Layer = require_layer();
     var methods = require_methods();
     var slice = Array.prototype.slice;
@@ -18116,7 +18116,7 @@ var require_route = __commonJS({
       }
     };
     Route.prototype.all = function all3() {
-      var handles = flatten(slice.call(arguments));
+      var handles = flatten2(slice.call(arguments));
       for (var i = 0; i < handles.length; i++) {
         var handle = handles[i];
         if (typeof handle !== "function") {
@@ -18133,7 +18133,7 @@ var require_route = __commonJS({
     };
     methods.forEach(function(method) {
       Route.prototype[method] = function() {
-        var handles = flatten(slice.call(arguments));
+        var handles = flatten2(slice.call(arguments));
         for (var i = 0; i < handles.length; i++) {
           var handle = handles[i];
           if (typeof handle !== "function") {
@@ -18177,7 +18177,7 @@ var require_router = __commonJS({
     var mixin = require_utils_merge();
     var debug = require_src()("express:router");
     var deprecate = require_depd()("express");
-    var flatten = require_array_flatten();
+    var flatten2 = require_array_flatten();
     var parseUrl = require_parseurl();
     var setPrototypeOf = require_setprototypeof();
     var objectRegExp = /^\[object (\S+)\]$/;
@@ -18414,7 +18414,7 @@ var require_router = __commonJS({
           path = fn;
         }
       }
-      var callbacks = flatten(slice.call(arguments, offset));
+      var callbacks = flatten2(slice.call(arguments, offset));
       if (callbacks.length === 0) {
         throw new TypeError("Router.use() requires a middleware function");
       }
@@ -20667,7 +20667,7 @@ var require_utils2 = __commonJS({
     var contentDisposition = require_content_disposition();
     var contentType = require_content_type();
     var deprecate = require_depd()("express");
-    var flatten = require_array_flatten();
+    var flatten2 = require_array_flatten();
     var mime = require_send().mime;
     var etag = require_etag();
     var proxyaddr = require_proxy_addr();
@@ -20681,7 +20681,7 @@ var require_utils2 = __commonJS({
       if ("\\\\" === path.substring(0, 2)) return true;
     };
     exports2.flatten = deprecate.function(
-      flatten,
+      flatten2,
       "utils.flatten: use array-flatten npm module instead"
     );
     exports2.normalizeType = function(type) {
@@ -20812,7 +20812,7 @@ var require_application = __commonJS({
     var compileQueryParser = require_utils2().compileQueryParser;
     var compileTrust = require_utils2().compileTrust;
     var deprecate = require_depd()("express");
-    var flatten = require_array_flatten();
+    var flatten2 = require_array_flatten();
     var merge2 = require_utils_merge();
     var resolve = require("path").resolve;
     var setPrototypeOf = require_setprototypeof();
@@ -20820,7 +20820,7 @@ var require_application = __commonJS({
     var slice = Array.prototype.slice;
     var app2 = exports2 = module2.exports = {};
     var trustProxyDefaultSymbol = "@@symbol:trust_proxy_default";
-    app2.init = function init() {
+    app2.init = function init2() {
       this.cache = {};
       this.engines = {};
       this.settings = {};
@@ -20900,7 +20900,7 @@ var require_application = __commonJS({
           path = fn;
         }
       }
-      var fns = flatten(slice.call(arguments, offset));
+      var fns = flatten2(slice.call(arguments, offset));
       if (fns.length === 0) {
         throw new TypeError("app.use() requires a middleware function");
       }
@@ -25512,7 +25512,7 @@ var require_lodash = __commonJS({
           return result2;
         }
         function flatRest(func) {
-          return setToString(overRest(func, undefined2, flatten), func + "");
+          return setToString(overRest(func, undefined2, flatten2), func + "");
         }
         function getAllKeys(object) {
           return baseGetAllKeys(object, keys, getSymbols);
@@ -26059,7 +26059,7 @@ var require_lodash = __commonJS({
           }
           return baseFindIndex(array, getIteratee(predicate, 3), index, true);
         }
-        function flatten(array) {
+        function flatten2(array) {
           var length = array == null ? 0 : array.length;
           return length ? baseFlatten(array, 1) : [];
         }
@@ -27847,7 +27847,7 @@ var require_lodash = __commonJS({
         lodash.flatMap = flatMap;
         lodash.flatMapDeep = flatMapDeep;
         lodash.flatMapDepth = flatMapDepth;
-        lodash.flatten = flatten;
+        lodash.flatten = flatten2;
         lodash.flattenDeep = flattenDeep;
         lodash.flattenDepth = flattenDepth;
         lodash.flip = flip;
@@ -36292,12 +36292,12 @@ var require_schema = __commonJS({
       }
       return (schema, defaultLocations = validLocations) => {
         const chains = Object.keys(schema).map((field) => {
-          const config4 = schema[field];
-          const chain = createChain(field, ensureLocations(config4, defaultLocations), config4.errorMessage);
-          if (config4.optional) {
-            chain.optional(config4.optional === true ? true : config4.optional.options);
+          const config5 = schema[field];
+          const chain = createChain(field, ensureLocations(config5, defaultLocations), config5.errorMessage);
+          if (config5.optional) {
+            chain.optional(config5.optional === true ? true : config5.optional.options);
           }
-          for (const entry of Object.entries(config4)) {
+          for (const entry of Object.entries(config5)) {
             if (protectedNames.includes(entry[0]) || !entry[1]) {
               continue;
             }
@@ -36333,8 +36333,8 @@ var require_schema = __commonJS({
       };
     }
     exports2.checkSchema = createCheckSchema(check_1.check);
-    function ensureLocations(config4, defaults2) {
-      const locations = Array.isArray(config4.in) ? config4.in : [config4.in].filter(Boolean);
+    function ensureLocations(config5, defaults2) {
+      const locations = Array.isArray(config5.in) ? config5.in : [config5.in].filter(Boolean);
       const actualLocations = locations.length ? locations : defaults2;
       return actualLocations.filter((location2) => validLocations.includes(location2));
     }
@@ -46680,7 +46680,7 @@ var init_client = __esm({
     DEFAULT_BATCH_SIZE_LIMIT_BYTES = 20971520;
     SERVER_INFO_REQUEST_TIMEOUT = 2500;
     Client = class _Client {
-      constructor(config4 = {}) {
+      constructor(config5 = {}) {
         Object.defineProperty(this, "apiKey", {
           enumerable: true,
           configurable: true,
@@ -46821,34 +46821,34 @@ var init_client = __esm({
         });
         const defaultConfig = _Client.getDefaultClientConfig();
         this.tracingSampleRate = getTracingSamplingRate();
-        this.apiUrl = trimQuotes(config4.apiUrl ?? defaultConfig.apiUrl) ?? "";
+        this.apiUrl = trimQuotes(config5.apiUrl ?? defaultConfig.apiUrl) ?? "";
         if (this.apiUrl.endsWith("/")) {
           this.apiUrl = this.apiUrl.slice(0, -1);
         }
-        this.apiKey = trimQuotes(config4.apiKey ?? defaultConfig.apiKey);
-        this.webUrl = trimQuotes(config4.webUrl ?? defaultConfig.webUrl);
+        this.apiKey = trimQuotes(config5.apiKey ?? defaultConfig.apiKey);
+        this.webUrl = trimQuotes(config5.webUrl ?? defaultConfig.webUrl);
         if (this.webUrl?.endsWith("/")) {
           this.webUrl = this.webUrl.slice(0, -1);
         }
-        this.timeout_ms = config4.timeout_ms ?? 9e4;
-        this.caller = new AsyncCaller(config4.callerOptions ?? {});
-        this.traceBatchConcurrency = config4.traceBatchConcurrency ?? this.traceBatchConcurrency;
+        this.timeout_ms = config5.timeout_ms ?? 9e4;
+        this.caller = new AsyncCaller(config5.callerOptions ?? {});
+        this.traceBatchConcurrency = config5.traceBatchConcurrency ?? this.traceBatchConcurrency;
         if (this.traceBatchConcurrency < 1) {
           throw new Error("Trace batch concurrency must be positive.");
         }
         this.batchIngestCaller = new AsyncCaller({
           maxRetries: 2,
           maxConcurrency: this.traceBatchConcurrency,
-          ...config4.callerOptions ?? {},
+          ...config5.callerOptions ?? {},
           onFailedResponseHook: handle429
         });
-        this.hideInputs = config4.hideInputs ?? config4.anonymizer ?? defaultConfig.hideInputs;
-        this.hideOutputs = config4.hideOutputs ?? config4.anonymizer ?? defaultConfig.hideOutputs;
-        this.autoBatchTracing = config4.autoBatchTracing ?? this.autoBatchTracing;
-        this.blockOnRootRunFinalization = config4.blockOnRootRunFinalization ?? this.blockOnRootRunFinalization;
-        this.batchSizeBytesLimit = config4.batchSizeBytesLimit;
-        this.fetchOptions = config4.fetchOptions || {};
-        this.manualFlushMode = config4.manualFlushMode ?? this.manualFlushMode;
+        this.hideInputs = config5.hideInputs ?? config5.anonymizer ?? defaultConfig.hideInputs;
+        this.hideOutputs = config5.hideOutputs ?? config5.anonymizer ?? defaultConfig.hideOutputs;
+        this.autoBatchTracing = config5.autoBatchTracing ?? this.autoBatchTracing;
+        this.blockOnRootRunFinalization = config5.blockOnRootRunFinalization ?? this.blockOnRootRunFinalization;
+        this.batchSizeBytesLimit = config5.batchSizeBytesLimit;
+        this.fetchOptions = config5.fetchOptions || {};
+        this.manualFlushMode = config5.manualFlushMode ?? this.manualFlushMode;
       }
       static getDefaultClientConfig() {
         const apiKey = getLangSmithEnvironmentVariable("API_KEY");
@@ -49921,14 +49921,14 @@ var init_run_trees = __esm({
           return;
         }
         const defaultConfig = _RunTree.getDefaultConfig();
-        const { metadata, ...config4 } = originalConfig;
-        const client2 = config4.client ?? _RunTree.getSharedClient();
+        const { metadata, ...config5 } = originalConfig;
+        const client2 = config5.client ?? _RunTree.getSharedClient();
         const dedupedMetadata = {
           ...metadata,
-          ...config4?.extra?.metadata
+          ...config5?.extra?.metadata
         };
-        config4.extra = { ...config4.extra, metadata: dedupedMetadata };
-        Object.assign(this, { ...defaultConfig, ...config4, client: client2 });
+        config5.extra = { ...config5.extra, metadata: dedupedMetadata };
+        Object.assign(this, { ...defaultConfig, ...config5, client: client2 });
         if (!this.trace_id) {
           if (this.parent_run) {
             this.trace_id = this.parent_run.trace_id ?? this.id;
@@ -49969,10 +49969,10 @@ var init_run_trees = __esm({
         }
         return _RunTree.sharedClient;
       }
-      createChild(config4) {
+      createChild(config5) {
         const child_execution_order = this.child_execution_order + 1;
         const child = new _RunTree({
-          ...config4,
+          ...config5,
           parent_run: this,
           project_name: this.project_name,
           client: this.client,
@@ -49984,7 +49984,7 @@ var init_run_trees = __esm({
           child[_LC_CONTEXT_VARIABLES_KEY] = this[_LC_CONTEXT_VARIABLES_KEY];
         }
         const LC_CHILD = Symbol.for("lc:child_config");
-        const presentConfig = config4.extra?.[LC_CHILD] ?? this.extra[LC_CHILD];
+        const presentConfig = config5.extra?.[LC_CHILD] ?? this.extra[LC_CHILD];
         if (isRunnableConfigLike(presentConfig)) {
           const newConfig = { ...presentConfig };
           const callbacks = isCallbackManagerLike(newConfig.callbacks) ? newConfig.callbacks.copy?.() : void 0;
@@ -50154,7 +50154,7 @@ var init_run_trees = __esm({
           return { strTime, time: Date.parse(strTime + "Z"), uuid };
         });
         const traceId = parsedDottedOrder[0].uuid;
-        const config4 = {
+        const config5 = {
           ...inheritArgs,
           name: inheritArgs?.["name"] ?? "parent",
           run_type: inheritArgs?.["run_type"] ?? "chain",
@@ -50165,10 +50165,10 @@ var init_run_trees = __esm({
         };
         if (rawHeaders["baggage"] && typeof rawHeaders["baggage"] === "string") {
           const baggage = Baggage.fromHeader(rawHeaders["baggage"]);
-          config4.metadata = baggage.metadata;
-          config4.tags = baggage.tags;
+          config5.metadata = baggage.metadata;
+          config5.tags = baggage.tags;
         }
-        return new _RunTree(config4);
+        return new _RunTree(config5);
       }
       toHeaders(headers2) {
         const result = {
@@ -52681,8 +52681,8 @@ var init_async_local_storage = __esm({
         const storage = this.getInstance();
         return storage.getStore()?.extra?.[LC_CHILD_KEY];
       }
-      runWithConfig(config4, callback, avoidCreatingRootRunTree) {
-        const callbackManager = CallbackManager._configureSync(config4?.callbacks, void 0, config4?.tags, void 0, config4?.metadata);
+      runWithConfig(config5, callback, avoidCreatingRootRunTree) {
+        const callbackManager = CallbackManager._configureSync(config5?.callbacks, void 0, config5?.tags, void 0, config5?.metadata);
         const storage = this.getInstance();
         const previousValue = storage.getStore();
         const parentRunId = callbackManager?.getParentRunId();
@@ -52697,7 +52697,7 @@ var init_async_local_storage = __esm({
           });
         }
         if (runTree) {
-          runTree.extra = { ...runTree.extra, [LC_CHILD_KEY]: config4 };
+          runTree.extra = { ...runTree.extra, [LC_CHILD_KEY]: config5 };
         }
         if (previousValue !== void 0 && previousValue[_CONTEXT_VARIABLES_KEY] !== void 0) {
           runTree[_CONTEXT_VARIABLES_KEY] = previousValue[_CONTEXT_VARIABLES_KEY];
@@ -52723,8 +52723,8 @@ var init_singletons = __esm({
 });
 
 // node_modules/@langchain/core/dist/runnables/config.js
-async function getCallbackManagerForConfig(config4) {
-  return CallbackManager._configureSync(config4?.callbacks, void 0, config4?.tags, void 0, config4?.metadata);
+async function getCallbackManagerForConfig(config5) {
+  return CallbackManager._configureSync(config5?.callbacks, void 0, config5?.tags, void 0, config5?.metadata);
 }
 function mergeConfigs(...configs) {
   const copy = {};
@@ -52801,7 +52801,7 @@ function mergeConfigs(...configs) {
   }
   return copy;
 }
-function ensureConfig(config4) {
+function ensureConfig(config5) {
   const implicitConfig = AsyncLocalStorageProviderSingleton2.getRunnableConfig();
   let empty = {
     tags: [],
@@ -52822,8 +52822,8 @@ function ensureConfig(config4) {
       empty
     );
   }
-  if (config4) {
-    empty = Object.entries(config4).reduce(
+  if (config5) {
+    empty = Object.entries(config5).reduce(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (currentConfig, [key, value]) => {
         if (value !== void 0) {
@@ -52860,8 +52860,8 @@ function ensureConfig(config4) {
   }
   return empty;
 }
-function patchConfig(config4 = {}, { callbacks, maxConcurrency, recursionLimit, runName, configurable, runId } = {}) {
-  const newConfig = ensureConfig(config4);
+function patchConfig(config5 = {}, { callbacks, maxConcurrency, recursionLimit, runName, configurable, runId } = {}) {
+  const newConfig = ensureConfig(config5);
   if (callbacks !== void 0) {
     delete newConfig.runName;
     newConfig.callbacks = callbacks;
@@ -52883,16 +52883,16 @@ function patchConfig(config4 = {}, { callbacks, maxConcurrency, recursionLimit, 
   }
   return newConfig;
 }
-function pickRunnableConfigKeys(config4) {
-  return config4 ? {
-    configurable: config4.configurable,
-    recursionLimit: config4.recursionLimit,
-    callbacks: config4.callbacks,
-    tags: config4.tags,
-    metadata: config4.metadata,
-    maxConcurrency: config4.maxConcurrency,
-    timeout: config4.timeout,
-    signal: config4.signal
+function pickRunnableConfigKeys(config5) {
+  return config5 ? {
+    configurable: config5.configurable,
+    recursionLimit: config5.recursionLimit,
+    callbacks: config5.callbacks,
+    tags: config5.tags,
+    metadata: config5.metadata,
+    maxConcurrency: config5.maxConcurrency,
+    timeout: config5.timeout,
+    signal: config5.signal
   } : void 0;
 }
 var DEFAULT_RECURSION_LIMIT, PRIMITIVES;
@@ -54222,7 +54222,7 @@ var init_root_listener = __esm({
   "node_modules/@langchain/core/dist/tracers/root_listener.js"() {
     init_base3();
     RootListenersTracer = class extends BaseTracer {
-      constructor({ config: config4, onStart, onEnd, onError }) {
+      constructor({ config: config5, onStart, onEnd, onError }) {
         super({ _awaitHandler: true });
         Object.defineProperty(this, "name", {
           enumerable: true,
@@ -54260,7 +54260,7 @@ var init_root_listener = __esm({
           writable: true,
           value: void 0
         });
-        this.config = config4;
+        this.config = config5;
         this.argOnStart = onStart;
         this.argOnEnd = onEnd;
         this.argOnError = onError;
@@ -54389,8 +54389,8 @@ function _generateMermaidGraphStyles(nodeColors) {
   }
   return styles2;
 }
-function drawMermaid(nodes, edges, config4) {
-  const { firstNode, lastNode, nodeColors, withStyles = true, curveStyle = "linear", wrapLabelNWords = 9 } = config4 ?? {};
+function drawMermaid(nodes, edges, config5) {
+  const { firstNode, lastNode, nodeColors, withStyles = true, curveStyle = "linear", wrapLabelNWords = 9 } = config5 ?? {};
   let mermaidGraph = withStyles ? `%%{init: {'flowchart': {'curve': '${curveStyle}'}}}%%
 graph TD;
 ` : "graph TD;\n";
@@ -54475,8 +54475,8 @@ graph TD;
   }
   return mermaidGraph;
 }
-async function drawMermaidPng(mermaidSyntax, config4) {
-  let { backgroundColor = "white" } = config4 ?? {};
+async function drawMermaidPng(mermaidSyntax, config5) {
+  let { backgroundColor = "white" } = config5 ?? {};
   const mermaidSyntaxEncoded = btoa(mermaidSyntax);
   if (backgroundColor !== void 0) {
     const hexColorPattern = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
@@ -54934,10 +54934,10 @@ var init_base4 = __esm({
        * @param config New configuration parameters to attach to the new runnable.
        * @returns A new RunnableBinding with a config matching what's passed.
        */
-      withConfig(config4) {
+      withConfig(config5) {
         return new RunnableBinding({
           bound: this,
-          config: config4,
+          config: config5,
           kwargs: {}
         });
       }
@@ -55006,10 +55006,10 @@ var init_base4 = __esm({
        * @returns A readable stream that is also an iterable.
        */
       async stream(input, options) {
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const wrappedGenerator = new AsyncGeneratorWithSetup({
-          generator: this._streamIterator(input, config4),
-          config: config4
+          generator: this._streamIterator(input, config5),
+          config: config5
         });
         await wrappedGenerator.setup;
         return IterableReadableStream.fromAsyncGenerator(wrappedGenerator);
@@ -55046,13 +55046,13 @@ var init_base4 = __esm({
         return [runnableConfig, callOptions];
       }
       async _callWithConfig(func, input, options) {
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
-        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), config4.runId, config4?.runType, void 0, void 0, config4?.runName ?? this.getName());
-        delete config4.runId;
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
+        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), config5.runId, config5?.runType, void 0, void 0, config5?.runName ?? this.getName());
+        delete config5.runId;
         let output;
         try {
-          const promise = func.call(this, input, config4, runManager);
+          const promise = func.call(this, input, config5, runManager);
           output = await raceWithSignal(promise, options?.signal);
         } catch (e) {
           await runManager?.handleChainError(e);
@@ -55099,8 +55099,8 @@ var init_base4 = __esm({
         let finalInputSupported = true;
         let finalOutput;
         let finalOutputSupported = true;
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
         async function* wrapInputForTracing() {
           for await (const chunk of inputGenerator) {
             if (finalInputSupported) {
@@ -55120,8 +55120,8 @@ var init_base4 = __esm({
         }
         let runManager;
         try {
-          const pipe = await pipeGeneratorWithSetup(transformer.bind(this), wrapInputForTracing(), async () => callbackManager_?.handleChainStart(this.toJSON(), { input: "" }, config4.runId, config4.runType, void 0, void 0, config4.runName ?? this.getName()), options?.signal, config4);
-          delete config4.runId;
+          const pipe = await pipeGeneratorWithSetup(transformer.bind(this), wrapInputForTracing(), async () => callbackManager_?.handleChainStart(this.toJSON(), { input: "" }, config5.runId, config5.runType, void 0, void 0, config5.runName ?? this.getName()), options?.signal, config5);
+          delete config5.runId;
           runManager = pipe.setup;
           const streamEventsHandler = runManager?.handlers.find(isStreamEventsHandler);
           let iterator = pipe.output;
@@ -55235,21 +55235,21 @@ var init_base4 = __esm({
           autoClose: false,
           _schemaFormat: "original"
         });
-        const config4 = ensureConfig(options);
-        yield* this._streamLog(input, logStreamCallbackHandler, config4);
+        const config5 = ensureConfig(options);
+        yield* this._streamLog(input, logStreamCallbackHandler, config5);
       }
-      async *_streamLog(input, logStreamCallbackHandler, config4) {
-        const { callbacks } = config4;
+      async *_streamLog(input, logStreamCallbackHandler, config5) {
+        const { callbacks } = config5;
         if (callbacks === void 0) {
-          config4.callbacks = [logStreamCallbackHandler];
+          config5.callbacks = [logStreamCallbackHandler];
         } else if (Array.isArray(callbacks)) {
-          config4.callbacks = callbacks.concat([logStreamCallbackHandler]);
+          config5.callbacks = callbacks.concat([logStreamCallbackHandler]);
         } else {
           const copiedCallbacks = callbacks.copy();
           copiedCallbacks.addHandler(logStreamCallbackHandler, true);
-          config4.callbacks = copiedCallbacks;
+          config5.callbacks = copiedCallbacks;
         }
-        const runnableStreamPromise = this.stream(input, config4);
+        const runnableStreamPromise = this.stream(input, config5);
         async function consumeRunnableStream() {
           try {
             const runnableStream = await runnableStreamPromise;
@@ -55298,18 +55298,18 @@ var init_base4 = __esm({
           ...streamOptions,
           autoClose: false
         });
-        const config4 = ensureConfig(options);
-        const runId = config4.runId ?? v4_default();
-        config4.runId = runId;
-        const callbacks = config4.callbacks;
+        const config5 = ensureConfig(options);
+        const runId = config5.runId ?? v4_default();
+        config5.runId = runId;
+        const callbacks = config5.callbacks;
         if (callbacks === void 0) {
-          config4.callbacks = [eventStreamer];
+          config5.callbacks = [eventStreamer];
         } else if (Array.isArray(callbacks)) {
-          config4.callbacks = callbacks.concat(eventStreamer);
+          config5.callbacks = callbacks.concat(eventStreamer);
         } else {
           const copiedCallbacks = callbacks.copy();
           copiedCallbacks.addHandler(eventStreamer, true);
-          config4.callbacks = copiedCallbacks;
+          config5.callbacks = copiedCallbacks;
         }
         const abortController = new AbortController();
         const outerThis = this;
@@ -55332,7 +55332,7 @@ var init_base4 = __esm({
               signal = abortController.signal;
             }
             const runnableStream = await outerThis.stream(input, {
-              ...config4,
+              ...config5,
               signal
             });
             const tappedStream = eventStreamer.tapOutputIterable(runId, runnableStream);
@@ -55371,10 +55371,10 @@ var init_base4 = __esm({
       async *_streamEventsV1(input, options, streamOptions) {
         let runLog;
         let hasEncounteredStartEvent = false;
-        const config4 = ensureConfig(options);
-        const rootTags = config4.tags ?? [];
-        const rootMetadata = config4.metadata ?? {};
-        const rootName = config4.runName ?? this.getName();
+        const config5 = ensureConfig(options);
+        const rootTags = config5.tags ?? [];
+        const rootMetadata = config5.metadata ?? {};
+        const rootName = config5.runName ?? this.getName();
         const logStreamCallbackHandler = new LogStreamCallbackHandler({
           ...streamOptions,
           autoClose: false,
@@ -55383,7 +55383,7 @@ var init_base4 = __esm({
         const rootEventFilter = new _RootEventFilter({
           ...streamOptions
         });
-        const logStream = this._streamLog(input, logStreamCallbackHandler, config4);
+        const logStream = this._streamLog(input, logStreamCallbackHandler, config5);
         for await (const log of logStream) {
           if (!runLog) {
             runLog = RunLog.fromRunLogPatch(log);
@@ -55508,10 +55508,10 @@ var init_base4 = __esm({
           bound: this,
           config: {},
           configFactories: [
-            (config4) => ({
+            (config5) => ({
               callbacks: [
                 new RootListenersTracer({
-                  config: config4,
+                  config: config5,
                   onStart,
                   onEnd,
                   onError
@@ -55588,8 +55588,8 @@ var init_base4 = __esm({
         return this.bound.getName(suffix);
       }
       async _mergeConfig(...options) {
-        const config4 = mergeConfigs(this.config, ...options);
-        return mergeConfigs(config4, ...this.configFactories ? await Promise.all(this.configFactories.map(async (configFactory) => await configFactory(config4))) : []);
+        const config5 = mergeConfigs(this.config, ...options);
+        return mergeConfigs(config5, ...this.configFactories ? await Promise.all(this.configFactories.map(async (configFactory) => await configFactory(config5))) : []);
       }
       bind(kwargs) {
         return new this.constructor({
@@ -55598,11 +55598,11 @@ var init_base4 = __esm({
           config: this.config
         });
       }
-      withConfig(config4) {
+      withConfig(config5) {
         return new this.constructor({
           bound: this.bound,
           kwargs: this.kwargs,
-          config: { ...this.config, ...config4 }
+          config: { ...this.config, ...config5 }
         });
       }
       withRetry(fields) {
@@ -55658,10 +55658,10 @@ var init_base4 = __esm({
           kwargs: this.kwargs,
           config: this.config,
           configFactories: [
-            (config4) => ({
+            (config5) => ({
               callbacks: [
                 new RootListenersTracer({
-                  config: config4,
+                  config: config5,
                   onStart,
                   onEnd,
                   onError
@@ -55714,8 +55714,8 @@ var init_base4 = __esm({
        * @param config The configuration to invoke the runnable with.
        * @returns A promise that resolves to the output of the runnable.
        */
-      async invoke(inputs, config4) {
-        return this._callWithConfig(this._invoke.bind(this), inputs, config4);
+      async invoke(inputs, config5) {
+        return this._callWithConfig(this._invoke.bind(this), inputs, config5);
       }
       /**
        * A helper method that is used to invoke the runnable with the specified input and configuration.
@@ -55723,8 +55723,8 @@ var init_base4 = __esm({
        * @param config The configuration to invoke the runnable with.
        * @returns A promise that resolves to the output of the runnable.
        */
-      async _invoke(inputs, config4, runManager) {
-        return this.bound.batch(inputs, patchConfig(config4, { callbacks: runManager?.getChild() }));
+      async _invoke(inputs, config5, runManager) {
+        return this.bound.batch(inputs, patchConfig(config5, { callbacks: runManager?.getChild() }));
       }
       /**
        * Bind lifecycle listeners to a Runnable, returning a new Runnable.
@@ -55771,12 +55771,12 @@ var init_base4 = __esm({
         this.maxAttemptNumber = fields.maxAttemptNumber ?? this.maxAttemptNumber;
         this.onFailedAttempt = fields.onFailedAttempt ?? this.onFailedAttempt;
       }
-      _patchConfigForRetry(attempt, config4, runManager) {
+      _patchConfigForRetry(attempt, config5, runManager) {
         const tag = attempt > 1 ? `retry:attempt:${attempt}` : void 0;
-        return patchConfig(config4, { callbacks: runManager?.getChild(tag) });
+        return patchConfig(config5, { callbacks: runManager?.getChild(tag) });
       }
-      async _invoke(input, config4, runManager) {
-        return (0, import_p_retry3.default)((attemptNumber) => super.invoke(input, this._patchConfigForRetry(attemptNumber, config4, runManager)), {
+      async _invoke(input, config5, runManager) {
+        return (0, import_p_retry3.default)((attemptNumber) => super.invoke(input, this._patchConfigForRetry(attemptNumber, config5, runManager)), {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onFailedAttempt: (error) => this.onFailedAttempt(error, input),
           retries: Math.max(this.maxAttemptNumber - 1, 0),
@@ -55793,8 +55793,8 @@ var init_base4 = __esm({
        * @param config The config for the runnable.
        * @returns A promise that resolves to the output of the runnable.
        */
-      async invoke(input, config4) {
-        return this._callWithConfig(this._invoke.bind(this), input, config4);
+      async invoke(input, config5) {
+        return this._callWithConfig(this._invoke.bind(this), input, config5);
       }
       async _batch(inputs, configs, runManagers, batchOptions) {
         const resultsMap = {};
@@ -55893,17 +55893,17 @@ var init_base4 = __esm({
         return [this.first, ...this.middle, this.last];
       }
       async invoke(input, options) {
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
-        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), config4.runId, void 0, void 0, void 0, config4?.runName);
-        delete config4.runId;
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
+        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), config5.runId, void 0, void 0, void 0, config5?.runName);
+        delete config5.runId;
         let nextStepInput = input;
         let finalOutput;
         try {
           const initialSteps = [this.first, ...this.middle];
           for (let i = 0; i < initialSteps.length; i += 1) {
             const step = initialSteps[i];
-            const promise = step.invoke(nextStepInput, patchConfig(config4, {
+            const promise = step.invoke(nextStepInput, patchConfig(config5, {
               callbacks: runManager?.getChild(this.omitSequenceTags ? void 0 : `seq:step:${i + 1}`)
             }));
             nextStepInput = await raceWithSignal(promise, options?.signal);
@@ -55911,7 +55911,7 @@ var init_base4 = __esm({
           if (options?.signal?.aborted) {
             throw new Error("Aborted");
           }
-          finalOutput = await this.last.invoke(nextStepInput, patchConfig(config4, {
+          finalOutput = await this.last.invoke(nextStepInput, patchConfig(config5, {
             callbacks: runManager?.getChild(this.omitSequenceTags ? void 0 : `seq:step:${this.steps.length}`)
           }));
         } catch (e) {
@@ -55988,11 +55988,11 @@ var init_base4 = __esm({
         }
         await runManager?.handleChainEnd(_coerceToDict2(finalOutput, "output"));
       }
-      getGraph(config4) {
+      getGraph(config5) {
         const graph = new Graph();
         let currentLastNode = null;
         this.steps.forEach((step, index) => {
-          const stepGraph = step.getGraph(config4);
+          const stepGraph = step.getGraph(config5);
           if (index !== 0) {
             stepGraph.trimFirstNode();
           }
@@ -56088,16 +56088,16 @@ var init_base4 = __esm({
         return new _RunnableMap({ steps });
       }
       async invoke(input, options) {
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
         const runManager = await callbackManager_?.handleChainStart(this.toJSON(), {
           input
-        }, config4.runId, void 0, void 0, void 0, config4?.runName);
-        delete config4.runId;
+        }, config5.runId, void 0, void 0, void 0, config5?.runName);
+        delete config5.runId;
         const output = {};
         try {
           const promises = Object.entries(this.steps).map(async ([key, runnable]) => {
-            output[key] = await runnable.invoke(input, patchConfig(config4, {
+            output[key] = await runnable.invoke(input, patchConfig(config5, {
               callbacks: runManager?.getChild(`map:key:${key}`)
             }));
           });
@@ -56135,10 +56135,10 @@ var init_base4 = __esm({
         async function* generator() {
           yield input;
         }
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const wrappedGenerator = new AsyncGeneratorWithSetup({
-          generator: this.transform(generator(), config4),
-          config: config4
+          generator: this.transform(generator(), config5),
+          config: config5
         });
         await wrappedGenerator.setup;
         return IterableReadableStream.fromAsyncGenerator(wrappedGenerator);
@@ -56171,24 +56171,24 @@ var init_base4 = __esm({
         this.func = fields.func;
       }
       async invoke(input, options) {
-        const [config4] = this._getOptionsList(options ?? {}, 1);
-        const callbacks = await getCallbackManagerForConfig(config4);
-        const promise = this.func(patchConfig(config4, { callbacks }), input);
-        return raceWithSignal(promise, config4?.signal);
+        const [config5] = this._getOptionsList(options ?? {}, 1);
+        const callbacks = await getCallbackManagerForConfig(config5);
+        const promise = this.func(patchConfig(config5, { callbacks }), input);
+        return raceWithSignal(promise, config5?.signal);
       }
       async *_streamIterator(input, options) {
-        const [config4] = this._getOptionsList(options ?? {}, 1);
+        const [config5] = this._getOptionsList(options ?? {}, 1);
         const result = await this.invoke(input, options);
         if (isAsyncIterable(result)) {
           for await (const item of result) {
-            config4?.signal?.throwIfAborted();
+            config5?.signal?.throwIfAborted();
             yield item;
           }
           return;
         }
         if (isIterator(result)) {
           while (true) {
-            config4?.signal?.throwIfAborted();
+            config5?.signal?.throwIfAborted();
             const state = result.next();
             if (state.done)
               break;
@@ -56231,11 +56231,11 @@ var init_base4 = __esm({
           func
         });
       }
-      async _invoke(input, config4, runManager) {
+      async _invoke(input, config5, runManager) {
         return new Promise((resolve, reject) => {
-          const childConfig = patchConfig(config4, {
+          const childConfig = patchConfig(config5, {
             callbacks: runManager?.getChild(),
-            recursionLimit: (config4?.recursionLimit ?? DEFAULT_RECURSION_LIMIT) - 1
+            recursionLimit: (config5?.recursionLimit ?? DEFAULT_RECURSION_LIMIT) - 1
           });
           void AsyncLocalStorageProviderSingleton2.runWithConfig(pickRunnableConfigKeys(childConfig), async () => {
             try {
@@ -56243,7 +56243,7 @@ var init_base4 = __esm({
                 ...childConfig
               });
               if (output && Runnable.isRunnable(output)) {
-                if (config4?.recursionLimit === 0) {
+                if (config5?.recursionLimit === 0) {
                   throw new Error("Recursion limit reached.");
                 }
                 output = await output.invoke(input, {
@@ -56253,7 +56253,7 @@ var init_base4 = __esm({
               } else if (isAsyncIterable(output)) {
                 let finalOutput;
                 for await (const chunk of consumeAsyncIterableInContext(childConfig, output)) {
-                  config4?.signal?.throwIfAborted();
+                  config5?.signal?.throwIfAborted();
                   if (finalOutput === void 0) {
                     finalOutput = chunk;
                   } else {
@@ -56268,7 +56268,7 @@ var init_base4 = __esm({
               } else if (isIterableIterator(output)) {
                 let finalOutput;
                 for (const chunk of consumeIteratorInContext(childConfig, output)) {
-                  config4?.signal?.throwIfAborted();
+                  config5?.signal?.throwIfAborted();
                   if (finalOutput === void 0) {
                     finalOutput = chunk;
                   } else {
@@ -56291,7 +56291,7 @@ var init_base4 = __esm({
       async invoke(input, options) {
         return this._callWithConfig(this._invoke.bind(this), input, options);
       }
-      async *_transform(generator, runManager, config4) {
+      async *_transform(generator, runManager, config5) {
         let finalChunk;
         for await (const chunk of generator) {
           if (finalChunk === void 0) {
@@ -56304,9 +56304,9 @@ var init_base4 = __esm({
             }
           }
         }
-        const childConfig = patchConfig(config4, {
+        const childConfig = patchConfig(config5, {
           callbacks: runManager?.getChild(),
-          recursionLimit: (config4?.recursionLimit ?? DEFAULT_RECURSION_LIMIT) - 1
+          recursionLimit: (config5?.recursionLimit ?? DEFAULT_RECURSION_LIMIT) - 1
         });
         const output = await new Promise((resolve, reject) => {
           void AsyncLocalStorageProviderSingleton2.runWithConfig(pickRunnableConfigKeys(childConfig), async () => {
@@ -56322,7 +56322,7 @@ var init_base4 = __esm({
           });
         });
         if (output && Runnable.isRunnable(output)) {
-          if (config4?.recursionLimit === 0) {
+          if (config5?.recursionLimit === 0) {
             throw new Error("Recursion limit reached.");
           }
           const stream4 = await output.stream(finalChunk, childConfig);
@@ -56331,12 +56331,12 @@ var init_base4 = __esm({
           }
         } else if (isAsyncIterable(output)) {
           for await (const chunk of consumeAsyncIterableInContext(childConfig, output)) {
-            config4?.signal?.throwIfAborted();
+            config5?.signal?.throwIfAborted();
             yield chunk;
           }
         } else if (isIterableIterator(output)) {
           for (const chunk of consumeIteratorInContext(childConfig, output)) {
-            config4?.signal?.throwIfAborted();
+            config5?.signal?.throwIfAborted();
             yield chunk;
           }
         } else {
@@ -56350,10 +56350,10 @@ var init_base4 = __esm({
         async function* generator() {
           yield input;
         }
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const wrappedGenerator = new AsyncGeneratorWithSetup({
-          generator: this.transform(generator(), config4),
-          config: config4
+          generator: this.transform(generator(), config5),
+          config: config5
         });
         await wrappedGenerator.setup;
         return IterableReadableStream.fromAsyncGenerator(wrappedGenerator);
@@ -56399,9 +56399,9 @@ var init_base4 = __esm({
         }
       }
       async invoke(input, options) {
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
-        const { runId, ...otherConfigFields } = config4;
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
+        const { runId, ...otherConfigFields } = config5;
         const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), runId, void 0, void 0, void 0, otherConfigFields?.runName);
         const childConfig = patchConfig(otherConfigFields, {
           callbacks: runManager?.getChild()
@@ -56409,7 +56409,7 @@ var init_base4 = __esm({
         const res = await AsyncLocalStorageProviderSingleton2.runWithConfig(childConfig, async () => {
           let firstError;
           for (const runnable of this.runnables()) {
-            config4?.signal?.throwIfAborted();
+            config5?.signal?.throwIfAborted();
             try {
               const output = await runnable.invoke(input, childConfig);
               await runManager?.handleChainEnd(_coerceToDict2(output, "output"));
@@ -56429,14 +56429,14 @@ var init_base4 = __esm({
         return res;
       }
       async *_streamIterator(input, options) {
-        const config4 = ensureConfig(options);
-        const callbackManager_ = await getCallbackManagerForConfig(config4);
-        const { runId, ...otherConfigFields } = config4;
+        const config5 = ensureConfig(options);
+        const callbackManager_ = await getCallbackManagerForConfig(config5);
+        const { runId, ...otherConfigFields } = config5;
         const runManager = await callbackManager_?.handleChainStart(this.toJSON(), _coerceToDict2(input, "input"), runId, void 0, void 0, void 0, otherConfigFields?.runName);
         let firstError;
         let stream4;
         for (const runnable of this.runnables()) {
-          config4?.signal?.throwIfAborted();
+          config5?.signal?.throwIfAborted();
           const childConfig = patchConfig(otherConfigFields, {
             callbacks: runManager?.getChild()
           });
@@ -56476,7 +56476,7 @@ var init_base4 = __esm({
           throw new Error("Not implemented.");
         }
         const configList = this._getOptionsList(options ?? {}, inputs.length);
-        const callbackManagers = await Promise.all(configList.map((config4) => getCallbackManagerForConfig(config4)));
+        const callbackManagers = await Promise.all(configList.map((config5) => getCallbackManagerForConfig(config5)));
         const runManagers = await Promise.all(callbackManagers.map(async (callbackManager, i) => {
           const handleStartRes = await callbackManager?.handleChainStart(this.toJSON(), _coerceToDict2(inputs[i], "input"), configList[i].runId, void 0, void 0, void 0, configList[i].runName);
           delete configList[i].runId;
@@ -56566,10 +56566,10 @@ var init_base4 = __esm({
         async function* generator() {
           yield input;
         }
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const wrappedGenerator = new AsyncGeneratorWithSetup({
-          generator: this.transform(generator(), config4),
-          config: config4
+          generator: this.transform(generator(), config5),
+          config: config5
         });
         await wrappedGenerator.setup;
         return IterableReadableStream.fromAsyncGenerator(wrappedGenerator);
@@ -56630,10 +56630,10 @@ var init_base4 = __esm({
         async function* generator() {
           yield input;
         }
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const wrappedGenerator = new AsyncGeneratorWithSetup({
-          generator: this.transform(generator(), config4),
-          config: config4
+          generator: this.transform(generator(), config5),
+          config: config5
         });
         await wrappedGenerator.setup;
         return IterableReadableStream.fromAsyncGenerator(wrappedGenerator);
@@ -57717,7 +57717,7 @@ var init_base6 = __esm({
        * @param callOptions Call options for the model
        * @returns A unique cache key.
        */
-      _getSerializedCacheKeyParametersForCall({ config: config4, ...callOptions }) {
+      _getSerializedCacheKeyParametersForCall({ config: config5, ...callOptions }) {
         const params = {
           ...this._identifyingParams(),
           ...callOptions,
@@ -57786,17 +57786,17 @@ var init_passthrough = __esm({
         }
       }
       async invoke(input, options) {
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         if (this.func) {
-          await this.func(input, config4);
+          await this.func(input, config5);
         }
-        return this._callWithConfig((input2) => Promise.resolve(input2), input, config4);
+        return this._callWithConfig((input2) => Promise.resolve(input2), input, config5);
       }
       async *transform(generator, options) {
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         let finalOutput;
         let finalOutputSupported = true;
-        for await (const chunk of this._transformStreamWithConfig(generator, (input) => input, config4)) {
+        for await (const chunk of this._transformStreamWithConfig(generator, (input) => input, config5)) {
           yield chunk;
           if (finalOutputSupported) {
             if (finalOutput === void 0) {
@@ -57812,7 +57812,7 @@ var init_passthrough = __esm({
           }
         }
         if (this.func && finalOutput !== void 0) {
-          await this.func(finalOutput, config4);
+          await this.func(finalOutput, config5);
         }
       }
       /**
@@ -58352,9 +58352,71 @@ var init_list = __esm({
 });
 
 // node_modules/@langchain/core/dist/output_parsers/string.js
+var StringOutputParser;
 var init_string2 = __esm({
   "node_modules/@langchain/core/dist/output_parsers/string.js"() {
     init_transform();
+    StringOutputParser = class extends BaseTransformOutputParser {
+      constructor() {
+        super(...arguments);
+        Object.defineProperty(this, "lc_namespace", {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: ["langchain_core", "output_parsers", "string"]
+        });
+        Object.defineProperty(this, "lc_serializable", {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: true
+        });
+      }
+      static lc_name() {
+        return "StrOutputParser";
+      }
+      /**
+       * Parses a string output from an LLM call. This method is meant to be
+       * implemented by subclasses to define how a string output from an LLM
+       * should be parsed.
+       * @param text The string output from an LLM call.
+       * @param callbacks Optional callbacks.
+       * @returns A promise of the parsed output.
+       */
+      parse(text) {
+        return Promise.resolve(text);
+      }
+      getFormatInstructions() {
+        return "";
+      }
+      _textContentToString(content) {
+        return content.text;
+      }
+      _imageUrlContentToString(_content) {
+        throw new Error(`Cannot coerce a multimodal "image_url" message part into a string.`);
+      }
+      _messageContentComplexToString(content) {
+        switch (content.type) {
+          case "text":
+          case "text_delta":
+            if ("text" in content) {
+              return this._textContentToString(content);
+            }
+            break;
+          case "image_url":
+            if ("image_url" in content) {
+              return this._imageUrlContentToString(content);
+            }
+            break;
+          default:
+            throw new Error(`Cannot coerce "${content.type}" message part into a string.`);
+        }
+        throw new Error(`Invalid content type: ${content.type}`);
+      }
+      _baseMessageContentToString(content) {
+        return content.reduce((acc, item) => acc + this._messageContentComplexToString(item), "");
+      }
+    };
   }
 });
 
@@ -60742,10 +60804,10 @@ var require_lib5 = __commonJS({
        * @return  Void
        */
       constructor() {
-        let init = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : void 0;
+        let init2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : void 0;
         this[MAP] = /* @__PURE__ */ Object.create(null);
-        if (init instanceof _Headers) {
-          const rawHeaders = init.raw();
+        if (init2 instanceof _Headers) {
+          const rawHeaders = init2.raw();
           const headerNames = Object.keys(rawHeaders);
           for (const headerName of headerNames) {
             for (const value of rawHeaders[headerName]) {
@@ -60754,15 +60816,15 @@ var require_lib5 = __commonJS({
           }
           return;
         }
-        if (init == null) ;
-        else if (typeof init === "object") {
-          const method = init[Symbol.iterator];
+        if (init2 == null) ;
+        else if (typeof init2 === "object") {
+          const method = init2[Symbol.iterator];
           if (method != null) {
             if (typeof method !== "function") {
               throw new TypeError("Header pairs must be iterable");
             }
             const pairs = [];
-            for (const pair of init) {
+            for (const pair of init2) {
               if (typeof pair !== "object" || typeof pair[Symbol.iterator] !== "function") {
                 throw new TypeError("Each header pair must be iterable");
               }
@@ -60775,8 +60837,8 @@ var require_lib5 = __commonJS({
               this.append(pair[0], pair[1]);
             }
           } else {
-            for (const key of Object.keys(init)) {
-              const value = init[key];
+            for (const key of Object.keys(init2)) {
+              const value = init2[key];
               this.append(key, value);
             }
           }
@@ -61106,7 +61168,7 @@ var require_lib5 = __commonJS({
     }
     var Request2 = class _Request {
       constructor(input) {
-        let init = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+        let init2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
         let parsedURL;
         if (!isRequest2(input)) {
           if (input && input.href) {
@@ -61118,17 +61180,17 @@ var require_lib5 = __commonJS({
         } else {
           parsedURL = parseURL(input.url);
         }
-        let method = init.method || input.method || "GET";
+        let method = init2.method || input.method || "GET";
         method = method.toUpperCase();
-        if ((init.body != null || isRequest2(input) && input.body !== null) && (method === "GET" || method === "HEAD")) {
+        if ((init2.body != null || isRequest2(input) && input.body !== null) && (method === "GET" || method === "HEAD")) {
           throw new TypeError("Request with GET/HEAD method cannot have body");
         }
-        let inputBody = init.body != null ? init.body : isRequest2(input) && input.body !== null ? clone(input) : null;
+        let inputBody = init2.body != null ? init2.body : isRequest2(input) && input.body !== null ? clone(input) : null;
         Body.call(this, inputBody, {
-          timeout: init.timeout || input.timeout || 0,
-          size: init.size || input.size || 0
+          timeout: init2.timeout || input.timeout || 0,
+          size: init2.size || input.size || 0
         });
-        const headers2 = new Headers(init.headers || input.headers || {});
+        const headers2 = new Headers(init2.headers || input.headers || {});
         if (inputBody != null && !headers2.has("Content-Type")) {
           const contentType = extractContentType(inputBody);
           if (contentType) {
@@ -61136,21 +61198,21 @@ var require_lib5 = __commonJS({
           }
         }
         let signal = isRequest2(input) ? input.signal : null;
-        if ("signal" in init) signal = init.signal;
+        if ("signal" in init2) signal = init2.signal;
         if (signal != null && !isAbortSignal(signal)) {
           throw new TypeError("Expected signal to be an instanceof AbortSignal");
         }
         this[INTERNALS$2] = {
           method,
-          redirect: init.redirect || input.redirect || "follow",
+          redirect: init2.redirect || input.redirect || "follow",
           headers: headers2,
           parsedURL,
           signal
         };
-        this.follow = init.follow !== void 0 ? init.follow : input.follow !== void 0 ? input.follow : 20;
-        this.compress = init.compress !== void 0 ? init.compress : input.compress !== void 0 ? input.compress : true;
-        this.counter = init.counter || input.counter || 0;
-        this.agent = init.agent || input.agent;
+        this.follow = init2.follow !== void 0 ? init2.follow : input.follow !== void 0 ? input.follow : 20;
+        this.compress = init2.compress !== void 0 ? init2.compress : input.compress !== void 0 ? input.compress : true;
+        this.counter = init2.counter || input.counter || 0;
+        this.agent = init2.agent || input.agent;
       }
       get method() {
         return this[INTERNALS$2].method;
@@ -61555,21 +61617,21 @@ var require_retry3 = __commonJS({
     exports2.getRetryConfig = void 0;
     async function getRetryConfig(err) {
       var _a;
-      let config4 = getConfig(err);
-      if (!err || !err.config || !config4 && !err.config.retry) {
+      let config5 = getConfig(err);
+      if (!err || !err.config || !config5 && !err.config.retry) {
         return { shouldRetry: false };
       }
-      config4 = config4 || {};
-      config4.currentRetryAttempt = config4.currentRetryAttempt || 0;
-      config4.retry = config4.retry === void 0 || config4.retry === null ? 3 : config4.retry;
-      config4.httpMethodsToRetry = config4.httpMethodsToRetry || [
+      config5 = config5 || {};
+      config5.currentRetryAttempt = config5.currentRetryAttempt || 0;
+      config5.retry = config5.retry === void 0 || config5.retry === null ? 3 : config5.retry;
+      config5.httpMethodsToRetry = config5.httpMethodsToRetry || [
         "GET",
         "HEAD",
         "PUT",
         "OPTIONS",
         "DELETE"
       ];
-      config4.noResponseRetries = config4.noResponseRetries === void 0 || config4.noResponseRetries === null ? 2 : config4.noResponseRetries;
+      config5.noResponseRetries = config5.noResponseRetries === void 0 || config5.noResponseRetries === null ? 2 : config5.noResponseRetries;
       const retryRanges = [
         // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
         // 1xx - Retry (Informational, request still processing)
@@ -61582,42 +61644,42 @@ var require_retry3 = __commonJS({
         [429, 429],
         [500, 599]
       ];
-      config4.statusCodesToRetry = config4.statusCodesToRetry || retryRanges;
-      err.config.retryConfig = config4;
-      const shouldRetryFn = config4.shouldRetry || shouldRetryRequest;
+      config5.statusCodesToRetry = config5.statusCodesToRetry || retryRanges;
+      err.config.retryConfig = config5;
+      const shouldRetryFn = config5.shouldRetry || shouldRetryRequest;
       if (!await shouldRetryFn(err)) {
         return { shouldRetry: false, config: err.config };
       }
-      const retryDelay = config4.currentRetryAttempt ? 0 : (_a = config4.retryDelay) !== null && _a !== void 0 ? _a : 100;
-      const delay = retryDelay + (Math.pow(2, config4.currentRetryAttempt) - 1) / 2 * 1e3;
+      const retryDelay = config5.currentRetryAttempt ? 0 : (_a = config5.retryDelay) !== null && _a !== void 0 ? _a : 100;
+      const delay = retryDelay + (Math.pow(2, config5.currentRetryAttempt) - 1) / 2 * 1e3;
       err.config.retryConfig.currentRetryAttempt += 1;
-      const backoff = config4.retryBackoff ? config4.retryBackoff(err, delay) : new Promise((resolve) => {
+      const backoff = config5.retryBackoff ? config5.retryBackoff(err, delay) : new Promise((resolve) => {
         setTimeout(resolve, delay);
       });
-      if (config4.onRetryAttempt) {
-        config4.onRetryAttempt(err);
+      if (config5.onRetryAttempt) {
+        config5.onRetryAttempt(err);
       }
       await backoff;
       return { shouldRetry: true, config: err.config };
     }
     exports2.getRetryConfig = getRetryConfig;
     function shouldRetryRequest(err) {
-      const config4 = getConfig(err);
+      const config5 = getConfig(err);
       if (err.name === "AbortError") {
         return false;
       }
-      if (!config4 || config4.retry === 0) {
+      if (!config5 || config5.retry === 0) {
         return false;
       }
-      if (!err.response && (config4.currentRetryAttempt || 0) >= config4.noResponseRetries) {
+      if (!err.response && (config5.currentRetryAttempt || 0) >= config5.noResponseRetries) {
         return false;
       }
-      if (!err.config.method || config4.httpMethodsToRetry.indexOf(err.config.method.toUpperCase()) < 0) {
+      if (!err.config.method || config5.httpMethodsToRetry.indexOf(err.config.method.toUpperCase()) < 0) {
         return false;
       }
       if (err.response && err.response.status) {
         let isInRange = false;
-        for (const [min, max] of config4.statusCodesToRetry) {
+        for (const [min, max] of config5.statusCodesToRetry) {
           const status = err.response.status;
           if (status >= min && status <= max) {
             isInRange = true;
@@ -61628,8 +61690,8 @@ var require_retry3 = __commonJS({
           return false;
         }
       }
-      config4.currentRetryAttempt = config4.currentRetryAttempt || 0;
-      if (config4.currentRetryAttempt >= config4.retry) {
+      config5.currentRetryAttempt = config5.currentRetryAttempt || 0;
+      if (config5.currentRetryAttempt >= config5.retry) {
         return false;
       }
       return true;
@@ -62226,7 +62288,7 @@ var require_node2 = __commonJS({
   "node_modules/@langchain/google-gauth/node_modules/debug/src/node.js"(exports2, module2) {
     var tty = require("tty");
     var util4 = require("util");
-    exports2.init = init;
+    exports2.init = init2;
     exports2.log = log;
     exports2.formatArgs = formatArgs;
     exports2.save = save;
@@ -62375,7 +62437,7 @@ var require_node2 = __commonJS({
     function load() {
       return process.env.DEBUG;
     }
-    function init(debug) {
+    function init2(debug) {
       debug.inspectOpts = {};
       const keys = Object.keys(exports2.inspectOpts);
       for (let i = 0; i < keys.length; i++) {
@@ -62981,9 +63043,9 @@ var require_gaxios = __commonJS({
         } catch (e) {
           const err = e;
           err.config = opts;
-          const { shouldRetry, config: config4 } = await (0, retry_1.getRetryConfig)(err);
-          if (shouldRetry && config4) {
-            err.config.retryConfig.currentRetryAttempt = config4.retryConfig.currentRetryAttempt;
+          const { shouldRetry, config: config5 } = await (0, retry_1.getRetryConfig)(err);
+          if (shouldRetry && config5) {
+            err.config.retryConfig.currentRetryAttempt = config5.retryConfig.currentRetryAttempt;
             return this._request(err.config);
           }
           throw err;
@@ -65527,23 +65589,36 @@ var require_options = __commonJS({
 var require_package2 = __commonJS({
   "node_modules/@langchain/google-gauth/node_modules/google-auth-library/package.json"(exports2, module2) {
     module2.exports = {
-      name: "google-auth-library",
-      version: "8.9.0",
-      author: "Google Inc.",
-      description: "Google APIs Authentication Client Library for Node.js",
-      engines: {
-        node: ">=12"
+      _from: "google-auth-library@^8.9.0",
+      _id: "google-auth-library@8.9.0",
+      _inBundle: false,
+      _integrity: "sha512-f7aQCJODJFmYWN6PeNKzgvy9LI2tYmXnzpNDHEjG5sDNPgGb2FXQyTBnXeSH+PAtpKESFD+LmHw3Ox3mN7e1Fg==",
+      _location: "/@langchain/google-gauth/google-auth-library",
+      _phantomChildren: {},
+      _requested: {
+        type: "range",
+        registry: true,
+        raw: "google-auth-library@^8.9.0",
+        name: "google-auth-library",
+        escapedName: "google-auth-library",
+        rawSpec: "^8.9.0",
+        saveSpec: null,
+        fetchSpec: "^8.9.0"
       },
-      main: "./build/src/index.js",
-      types: "./build/src/index.d.ts",
-      repository: "googleapis/google-auth-library-nodejs.git",
-      keywords: [
-        "google",
-        "api",
-        "google apis",
-        "client",
-        "client library"
+      _requiredBy: [
+        "/@langchain/google-gauth"
       ],
+      _resolved: "https://registry.npmjs.org/google-auth-library/-/google-auth-library-8.9.0.tgz",
+      _shasum: "15a271eb2ec35d43b81deb72211bd61b1ef14dd0",
+      _spec: "google-auth-library@^8.9.0",
+      _where: "D:\\project-latihan\\gemini-ai\\node_modules\\@langchain\\google-gauth",
+      author: {
+        name: "Google Inc."
+      },
+      bugs: {
+        url: "https://github.com/googleapis/google-auth-library-nodejs/issues"
+      },
+      bundleDependencies: false,
       dependencies: {
         arrify: "^2.0.0",
         "base64-js": "^1.3.0",
@@ -65555,6 +65630,8 @@ var require_package2 = __commonJS({
         jws: "^4.0.0",
         "lru-cache": "^6.0.0"
       },
+      deprecated: false,
+      description: "Google APIs Authentication Client Library for Node.js",
       devDependencies: {
         "@compodoc/compodoc": "^1.1.7",
         "@types/base64-js": "^1.2.5",
@@ -65594,31 +65671,50 @@ var require_package2 = __commonJS({
         webpack: "^5.21.2",
         "webpack-cli": "^4.0.0"
       },
+      engines: {
+        node: ">=12"
+      },
       files: [
         "build/src",
         "!build/src/**/*.map"
       ],
+      homepage: "https://github.com/googleapis/google-auth-library-nodejs#readme",
+      keywords: [
+        "google",
+        "api",
+        "google apis",
+        "client",
+        "client library"
+      ],
+      license: "Apache-2.0",
+      main: "./build/src/index.js",
+      name: "google-auth-library",
+      repository: {
+        type: "git",
+        url: "git+https://github.com/googleapis/google-auth-library-nodejs.git"
+      },
       scripts: {
-        test: "c8 mocha build/test",
+        "browser-test": "karma start",
         clean: "gts clean",
-        prepare: "npm run compile",
-        lint: "gts check",
         compile: "tsc -p .",
-        fix: "gts fix",
-        pretest: "npm run compile",
         docs: "compodoc src/",
+        "docs-test": "linkinator docs",
+        fix: "gts fix",
+        lint: "gts check",
+        precompile: "gts clean",
+        "predocs-test": "npm run docs",
+        prelint: "cd samples; npm link ../; npm install",
+        prepare: "npm run compile",
+        "presystem-test": "npm run compile",
+        pretest: "npm run compile",
         "samples-setup": "cd samples/ && npm link ../ && npm run setup && cd ../",
         "samples-test": "cd samples/ && npm link ../ && npm test && cd ../",
         "system-test": "mocha build/system-test --timeout 60000",
-        "presystem-test": "npm run compile",
-        webpack: "webpack",
-        "browser-test": "karma start",
-        "docs-test": "linkinator docs",
-        "predocs-test": "npm run docs",
-        prelint: "cd samples; npm link ../; npm install",
-        precompile: "gts clean"
+        test: "c8 mocha build/test",
+        webpack: "webpack"
       },
-      license: "Apache-2.0"
+      types: "./build/src/index.d.ts",
+      version: "8.9.0"
     };
   }
 });
@@ -69647,7 +69743,7 @@ var require_aes = __commonJS({
       });
     };
     forge.aes.Algorithm = function(name, mode) {
-      if (!init) {
+      if (!init2) {
         initialize();
       }
       var self2 = this;
@@ -69700,7 +69796,7 @@ var require_aes = __commonJS({
       this._init = true;
     };
     forge.aes._expandKey = function(key, decrypt) {
-      if (!init) {
+      if (!init2) {
         initialize();
       }
       return _expandKey(key, decrypt);
@@ -69718,7 +69814,7 @@ var require_aes = __commonJS({
       };
       forge.cipher.registerAlgorithm(name, factory);
     }
-    var init = false;
+    var init2 = false;
     var Nb = 4;
     var sbox;
     var isbox;
@@ -69726,7 +69822,7 @@ var require_aes = __commonJS({
     var mix;
     var imix;
     function initialize() {
-      init = true;
+      init2 = true;
       rcon = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54];
       var xtime = new Array(256);
       for (var i = 0; i < 128; ++i) {
@@ -83238,11 +83334,11 @@ var require_ed25519 = __commonJS({
         q[i] ^= t;
       }
     }
-    function gf(init) {
+    function gf(init2) {
       var i, r = new Float64Array(16);
-      if (init) {
-        for (i = 0; i < init.length; ++i) {
-          r[i] = init[i];
+      if (init2) {
+        for (i = 0; i < init2.length; ++i) {
+          r[i] = init2[i];
         }
       }
       return r;
@@ -89506,44 +89602,44 @@ var init_mustache = __esm({
       }
       return tokens;
     };
-    Writer.prototype.render = function render(template, view, partials, config4) {
-      var tags = this.getConfigTags(config4);
+    Writer.prototype.render = function render(template, view, partials, config5) {
+      var tags = this.getConfigTags(config5);
       var tokens = this.parse(template, tags);
       var context = view instanceof Context ? view : new Context(view, void 0);
-      return this.renderTokens(tokens, context, partials, template, config4);
+      return this.renderTokens(tokens, context, partials, template, config5);
     };
-    Writer.prototype.renderTokens = function renderTokens(tokens, context, partials, originalTemplate, config4) {
+    Writer.prototype.renderTokens = function renderTokens(tokens, context, partials, originalTemplate, config5) {
       var buffer = "";
       var token2, symbol, value;
       for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
         value = void 0;
         token2 = tokens[i];
         symbol = token2[0];
-        if (symbol === "#") value = this.renderSection(token2, context, partials, originalTemplate, config4);
-        else if (symbol === "^") value = this.renderInverted(token2, context, partials, originalTemplate, config4);
-        else if (symbol === ">") value = this.renderPartial(token2, context, partials, config4);
+        if (symbol === "#") value = this.renderSection(token2, context, partials, originalTemplate, config5);
+        else if (symbol === "^") value = this.renderInverted(token2, context, partials, originalTemplate, config5);
+        else if (symbol === ">") value = this.renderPartial(token2, context, partials, config5);
         else if (symbol === "&") value = this.unescapedValue(token2, context);
-        else if (symbol === "name") value = this.escapedValue(token2, context, config4);
+        else if (symbol === "name") value = this.escapedValue(token2, context, config5);
         else if (symbol === "text") value = this.rawValue(token2);
         if (value !== void 0)
           buffer += value;
       }
       return buffer;
     };
-    Writer.prototype.renderSection = function renderSection(token2, context, partials, originalTemplate, config4) {
+    Writer.prototype.renderSection = function renderSection(token2, context, partials, originalTemplate, config5) {
       var self2 = this;
       var buffer = "";
       var value = context.lookup(token2[1]);
       function subRender(template) {
-        return self2.render(template, context, partials, config4);
+        return self2.render(template, context, partials, config5);
       }
       if (!value) return;
       if (isArray(value)) {
         for (var j = 0, valueLength = value.length; j < valueLength; ++j) {
-          buffer += this.renderTokens(token2[4], context.push(value[j]), partials, originalTemplate, config4);
+          buffer += this.renderTokens(token2[4], context.push(value[j]), partials, originalTemplate, config5);
         }
       } else if (typeof value === "object" || typeof value === "string" || typeof value === "number") {
-        buffer += this.renderTokens(token2[4], context.push(value), partials, originalTemplate, config4);
+        buffer += this.renderTokens(token2[4], context.push(value), partials, originalTemplate, config5);
       } else if (isFunction(value)) {
         if (typeof originalTemplate !== "string")
           throw new Error("Cannot use higher-order sections without the original template");
@@ -89551,14 +89647,14 @@ var init_mustache = __esm({
         if (value != null)
           buffer += value;
       } else {
-        buffer += this.renderTokens(token2[4], context, partials, originalTemplate, config4);
+        buffer += this.renderTokens(token2[4], context, partials, originalTemplate, config5);
       }
       return buffer;
     };
-    Writer.prototype.renderInverted = function renderInverted(token2, context, partials, originalTemplate, config4) {
+    Writer.prototype.renderInverted = function renderInverted(token2, context, partials, originalTemplate, config5) {
       var value = context.lookup(token2[1]);
       if (!value || isArray(value) && value.length === 0)
-        return this.renderTokens(token2[4], context, partials, originalTemplate, config4);
+        return this.renderTokens(token2[4], context, partials, originalTemplate, config5);
     };
     Writer.prototype.indentPartial = function indentPartial(partial, indentation, lineHasNonSpace) {
       var filteredIndentation = indentation.replace(/[^ \t]/g, "");
@@ -89570,9 +89666,9 @@ var init_mustache = __esm({
       }
       return partialByNl.join("\n");
     };
-    Writer.prototype.renderPartial = function renderPartial(token2, context, partials, config4) {
+    Writer.prototype.renderPartial = function renderPartial(token2, context, partials, config5) {
       if (!partials) return;
-      var tags = this.getConfigTags(config4);
+      var tags = this.getConfigTags(config5);
       var value = isFunction(partials) ? partials(token2[1]) : partials[token2[1]];
       if (value != null) {
         var lineHasNonSpace = token2[6];
@@ -89583,7 +89679,7 @@ var init_mustache = __esm({
           indentedValue = this.indentPartial(value, indentation, lineHasNonSpace);
         }
         var tokens = this.parse(indentedValue, tags);
-        return this.renderTokens(tokens, context, partials, indentedValue, config4);
+        return this.renderTokens(tokens, context, partials, indentedValue, config5);
       }
     };
     Writer.prototype.unescapedValue = function unescapedValue(token2, context) {
@@ -89591,8 +89687,8 @@ var init_mustache = __esm({
       if (value != null)
         return value;
     };
-    Writer.prototype.escapedValue = function escapedValue(token2, context, config4) {
-      var escape2 = this.getConfigEscape(config4) || mustache.escape;
+    Writer.prototype.escapedValue = function escapedValue(token2, context, config5) {
+      var escape2 = this.getConfigEscape(config5) || mustache.escape;
       var value = context.lookup(token2[1]);
       if (value != null)
         return typeof value === "number" && escape2 === mustache.escape ? String(value) : escape2(value);
@@ -89600,18 +89696,18 @@ var init_mustache = __esm({
     Writer.prototype.rawValue = function rawValue(token2) {
       return token2[1];
     };
-    Writer.prototype.getConfigTags = function getConfigTags(config4) {
-      if (isArray(config4)) {
-        return config4;
-      } else if (config4 && typeof config4 === "object") {
-        return config4.tags;
+    Writer.prototype.getConfigTags = function getConfigTags(config5) {
+      if (isArray(config5)) {
+        return config5;
+      } else if (config5 && typeof config5 === "object") {
+        return config5.tags;
       } else {
         return void 0;
       }
     };
-    Writer.prototype.getConfigEscape = function getConfigEscape(config4) {
-      if (config4 && typeof config4 === "object" && !isArray(config4)) {
-        return config4.escape;
+    Writer.prototype.getConfigEscape = function getConfigEscape(config5) {
+      if (config5 && typeof config5 === "object" && !isArray(config5)) {
+        return config5.escape;
       } else {
         return void 0;
       }
@@ -89649,11 +89745,11 @@ var init_mustache = __esm({
     mustache.parse = function parse2(template, tags) {
       return defaultWriter.parse(template, tags);
     };
-    mustache.render = function render2(template, view, partials, config4) {
+    mustache.render = function render2(template, view, partials, config5) {
       if (typeof template !== "string") {
         throw new TypeError('Invalid template! Template should be a "string" but "' + typeStr(template) + '" was given as the first argument for mustache#render(template, view, partials)');
       }
-      return defaultWriter.render(template, view, partials, config4);
+      return defaultWriter.render(template, view, partials, config5);
     };
     mustache.escape = escapeHtml;
     mustache.Scanner = Scanner;
@@ -92556,6 +92652,13189 @@ var require_follow_redirects = __commonJS({
   }
 });
 
+// node_modules/flat/index.js
+var require_flat = __commonJS({
+  "node_modules/flat/index.js"(exports2, module2) {
+    module2.exports = flatten2;
+    flatten2.flatten = flatten2;
+    flatten2.unflatten = unflatten;
+    function isBuffer2(obj) {
+      return obj && obj.constructor && typeof obj.constructor.isBuffer === "function" && obj.constructor.isBuffer(obj);
+    }
+    function keyIdentity(key) {
+      return key;
+    }
+    function flatten2(target, opts) {
+      opts = opts || {};
+      const delimiter = opts.delimiter || ".";
+      const maxDepth = opts.maxDepth;
+      const transformKey = opts.transformKey || keyIdentity;
+      const output = {};
+      function step(object, prev, currentDepth) {
+        currentDepth = currentDepth || 1;
+        Object.keys(object).forEach(function(key) {
+          const value = object[key];
+          const isarray = opts.safe && Array.isArray(value);
+          const type = Object.prototype.toString.call(value);
+          const isbuffer = isBuffer2(value);
+          const isobject = type === "[object Object]" || type === "[object Array]";
+          const newKey = prev ? prev + delimiter + transformKey(key) : transformKey(key);
+          if (!isarray && !isbuffer && isobject && Object.keys(value).length && (!opts.maxDepth || currentDepth < maxDepth)) {
+            return step(value, newKey, currentDepth + 1);
+          }
+          output[newKey] = value;
+        });
+      }
+      step(target);
+      return output;
+    }
+    function unflatten(target, opts) {
+      opts = opts || {};
+      const delimiter = opts.delimiter || ".";
+      const overwrite = opts.overwrite || false;
+      const transformKey = opts.transformKey || keyIdentity;
+      const result = {};
+      const isbuffer = isBuffer2(target);
+      if (isbuffer || Object.prototype.toString.call(target) !== "[object Object]") {
+        return target;
+      }
+      function getkey(key) {
+        const parsedKey = Number(key);
+        return isNaN(parsedKey) || key.indexOf(".") !== -1 || opts.object ? key : parsedKey;
+      }
+      function addKeys(keyPrefix, recipient, target2) {
+        return Object.keys(target2).reduce(function(result2, key) {
+          result2[keyPrefix + delimiter + key] = target2[key];
+          return result2;
+        }, recipient);
+      }
+      function isEmpty(val) {
+        const type = Object.prototype.toString.call(val);
+        const isArray3 = type === "[object Array]";
+        const isObject2 = type === "[object Object]";
+        if (!val) {
+          return true;
+        } else if (isArray3) {
+          return !val.length;
+        } else if (isObject2) {
+          return !Object.keys(val).length;
+        }
+      }
+      target = Object.keys(target).reduce(function(result2, key) {
+        const type = Object.prototype.toString.call(target[key]);
+        const isObject2 = type === "[object Object]" || type === "[object Array]";
+        if (!isObject2 || isEmpty(target[key])) {
+          result2[key] = target[key];
+          return result2;
+        } else {
+          return addKeys(
+            key,
+            result2,
+            flatten2(target[key], opts)
+          );
+        }
+      }, {});
+      Object.keys(target).forEach(function(key) {
+        const split = key.split(delimiter).map(transformKey);
+        let key1 = getkey(split.shift());
+        let key2 = getkey(split[0]);
+        let recipient = result;
+        while (key2 !== void 0) {
+          if (key1 === "__proto__") {
+            return;
+          }
+          const type = Object.prototype.toString.call(recipient[key1]);
+          const isobject = type === "[object Object]" || type === "[object Array]";
+          if (!overwrite && !isobject && typeof recipient[key1] !== "undefined") {
+            return;
+          }
+          if (overwrite && !isobject || !overwrite && recipient[key1] == null) {
+            recipient[key1] = typeof key2 === "number" && !opts.object ? [] : {};
+          }
+          recipient = recipient[key1];
+          if (split.length > 0) {
+            key1 = getkey(split.shift());
+            key2 = getkey(split[0]);
+          }
+        }
+        recipient[key1] = unflatten(target[key], opts);
+      });
+      return result;
+    }
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/runtime.js
+var require_runtime = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/runtime.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.TextApiResponse = exports2.BlobApiResponse = exports2.VoidApiResponse = exports2.JSONApiResponse = exports2.canConsumeForm = exports2.mapValues = exports2.querystring = exports2.exists = exports2.COLLECTION_FORMATS = exports2.RequiredError = exports2.FetchError = exports2.ResponseError = exports2.BaseAPI = exports2.DefaultConfig = exports2.Configuration = exports2.BASE_PATH = void 0;
+    exports2.BASE_PATH = "https://api.pinecone.io".replace(/\/+$/, "");
+    var Configuration = (
+      /** @class */
+      function() {
+        function Configuration2(configuration) {
+          if (configuration === void 0) {
+            configuration = {};
+          }
+          this.configuration = configuration;
+        }
+        Object.defineProperty(Configuration2.prototype, "config", {
+          set: function(configuration) {
+            this.configuration = configuration;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "basePath", {
+          get: function() {
+            return this.configuration.basePath != null ? this.configuration.basePath : exports2.BASE_PATH;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "fetchApi", {
+          get: function() {
+            return this.configuration.fetchApi;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "middleware", {
+          get: function() {
+            return this.configuration.middleware || [];
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "queryParamsStringify", {
+          get: function() {
+            return this.configuration.queryParamsStringify || querystring;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "username", {
+          get: function() {
+            return this.configuration.username;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "password", {
+          get: function() {
+            return this.configuration.password;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "apiKey", {
+          get: function() {
+            var apiKey = this.configuration.apiKey;
+            if (apiKey) {
+              return typeof apiKey === "function" ? apiKey : function() {
+                return apiKey;
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "accessToken", {
+          get: function() {
+            var _this = this;
+            var accessToken = this.configuration.accessToken;
+            if (accessToken) {
+              return typeof accessToken === "function" ? accessToken : function() {
+                return __awaiter(_this, void 0, void 0, function() {
+                  return __generator(this, function(_a) {
+                    return [2, accessToken];
+                  });
+                });
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "headers", {
+          get: function() {
+            return this.configuration.headers;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "credentials", {
+          get: function() {
+            return this.configuration.credentials;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        return Configuration2;
+      }()
+    );
+    exports2.Configuration = Configuration;
+    exports2.DefaultConfig = new Configuration();
+    var BaseAPI = (
+      /** @class */
+      function() {
+        function BaseAPI2(configuration) {
+          if (configuration === void 0) {
+            configuration = exports2.DefaultConfig;
+          }
+          var _this = this;
+          this.configuration = configuration;
+          this.fetchApi = function(url2, init2) {
+            return __awaiter(_this, void 0, void 0, function() {
+              var fetchParams, _i, _a, middleware, response, e_1, _b, _c, middleware, _d, _e, middleware;
+              return __generator(this, function(_f) {
+                switch (_f.label) {
+                  case 0:
+                    fetchParams = { url: url2, init: init2 };
+                    _i = 0, _a = this.middleware;
+                    _f.label = 1;
+                  case 1:
+                    if (!(_i < _a.length)) return [3, 4];
+                    middleware = _a[_i];
+                    if (!middleware.pre) return [3, 3];
+                    return [4, middleware.pre(__assign({ fetch: this.fetchApi }, fetchParams))];
+                  case 2:
+                    fetchParams = _f.sent() || fetchParams;
+                    _f.label = 3;
+                  case 3:
+                    _i++;
+                    return [3, 1];
+                  case 4:
+                    response = void 0;
+                    _f.label = 5;
+                  case 5:
+                    _f.trys.push([5, 7, , 12]);
+                    return [4, (this.configuration.fetchApi || fetch)(fetchParams.url, fetchParams.init)];
+                  case 6:
+                    response = _f.sent();
+                    return [3, 12];
+                  case 7:
+                    e_1 = _f.sent();
+                    _b = 0, _c = this.middleware;
+                    _f.label = 8;
+                  case 8:
+                    if (!(_b < _c.length)) return [3, 11];
+                    middleware = _c[_b];
+                    if (!middleware.onError) return [3, 10];
+                    return [4, middleware.onError({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      error: e_1,
+                      response: response ? response.clone() : void 0
+                    })];
+                  case 9:
+                    response = _f.sent() || response;
+                    _f.label = 10;
+                  case 10:
+                    _b++;
+                    return [3, 8];
+                  case 11:
+                    if (response === void 0) {
+                      if (e_1 instanceof Error) {
+                        throw new FetchError(e_1, "The request failed and the interceptors did not return an alternative response");
+                      } else {
+                        throw e_1;
+                      }
+                    }
+                    return [3, 12];
+                  case 12:
+                    _d = 0, _e = this.middleware;
+                    _f.label = 13;
+                  case 13:
+                    if (!(_d < _e.length)) return [3, 16];
+                    middleware = _e[_d];
+                    if (!middleware.post) return [3, 15];
+                    return [4, middleware.post({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      response: response.clone()
+                    })];
+                  case 14:
+                    response = _f.sent() || response;
+                    _f.label = 15;
+                  case 15:
+                    _d++;
+                    return [3, 13];
+                  case 16:
+                    return [2, response];
+                }
+              });
+            });
+          };
+          this.middleware = configuration.middleware;
+        }
+        BaseAPI2.prototype.withMiddleware = function() {
+          var _a;
+          var middlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            middlewares[_i] = arguments[_i];
+          }
+          var next = this.clone();
+          next.middleware = (_a = next.middleware).concat.apply(_a, middlewares);
+          return next;
+        };
+        BaseAPI2.prototype.withPreMiddleware = function() {
+          var preMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            preMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = preMiddlewares.map(function(pre) {
+            return { pre };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.withPostMiddleware = function() {
+          var postMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            postMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = postMiddlewares.map(function(post) {
+            return { post };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.isJsonMime = function(mime) {
+          if (!mime) {
+            return false;
+          }
+          return BaseAPI2.jsonRegex.test(mime);
+        };
+        BaseAPI2.prototype.request = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a, url2, init2, response;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  return [4, this.createFetchParams(context, initOverrides)];
+                case 1:
+                  _a = _b.sent(), url2 = _a.url, init2 = _a.init;
+                  return [4, this.fetchApi(url2, init2)];
+                case 2:
+                  response = _b.sent();
+                  if (response && (response.status >= 200 && response.status < 300)) {
+                    return [2, response];
+                  }
+                  throw new ResponseError(response, "Response returned an error code");
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.createFetchParams = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var url2, headers2, initOverrideFn, initParams, overriddenInit, _a, body2, init2;
+            var _this = this;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  url2 = this.configuration.basePath + context.path;
+                  if (context.query !== void 0 && Object.keys(context.query).length !== 0) {
+                    url2 += "?" + this.configuration.queryParamsStringify(context.query);
+                  }
+                  headers2 = Object.assign({}, this.configuration.headers, context.headers);
+                  Object.keys(headers2).forEach(function(key) {
+                    return headers2[key] === void 0 ? delete headers2[key] : {};
+                  });
+                  initOverrideFn = typeof initOverrides === "function" ? initOverrides : function() {
+                    return __awaiter(_this, void 0, void 0, function() {
+                      return __generator(this, function(_a2) {
+                        return [2, initOverrides];
+                      });
+                    });
+                  };
+                  initParams = {
+                    method: context.method,
+                    headers: headers2,
+                    body: context.body,
+                    credentials: this.configuration.credentials
+                  };
+                  _a = [__assign({}, initParams)];
+                  return [4, initOverrideFn({
+                    init: initParams,
+                    context
+                  })];
+                case 1:
+                  overriddenInit = __assign.apply(void 0, _a.concat([_b.sent()]));
+                  if (isFormData2(overriddenInit.body) || overriddenInit.body instanceof URLSearchParams || isBlob2(overriddenInit.body)) {
+                    body2 = overriddenInit.body;
+                  } else if (this.isJsonMime(headers2["Content-Type"])) {
+                    body2 = JSON.stringify(overriddenInit.body);
+                  } else {
+                    body2 = overriddenInit.body;
+                  }
+                  init2 = __assign(__assign({}, overriddenInit), { body: body2 });
+                  return [2, { url: url2, init: init2 }];
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.clone = function() {
+          var constructor = this.constructor;
+          var next = new constructor(this.configuration);
+          next.middleware = this.middleware.slice();
+          return next;
+        };
+        BaseAPI2.jsonRegex = new RegExp("^(:?application/json|[^;/ 	]+/[^;/ 	]+[+]json)[ 	]*(:?;.*)?$", "i");
+        return BaseAPI2;
+      }()
+    );
+    exports2.BaseAPI = BaseAPI;
+    function isBlob2(value) {
+      return typeof Blob !== "undefined" && value instanceof Blob;
+    }
+    function isFormData2(value) {
+      return typeof FormData !== "undefined" && value instanceof FormData;
+    }
+    var ResponseError = (
+      /** @class */
+      function(_super) {
+        __extends(ResponseError2, _super);
+        function ResponseError2(response, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.response = response;
+          _this.name = "ResponseError";
+          return _this;
+        }
+        return ResponseError2;
+      }(Error)
+    );
+    exports2.ResponseError = ResponseError;
+    var FetchError = (
+      /** @class */
+      function(_super) {
+        __extends(FetchError2, _super);
+        function FetchError2(cause, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.cause = cause;
+          _this.name = "FetchError";
+          return _this;
+        }
+        return FetchError2;
+      }(Error)
+    );
+    exports2.FetchError = FetchError;
+    var RequiredError = (
+      /** @class */
+      function(_super) {
+        __extends(RequiredError2, _super);
+        function RequiredError2(field, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.field = field;
+          _this.name = "RequiredError";
+          return _this;
+        }
+        return RequiredError2;
+      }(Error)
+    );
+    exports2.RequiredError = RequiredError;
+    exports2.COLLECTION_FORMATS = {
+      csv: ",",
+      ssv: " ",
+      tsv: "	",
+      pipes: "|"
+    };
+    function exists(json, key) {
+      var value = json[key];
+      return value !== null && value !== void 0;
+    }
+    exports2.exists = exists;
+    function querystring(params, prefix) {
+      if (prefix === void 0) {
+        prefix = "";
+      }
+      return Object.keys(params).map(function(key) {
+        return querystringSingleKey(key, params[key], prefix);
+      }).filter(function(part) {
+        return part.length > 0;
+      }).join("&");
+    }
+    exports2.querystring = querystring;
+    function querystringSingleKey(key, value, keyPrefix) {
+      if (keyPrefix === void 0) {
+        keyPrefix = "";
+      }
+      var fullKey = keyPrefix + (keyPrefix.length ? "[".concat(key, "]") : key);
+      if (value instanceof Array) {
+        var multiValue = value.map(function(singleValue) {
+          return encodeURIComponent(String(singleValue));
+        }).join("&".concat(encodeURIComponent(fullKey), "="));
+        return "".concat(encodeURIComponent(fullKey), "=").concat(multiValue);
+      }
+      if (value instanceof Set) {
+        var valueAsArray = Array.from(value);
+        return querystringSingleKey(key, valueAsArray, keyPrefix);
+      }
+      if (value instanceof Date) {
+        return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(value.toISOString()));
+      }
+      if (value instanceof Object) {
+        return querystring(value, fullKey);
+      }
+      return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(String(value)));
+    }
+    function mapValues(data, fn) {
+      return Object.keys(data).reduce(function(acc, key) {
+        var _a;
+        return __assign(__assign({}, acc), (_a = {}, _a[key] = fn(data[key]), _a));
+      }, {});
+    }
+    exports2.mapValues = mapValues;
+    function canConsumeForm(consumes) {
+      for (var _i = 0, consumes_1 = consumes; _i < consumes_1.length; _i++) {
+        var consume = consumes_1[_i];
+        if ("multipart/form-data" === consume.contentType) {
+          return true;
+        }
+      }
+      return false;
+    }
+    exports2.canConsumeForm = canConsumeForm;
+    var JSONApiResponse = (
+      /** @class */
+      function() {
+        function JSONApiResponse2(raw, transformer) {
+          if (transformer === void 0) {
+            transformer = function(jsonValue) {
+              return jsonValue;
+            };
+          }
+          this.raw = raw;
+          this.transformer = transformer;
+        }
+        JSONApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  _a = this.transformer;
+                  return [4, this.raw.json()];
+                case 1:
+                  return [2, _a.apply(this, [_b.sent()])];
+              }
+            });
+          });
+        };
+        return JSONApiResponse2;
+      }()
+    );
+    exports2.JSONApiResponse = JSONApiResponse;
+    var VoidApiResponse = (
+      /** @class */
+      function() {
+        function VoidApiResponse2(raw) {
+          this.raw = raw;
+        }
+        VoidApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, void 0];
+            });
+          });
+        };
+        return VoidApiResponse2;
+      }()
+    );
+    exports2.VoidApiResponse = VoidApiResponse;
+    var BlobApiResponse = (
+      /** @class */
+      function() {
+        function BlobApiResponse2(raw) {
+          this.raw = raw;
+        }
+        BlobApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.blob()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return BlobApiResponse2;
+      }()
+    );
+    exports2.BlobApiResponse = BlobApiResponse;
+    var TextApiResponse = (
+      /** @class */
+      function() {
+        function TextApiResponse2(raw) {
+          this.raw = raw;
+        }
+        TextApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.text()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return TextApiResponse2;
+      }()
+    );
+    exports2.TextApiResponse = TextApiResponse;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CollectionModel.js
+var require_CollectionModel = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CollectionModel.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.CollectionModelToJSON = exports2.CollectionModelFromJSONTyped = exports2.CollectionModelFromJSON = exports2.instanceOfCollectionModel = exports2.CollectionModelStatusEnum = void 0;
+    var runtime_1 = require_runtime();
+    exports2.CollectionModelStatusEnum = {
+      Initializing: "Initializing",
+      Ready: "Ready",
+      Terminating: "Terminating"
+    };
+    function instanceOfCollectionModel(value) {
+      var isInstance = true;
+      isInstance = isInstance && "name" in value;
+      isInstance = isInstance && "status" in value;
+      isInstance = isInstance && "environment" in value;
+      return isInstance;
+    }
+    exports2.instanceOfCollectionModel = instanceOfCollectionModel;
+    function CollectionModelFromJSON(json) {
+      return CollectionModelFromJSONTyped(json, false);
+    }
+    exports2.CollectionModelFromJSON = CollectionModelFromJSON;
+    function CollectionModelFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "name": json["name"],
+        "size": !(0, runtime_1.exists)(json, "size") ? void 0 : json["size"],
+        "status": json["status"],
+        "dimension": !(0, runtime_1.exists)(json, "dimension") ? void 0 : json["dimension"],
+        "vectorCount": !(0, runtime_1.exists)(json, "vector_count") ? void 0 : json["vector_count"],
+        "environment": json["environment"]
+      };
+    }
+    exports2.CollectionModelFromJSONTyped = CollectionModelFromJSONTyped;
+    function CollectionModelToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "name": value.name,
+        "size": value.size,
+        "status": value.status,
+        "dimension": value.dimension,
+        "vector_count": value.vectorCount,
+        "environment": value.environment
+      };
+    }
+    exports2.CollectionModelToJSON = CollectionModelToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CollectionList.js
+var require_CollectionList = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CollectionList.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.CollectionListToJSON = exports2.CollectionListFromJSONTyped = exports2.CollectionListFromJSON = exports2.instanceOfCollectionList = void 0;
+    var runtime_1 = require_runtime();
+    var CollectionModel_1 = require_CollectionModel();
+    function instanceOfCollectionList(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfCollectionList = instanceOfCollectionList;
+    function CollectionListFromJSON(json) {
+      return CollectionListFromJSONTyped(json, false);
+    }
+    exports2.CollectionListFromJSON = CollectionListFromJSON;
+    function CollectionListFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "collections": !(0, runtime_1.exists)(json, "collections") ? void 0 : json["collections"].map(CollectionModel_1.CollectionModelFromJSON)
+      };
+    }
+    exports2.CollectionListFromJSONTyped = CollectionListFromJSONTyped;
+    function CollectionListToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "collections": value.collections === void 0 ? void 0 : value.collections.map(CollectionModel_1.CollectionModelToJSON)
+      };
+    }
+    exports2.CollectionListToJSON = CollectionListToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequestSpecPod.js
+var require_ConfigureIndexRequestSpecPod = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequestSpecPod.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ConfigureIndexRequestSpecPodToJSON = exports2.ConfigureIndexRequestSpecPodFromJSONTyped = exports2.ConfigureIndexRequestSpecPodFromJSON = exports2.instanceOfConfigureIndexRequestSpecPod = void 0;
+    var runtime_1 = require_runtime();
+    function instanceOfConfigureIndexRequestSpecPod(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfConfigureIndexRequestSpecPod = instanceOfConfigureIndexRequestSpecPod;
+    function ConfigureIndexRequestSpecPodFromJSON(json) {
+      return ConfigureIndexRequestSpecPodFromJSONTyped(json, false);
+    }
+    exports2.ConfigureIndexRequestSpecPodFromJSON = ConfigureIndexRequestSpecPodFromJSON;
+    function ConfigureIndexRequestSpecPodFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "replicas": !(0, runtime_1.exists)(json, "replicas") ? void 0 : json["replicas"],
+        "podType": !(0, runtime_1.exists)(json, "pod_type") ? void 0 : json["pod_type"]
+      };
+    }
+    exports2.ConfigureIndexRequestSpecPodFromJSONTyped = ConfigureIndexRequestSpecPodFromJSONTyped;
+    function ConfigureIndexRequestSpecPodToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "replicas": value.replicas,
+        "pod_type": value.podType
+      };
+    }
+    exports2.ConfigureIndexRequestSpecPodToJSON = ConfigureIndexRequestSpecPodToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequestSpec.js
+var require_ConfigureIndexRequestSpec = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequestSpec.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ConfigureIndexRequestSpecToJSON = exports2.ConfigureIndexRequestSpecFromJSONTyped = exports2.ConfigureIndexRequestSpecFromJSON = exports2.instanceOfConfigureIndexRequestSpec = void 0;
+    var ConfigureIndexRequestSpecPod_1 = require_ConfigureIndexRequestSpecPod();
+    function instanceOfConfigureIndexRequestSpec(value) {
+      var isInstance = true;
+      isInstance = isInstance && "pod" in value;
+      return isInstance;
+    }
+    exports2.instanceOfConfigureIndexRequestSpec = instanceOfConfigureIndexRequestSpec;
+    function ConfigureIndexRequestSpecFromJSON(json) {
+      return ConfigureIndexRequestSpecFromJSONTyped(json, false);
+    }
+    exports2.ConfigureIndexRequestSpecFromJSON = ConfigureIndexRequestSpecFromJSON;
+    function ConfigureIndexRequestSpecFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "pod": (0, ConfigureIndexRequestSpecPod_1.ConfigureIndexRequestSpecPodFromJSON)(json["pod"])
+      };
+    }
+    exports2.ConfigureIndexRequestSpecFromJSONTyped = ConfigureIndexRequestSpecFromJSONTyped;
+    function ConfigureIndexRequestSpecToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "pod": (0, ConfigureIndexRequestSpecPod_1.ConfigureIndexRequestSpecPodToJSON)(value.pod)
+      };
+    }
+    exports2.ConfigureIndexRequestSpecToJSON = ConfigureIndexRequestSpecToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/DeletionProtection.js
+var require_DeletionProtection = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/DeletionProtection.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.DeletionProtectionToJSON = exports2.DeletionProtectionFromJSONTyped = exports2.DeletionProtectionFromJSON = exports2.DeletionProtection = void 0;
+    exports2.DeletionProtection = {
+      Disabled: "disabled",
+      Enabled: "enabled"
+    };
+    function DeletionProtectionFromJSON(json) {
+      return DeletionProtectionFromJSONTyped(json, false);
+    }
+    exports2.DeletionProtectionFromJSON = DeletionProtectionFromJSON;
+    function DeletionProtectionFromJSONTyped(json, ignoreDiscriminator) {
+      return json;
+    }
+    exports2.DeletionProtectionFromJSONTyped = DeletionProtectionFromJSONTyped;
+    function DeletionProtectionToJSON(value) {
+      return value;
+    }
+    exports2.DeletionProtectionToJSON = DeletionProtectionToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequest.js
+var require_ConfigureIndexRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ConfigureIndexRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ConfigureIndexRequestToJSON = exports2.ConfigureIndexRequestFromJSONTyped = exports2.ConfigureIndexRequestFromJSON = exports2.instanceOfConfigureIndexRequest = void 0;
+    var runtime_1 = require_runtime();
+    var ConfigureIndexRequestSpec_1 = require_ConfigureIndexRequestSpec();
+    var DeletionProtection_1 = require_DeletionProtection();
+    function instanceOfConfigureIndexRequest(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfConfigureIndexRequest = instanceOfConfigureIndexRequest;
+    function ConfigureIndexRequestFromJSON(json) {
+      return ConfigureIndexRequestFromJSONTyped(json, false);
+    }
+    exports2.ConfigureIndexRequestFromJSON = ConfigureIndexRequestFromJSON;
+    function ConfigureIndexRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "spec": !(0, runtime_1.exists)(json, "spec") ? void 0 : (0, ConfigureIndexRequestSpec_1.ConfigureIndexRequestSpecFromJSON)(json["spec"]),
+        "deletionProtection": !(0, runtime_1.exists)(json, "deletion_protection") ? void 0 : (0, DeletionProtection_1.DeletionProtectionFromJSON)(json["deletion_protection"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"]
+      };
+    }
+    exports2.ConfigureIndexRequestFromJSONTyped = ConfigureIndexRequestFromJSONTyped;
+    function ConfigureIndexRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "spec": (0, ConfigureIndexRequestSpec_1.ConfigureIndexRequestSpecToJSON)(value.spec),
+        "deletion_protection": (0, DeletionProtection_1.DeletionProtectionToJSON)(value.deletionProtection),
+        "tags": value.tags
+      };
+    }
+    exports2.ConfigureIndexRequestToJSON = ConfigureIndexRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CreateCollectionRequest.js
+var require_CreateCollectionRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CreateCollectionRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.CreateCollectionRequestToJSON = exports2.CreateCollectionRequestFromJSONTyped = exports2.CreateCollectionRequestFromJSON = exports2.instanceOfCreateCollectionRequest = void 0;
+    function instanceOfCreateCollectionRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "name" in value;
+      isInstance = isInstance && "source" in value;
+      return isInstance;
+    }
+    exports2.instanceOfCreateCollectionRequest = instanceOfCreateCollectionRequest;
+    function CreateCollectionRequestFromJSON(json) {
+      return CreateCollectionRequestFromJSONTyped(json, false);
+    }
+    exports2.CreateCollectionRequestFromJSON = CreateCollectionRequestFromJSON;
+    function CreateCollectionRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "name": json["name"],
+        "source": json["source"]
+      };
+    }
+    exports2.CreateCollectionRequestFromJSONTyped = CreateCollectionRequestFromJSONTyped;
+    function CreateCollectionRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "name": value.name,
+        "source": value.source
+      };
+    }
+    exports2.CreateCollectionRequestToJSON = CreateCollectionRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/PodSpecMetadataConfig.js
+var require_PodSpecMetadataConfig = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/PodSpecMetadataConfig.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PodSpecMetadataConfigToJSON = exports2.PodSpecMetadataConfigFromJSONTyped = exports2.PodSpecMetadataConfigFromJSON = exports2.instanceOfPodSpecMetadataConfig = void 0;
+    var runtime_1 = require_runtime();
+    function instanceOfPodSpecMetadataConfig(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfPodSpecMetadataConfig = instanceOfPodSpecMetadataConfig;
+    function PodSpecMetadataConfigFromJSON(json) {
+      return PodSpecMetadataConfigFromJSONTyped(json, false);
+    }
+    exports2.PodSpecMetadataConfigFromJSON = PodSpecMetadataConfigFromJSON;
+    function PodSpecMetadataConfigFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "indexed": !(0, runtime_1.exists)(json, "indexed") ? void 0 : json["indexed"]
+      };
+    }
+    exports2.PodSpecMetadataConfigFromJSONTyped = PodSpecMetadataConfigFromJSONTyped;
+    function PodSpecMetadataConfigToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "indexed": value.indexed
+      };
+    }
+    exports2.PodSpecMetadataConfigToJSON = PodSpecMetadataConfigToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/PodSpec.js
+var require_PodSpec = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/PodSpec.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PodSpecToJSON = exports2.PodSpecFromJSONTyped = exports2.PodSpecFromJSON = exports2.instanceOfPodSpec = void 0;
+    var runtime_1 = require_runtime();
+    var PodSpecMetadataConfig_1 = require_PodSpecMetadataConfig();
+    function instanceOfPodSpec(value) {
+      var isInstance = true;
+      isInstance = isInstance && "environment" in value;
+      isInstance = isInstance && "podType" in value;
+      return isInstance;
+    }
+    exports2.instanceOfPodSpec = instanceOfPodSpec;
+    function PodSpecFromJSON(json) {
+      return PodSpecFromJSONTyped(json, false);
+    }
+    exports2.PodSpecFromJSON = PodSpecFromJSON;
+    function PodSpecFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "environment": json["environment"],
+        "replicas": !(0, runtime_1.exists)(json, "replicas") ? void 0 : json["replicas"],
+        "shards": !(0, runtime_1.exists)(json, "shards") ? void 0 : json["shards"],
+        "podType": json["pod_type"],
+        "pods": !(0, runtime_1.exists)(json, "pods") ? void 0 : json["pods"],
+        "metadataConfig": !(0, runtime_1.exists)(json, "metadata_config") ? void 0 : (0, PodSpecMetadataConfig_1.PodSpecMetadataConfigFromJSON)(json["metadata_config"]),
+        "sourceCollection": !(0, runtime_1.exists)(json, "source_collection") ? void 0 : json["source_collection"]
+      };
+    }
+    exports2.PodSpecFromJSONTyped = PodSpecFromJSONTyped;
+    function PodSpecToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "environment": value.environment,
+        "replicas": value.replicas,
+        "shards": value.shards,
+        "pod_type": value.podType,
+        "pods": value.pods,
+        "metadata_config": (0, PodSpecMetadataConfig_1.PodSpecMetadataConfigToJSON)(value.metadataConfig),
+        "source_collection": value.sourceCollection
+      };
+    }
+    exports2.PodSpecToJSON = PodSpecToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ServerlessSpec.js
+var require_ServerlessSpec = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ServerlessSpec.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ServerlessSpecToJSON = exports2.ServerlessSpecFromJSONTyped = exports2.ServerlessSpecFromJSON = exports2.instanceOfServerlessSpec = exports2.ServerlessSpecCloudEnum = void 0;
+    exports2.ServerlessSpecCloudEnum = {
+      Gcp: "gcp",
+      Aws: "aws",
+      Azure: "azure"
+    };
+    function instanceOfServerlessSpec(value) {
+      var isInstance = true;
+      isInstance = isInstance && "cloud" in value;
+      isInstance = isInstance && "region" in value;
+      return isInstance;
+    }
+    exports2.instanceOfServerlessSpec = instanceOfServerlessSpec;
+    function ServerlessSpecFromJSON(json) {
+      return ServerlessSpecFromJSONTyped(json, false);
+    }
+    exports2.ServerlessSpecFromJSON = ServerlessSpecFromJSON;
+    function ServerlessSpecFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "cloud": json["cloud"],
+        "region": json["region"]
+      };
+    }
+    exports2.ServerlessSpecFromJSONTyped = ServerlessSpecFromJSONTyped;
+    function ServerlessSpecToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "cloud": value.cloud,
+        "region": value.region
+      };
+    }
+    exports2.ServerlessSpecToJSON = ServerlessSpecToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexSpec.js
+var require_IndexSpec = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexSpec.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexSpecToJSON = exports2.IndexSpecFromJSONTyped = exports2.IndexSpecFromJSON = exports2.instanceOfIndexSpec = void 0;
+    var runtime_1 = require_runtime();
+    var PodSpec_1 = require_PodSpec();
+    var ServerlessSpec_1 = require_ServerlessSpec();
+    function instanceOfIndexSpec(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfIndexSpec = instanceOfIndexSpec;
+    function IndexSpecFromJSON(json) {
+      return IndexSpecFromJSONTyped(json, false);
+    }
+    exports2.IndexSpecFromJSON = IndexSpecFromJSON;
+    function IndexSpecFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "serverless": !(0, runtime_1.exists)(json, "serverless") ? void 0 : (0, ServerlessSpec_1.ServerlessSpecFromJSON)(json["serverless"]),
+        "pod": !(0, runtime_1.exists)(json, "pod") ? void 0 : (0, PodSpec_1.PodSpecFromJSON)(json["pod"])
+      };
+    }
+    exports2.IndexSpecFromJSONTyped = IndexSpecFromJSONTyped;
+    function IndexSpecToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "serverless": (0, ServerlessSpec_1.ServerlessSpecToJSON)(value.serverless),
+        "pod": (0, PodSpec_1.PodSpecToJSON)(value.pod)
+      };
+    }
+    exports2.IndexSpecToJSON = IndexSpecToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CreateIndexRequest.js
+var require_CreateIndexRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/CreateIndexRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.CreateIndexRequestToJSON = exports2.CreateIndexRequestFromJSONTyped = exports2.CreateIndexRequestFromJSON = exports2.instanceOfCreateIndexRequest = exports2.CreateIndexRequestMetricEnum = void 0;
+    var runtime_1 = require_runtime();
+    var DeletionProtection_1 = require_DeletionProtection();
+    var IndexSpec_1 = require_IndexSpec();
+    exports2.CreateIndexRequestMetricEnum = {
+      Cosine: "cosine",
+      Euclidean: "euclidean",
+      Dotproduct: "dotproduct"
+    };
+    function instanceOfCreateIndexRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "name" in value;
+      isInstance = isInstance && "dimension" in value;
+      isInstance = isInstance && "spec" in value;
+      return isInstance;
+    }
+    exports2.instanceOfCreateIndexRequest = instanceOfCreateIndexRequest;
+    function CreateIndexRequestFromJSON(json) {
+      return CreateIndexRequestFromJSONTyped(json, false);
+    }
+    exports2.CreateIndexRequestFromJSON = CreateIndexRequestFromJSON;
+    function CreateIndexRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "name": json["name"],
+        "dimension": json["dimension"],
+        "metric": !(0, runtime_1.exists)(json, "metric") ? void 0 : json["metric"],
+        "deletionProtection": !(0, runtime_1.exists)(json, "deletion_protection") ? void 0 : (0, DeletionProtection_1.DeletionProtectionFromJSON)(json["deletion_protection"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"],
+        "spec": (0, IndexSpec_1.IndexSpecFromJSON)(json["spec"])
+      };
+    }
+    exports2.CreateIndexRequestFromJSONTyped = CreateIndexRequestFromJSONTyped;
+    function CreateIndexRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "name": value.name,
+        "dimension": value.dimension,
+        "metric": value.metric,
+        "deletion_protection": (0, DeletionProtection_1.DeletionProtectionToJSON)(value.deletionProtection),
+        "tags": value.tags,
+        "spec": (0, IndexSpec_1.IndexSpecToJSON)(value.spec)
+      };
+    }
+    exports2.CreateIndexRequestToJSON = CreateIndexRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ErrorResponseError.js
+var require_ErrorResponseError = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ErrorResponseError.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ErrorResponseErrorToJSON = exports2.ErrorResponseErrorFromJSONTyped = exports2.ErrorResponseErrorFromJSON = exports2.instanceOfErrorResponseError = exports2.ErrorResponseErrorCodeEnum = void 0;
+    var runtime_1 = require_runtime();
+    exports2.ErrorResponseErrorCodeEnum = {
+      Ok: "OK",
+      Unknown: "UNKNOWN",
+      InvalidArgument: "INVALID_ARGUMENT",
+      DeadlineExceeded: "DEADLINE_EXCEEDED",
+      QuotaExceeded: "QUOTA_EXCEEDED",
+      NotFound: "NOT_FOUND",
+      AlreadyExists: "ALREADY_EXISTS",
+      PermissionDenied: "PERMISSION_DENIED",
+      Unauthenticated: "UNAUTHENTICATED",
+      ResourceExhausted: "RESOURCE_EXHAUSTED",
+      FailedPrecondition: "FAILED_PRECONDITION",
+      Aborted: "ABORTED",
+      OutOfRange: "OUT_OF_RANGE",
+      Unimplemented: "UNIMPLEMENTED",
+      Internal: "INTERNAL",
+      Unavailable: "UNAVAILABLE",
+      DataLoss: "DATA_LOSS",
+      Forbidden: "FORBIDDEN",
+      UnprocessableEntity: "UNPROCESSABLE_ENTITY",
+      PaymentRequired: "PAYMENT_REQUIRED"
+    };
+    function instanceOfErrorResponseError(value) {
+      var isInstance = true;
+      isInstance = isInstance && "code" in value;
+      isInstance = isInstance && "message" in value;
+      return isInstance;
+    }
+    exports2.instanceOfErrorResponseError = instanceOfErrorResponseError;
+    function ErrorResponseErrorFromJSON(json) {
+      return ErrorResponseErrorFromJSONTyped(json, false);
+    }
+    exports2.ErrorResponseErrorFromJSON = ErrorResponseErrorFromJSON;
+    function ErrorResponseErrorFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "code": json["code"],
+        "message": json["message"],
+        "details": !(0, runtime_1.exists)(json, "details") ? void 0 : json["details"]
+      };
+    }
+    exports2.ErrorResponseErrorFromJSONTyped = ErrorResponseErrorFromJSONTyped;
+    function ErrorResponseErrorToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "code": value.code,
+        "message": value.message,
+        "details": value.details
+      };
+    }
+    exports2.ErrorResponseErrorToJSON = ErrorResponseErrorToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ErrorResponse.js
+var require_ErrorResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/ErrorResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ErrorResponseToJSON = exports2.ErrorResponseFromJSONTyped = exports2.ErrorResponseFromJSON = exports2.instanceOfErrorResponse = void 0;
+    var ErrorResponseError_1 = require_ErrorResponseError();
+    function instanceOfErrorResponse(value) {
+      var isInstance = true;
+      isInstance = isInstance && "status" in value;
+      isInstance = isInstance && "error" in value;
+      return isInstance;
+    }
+    exports2.instanceOfErrorResponse = instanceOfErrorResponse;
+    function ErrorResponseFromJSON(json) {
+      return ErrorResponseFromJSONTyped(json, false);
+    }
+    exports2.ErrorResponseFromJSON = ErrorResponseFromJSON;
+    function ErrorResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "status": json["status"],
+        "error": (0, ErrorResponseError_1.ErrorResponseErrorFromJSON)(json["error"])
+      };
+    }
+    exports2.ErrorResponseFromJSONTyped = ErrorResponseFromJSONTyped;
+    function ErrorResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "status": value.status,
+        "error": (0, ErrorResponseError_1.ErrorResponseErrorToJSON)(value.error)
+      };
+    }
+    exports2.ErrorResponseToJSON = ErrorResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModelSpec.js
+var require_IndexModelSpec = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModelSpec.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexModelSpecToJSON = exports2.IndexModelSpecFromJSONTyped = exports2.IndexModelSpecFromJSON = exports2.instanceOfIndexModelSpec = void 0;
+    var runtime_1 = require_runtime();
+    var PodSpec_1 = require_PodSpec();
+    var ServerlessSpec_1 = require_ServerlessSpec();
+    function instanceOfIndexModelSpec(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfIndexModelSpec = instanceOfIndexModelSpec;
+    function IndexModelSpecFromJSON(json) {
+      return IndexModelSpecFromJSONTyped(json, false);
+    }
+    exports2.IndexModelSpecFromJSON = IndexModelSpecFromJSON;
+    function IndexModelSpecFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "pod": !(0, runtime_1.exists)(json, "pod") ? void 0 : (0, PodSpec_1.PodSpecFromJSON)(json["pod"]),
+        "serverless": !(0, runtime_1.exists)(json, "serverless") ? void 0 : (0, ServerlessSpec_1.ServerlessSpecFromJSON)(json["serverless"])
+      };
+    }
+    exports2.IndexModelSpecFromJSONTyped = IndexModelSpecFromJSONTyped;
+    function IndexModelSpecToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "pod": (0, PodSpec_1.PodSpecToJSON)(value.pod),
+        "serverless": (0, ServerlessSpec_1.ServerlessSpecToJSON)(value.serverless)
+      };
+    }
+    exports2.IndexModelSpecToJSON = IndexModelSpecToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModelStatus.js
+var require_IndexModelStatus = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModelStatus.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexModelStatusToJSON = exports2.IndexModelStatusFromJSONTyped = exports2.IndexModelStatusFromJSON = exports2.instanceOfIndexModelStatus = exports2.IndexModelStatusStateEnum = void 0;
+    exports2.IndexModelStatusStateEnum = {
+      Initializing: "Initializing",
+      InitializationFailed: "InitializationFailed",
+      ScalingUp: "ScalingUp",
+      ScalingDown: "ScalingDown",
+      ScalingUpPodSize: "ScalingUpPodSize",
+      ScalingDownPodSize: "ScalingDownPodSize",
+      Terminating: "Terminating",
+      Ready: "Ready"
+    };
+    function instanceOfIndexModelStatus(value) {
+      var isInstance = true;
+      isInstance = isInstance && "ready" in value;
+      isInstance = isInstance && "state" in value;
+      return isInstance;
+    }
+    exports2.instanceOfIndexModelStatus = instanceOfIndexModelStatus;
+    function IndexModelStatusFromJSON(json) {
+      return IndexModelStatusFromJSONTyped(json, false);
+    }
+    exports2.IndexModelStatusFromJSON = IndexModelStatusFromJSON;
+    function IndexModelStatusFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "ready": json["ready"],
+        "state": json["state"]
+      };
+    }
+    exports2.IndexModelStatusFromJSONTyped = IndexModelStatusFromJSONTyped;
+    function IndexModelStatusToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "ready": value.ready,
+        "state": value.state
+      };
+    }
+    exports2.IndexModelStatusToJSON = IndexModelStatusToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModel.js
+var require_IndexModel = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexModel.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexModelToJSON = exports2.IndexModelFromJSONTyped = exports2.IndexModelFromJSON = exports2.instanceOfIndexModel = exports2.IndexModelMetricEnum = void 0;
+    var runtime_1 = require_runtime();
+    var DeletionProtection_1 = require_DeletionProtection();
+    var IndexModelSpec_1 = require_IndexModelSpec();
+    var IndexModelStatus_1 = require_IndexModelStatus();
+    exports2.IndexModelMetricEnum = {
+      Cosine: "cosine",
+      Euclidean: "euclidean",
+      Dotproduct: "dotproduct"
+    };
+    function instanceOfIndexModel(value) {
+      var isInstance = true;
+      isInstance = isInstance && "name" in value;
+      isInstance = isInstance && "dimension" in value;
+      isInstance = isInstance && "metric" in value;
+      isInstance = isInstance && "host" in value;
+      isInstance = isInstance && "spec" in value;
+      isInstance = isInstance && "status" in value;
+      return isInstance;
+    }
+    exports2.instanceOfIndexModel = instanceOfIndexModel;
+    function IndexModelFromJSON(json) {
+      return IndexModelFromJSONTyped(json, false);
+    }
+    exports2.IndexModelFromJSON = IndexModelFromJSON;
+    function IndexModelFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "name": json["name"],
+        "dimension": json["dimension"],
+        "metric": json["metric"],
+        "host": json["host"],
+        "deletionProtection": !(0, runtime_1.exists)(json, "deletion_protection") ? void 0 : (0, DeletionProtection_1.DeletionProtectionFromJSON)(json["deletion_protection"]),
+        "tags": !(0, runtime_1.exists)(json, "tags") ? void 0 : json["tags"],
+        "spec": (0, IndexModelSpec_1.IndexModelSpecFromJSON)(json["spec"]),
+        "status": (0, IndexModelStatus_1.IndexModelStatusFromJSON)(json["status"])
+      };
+    }
+    exports2.IndexModelFromJSONTyped = IndexModelFromJSONTyped;
+    function IndexModelToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "name": value.name,
+        "dimension": value.dimension,
+        "metric": value.metric,
+        "host": value.host,
+        "deletion_protection": (0, DeletionProtection_1.DeletionProtectionToJSON)(value.deletionProtection),
+        "tags": value.tags,
+        "spec": (0, IndexModelSpec_1.IndexModelSpecToJSON)(value.spec),
+        "status": (0, IndexModelStatus_1.IndexModelStatusToJSON)(value.status)
+      };
+    }
+    exports2.IndexModelToJSON = IndexModelToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexList.js
+var require_IndexList = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/IndexList.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexListToJSON = exports2.IndexListFromJSONTyped = exports2.IndexListFromJSON = exports2.instanceOfIndexList = void 0;
+    var runtime_1 = require_runtime();
+    var IndexModel_1 = require_IndexModel();
+    function instanceOfIndexList(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfIndexList = instanceOfIndexList;
+    function IndexListFromJSON(json) {
+      return IndexListFromJSONTyped(json, false);
+    }
+    exports2.IndexListFromJSON = IndexListFromJSON;
+    function IndexListFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "indexes": !(0, runtime_1.exists)(json, "indexes") ? void 0 : json["indexes"].map(IndexModel_1.IndexModelFromJSON)
+      };
+    }
+    exports2.IndexListFromJSONTyped = IndexListFromJSONTyped;
+    function IndexListToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "indexes": value.indexes === void 0 ? void 0 : value.indexes.map(IndexModel_1.IndexModelToJSON)
+      };
+    }
+    exports2.IndexListToJSON = IndexListToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/index.js
+var require_models = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/models/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_CollectionList(), exports2);
+    __exportStar(require_CollectionModel(), exports2);
+    __exportStar(require_ConfigureIndexRequest(), exports2);
+    __exportStar(require_ConfigureIndexRequestSpec(), exports2);
+    __exportStar(require_ConfigureIndexRequestSpecPod(), exports2);
+    __exportStar(require_CreateCollectionRequest(), exports2);
+    __exportStar(require_CreateIndexRequest(), exports2);
+    __exportStar(require_DeletionProtection(), exports2);
+    __exportStar(require_ErrorResponse(), exports2);
+    __exportStar(require_ErrorResponseError(), exports2);
+    __exportStar(require_IndexList(), exports2);
+    __exportStar(require_IndexModel(), exports2);
+    __exportStar(require_IndexModelSpec(), exports2);
+    __exportStar(require_IndexModelStatus(), exports2);
+    __exportStar(require_IndexSpec(), exports2);
+    __exportStar(require_PodSpec(), exports2);
+    __exportStar(require_PodSpecMetadataConfig(), exports2);
+    __exportStar(require_ServerlessSpec(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/apis/ManageIndexesApi.js
+var require_ManageIndexesApi = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/apis/ManageIndexesApi.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ManageIndexesApi = void 0;
+    var runtime = __importStar(require_runtime());
+    var index_1 = require_models();
+    var ManageIndexesApi = (
+      /** @class */
+      function(_super) {
+        __extends(ManageIndexesApi2, _super);
+        function ManageIndexesApi2() {
+          return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ManageIndexesApi2.prototype.configureIndexRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.indexName === null || requestParameters.indexName === void 0) {
+                    throw new runtime.RequiredError("indexName", "Required parameter requestParameters.indexName was null or undefined when calling configureIndex.");
+                  }
+                  if (requestParameters.configureIndexRequest === null || requestParameters.configureIndexRequest === void 0) {
+                    throw new runtime.RequiredError("configureIndexRequest", "Required parameter requestParameters.configureIndexRequest was null or undefined when calling configureIndex.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/indexes/{index_name}".replace("{".concat("index_name", "}"), encodeURIComponent(String(requestParameters.indexName))),
+                    method: "PATCH",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.ConfigureIndexRequestToJSON)(requestParameters.configureIndexRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.IndexModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.configureIndex = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.configureIndexRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.createCollectionRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.createCollectionRequest === null || requestParameters.createCollectionRequest === void 0) {
+                    throw new runtime.RequiredError("createCollectionRequest", "Required parameter requestParameters.createCollectionRequest was null or undefined when calling createCollection.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/collections",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.CreateCollectionRequestToJSON)(requestParameters.createCollectionRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.CollectionModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.createCollection = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.createCollectionRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.createIndexRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.createIndexRequest === null || requestParameters.createIndexRequest === void 0) {
+                    throw new runtime.RequiredError("createIndexRequest", "Required parameter requestParameters.createIndexRequest was null or undefined when calling createIndex.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/indexes",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.CreateIndexRequestToJSON)(requestParameters.createIndexRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.IndexModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.createIndex = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.createIndexRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.deleteCollectionRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.collectionName === null || requestParameters.collectionName === void 0) {
+                    throw new runtime.RequiredError("collectionName", "Required parameter requestParameters.collectionName was null or undefined when calling deleteCollection.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/collections/{collection_name}".replace("{".concat("collection_name", "}"), encodeURIComponent(String(requestParameters.collectionName))),
+                    method: "DELETE",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.VoidApiResponse(response)];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.deleteCollection = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.deleteCollectionRaw(requestParameters, initOverrides)];
+                case 1:
+                  _a.sent();
+                  return [
+                    2
+                    /*return*/
+                  ];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.deleteIndexRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.indexName === null || requestParameters.indexName === void 0) {
+                    throw new runtime.RequiredError("indexName", "Required parameter requestParameters.indexName was null or undefined when calling deleteIndex.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/indexes/{index_name}".replace("{".concat("index_name", "}"), encodeURIComponent(String(requestParameters.indexName))),
+                    method: "DELETE",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.VoidApiResponse(response)];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.deleteIndex = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.deleteIndexRaw(requestParameters, initOverrides)];
+                case 1:
+                  _a.sent();
+                  return [
+                    2
+                    /*return*/
+                  ];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.describeCollectionRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.collectionName === null || requestParameters.collectionName === void 0) {
+                    throw new runtime.RequiredError("collectionName", "Required parameter requestParameters.collectionName was null or undefined when calling describeCollection.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/collections/{collection_name}".replace("{".concat("collection_name", "}"), encodeURIComponent(String(requestParameters.collectionName))),
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.CollectionModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.describeCollection = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.describeCollectionRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.describeIndexRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.indexName === null || requestParameters.indexName === void 0) {
+                    throw new runtime.RequiredError("indexName", "Required parameter requestParameters.indexName was null or undefined when calling describeIndex.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/indexes/{index_name}".replace("{".concat("index_name", "}"), encodeURIComponent(String(requestParameters.indexName))),
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.IndexModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.describeIndex = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.describeIndexRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.listCollectionsRaw = function(initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/collections",
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.CollectionListFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.listCollections = function(initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.listCollectionsRaw(initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.listIndexesRaw = function(initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/indexes",
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.IndexListFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        ManageIndexesApi2.prototype.listIndexes = function(initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.listIndexesRaw(initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return ManageIndexesApi2;
+      }(runtime.BaseAPI)
+    );
+    exports2.ManageIndexesApi = ManageIndexesApi;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/apis/index.js
+var require_apis = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/apis/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_ManageIndexesApi(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/api_version.js
+var require_api_version = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/api_version.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.X_PINECONE_API_VERSION = void 0;
+    exports2.X_PINECONE_API_VERSION = "2024-10";
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/index.js
+var require_db_control = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_control/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_runtime(), exports2);
+    __exportStar(require_apis(), exports2);
+    __exportStar(require_models(), exports2);
+    __exportStar(require_api_version(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/debugLog.js
+var require_debugLog = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/debugLog.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.debugLog = void 0;
+    var debugLog = function(str) {
+      if (typeof process !== "undefined" && process && process.env && process.env.PINECONE_DEBUG) {
+        console.log(str);
+      }
+    };
+    exports2.debugLog = debugLog;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/normalizeUrl.js
+var require_normalizeUrl = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/normalizeUrl.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.normalizeUrl = void 0;
+    function normalizeUrl(url2) {
+      if (!url2 || url2.trim().length === 0) {
+        return;
+      }
+      if (!url2.startsWith("http://") && !url2.startsWith("https://")) {
+        return "https://" + url2;
+      }
+      return url2;
+    }
+    exports2.normalizeUrl = normalizeUrl;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/queryParamsStringify.js
+var require_queryParamsStringify = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/queryParamsStringify.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.queryParamsStringify = void 0;
+    function queryParamsStringify(params, prefix) {
+      if (prefix === void 0) {
+        prefix = "";
+      }
+      return Object.keys(params).map(function(key) {
+        return querystringSingleKey(key, params[key], prefix);
+      }).filter(function(part) {
+        return part.length > 0;
+      }).join("&");
+    }
+    exports2.queryParamsStringify = queryParamsStringify;
+    function querystringSingleKey(key, value, keyPrefix) {
+      if (keyPrefix === void 0) {
+        keyPrefix = "";
+      }
+      var fullKey = keyPrefix + (keyPrefix.length ? "[".concat(key, "]") : key);
+      if (Array.isArray(value)) {
+        var multiValue = value.map(function(singleValue) {
+          return encodeURIComponent(String(singleValue));
+        }).join("&".concat(encodeURIComponent(fullKey), "="));
+        return "".concat(encodeURIComponent(fullKey), "=").concat(multiValue);
+      }
+      if (value instanceof Set) {
+        var valueAsArray = Array.from(value);
+        return querystringSingleKey(key, valueAsArray, keyPrefix);
+      }
+      if (value instanceof Date) {
+        return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(value.toISOString()));
+      }
+      if (value instanceof Object) {
+        return queryParamsStringify(value, fullKey);
+      }
+      return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(String(value)));
+    }
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/environment.js
+var require_environment = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/environment.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isBrowser = exports2.isEdge = void 0;
+    var isEdge = function() {
+      return typeof EdgeRuntime === "string";
+    };
+    exports2.isEdge = isEdge;
+    var isBrowser3 = function() {
+      return typeof window !== "undefined";
+    };
+    exports2.isBrowser = isBrowser3;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/version.json
+var require_version = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/version.json"(exports2, module2) {
+    module2.exports = {
+      name: "@pinecone-database/pinecone",
+      version: "4.0.0"
+    };
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/user-agent.js
+var require_user_agent = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/user-agent.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.buildUserAgent = void 0;
+    var environment_1 = require_environment();
+    var packageInfo = __importStar(require_version());
+    var buildUserAgent = function(config5) {
+      var userAgentParts = [
+        "".concat(packageInfo.name, " v").concat(packageInfo.version),
+        "lang=typescript"
+      ];
+      if ((0, environment_1.isEdge)()) {
+        userAgentParts.push("Edge Runtime");
+      }
+      if (typeof process !== "undefined" && process && process.version) {
+        userAgentParts.push("node ".concat(process.version));
+      }
+      if (config5.sourceTag) {
+        userAgentParts.push("source_tag=".concat(normalizeSourceTag(config5.sourceTag)));
+      }
+      return userAgentParts.join("; ");
+    };
+    exports2.buildUserAgent = buildUserAgent;
+    var normalizeSourceTag = function(sourceTag) {
+      if (!sourceTag) {
+        return;
+      }
+      return sourceTag.toLowerCase().replace(/[^a-z0-9_ :]/g, "").trim().replace(/[ ]+/g, "_");
+    };
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/base.js
+var require_base2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/base.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.BasePineconeError = void 0;
+    var BasePineconeError = (
+      /** @class */
+      function(_super) {
+        __extends(BasePineconeError2, _super);
+        function BasePineconeError2(message, cause) {
+          var _newTarget = this.constructor;
+          var _this = _super.call(this, message) || this;
+          Object.setPrototypeOf(_this, _newTarget.prototype);
+          if (Error.captureStackTrace) {
+            Error.captureStackTrace(_this, _newTarget);
+          }
+          _this.name = _this.constructor.name;
+          _this.cause = cause;
+          return _this;
+        }
+        return BasePineconeError2;
+      }(Error)
+    );
+    exports2.BasePineconeError = BasePineconeError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/config.js
+var require_config = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/config.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PineconeUnableToResolveHostError = exports2.PineconeEnvironmentVarsNotSupportedError = exports2.PineconeUnexpectedResponseError = exports2.PineconeConfigurationError = void 0;
+    var base_1 = require_base2();
+    var CONFIG_HELP = "You can find the configuration values for your project in the Pinecone developer console at https://app.pinecone.io.";
+    var PineconeConfigurationError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeConfigurationError2, _super);
+        function PineconeConfigurationError2(message) {
+          var _this = _super.call(this, "".concat(message, " ").concat(CONFIG_HELP)) || this;
+          _this.name = "PineconeConfigurationError";
+          return _this;
+        }
+        return PineconeConfigurationError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeConfigurationError = PineconeConfigurationError;
+    var PineconeUnexpectedResponseError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeUnexpectedResponseError2, _super);
+        function PineconeUnexpectedResponseError2(url2, status, body2, message) {
+          var _this = _super.call(this, "Unexpected response while calling ".concat(url2, ". ").concat(message ? message + " " : "", "Status: ").concat(status, ". Body: ").concat(body2)) || this;
+          _this.name = "PineconeUnexpectedResponseError";
+          return _this;
+        }
+        return PineconeUnexpectedResponseError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeUnexpectedResponseError = PineconeUnexpectedResponseError;
+    var PineconeEnvironmentVarsNotSupportedError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeEnvironmentVarsNotSupportedError2, _super);
+        function PineconeEnvironmentVarsNotSupportedError2(message) {
+          var _this = _super.call(this, message) || this;
+          _this.name = "PineconeEnvironmentVarsNotSupportedError";
+          return _this;
+        }
+        return PineconeEnvironmentVarsNotSupportedError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeEnvironmentVarsNotSupportedError = PineconeEnvironmentVarsNotSupportedError;
+    var PineconeUnableToResolveHostError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeUnableToResolveHostError2, _super);
+        function PineconeUnableToResolveHostError2(message) {
+          var _this = _super.call(this, message) || this;
+          _this.name = "PineconeUnableToResolveHostError";
+          return _this;
+        }
+        return PineconeUnableToResolveHostError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeUnableToResolveHostError = PineconeUnableToResolveHostError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/http.js
+var require_http = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/http.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.mapHttpStatusError = exports2.PineconeUnmappedHttpError = exports2.PineconeNotImplementedError = exports2.PineconeUnavailableError = exports2.PineconeMaxRetriesExceededError = exports2.PineconeInternalServerError = exports2.PineconeConflictError = exports2.PineconeNotFoundError = exports2.PineconeAuthorizationError = exports2.PineconeBadRequestError = void 0;
+    var base_1 = require_base2();
+    var CONFIG_HELP = "You can find the configuration values for your project in the Pinecone developer console at https://app.pinecone.io";
+    var PineconeBadRequestError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeBadRequestError2, _super);
+        function PineconeBadRequestError2(failedRequest) {
+          var _this = this;
+          var message = failedRequest.message;
+          _this = _super.call(this, message) || this;
+          _this.name = "PineconeBadRequestError";
+          return _this;
+        }
+        return PineconeBadRequestError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeBadRequestError = PineconeBadRequestError;
+    var PineconeAuthorizationError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeAuthorizationError2, _super);
+        function PineconeAuthorizationError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url;
+          if (url2) {
+            _this = _super.call(this, "The API key you provided was rejected while calling ".concat(url2, ". Please check your configuration values and try again. ").concat(CONFIG_HELP)) || this;
+          } else {
+            _this = _super.call(this, "The API key you provided was rejected. Please check your configuration values and try again. ".concat(CONFIG_HELP)) || this;
+          }
+          _this.name = "PineconeAuthorizationError";
+          return _this;
+        }
+        return PineconeAuthorizationError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeAuthorizationError = PineconeAuthorizationError;
+    var PineconeNotFoundError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeNotFoundError2, _super);
+        function PineconeNotFoundError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url;
+          if (url2) {
+            _this = _super.call(this, "A call to ".concat(url2, " returned HTTP status 404.")) || this;
+          } else {
+            _this = _super.call(this, "The requested resource could not be found.") || this;
+          }
+          _this.name = "PineconeNotFoundError";
+          return _this;
+        }
+        return PineconeNotFoundError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeNotFoundError = PineconeNotFoundError;
+    var PineconeConflictError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeConflictError2, _super);
+        function PineconeConflictError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url, message = failedRequest.message;
+          if (url2) {
+            _this = _super.call(this, "A call to ".concat(url2, " returned HTTP status 409. ").concat(message ? message : "")) || this;
+          } else {
+            _this = _super.call(this, "The resource you are attempting to create already exists.") || this;
+          }
+          _this.name = "PineconeConflictError";
+          return _this;
+        }
+        return PineconeConflictError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeConflictError = PineconeConflictError;
+    var PineconeInternalServerError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeInternalServerError2, _super);
+        function PineconeInternalServerError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url, body2 = failedRequest.body, status = failedRequest.status;
+          var intro = url2 ? "An internal server error occurred while calling the ".concat(url2, " endpoint.") : "";
+          var help = "To see overall service health and learn whether this seems like a large-scale problem or one specific to your request, please go to https://status.pinecone.io/ to view our status page. If you believe the error reflects a problem with this client, please file a bug report in the github issue tracker at https://github.com/pinecone-io/pinecone-ts-client";
+          var statusMessage = status ? "Status Code: ".concat(status, ".") : "";
+          var bodyMessage = body2 ? "Body: ".concat(body2) : "";
+          _this = _super.call(this, [intro, statusMessage, help, bodyMessage].join(" ").trim()) || this;
+          _this.name = "PineconeInternalServerError";
+          return _this;
+        }
+        return PineconeInternalServerError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeInternalServerError = PineconeInternalServerError;
+    var PineconeMaxRetriesExceededError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeMaxRetriesExceededError2, _super);
+        function PineconeMaxRetriesExceededError2(retries) {
+          var _this = this;
+          var intro = "You have exceeded the max configured retries (".concat(retries, "). ");
+          var help = "Increase the maxRetries field in the RetryOptions object to retry more times. If you believe the error reflects a problem with this client, please file a bug report in the github issue tracker at https://github.com/pinecone-io/pinecone-ts-client";
+          _this = _super.call(this, [intro, help].join(" ").trim()) || this;
+          _this.name = "PineconeMaxRetriesExceededError";
+          return _this;
+        }
+        return PineconeMaxRetriesExceededError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeMaxRetriesExceededError = PineconeMaxRetriesExceededError;
+    var PineconeUnavailableError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeUnavailableError2, _super);
+        function PineconeUnavailableError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url, body2 = failedRequest.body, status = failedRequest.status;
+          var intro = url2 ? "The Pinecone service (".concat(url2, ") is temporarily unavailable.") : "";
+          var statusMessage = status ? "Status Code: ".concat(status, ".") : "";
+          var help = "To see overall service health and learn whether this seems like a large-scale problem or one specific to your request, please go to https://status.pinecone.io/ to view our status page. If you believe the error reflects a problem with this client, please file a bug report in the github issue tracker at https://github.com/pinecone-io/pinecone-ts-client";
+          var bodyMessage = body2 ? "Body: ".concat(body2) : "";
+          _this = _super.call(this, [intro, statusMessage, help, bodyMessage].join(" ").trim()) || this;
+          _this.name = "PineconeUnavailableError";
+          return _this;
+        }
+        return PineconeUnavailableError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeUnavailableError = PineconeUnavailableError;
+    var PineconeNotImplementedError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeNotImplementedError2, _super);
+        function PineconeNotImplementedError2(requestInfo) {
+          var _this = this;
+          var url2 = requestInfo.url, message = requestInfo.message;
+          if (url2) {
+            _this = _super.call(this, "A call to ".concat(url2, " returned HTTP status 501. ").concat(message ? message : "")) || this;
+          } else {
+            _this = _super.call(this) || this;
+          }
+          _this.name = "PineconeNotImplementedError";
+          return _this;
+        }
+        return PineconeNotImplementedError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeNotImplementedError = PineconeNotImplementedError;
+    var PineconeUnmappedHttpError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeUnmappedHttpError2, _super);
+        function PineconeUnmappedHttpError2(failedRequest) {
+          var _this = this;
+          var url2 = failedRequest.url, status = failedRequest.status, body2 = failedRequest.body, message = failedRequest.message;
+          var intro = url2 ? "An unexpected error occured while calling the ".concat(url2, " endpoint. ") : "";
+          var statusMsg = status ? "Status: ".concat(status, ". ") : "";
+          var bodyMsg = body2 ? "Body: ".concat(body2) : "";
+          _this = _super.call(this, [intro, message, statusMsg, bodyMsg].join(" ").trim()) || this;
+          _this.name = "PineconeUnmappedHttpError";
+          return _this;
+        }
+        return PineconeUnmappedHttpError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeUnmappedHttpError = PineconeUnmappedHttpError;
+    var mapHttpStatusError = function(failedRequestInfo) {
+      switch (failedRequestInfo.status) {
+        case 400:
+          return new PineconeBadRequestError(failedRequestInfo);
+        case 401:
+          return new PineconeAuthorizationError(failedRequestInfo);
+        case 403:
+          return new PineconeBadRequestError(failedRequestInfo);
+        case 404:
+          return new PineconeNotFoundError(failedRequestInfo);
+        case 409:
+          return new PineconeConflictError(failedRequestInfo);
+        case 500:
+          return new PineconeInternalServerError(failedRequestInfo);
+        case 501:
+          return new PineconeNotImplementedError(failedRequestInfo);
+        case 503:
+          return new PineconeUnavailableError(failedRequestInfo);
+        default:
+          throw new PineconeUnmappedHttpError(failedRequestInfo);
+      }
+    };
+    exports2.mapHttpStatusError = mapHttpStatusError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/request.js
+var require_request2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/request.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PineconeRequestError = exports2.PineconeConnectionError = void 0;
+    var base_1 = require_base2();
+    var PineconeConnectionError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeConnectionError2, _super);
+        function PineconeConnectionError2(e, url2) {
+          var _this = this;
+          var urlMessage = "";
+          if (url2) {
+            urlMessage = " while calling ".concat(url2);
+          }
+          _this = _super.call(this, "Request failed to reach Pinecone".concat(urlMessage, ". This can occur for reasons such as network problems that prevent the request from being completed, or a Pinecone API outage. Check your network connection, and visit https://status.pinecone.io/ to see whether any outages are ongoing."), e) || this;
+          _this.name = "PineconeConnectionError";
+          return _this;
+        }
+        return PineconeConnectionError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeConnectionError = PineconeConnectionError;
+    var PineconeRequestError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeRequestError2, _super);
+        function PineconeRequestError2(context) {
+          var _this = this;
+          if (context.response) {
+            _this = _super.call(this, "Request failed during a call to ".concat(context.init.method, " ").concat(context.url, " with status ").concat(context.response.status), context.error) || this;
+          } else {
+            _this = _super.call(this, "Request failed during a call to ".concat(context.init.method, " ").concat(context.url), context.error) || this;
+          }
+          return _this;
+        }
+        return PineconeRequestError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeRequestError = PineconeRequestError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/validation.js
+var require_validation = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/validation.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PineconeArgumentError = void 0;
+    var base_1 = require_base2();
+    var PineconeArgumentError = (
+      /** @class */
+      function(_super) {
+        __extends(PineconeArgumentError2, _super);
+        function PineconeArgumentError2(message) {
+          var _this = _super.call(this, "".concat(message)) || this;
+          _this.name = "PineconeArgumentError";
+          return _this;
+        }
+        return PineconeArgumentError2;
+      }(base_1.BasePineconeError)
+    );
+    exports2.PineconeArgumentError = PineconeArgumentError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/utils.js
+var require_utils5 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/utils.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.extractMessage = void 0;
+    var extractMessage = function(error) {
+      return __awaiter(void 0, void 0, void 0, function() {
+        var message, messageJSON;
+        return __generator(this, function(_a) {
+          switch (_a.label) {
+            case 0:
+              return [4, error.response.text()];
+            case 1:
+              message = _a.sent();
+              try {
+                messageJSON = JSON.parse(message);
+                if (messageJSON.message) {
+                  message = messageJSON.message;
+                }
+              } catch (e) {
+              }
+              return [2, message];
+          }
+        });
+      });
+    };
+    exports2.extractMessage = extractMessage;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/handling.js
+var require_handling = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/handling.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.handleApiError = void 0;
+    var utils_1 = require_utils5();
+    var http_1 = require_http();
+    var request_1 = require_request2();
+    var handleApiError = function(e, customMessage, url2) {
+      return __awaiter(void 0, void 0, void 0, function() {
+        var responseError, rawMessage, statusCode, message, _a, err;
+        return __generator(this, function(_b) {
+          switch (_b.label) {
+            case 0:
+              if (!(e instanceof Error && e.name === "ResponseError")) return [3, 5];
+              responseError = e;
+              return [4, (0, utils_1.extractMessage)(responseError)];
+            case 1:
+              rawMessage = _b.sent();
+              statusCode = responseError.response.status;
+              if (!customMessage) return [3, 3];
+              return [4, customMessage(statusCode, rawMessage)];
+            case 2:
+              _a = _b.sent();
+              return [3, 4];
+            case 3:
+              _a = rawMessage;
+              _b.label = 4;
+            case 4:
+              message = _a;
+              return [2, (0, http_1.mapHttpStatusError)({
+                status: responseError.response.status,
+                url: responseError.response.url || url2,
+                message
+              })];
+            case 5:
+              if (e instanceof request_1.PineconeConnectionError) {
+                return [2, e];
+              } else {
+                err = e;
+                return [2, new request_1.PineconeConnectionError(err)];
+              }
+              _b.label = 6;
+            case 6:
+              return [
+                2
+                /*return*/
+              ];
+          }
+        });
+      });
+    };
+    exports2.handleApiError = handleApiError;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/errors/index.js
+var require_errors = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/errors/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.handleApiError = exports2.extractMessage = exports2.PineconeArgumentError = exports2.BasePineconeError = exports2.PineconeRequestError = exports2.PineconeConnectionError = exports2.PineconeUnableToResolveHostError = exports2.PineconeEnvironmentVarsNotSupportedError = exports2.PineconeUnexpectedResponseError = exports2.PineconeConfigurationError = void 0;
+    var config_1 = require_config();
+    Object.defineProperty(exports2, "PineconeConfigurationError", { enumerable: true, get: function() {
+      return config_1.PineconeConfigurationError;
+    } });
+    Object.defineProperty(exports2, "PineconeUnexpectedResponseError", { enumerable: true, get: function() {
+      return config_1.PineconeUnexpectedResponseError;
+    } });
+    Object.defineProperty(exports2, "PineconeEnvironmentVarsNotSupportedError", { enumerable: true, get: function() {
+      return config_1.PineconeEnvironmentVarsNotSupportedError;
+    } });
+    Object.defineProperty(exports2, "PineconeUnableToResolveHostError", { enumerable: true, get: function() {
+      return config_1.PineconeUnableToResolveHostError;
+    } });
+    __exportStar(require_http(), exports2);
+    var request_1 = require_request2();
+    Object.defineProperty(exports2, "PineconeConnectionError", { enumerable: true, get: function() {
+      return request_1.PineconeConnectionError;
+    } });
+    Object.defineProperty(exports2, "PineconeRequestError", { enumerable: true, get: function() {
+      return request_1.PineconeRequestError;
+    } });
+    var base_1 = require_base2();
+    Object.defineProperty(exports2, "BasePineconeError", { enumerable: true, get: function() {
+      return base_1.BasePineconeError;
+    } });
+    var validation_1 = require_validation();
+    Object.defineProperty(exports2, "PineconeArgumentError", { enumerable: true, get: function() {
+      return validation_1.PineconeArgumentError;
+    } });
+    var utils_1 = require_utils5();
+    Object.defineProperty(exports2, "extractMessage", { enumerable: true, get: function() {
+      return utils_1.extractMessage;
+    } });
+    var handling_1 = require_handling();
+    Object.defineProperty(exports2, "handleApiError", { enumerable: true, get: function() {
+      return handling_1.handleApiError;
+    } });
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/fetch.js
+var require_fetch = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/fetch.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.getFetch = void 0;
+    var errors_1 = require_errors();
+    var getFetch = function(config5) {
+      if (config5.fetchApi) {
+        return config5.fetchApi;
+      } else if (global.fetch) {
+        return global.fetch;
+      } else {
+        throw new errors_1.PineconeConfigurationError("No global or user-provided fetch implementations found. Please supply a fetch implementation.");
+      }
+    };
+    exports2.getFetch = getFetch;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/retries.js
+var require_retries = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/retries.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RetryOnServerFailure = void 0;
+    var errors_1 = require_errors();
+    var RetryOnServerFailure = (
+      /** @class */
+      function() {
+        function RetryOnServerFailure2(asyncFn, maxRetries) {
+          this.calculateRetryDelay = function(attempt, baseDelay, maxDelay, jitterFactor) {
+            if (baseDelay === void 0) {
+              baseDelay = 200;
+            }
+            if (maxDelay === void 0) {
+              maxDelay = 2e4;
+            }
+            if (jitterFactor === void 0) {
+              jitterFactor = 0.25;
+            }
+            var delay = baseDelay * Math.pow(2, attempt);
+            var jitter = delay * jitterFactor * (Math.random() - 0.5);
+            delay += jitter;
+            return Math.min(maxDelay, Math.max(0, delay));
+          };
+          if (maxRetries) {
+            this.maxRetries = maxRetries;
+          } else {
+            this.maxRetries = 3;
+          }
+          if (this.maxRetries > 10) {
+            throw new Error("Max retries cannot exceed 10");
+          }
+          this.asyncFn = asyncFn;
+        }
+        RetryOnServerFailure2.prototype.execute = function() {
+          var args = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var attempt, response, error_1, mappedError;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (this.maxRetries < 1) {
+                    return [2, this.asyncFn.apply(this, args)];
+                  }
+                  attempt = 0;
+                  _a.label = 1;
+                case 1:
+                  if (!(attempt < this.maxRetries)) return [3, 7];
+                  _a.label = 2;
+                case 2:
+                  _a.trys.push([2, 4, , 6]);
+                  return [4, this.asyncFn.apply(this, args)];
+                case 3:
+                  response = _a.sent();
+                  if (!this.isRetryError(response)) {
+                    return [2, response];
+                  }
+                  throw response;
+                // Will catch this in next line
+                case 4:
+                  error_1 = _a.sent();
+                  mappedError = this.mapErrorIfNeeded(error_1);
+                  if (this.shouldStopRetrying(mappedError)) {
+                    throw mappedError;
+                  }
+                  if (attempt === this.maxRetries - 1) {
+                    throw new errors_1.PineconeMaxRetriesExceededError(this.maxRetries);
+                  }
+                  return [4, this.delay(attempt + 1)];
+                case 5:
+                  _a.sent();
+                  return [3, 6];
+                case 6:
+                  attempt++;
+                  return [3, 1];
+                case 7:
+                  throw new errors_1.PineconeMaxRetriesExceededError(this.maxRetries);
+              }
+            });
+          });
+        };
+        RetryOnServerFailure2.prototype.isRetryError = function(response) {
+          if (response) {
+            if (response.name && ["PineconeUnavailableError", "PineconeInternalServerError"].includes(response.name)) {
+              return true;
+            }
+            if (response.status && response.status >= 500) {
+              return true;
+            }
+          }
+          return false;
+        };
+        RetryOnServerFailure2.prototype.delay = function(attempt) {
+          return __awaiter(this, void 0, void 0, function() {
+            var delayTime;
+            return __generator(this, function(_a) {
+              delayTime = this.calculateRetryDelay(attempt);
+              return [2, new Promise(function(resolve) {
+                return setTimeout(resolve, delayTime);
+              })];
+            });
+          });
+        };
+        RetryOnServerFailure2.prototype.mapErrorIfNeeded = function(error) {
+          if (error === null || error === void 0 ? void 0 : error.status) {
+            return (0, errors_1.mapHttpStatusError)(error);
+          }
+          return error;
+        };
+        RetryOnServerFailure2.prototype.shouldStopRetrying = function(error) {
+          if (error.status) {
+            return error.status < 500;
+          }
+          if (error.name) {
+            return error.name !== "PineconeUnavailableError" && error.name !== "PineconeInternalServerError";
+          }
+          return true;
+        };
+        return RetryOnServerFailure2;
+      }()
+    );
+    exports2.RetryOnServerFailure = RetryOnServerFailure;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/index.js
+var require_utils6 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/index.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RetryOnServerFailure = exports2.getFetch = exports2.buildUserAgent = exports2.queryParamsStringify = exports2.normalizeUrl = exports2.debugLog = void 0;
+    var debugLog_1 = require_debugLog();
+    Object.defineProperty(exports2, "debugLog", { enumerable: true, get: function() {
+      return debugLog_1.debugLog;
+    } });
+    var normalizeUrl_1 = require_normalizeUrl();
+    Object.defineProperty(exports2, "normalizeUrl", { enumerable: true, get: function() {
+      return normalizeUrl_1.normalizeUrl;
+    } });
+    var queryParamsStringify_1 = require_queryParamsStringify();
+    Object.defineProperty(exports2, "queryParamsStringify", { enumerable: true, get: function() {
+      return queryParamsStringify_1.queryParamsStringify;
+    } });
+    var user_agent_1 = require_user_agent();
+    Object.defineProperty(exports2, "buildUserAgent", { enumerable: true, get: function() {
+      return user_agent_1.buildUserAgent;
+    } });
+    var fetch_1 = require_fetch();
+    Object.defineProperty(exports2, "getFetch", { enumerable: true, get: function() {
+      return fetch_1.getFetch;
+    } });
+    var retries_1 = require_retries();
+    Object.defineProperty(exports2, "RetryOnServerFailure", { enumerable: true, get: function() {
+      return retries_1.RetryOnServerFailure;
+    } });
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/middleware.js
+var require_middleware = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/middleware.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    var __spreadArray = exports2 && exports2.__spreadArray || function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.middleware = void 0;
+    var db_control_1 = require_db_control();
+    var errors_1 = require_errors();
+    var debugMiddleware = [];
+    var chalk = function(str, color2) {
+      var colors = {
+        blue: "\x1B[34m",
+        red: "\x1B[31m",
+        green: "\x1B[32m",
+        yellow: "\x1B[33m"
+      };
+      return colors[color2] + str + "\x1B[39m";
+    };
+    if (typeof process !== "undefined" && process && process.env && process.env.PINECONE_DEBUG) {
+      debugLogMiddleware = {
+        pre: function(context) {
+          return __awaiter(void 0, void 0, void 0, function() {
+            var headers2;
+            return __generator(this, function(_a) {
+              console.debug(chalk(">>> Request: ".concat(context.init.method, " ").concat(context.url), "blue"));
+              headers2 = JSON.parse(JSON.stringify(context.init.headers));
+              headers2["Api-Key"] = "***REDACTED***";
+              console.debug(chalk(">>> Headers: ".concat(JSON.stringify(headers2)), "blue"));
+              if (context.init.body) {
+                console.debug(chalk(">>> Body: ".concat(context.init.body), "blue"));
+              }
+              console.debug("");
+              return [
+                2
+                /*return*/
+              ];
+            });
+          });
+        },
+        post: function(context) {
+          return __awaiter(void 0, void 0, void 0, function() {
+            var _a, _b, _c, _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  console.debug(chalk("<<< Status: ".concat(context.response.status), "green"));
+                  _b = (_a = console).debug;
+                  _c = chalk;
+                  _d = "<<< Body: ".concat;
+                  return [4, context.response.text()];
+                case 1:
+                  _b.apply(_a, [_c.apply(void 0, [_d.apply("<<< Body: ", [_e.sent()]), "green"])]);
+                  console.debug("");
+                  return [
+                    2
+                    /*return*/
+                  ];
+              }
+            });
+          });
+        }
+      };
+      debugMiddleware.push(debugLogMiddleware);
+    }
+    var debugLogMiddleware;
+    if (typeof process !== "undefined" && process && process.env && process.env.PINECONE_DEBUG_CURL) {
+      debugCurlMiddleware = {
+        post: function(context) {
+          return __awaiter(void 0, void 0, void 0, function() {
+            var headers2, cmd;
+            return __generator(this, function(_a) {
+              headers2 = '-H "Api-Key: '.concat((context.init.headers || {})["Api-Key"], '"');
+              if (context.init.headers && context.init.headers["Content-Type"]) {
+                headers2 += ' -H "Content-Type: '.concat(context.init.headers["Content-Type"], '"');
+              }
+              cmd = "curl -X ".concat(context.init.method, " ").concat(context.url, " ").concat(headers2, " ").concat(context.init.body ? "-d '".concat(context.init.body, "'") : "");
+              console.debug(chalk(cmd, "red"));
+              console.debug("");
+              return [
+                2
+                /*return*/
+              ];
+            });
+          });
+        }
+      };
+      debugMiddleware.push(debugCurlMiddleware);
+    }
+    var debugCurlMiddleware;
+    exports2.middleware = __spreadArray(__spreadArray([], debugMiddleware, true), [
+      {
+        onError: function(context) {
+          return __awaiter(void 0, void 0, void 0, function() {
+            var err;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, (0, errors_1.handleApiError)(context.error, void 0, context.url)];
+                case 1:
+                  err = _a.sent();
+                  throw err;
+              }
+            });
+          });
+        },
+        post: function(context) {
+          return __awaiter(void 0, void 0, void 0, function() {
+            var response, err;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  response = context.response;
+                  if (!(response.status >= 200 && response.status < 300)) return [3, 1];
+                  return [2, response];
+                case 1:
+                  return [4, (0, errors_1.handleApiError)(new db_control_1.ResponseError(response, "Response returned an error"), void 0, context.url)];
+                case 2:
+                  err = _a.sent();
+                  throw err;
+              }
+            });
+          });
+        }
+      }
+    ], false);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/indexOperationsBuilder.js
+var require_indexOperationsBuilder = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/indexOperationsBuilder.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.indexOperationsBuilder = void 0;
+    var db_control_1 = require_db_control();
+    var utils_1 = require_utils6();
+    var middleware_1 = require_middleware();
+    var indexOperationsBuilder = function(config5) {
+      var apiKey = config5.apiKey;
+      var controllerPath = (0, utils_1.normalizeUrl)(config5.controllerHostUrl) || "https://api.pinecone.io";
+      var headers2 = config5.additionalHeaders || null;
+      var apiConfig = {
+        basePath: controllerPath,
+        apiKey,
+        queryParamsStringify: utils_1.queryParamsStringify,
+        headers: __assign({ "User-Agent": (0, utils_1.buildUserAgent)(config5), "X-Pinecone-Api-Version": db_control_1.X_PINECONE_API_VERSION }, headers2),
+        fetchApi: (0, utils_1.getFetch)(config5),
+        middleware: middleware_1.middleware
+      };
+      return new db_control_1.ManageIndexesApi(new db_control_1.Configuration(apiConfig));
+    };
+    exports2.indexOperationsBuilder = indexOperationsBuilder;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/utils/validateProperties.js
+var require_validateProperties = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/utils/validateProperties.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ValidateProperties = void 0;
+    var errors_1 = require_errors();
+    function ValidateProperties(item, validProperties) {
+      var itemKeys = Object.keys(item);
+      var invalidKeys = itemKeys.filter(function(key) {
+        return !validProperties.includes(key);
+      });
+      if (invalidKeys.length > 0) {
+        throw new errors_1.PineconeArgumentError("Object contained invalid properties: ".concat(invalidKeys.join(", "), ". Valid properties include ").concat(validProperties.join(", "), "."));
+      }
+    }
+    exports2.ValidateProperties = ValidateProperties;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/configureIndex.js
+var require_configureIndex = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/configureIndex.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.configureIndex = exports2.ConfigureIndexRequestProperties = void 0;
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var utils_1 = require_utils6();
+    exports2.ConfigureIndexRequestProperties = [
+      "deletionProtection",
+      "spec",
+      "tags"
+    ];
+    var configureIndex = function(api) {
+      var validator2 = function(indexName, options) {
+        if (options) {
+          (0, validateProperties_1.ValidateProperties)(options, exports2.ConfigureIndexRequestProperties);
+        }
+        if (!indexName) {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `indexName` to configureIndex.");
+        }
+        if (!options.spec && !options.deletionProtection && !options.tags) {
+          throw new errors_1.PineconeArgumentError("You must pass either `spec`, `deletionProtection` or `tags` to configureIndex in order to update.");
+        }
+        if (options.spec) {
+          if (options.spec.pod) {
+            (0, validateProperties_1.ValidateProperties)(options.spec.pod, ["replicas", "podType"]);
+          }
+          if (options.spec.pod && options.spec.pod.replicas) {
+            if (options.spec.pod.replicas <= 0) {
+              throw new errors_1.PineconeArgumentError("`replicas` must be a positive integer.");
+            }
+          }
+        }
+      };
+      return function(indexName, options, maxRetries) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var retryWrapper;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                validator2(indexName, options);
+                retryWrapper = new utils_1.RetryOnServerFailure(api.configureIndex.bind(api), maxRetries);
+                return [4, retryWrapper.execute({
+                  indexName,
+                  configureIndexRequest: options
+                })];
+              case 1:
+                return [2, _a.sent()];
+            }
+          });
+        });
+      };
+    };
+    exports2.configureIndex = configureIndex;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/types.js
+var require_types2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/types.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ValidPodTypes = void 0;
+    exports2.ValidPodTypes = [
+      "s1.x1",
+      "s1.x2",
+      "s1.x4",
+      "s1.x8",
+      "p1.x1",
+      "p1.x2",
+      "p1.x4",
+      "p1.x8",
+      "p2.x1",
+      "p2.x2",
+      "p2.x4",
+      "p2.x8"
+    ];
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/createIndex.js
+var require_createIndex = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/createIndex.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.createIndex = void 0;
+    var db_control_1 = require_db_control();
+    var utils_1 = require_utils6();
+    var types_1 = require_types2();
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var CreateIndexOptionsProperties = [
+      "spec",
+      "name",
+      "dimension",
+      "metric",
+      "deletionProtection",
+      "waitUntilReady",
+      "suppressConflicts",
+      "tags"
+    ];
+    var CreateIndexSpecProperties = ["serverless", "pod"];
+    var CreateIndexServerlessSpecProperties = [
+      "cloud",
+      "region"
+    ];
+    var CreateIndexPodSpecProperties = [
+      "environment",
+      "replicas",
+      "shards",
+      "podType",
+      "pods",
+      "metadataConfig",
+      "sourceCollection"
+    ];
+    var createIndex = function(api) {
+      var validator2 = function(options) {
+        if (options) {
+          (0, validateProperties_1.ValidateProperties)(options, CreateIndexOptionsProperties);
+        }
+        if (!options) {
+          throw new errors_1.PineconeArgumentError("You must pass an object with required properties (`name`, `dimension`, `spec`) to create an index.");
+        }
+        if (!options.name) {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `name` in order to create an index.");
+        }
+        if (!options.dimension || options.dimension <= 0) {
+          throw new errors_1.PineconeArgumentError("You must pass a positive integer for `dimension` in order to create an index.");
+        }
+        if (!options.spec) {
+          throw new errors_1.PineconeArgumentError("You must pass a `pods` or `serverless` `spec` object in order to create an index.");
+        }
+        if (options.spec) {
+          (0, validateProperties_1.ValidateProperties)(options.spec, CreateIndexSpecProperties);
+        }
+        if (options.spec.serverless) {
+          (0, validateProperties_1.ValidateProperties)(options.spec.serverless, CreateIndexServerlessSpecProperties);
+          if (!options.spec.serverless.cloud) {
+            throw new errors_1.PineconeArgumentError("You must pass a `cloud` for the serverless `spec` object in order to create an index.");
+          }
+          if (!options.spec.serverless.region) {
+            throw new errors_1.PineconeArgumentError("You must pass a `region` for the serverless `spec` object in order to create an index.");
+          }
+        }
+        if (options.spec.pod) {
+          (0, validateProperties_1.ValidateProperties)(options.spec.pod, CreateIndexPodSpecProperties);
+          if (!options.spec.pod.environment) {
+            throw new errors_1.PineconeArgumentError("You must pass an `environment` for the pod `spec` object in order to create an index.");
+          }
+          if (!options.spec.pod.podType) {
+            throw new errors_1.PineconeArgumentError("You must pass a `podType` for the pod `spec` object in order to create an index.");
+          }
+        }
+        if (options.spec.serverless && options.spec.serverless.cloud && !Object.values(db_control_1.ServerlessSpecCloudEnum).includes(options.spec.serverless.cloud)) {
+          throw new errors_1.PineconeArgumentError("Invalid cloud value: ".concat(options.spec.serverless.cloud, ". Valid values are: ").concat(Object.values(db_control_1.ServerlessSpecCloudEnum).join(", "), "."));
+        }
+        if (options.metric && !Object.values(db_control_1.IndexModelMetricEnum).includes(options.metric)) {
+          {
+            throw new errors_1.PineconeArgumentError("Invalid metric value: ".concat(options.metric, ". Valid values are: 'cosine', 'euclidean', or 'dotproduct.'"));
+          }
+        }
+        if (options.spec.pod && options.spec.pod.replicas && options.spec.pod.replicas <= 0) {
+          throw new errors_1.PineconeArgumentError("You must pass a positive integer for `replicas` in order to create an index.");
+        }
+        if (options.spec.pod && options.spec.pod.pods && options.spec.pod.pods <= 0) {
+          throw new errors_1.PineconeArgumentError("You must pass a positive integer for `pods` in order to create an index.");
+        }
+        if (options.spec.pod && !types_1.ValidPodTypes.includes(options.spec.pod.podType)) {
+          throw new errors_1.PineconeArgumentError("Invalid pod type: ".concat(options.spec.pod.podType, ". Valid values are: ").concat(types_1.ValidPodTypes.join(", "), "."));
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var createResponse, e_1;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (options && !options.metric) {
+                  options.metric = db_control_1.IndexModelMetricEnum.Cosine;
+                }
+                validator2(options);
+                _a.label = 1;
+              case 1:
+                _a.trys.push([1, 5, , 6]);
+                return [4, api.createIndex({
+                  createIndexRequest: options
+                })];
+              case 2:
+                createResponse = _a.sent();
+                if (!options.waitUntilReady) return [3, 4];
+                return [4, waitUntilIndexIsReady(api, options.name)];
+              case 3:
+                return [2, _a.sent()];
+              case 4:
+                return [2, createResponse];
+              case 5:
+                e_1 = _a.sent();
+                if (!(options.suppressConflicts && e_1 instanceof Error && e_1.name === "PineconeConflictError")) {
+                  throw e_1;
+                }
+                return [3, 6];
+              case 6:
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.createIndex = createIndex;
+    var waitUntilIndexIsReady = function(api, indexName, seconds) {
+      if (seconds === void 0) {
+        seconds = 0;
+      }
+      return __awaiter(void 0, void 0, void 0, function() {
+        var indexDescription, e_2, err;
+        var _a;
+        return __generator(this, function(_b) {
+          switch (_b.label) {
+            case 0:
+              _b.trys.push([0, 6, , 8]);
+              return [4, api.describeIndex({ indexName })];
+            case 1:
+              indexDescription = _b.sent();
+              if (!!((_a = indexDescription.status) === null || _a === void 0 ? void 0 : _a.ready)) return [3, 4];
+              return [4, new Promise(function(r) {
+                return setTimeout(r, 1e3);
+              })];
+            case 2:
+              _b.sent();
+              return [4, waitUntilIndexIsReady(api, indexName, seconds + 1)];
+            case 3:
+              return [2, _b.sent()];
+            case 4:
+              (0, utils_1.debugLog)("Index ".concat(indexName, " is ready after ").concat(seconds));
+              return [2, indexDescription];
+            case 5:
+              return [3, 8];
+            case 6:
+              e_2 = _b.sent();
+              return [4, (0, errors_1.handleApiError)(e_2, function(_, rawMessageText) {
+                return __awaiter(void 0, void 0, void 0, function() {
+                  return __generator(this, function(_a2) {
+                    return [2, "Error creating index ".concat(indexName, ": ").concat(rawMessageText)];
+                  });
+                });
+              })];
+            case 7:
+              err = _b.sent();
+              throw err;
+            case 8:
+              return [
+                2
+                /*return*/
+              ];
+          }
+        });
+      });
+    };
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/deleteIndex.js
+var require_deleteIndex = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/deleteIndex.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deleteIndex = void 0;
+    var errors_1 = require_errors();
+    var deleteIndex = function(api) {
+      return function(indexName) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (!indexName) {
+                  throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `indexName` in order to delete an index");
+                }
+                return [4, api.deleteIndex({ indexName })];
+              case 1:
+                _a.sent();
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.deleteIndex = deleteIndex;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/describeIndex.js
+var require_describeIndex = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/describeIndex.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.describeIndex = void 0;
+    var errors_1 = require_errors();
+    var describeIndex = function(api) {
+      var removeDeprecatedFields = function(result) {
+        if (result.database) {
+          for (var _i = 0, _a = Object.keys(result.database); _i < _a.length; _i++) {
+            var key = _a[_i];
+            if (result.database[key] === void 0) {
+              delete result.database[key];
+            }
+          }
+        }
+      };
+      return function(indexName) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var result;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (!indexName) {
+                  throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `name` in order to describe an index");
+                }
+                return [4, api.describeIndex({ indexName })];
+              case 1:
+                result = _a.sent();
+                removeDeprecatedFields(result);
+                return [2, result];
+            }
+          });
+        });
+      };
+    };
+    exports2.describeIndex = describeIndex;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/listIndexes.js
+var require_listIndexes = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/listIndexes.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.listIndexes = void 0;
+    var listIndexes = function(api) {
+      return function() {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var response;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                return [4, api.listIndexes()];
+              case 1:
+                response = _a.sent();
+                return [2, response];
+            }
+          });
+        });
+      };
+    };
+    exports2.listIndexes = listIndexes;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/createCollection.js
+var require_createCollection = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/createCollection.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.createCollection = exports2.CreateCollectionRequestProperties = void 0;
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    exports2.CreateCollectionRequestProperties = ["source", "name"];
+    var createCollection = function(api) {
+      var validator2 = function(options) {
+        if (options) {
+          (0, validateProperties_1.ValidateProperties)(options, exports2.CreateCollectionRequestProperties);
+        }
+        if (!options || typeof options !== "object") {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty object with `name` and `source` fields in order to create a collection.");
+        }
+        if (!options.name && !options.source) {
+          throw new errors_1.PineconeArgumentError("The argument to createCollection must have required properties: `name`, `source`.");
+        }
+        if (!options.name) {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `name` in order to create a collection.");
+        }
+        if (!options.source) {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `source` in order to create a collection.");
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                validator2(options);
+                return [4, api.createCollection({ createCollectionRequest: options })];
+              case 1:
+                return [2, _a.sent()];
+            }
+          });
+        });
+      };
+    };
+    exports2.createCollection = createCollection;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/deleteCollection.js
+var require_deleteCollection = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/deleteCollection.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deleteCollection = void 0;
+    var errors_1 = require_errors();
+    var deleteCollection = function(api) {
+      return function(collectionName) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (!collectionName) {
+                  throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `collectionName`");
+                }
+                return [4, api.deleteCollection({ collectionName })];
+              case 1:
+                _a.sent();
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.deleteCollection = deleteCollection;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/describeCollection.js
+var require_describeCollection = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/describeCollection.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.describeCollection = void 0;
+    var errors_1 = require_errors();
+    var describeCollection = function(api) {
+      return function(name) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (!name || name.length === 0) {
+                  throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `name` in order to describe a collection");
+                }
+                return [4, api.describeCollection({ collectionName: name })];
+              case 1:
+                return [2, _a.sent()];
+            }
+          });
+        });
+      };
+    };
+    exports2.describeCollection = describeCollection;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/listCollections.js
+var require_listCollections = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/listCollections.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.listCollections = void 0;
+    var listCollections = function(api) {
+      return function() {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var results;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                return [4, api.listCollections()];
+              case 1:
+                results = _a.sent();
+                return [2, results];
+            }
+          });
+        });
+      };
+    };
+    exports2.listCollections = listCollections;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/control/index.js
+var require_control = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/control/index.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.listCollections = exports2.describeCollection = exports2.deleteCollection = exports2.createCollection = exports2.listIndexes = exports2.describeIndex = exports2.deleteIndex = exports2.createIndex = exports2.configureIndex = exports2.indexOperationsBuilder = void 0;
+    var indexOperationsBuilder_1 = require_indexOperationsBuilder();
+    Object.defineProperty(exports2, "indexOperationsBuilder", { enumerable: true, get: function() {
+      return indexOperationsBuilder_1.indexOperationsBuilder;
+    } });
+    var configureIndex_1 = require_configureIndex();
+    Object.defineProperty(exports2, "configureIndex", { enumerable: true, get: function() {
+      return configureIndex_1.configureIndex;
+    } });
+    var createIndex_1 = require_createIndex();
+    Object.defineProperty(exports2, "createIndex", { enumerable: true, get: function() {
+      return createIndex_1.createIndex;
+    } });
+    var deleteIndex_1 = require_deleteIndex();
+    Object.defineProperty(exports2, "deleteIndex", { enumerable: true, get: function() {
+      return deleteIndex_1.deleteIndex;
+    } });
+    var describeIndex_1 = require_describeIndex();
+    Object.defineProperty(exports2, "describeIndex", { enumerable: true, get: function() {
+      return describeIndex_1.describeIndex;
+    } });
+    var listIndexes_1 = require_listIndexes();
+    Object.defineProperty(exports2, "listIndexes", { enumerable: true, get: function() {
+      return listIndexes_1.listIndexes;
+    } });
+    var createCollection_1 = require_createCollection();
+    Object.defineProperty(exports2, "createCollection", { enumerable: true, get: function() {
+      return createCollection_1.createCollection;
+    } });
+    var deleteCollection_1 = require_deleteCollection();
+    Object.defineProperty(exports2, "deleteCollection", { enumerable: true, get: function() {
+      return deleteCollection_1.deleteCollection;
+    } });
+    var describeCollection_1 = require_describeCollection();
+    Object.defineProperty(exports2, "describeCollection", { enumerable: true, get: function() {
+      return describeCollection_1.describeCollection;
+    } });
+    var listCollections_1 = require_listCollections();
+    Object.defineProperty(exports2, "listCollections", { enumerable: true, get: function() {
+      return listCollections_1.listCollections;
+    } });
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/indexHostSingleton.js
+var require_indexHostSingleton = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/indexHostSingleton.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexHostSingleton = void 0;
+    var control_1 = require_control();
+    var errors_1 = require_errors();
+    var utils_1 = require_utils6();
+    exports2.IndexHostSingleton = /* @__PURE__ */ function() {
+      var _this = this;
+      var hostUrls = {};
+      var _describeIndex = function(config5, indexName) {
+        return __awaiter(_this, void 0, void 0, function() {
+          var indexOperationsApi, describeResponse, host;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                indexOperationsApi = (0, control_1.indexOperationsBuilder)(config5);
+                return [4, (0, control_1.describeIndex)(indexOperationsApi)(indexName)];
+              case 1:
+                describeResponse = _a.sent();
+                host = describeResponse.host;
+                if (!host) {
+                  throw new errors_1.PineconeUnableToResolveHostError("The HTTP call succeeded but the host URL could not be resolved. Please make sure the index exists and is in a ready state.");
+                } else {
+                  return [2, host];
+                }
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+      var _key = function(config5, indexName) {
+        return "".concat(config5.apiKey, "-").concat(indexName);
+      };
+      var singleton = {
+        getHostUrl: function(config5, indexName) {
+          return __awaiter(_this, void 0, void 0, function() {
+            var cacheKey, hostUrl;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  cacheKey = _key(config5, indexName);
+                  if (!(cacheKey in hostUrls)) return [3, 1];
+                  return [2, hostUrls[cacheKey]];
+                case 1:
+                  return [4, _describeIndex(config5, indexName)];
+                case 2:
+                  hostUrl = _a.sent();
+                  singleton._set(config5, indexName, hostUrl);
+                  if (!hostUrls[cacheKey]) {
+                    throw new errors_1.PineconeUnableToResolveHostError("Could not get host for index: ".concat(indexName, ". Call describeIndex('").concat(indexName, "') to check the current status."));
+                  }
+                  return [2, hostUrls[cacheKey]];
+              }
+            });
+          });
+        },
+        _reset: function() {
+          for (var _i = 0, _a = Object.keys(hostUrls); _i < _a.length; _i++) {
+            var key = _a[_i];
+            delete hostUrls[key];
+          }
+        },
+        _set: function(config5, indexName, hostUrl) {
+          var normalizedHostUrl = (0, utils_1.normalizeUrl)(hostUrl);
+          if (!normalizedHostUrl) {
+            return;
+          }
+          var cacheKey = _key(config5, indexName);
+          hostUrls[cacheKey] = normalizedHostUrl;
+        },
+        _delete: function(config5, indexName) {
+          var cacheKey = _key(config5, indexName);
+          delete hostUrls[cacheKey];
+        }
+      };
+      return singleton;
+    }();
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/types.js
+var require_types3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/types.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PineconeRecordsProperties = exports2.PineconeConfigurationProperties = void 0;
+    exports2.PineconeConfigurationProperties = [
+      "apiKey",
+      "controllerHostUrl",
+      "fetchApi",
+      "additionalHeaders",
+      "sourceTag",
+      "maxRetries"
+    ];
+    exports2.PineconeRecordsProperties = [
+      "id",
+      "values",
+      "sparseValues",
+      "metadata"
+    ];
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/upsert.js
+var require_upsert = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/upsert.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UpsertCommand = void 0;
+    var types_1 = require_types3();
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var utils_1 = require_utils6();
+    var UpsertCommand = (
+      /** @class */
+      function() {
+        function UpsertCommand2(apiProvider, namespace) {
+          this.validator = function(records) {
+            for (var _i = 0, records_1 = records; _i < records_1.length; _i++) {
+              var record = records_1[_i];
+              (0, validateProperties_1.ValidateProperties)(record, types_1.PineconeRecordsProperties);
+            }
+            if (records.length === 0) {
+              throw new errors_1.PineconeArgumentError("Must pass in at least 1 record to upsert.");
+            }
+            records.forEach(function(record2) {
+              if (!record2.id) {
+                throw new errors_1.PineconeArgumentError("Every record must include an `id` property in order to upsert.");
+              }
+              if (!record2.values) {
+                throw new errors_1.PineconeArgumentError("Every record must include a `values` property in order to upsert.");
+              }
+            });
+          };
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        UpsertCommand2.prototype.run = function(records, maxRetries) {
+          return __awaiter(this, void 0, void 0, function() {
+            var api, retryWrapper;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  this.validator(records);
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  retryWrapper = new utils_1.RetryOnServerFailure(api.upsertVectors.bind(api), maxRetries);
+                  return [4, retryWrapper.execute({
+                    upsertRequest: {
+                      vectors: records,
+                      namespace: this.namespace
+                    }
+                  })];
+                case 2:
+                  _a.sent();
+                  return [
+                    2
+                    /*return*/
+                  ];
+              }
+            });
+          });
+        };
+        return UpsertCommand2;
+      }()
+    );
+    exports2.UpsertCommand = UpsertCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/fetch.js
+var require_fetch2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/fetch.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.FetchCommand = void 0;
+    var errors_1 = require_errors();
+    var FetchCommand = (
+      /** @class */
+      function() {
+        function FetchCommand2(apiProvider, namespace) {
+          this.validator = function(options) {
+            if (options.length === 0) {
+              throw new errors_1.PineconeArgumentError("Must pass in at least 1 recordID.");
+            }
+          };
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        FetchCommand2.prototype.run = function(ids) {
+          return __awaiter(this, void 0, void 0, function() {
+            var api, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  this.validator(ids);
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.fetchVectors({
+                    ids,
+                    namespace: this.namespace
+                  })];
+                case 2:
+                  response = _a.sent();
+                  return [2, __assign({ records: response.vectors ? response.vectors : {}, namespace: response.namespace ? response.namespace : "" }, response.usage && { usage: response.usage })];
+              }
+            });
+          });
+        };
+        return FetchCommand2;
+      }()
+    );
+    exports2.FetchCommand = FetchCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/update.js
+var require_update = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/update.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UpdateCommand = void 0;
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var utils_1 = require_utils6();
+    var UpdateOptionsProperties = [
+      "id",
+      "values",
+      "sparseValues",
+      "metadata"
+    ];
+    var UpdateCommand = (
+      /** @class */
+      function() {
+        function UpdateCommand2(apiProvider, namespace) {
+          this.validator = function(options) {
+            if (options) {
+              (0, validateProperties_1.ValidateProperties)(options, UpdateOptionsProperties);
+            }
+            if (options && !options.id) {
+              throw new errors_1.PineconeArgumentError("You must enter a non-empty string for the `id` field in order to update a record.");
+            }
+          };
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        UpdateCommand2.prototype.run = function(options, maxRetries) {
+          return __awaiter(this, void 0, void 0, function() {
+            var requestOptions, api, retryWrapper;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  this.validator(options);
+                  requestOptions = {
+                    id: options["id"],
+                    values: options["values"],
+                    sparseValues: options["sparseValues"],
+                    setMetadata: options["metadata"]
+                  };
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  retryWrapper = new utils_1.RetryOnServerFailure(api.updateVector.bind(api), maxRetries);
+                  return [4, retryWrapper.execute({
+                    updateRequest: __assign(__assign({}, requestOptions), { namespace: this.namespace })
+                  })];
+                case 2:
+                  _a.sent();
+                  return [
+                    2
+                    /*return*/
+                  ];
+              }
+            });
+          });
+        };
+        return UpdateCommand2;
+      }()
+    );
+    exports2.UpdateCommand = UpdateCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/query.js
+var require_query2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/query.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.QueryCommand = void 0;
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var QueryOptionsProperties = [
+      "id",
+      "vector",
+      "sparseVector",
+      "includeValues",
+      "includeMetadata",
+      "filter",
+      "topK"
+    ];
+    var QueryCommand = (
+      /** @class */
+      function() {
+        function QueryCommand2(apiProvider, namespace) {
+          this.validator = function(options) {
+            var _a, _b;
+            if (options) {
+              (0, validateProperties_1.ValidateProperties)(options, QueryOptionsProperties);
+            }
+            if (!options) {
+              throw new errors_1.PineconeArgumentError("You must enter a query configuration object to query the index.");
+            }
+            if (options && !options.topK) {
+              throw new errors_1.PineconeArgumentError("You must enter an integer for the `topK` search results to be returned.");
+            }
+            if (options && options.topK && options.topK < 1) {
+              throw new errors_1.PineconeArgumentError("`topK` property must be greater than 0.");
+            }
+            if (options && options.filter) {
+              var keys = Object.keys(options.filter);
+              if (keys.length === 0) {
+                throw new errors_1.PineconeArgumentError("You must enter a `filter` object with at least one key-value pair.");
+              }
+            }
+            if ("id" in options) {
+              if (!options.id) {
+                throw new errors_1.PineconeArgumentError("You must enter non-empty string for `id` to query by record ID.");
+              }
+            }
+            if ("vector" in options) {
+              if (options.vector.length === 0) {
+                throw new errors_1.PineconeArgumentError("You must enter an array of `RecordValues` in order to query by vector values.");
+              }
+            }
+            if ("sparseVector" in options) {
+              if (((_a = options.sparseVector) === null || _a === void 0 ? void 0 : _a.indices.length) === 0 || ((_b = options.sparseVector) === null || _b === void 0 ? void 0 : _b.values.length) === 0) {
+                throw new errors_1.PineconeArgumentError("You must enter a `RecordSparseValues` object with `indices` and `values` properties in order to query by sparse vector values.");
+              }
+            }
+          };
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        QueryCommand2.prototype.run = function(query) {
+          return __awaiter(this, void 0, void 0, function() {
+            var api, results, matches;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  this.validator(query);
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.queryVectors({
+                    queryRequest: __assign(__assign({}, query), { namespace: this.namespace })
+                  })];
+                case 2:
+                  results = _a.sent();
+                  matches = results.matches ? results.matches : [];
+                  return [2, __assign({ matches, namespace: this.namespace }, results.usage && { usage: results.usage })];
+              }
+            });
+          });
+        };
+        return QueryCommand2;
+      }()
+    );
+    exports2.QueryCommand = QueryCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteOne.js
+var require_deleteOne = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteOne.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deleteOne = void 0;
+    var errors_1 = require_errors();
+    var deleteOne = function(apiProvider, namespace) {
+      var validator2 = function(options) {
+        if (!options) {
+          throw new errors_1.PineconeArgumentError("You must pass a non-empty string for `options` in order to delete a record.");
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var api;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                validator2(options);
+                return [4, apiProvider.provide()];
+              case 1:
+                api = _a.sent();
+                return [4, api.deleteVectors({ deleteRequest: { ids: [options], namespace } })];
+              case 2:
+                _a.sent();
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.deleteOne = deleteOne;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteMany.js
+var require_deleteMany = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteMany.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deleteMany = void 0;
+    var errors_1 = require_errors();
+    var deleteMany = function(apiProvider, namespace) {
+      var FilterValidator = function(options) {
+        for (var key in options) {
+          if (!options[key]) {
+            throw new errors_1.PineconeArgumentError("`filter` property cannot be empty for key ".concat(key));
+          }
+        }
+      };
+      var validator2 = function(options) {
+        if (!Array.isArray(options)) {
+          return FilterValidator(options);
+        } else {
+          if (options.length === 0) {
+            throw new errors_1.PineconeArgumentError("Must pass in at least 1 record ID.");
+          }
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var requestOptions, api;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                validator2(options);
+                requestOptions = {};
+                if (Array.isArray(options)) {
+                  requestOptions.ids = options;
+                } else {
+                  requestOptions.filter = options;
+                }
+                return [4, apiProvider.provide()];
+              case 1:
+                api = _a.sent();
+                return [4, api.deleteVectors({
+                  deleteRequest: __assign(__assign({}, requestOptions), { namespace })
+                })];
+              case 2:
+                _a.sent();
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.deleteMany = deleteMany;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteAll.js
+var require_deleteAll = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/deleteAll.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deleteAll = void 0;
+    var deleteAll = function(apiProvider, namespace) {
+      return function() {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var api;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                return [4, apiProvider.provide()];
+              case 1:
+                api = _a.sent();
+                return [4, api.deleteVectors({ deleteRequest: { deleteAll: true, namespace } })];
+              case 2:
+                _a.sent();
+                return [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      };
+    };
+    exports2.deleteAll = deleteAll;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/describeIndexStats.js
+var require_describeIndexStats = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/describeIndexStats.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.describeIndexStats = void 0;
+    var errors_1 = require_errors();
+    var validateProperties_1 = require_validateProperties();
+    var describeIndexStats = function(apiProvider) {
+      var validator2 = function(options) {
+        if (options) {
+          (0, validateProperties_1.ValidateProperties)(options, ["filter"]);
+        }
+        var map = options["filter"];
+        for (var key in map) {
+          if (!map[key]) {
+            throw new errors_1.PineconeArgumentError("`filter` property cannot be empty for ".concat(key));
+          }
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var api, results, mappedResult, key;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (options) {
+                  validator2(options);
+                }
+                return [4, apiProvider.provide()];
+              case 1:
+                api = _a.sent();
+                return [4, api.describeIndexStats({
+                  describeIndexStatsRequest: __assign({}, options)
+                })];
+              case 2:
+                results = _a.sent();
+                mappedResult = {
+                  namespaces: {},
+                  dimension: results.dimension,
+                  indexFullness: results.indexFullness,
+                  totalRecordCount: results.totalVectorCount
+                };
+                if (results.namespaces) {
+                  for (key in results.namespaces) {
+                    mappedResult.namespaces[key] = {
+                      recordCount: results.namespaces[key].vectorCount
+                    };
+                  }
+                }
+                return [2, mappedResult];
+            }
+          });
+        });
+      };
+    };
+    exports2.describeIndexStats = describeIndexStats;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/runtime.js
+var require_runtime2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/runtime.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.TextApiResponse = exports2.BlobApiResponse = exports2.VoidApiResponse = exports2.JSONApiResponse = exports2.canConsumeForm = exports2.mapValues = exports2.querystring = exports2.exists = exports2.COLLECTION_FORMATS = exports2.RequiredError = exports2.FetchError = exports2.ResponseError = exports2.BaseAPI = exports2.DefaultConfig = exports2.Configuration = exports2.BASE_PATH = void 0;
+    exports2.BASE_PATH = "https://unknown".replace(/\/+$/, "");
+    var Configuration = (
+      /** @class */
+      function() {
+        function Configuration2(configuration) {
+          if (configuration === void 0) {
+            configuration = {};
+          }
+          this.configuration = configuration;
+        }
+        Object.defineProperty(Configuration2.prototype, "config", {
+          set: function(configuration) {
+            this.configuration = configuration;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "basePath", {
+          get: function() {
+            return this.configuration.basePath != null ? this.configuration.basePath : exports2.BASE_PATH;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "fetchApi", {
+          get: function() {
+            return this.configuration.fetchApi;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "middleware", {
+          get: function() {
+            return this.configuration.middleware || [];
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "queryParamsStringify", {
+          get: function() {
+            return this.configuration.queryParamsStringify || querystring;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "username", {
+          get: function() {
+            return this.configuration.username;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "password", {
+          get: function() {
+            return this.configuration.password;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "apiKey", {
+          get: function() {
+            var apiKey = this.configuration.apiKey;
+            if (apiKey) {
+              return typeof apiKey === "function" ? apiKey : function() {
+                return apiKey;
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "accessToken", {
+          get: function() {
+            var _this = this;
+            var accessToken = this.configuration.accessToken;
+            if (accessToken) {
+              return typeof accessToken === "function" ? accessToken : function() {
+                return __awaiter(_this, void 0, void 0, function() {
+                  return __generator(this, function(_a) {
+                    return [2, accessToken];
+                  });
+                });
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "headers", {
+          get: function() {
+            return this.configuration.headers;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "credentials", {
+          get: function() {
+            return this.configuration.credentials;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        return Configuration2;
+      }()
+    );
+    exports2.Configuration = Configuration;
+    exports2.DefaultConfig = new Configuration();
+    var BaseAPI = (
+      /** @class */
+      function() {
+        function BaseAPI2(configuration) {
+          if (configuration === void 0) {
+            configuration = exports2.DefaultConfig;
+          }
+          var _this = this;
+          this.configuration = configuration;
+          this.fetchApi = function(url2, init2) {
+            return __awaiter(_this, void 0, void 0, function() {
+              var fetchParams, _i, _a, middleware, response, e_1, _b, _c, middleware, _d, _e, middleware;
+              return __generator(this, function(_f) {
+                switch (_f.label) {
+                  case 0:
+                    fetchParams = { url: url2, init: init2 };
+                    _i = 0, _a = this.middleware;
+                    _f.label = 1;
+                  case 1:
+                    if (!(_i < _a.length)) return [3, 4];
+                    middleware = _a[_i];
+                    if (!middleware.pre) return [3, 3];
+                    return [4, middleware.pre(__assign({ fetch: this.fetchApi }, fetchParams))];
+                  case 2:
+                    fetchParams = _f.sent() || fetchParams;
+                    _f.label = 3;
+                  case 3:
+                    _i++;
+                    return [3, 1];
+                  case 4:
+                    response = void 0;
+                    _f.label = 5;
+                  case 5:
+                    _f.trys.push([5, 7, , 12]);
+                    return [4, (this.configuration.fetchApi || fetch)(fetchParams.url, fetchParams.init)];
+                  case 6:
+                    response = _f.sent();
+                    return [3, 12];
+                  case 7:
+                    e_1 = _f.sent();
+                    _b = 0, _c = this.middleware;
+                    _f.label = 8;
+                  case 8:
+                    if (!(_b < _c.length)) return [3, 11];
+                    middleware = _c[_b];
+                    if (!middleware.onError) return [3, 10];
+                    return [4, middleware.onError({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      error: e_1,
+                      response: response ? response.clone() : void 0
+                    })];
+                  case 9:
+                    response = _f.sent() || response;
+                    _f.label = 10;
+                  case 10:
+                    _b++;
+                    return [3, 8];
+                  case 11:
+                    if (response === void 0) {
+                      if (e_1 instanceof Error) {
+                        throw new FetchError(e_1, "The request failed and the interceptors did not return an alternative response");
+                      } else {
+                        throw e_1;
+                      }
+                    }
+                    return [3, 12];
+                  case 12:
+                    _d = 0, _e = this.middleware;
+                    _f.label = 13;
+                  case 13:
+                    if (!(_d < _e.length)) return [3, 16];
+                    middleware = _e[_d];
+                    if (!middleware.post) return [3, 15];
+                    return [4, middleware.post({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      response: response.clone()
+                    })];
+                  case 14:
+                    response = _f.sent() || response;
+                    _f.label = 15;
+                  case 15:
+                    _d++;
+                    return [3, 13];
+                  case 16:
+                    return [2, response];
+                }
+              });
+            });
+          };
+          this.middleware = configuration.middleware;
+        }
+        BaseAPI2.prototype.withMiddleware = function() {
+          var _a;
+          var middlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            middlewares[_i] = arguments[_i];
+          }
+          var next = this.clone();
+          next.middleware = (_a = next.middleware).concat.apply(_a, middlewares);
+          return next;
+        };
+        BaseAPI2.prototype.withPreMiddleware = function() {
+          var preMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            preMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = preMiddlewares.map(function(pre) {
+            return { pre };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.withPostMiddleware = function() {
+          var postMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            postMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = postMiddlewares.map(function(post) {
+            return { post };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.isJsonMime = function(mime) {
+          if (!mime) {
+            return false;
+          }
+          return BaseAPI2.jsonRegex.test(mime);
+        };
+        BaseAPI2.prototype.request = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a, url2, init2, response;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  return [4, this.createFetchParams(context, initOverrides)];
+                case 1:
+                  _a = _b.sent(), url2 = _a.url, init2 = _a.init;
+                  return [4, this.fetchApi(url2, init2)];
+                case 2:
+                  response = _b.sent();
+                  if (response && (response.status >= 200 && response.status < 300)) {
+                    return [2, response];
+                  }
+                  throw new ResponseError(response, "Response returned an error code");
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.createFetchParams = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var url2, headers2, initOverrideFn, initParams, overriddenInit, _a, body2, init2;
+            var _this = this;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  url2 = this.configuration.basePath + context.path;
+                  if (context.query !== void 0 && Object.keys(context.query).length !== 0) {
+                    url2 += "?" + this.configuration.queryParamsStringify(context.query);
+                  }
+                  headers2 = Object.assign({}, this.configuration.headers, context.headers);
+                  Object.keys(headers2).forEach(function(key) {
+                    return headers2[key] === void 0 ? delete headers2[key] : {};
+                  });
+                  initOverrideFn = typeof initOverrides === "function" ? initOverrides : function() {
+                    return __awaiter(_this, void 0, void 0, function() {
+                      return __generator(this, function(_a2) {
+                        return [2, initOverrides];
+                      });
+                    });
+                  };
+                  initParams = {
+                    method: context.method,
+                    headers: headers2,
+                    body: context.body,
+                    credentials: this.configuration.credentials
+                  };
+                  _a = [__assign({}, initParams)];
+                  return [4, initOverrideFn({
+                    init: initParams,
+                    context
+                  })];
+                case 1:
+                  overriddenInit = __assign.apply(void 0, _a.concat([_b.sent()]));
+                  if (isFormData2(overriddenInit.body) || overriddenInit.body instanceof URLSearchParams || isBlob2(overriddenInit.body)) {
+                    body2 = overriddenInit.body;
+                  } else if (this.isJsonMime(headers2["Content-Type"])) {
+                    body2 = JSON.stringify(overriddenInit.body);
+                  } else {
+                    body2 = overriddenInit.body;
+                  }
+                  init2 = __assign(__assign({}, overriddenInit), { body: body2 });
+                  return [2, { url: url2, init: init2 }];
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.clone = function() {
+          var constructor = this.constructor;
+          var next = new constructor(this.configuration);
+          next.middleware = this.middleware.slice();
+          return next;
+        };
+        BaseAPI2.jsonRegex = new RegExp("^(:?application/json|[^;/ 	]+/[^;/ 	]+[+]json)[ 	]*(:?;.*)?$", "i");
+        return BaseAPI2;
+      }()
+    );
+    exports2.BaseAPI = BaseAPI;
+    function isBlob2(value) {
+      return typeof Blob !== "undefined" && value instanceof Blob;
+    }
+    function isFormData2(value) {
+      return typeof FormData !== "undefined" && value instanceof FormData;
+    }
+    var ResponseError = (
+      /** @class */
+      function(_super) {
+        __extends(ResponseError2, _super);
+        function ResponseError2(response, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.response = response;
+          _this.name = "ResponseError";
+          return _this;
+        }
+        return ResponseError2;
+      }(Error)
+    );
+    exports2.ResponseError = ResponseError;
+    var FetchError = (
+      /** @class */
+      function(_super) {
+        __extends(FetchError2, _super);
+        function FetchError2(cause, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.cause = cause;
+          _this.name = "FetchError";
+          return _this;
+        }
+        return FetchError2;
+      }(Error)
+    );
+    exports2.FetchError = FetchError;
+    var RequiredError = (
+      /** @class */
+      function(_super) {
+        __extends(RequiredError2, _super);
+        function RequiredError2(field, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.field = field;
+          _this.name = "RequiredError";
+          return _this;
+        }
+        return RequiredError2;
+      }(Error)
+    );
+    exports2.RequiredError = RequiredError;
+    exports2.COLLECTION_FORMATS = {
+      csv: ",",
+      ssv: " ",
+      tsv: "	",
+      pipes: "|"
+    };
+    function exists(json, key) {
+      var value = json[key];
+      return value !== null && value !== void 0;
+    }
+    exports2.exists = exists;
+    function querystring(params, prefix) {
+      if (prefix === void 0) {
+        prefix = "";
+      }
+      return Object.keys(params).map(function(key) {
+        return querystringSingleKey(key, params[key], prefix);
+      }).filter(function(part) {
+        return part.length > 0;
+      }).join("&");
+    }
+    exports2.querystring = querystring;
+    function querystringSingleKey(key, value, keyPrefix) {
+      if (keyPrefix === void 0) {
+        keyPrefix = "";
+      }
+      var fullKey = keyPrefix + (keyPrefix.length ? "[".concat(key, "]") : key);
+      if (value instanceof Array) {
+        var multiValue = value.map(function(singleValue) {
+          return encodeURIComponent(String(singleValue));
+        }).join("&".concat(encodeURIComponent(fullKey), "="));
+        return "".concat(encodeURIComponent(fullKey), "=").concat(multiValue);
+      }
+      if (value instanceof Set) {
+        var valueAsArray = Array.from(value);
+        return querystringSingleKey(key, valueAsArray, keyPrefix);
+      }
+      if (value instanceof Date) {
+        return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(value.toISOString()));
+      }
+      if (value instanceof Object) {
+        return querystring(value, fullKey);
+      }
+      return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(String(value)));
+    }
+    function mapValues(data, fn) {
+      return Object.keys(data).reduce(function(acc, key) {
+        var _a;
+        return __assign(__assign({}, acc), (_a = {}, _a[key] = fn(data[key]), _a));
+      }, {});
+    }
+    exports2.mapValues = mapValues;
+    function canConsumeForm(consumes) {
+      for (var _i = 0, consumes_1 = consumes; _i < consumes_1.length; _i++) {
+        var consume = consumes_1[_i];
+        if ("multipart/form-data" === consume.contentType) {
+          return true;
+        }
+      }
+      return false;
+    }
+    exports2.canConsumeForm = canConsumeForm;
+    var JSONApiResponse = (
+      /** @class */
+      function() {
+        function JSONApiResponse2(raw, transformer) {
+          if (transformer === void 0) {
+            transformer = function(jsonValue) {
+              return jsonValue;
+            };
+          }
+          this.raw = raw;
+          this.transformer = transformer;
+        }
+        JSONApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  _a = this.transformer;
+                  return [4, this.raw.json()];
+                case 1:
+                  return [2, _a.apply(this, [_b.sent()])];
+              }
+            });
+          });
+        };
+        return JSONApiResponse2;
+      }()
+    );
+    exports2.JSONApiResponse = JSONApiResponse;
+    var VoidApiResponse = (
+      /** @class */
+      function() {
+        function VoidApiResponse2(raw) {
+          this.raw = raw;
+        }
+        VoidApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, void 0];
+            });
+          });
+        };
+        return VoidApiResponse2;
+      }()
+    );
+    exports2.VoidApiResponse = VoidApiResponse;
+    var BlobApiResponse = (
+      /** @class */
+      function() {
+        function BlobApiResponse2(raw) {
+          this.raw = raw;
+        }
+        BlobApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.blob()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return BlobApiResponse2;
+      }()
+    );
+    exports2.BlobApiResponse = BlobApiResponse;
+    var TextApiResponse = (
+      /** @class */
+      function() {
+        function TextApiResponse2(raw) {
+          this.raw = raw;
+        }
+        TextApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.text()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return TextApiResponse2;
+      }()
+    );
+    exports2.TextApiResponse = TextApiResponse;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/DeleteRequest.js
+var require_DeleteRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/DeleteRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.DeleteRequestToJSON = exports2.DeleteRequestFromJSONTyped = exports2.DeleteRequestFromJSON = exports2.instanceOfDeleteRequest = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfDeleteRequest(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfDeleteRequest = instanceOfDeleteRequest;
+    function DeleteRequestFromJSON(json) {
+      return DeleteRequestFromJSONTyped(json, false);
+    }
+    exports2.DeleteRequestFromJSON = DeleteRequestFromJSON;
+    function DeleteRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "ids": !(0, runtime_1.exists)(json, "ids") ? void 0 : json["ids"],
+        "deleteAll": !(0, runtime_1.exists)(json, "deleteAll") ? void 0 : json["deleteAll"],
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "filter": !(0, runtime_1.exists)(json, "filter") ? void 0 : json["filter"]
+      };
+    }
+    exports2.DeleteRequestFromJSONTyped = DeleteRequestFromJSONTyped;
+    function DeleteRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "ids": value.ids,
+        "deleteAll": value.deleteAll,
+        "namespace": value.namespace,
+        "filter": value.filter
+      };
+    }
+    exports2.DeleteRequestToJSON = DeleteRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/DescribeIndexStatsRequest.js
+var require_DescribeIndexStatsRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/DescribeIndexStatsRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.DescribeIndexStatsRequestToJSON = exports2.DescribeIndexStatsRequestFromJSONTyped = exports2.DescribeIndexStatsRequestFromJSON = exports2.instanceOfDescribeIndexStatsRequest = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfDescribeIndexStatsRequest(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfDescribeIndexStatsRequest = instanceOfDescribeIndexStatsRequest;
+    function DescribeIndexStatsRequestFromJSON(json) {
+      return DescribeIndexStatsRequestFromJSONTyped(json, false);
+    }
+    exports2.DescribeIndexStatsRequestFromJSON = DescribeIndexStatsRequestFromJSON;
+    function DescribeIndexStatsRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "filter": !(0, runtime_1.exists)(json, "filter") ? void 0 : json["filter"]
+      };
+    }
+    exports2.DescribeIndexStatsRequestFromJSONTyped = DescribeIndexStatsRequestFromJSONTyped;
+    function DescribeIndexStatsRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "filter": value.filter
+      };
+    }
+    exports2.DescribeIndexStatsRequestToJSON = DescribeIndexStatsRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Usage.js
+var require_Usage = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Usage.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UsageToJSON = exports2.UsageFromJSONTyped = exports2.UsageFromJSON = exports2.instanceOfUsage = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfUsage(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfUsage = instanceOfUsage;
+    function UsageFromJSON(json) {
+      return UsageFromJSONTyped(json, false);
+    }
+    exports2.UsageFromJSON = UsageFromJSON;
+    function UsageFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "readUnits": !(0, runtime_1.exists)(json, "readUnits") ? void 0 : json["readUnits"]
+      };
+    }
+    exports2.UsageFromJSONTyped = UsageFromJSONTyped;
+    function UsageToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "readUnits": value.readUnits
+      };
+    }
+    exports2.UsageToJSON = UsageToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/SparseValues.js
+var require_SparseValues = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/SparseValues.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.SparseValuesToJSON = exports2.SparseValuesFromJSONTyped = exports2.SparseValuesFromJSON = exports2.instanceOfSparseValues = void 0;
+    function instanceOfSparseValues(value) {
+      var isInstance = true;
+      isInstance = isInstance && "indices" in value;
+      isInstance = isInstance && "values" in value;
+      return isInstance;
+    }
+    exports2.instanceOfSparseValues = instanceOfSparseValues;
+    function SparseValuesFromJSON(json) {
+      return SparseValuesFromJSONTyped(json, false);
+    }
+    exports2.SparseValuesFromJSON = SparseValuesFromJSON;
+    function SparseValuesFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "indices": json["indices"],
+        "values": json["values"]
+      };
+    }
+    exports2.SparseValuesFromJSONTyped = SparseValuesFromJSONTyped;
+    function SparseValuesToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "indices": value.indices,
+        "values": value.values
+      };
+    }
+    exports2.SparseValuesToJSON = SparseValuesToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Vector.js
+var require_Vector = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Vector.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.VectorToJSON = exports2.VectorFromJSONTyped = exports2.VectorFromJSON = exports2.instanceOfVector = void 0;
+    var runtime_1 = require_runtime2();
+    var SparseValues_1 = require_SparseValues();
+    function instanceOfVector(value) {
+      var isInstance = true;
+      isInstance = isInstance && "id" in value;
+      isInstance = isInstance && "values" in value;
+      return isInstance;
+    }
+    exports2.instanceOfVector = instanceOfVector;
+    function VectorFromJSON(json) {
+      return VectorFromJSONTyped(json, false);
+    }
+    exports2.VectorFromJSON = VectorFromJSON;
+    function VectorFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": json["id"],
+        "values": json["values"],
+        "sparseValues": !(0, runtime_1.exists)(json, "sparseValues") ? void 0 : (0, SparseValues_1.SparseValuesFromJSON)(json["sparseValues"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : json["metadata"]
+      };
+    }
+    exports2.VectorFromJSONTyped = VectorFromJSONTyped;
+    function VectorToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id,
+        "values": value.values,
+        "sparseValues": (0, SparseValues_1.SparseValuesToJSON)(value.sparseValues),
+        "metadata": value.metadata
+      };
+    }
+    exports2.VectorToJSON = VectorToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/FetchResponse.js
+var require_FetchResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/FetchResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.FetchResponseToJSON = exports2.FetchResponseFromJSONTyped = exports2.FetchResponseFromJSON = exports2.instanceOfFetchResponse = void 0;
+    var runtime_1 = require_runtime2();
+    var Usage_1 = require_Usage();
+    var Vector_1 = require_Vector();
+    function instanceOfFetchResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfFetchResponse = instanceOfFetchResponse;
+    function FetchResponseFromJSON(json) {
+      return FetchResponseFromJSONTyped(json, false);
+    }
+    exports2.FetchResponseFromJSON = FetchResponseFromJSON;
+    function FetchResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "vectors": !(0, runtime_1.exists)(json, "vectors") ? void 0 : (0, runtime_1.mapValues)(json["vectors"], Vector_1.VectorFromJSON),
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "usage": !(0, runtime_1.exists)(json, "usage") ? void 0 : (0, Usage_1.UsageFromJSON)(json["usage"])
+      };
+    }
+    exports2.FetchResponseFromJSONTyped = FetchResponseFromJSONTyped;
+    function FetchResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "vectors": value.vectors === void 0 ? void 0 : (0, runtime_1.mapValues)(value.vectors, Vector_1.VectorToJSON),
+        "namespace": value.namespace,
+        "usage": (0, Usage_1.UsageToJSON)(value.usage)
+      };
+    }
+    exports2.FetchResponseToJSON = FetchResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ImportErrorMode.js
+var require_ImportErrorMode = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ImportErrorMode.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ImportErrorModeToJSON = exports2.ImportErrorModeFromJSONTyped = exports2.ImportErrorModeFromJSON = exports2.instanceOfImportErrorMode = exports2.ImportErrorModeOnErrorEnum = void 0;
+    var runtime_1 = require_runtime2();
+    exports2.ImportErrorModeOnErrorEnum = {
+      Abort: "abort",
+      Continue: "continue"
+    };
+    function instanceOfImportErrorMode(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfImportErrorMode = instanceOfImportErrorMode;
+    function ImportErrorModeFromJSON(json) {
+      return ImportErrorModeFromJSONTyped(json, false);
+    }
+    exports2.ImportErrorModeFromJSON = ImportErrorModeFromJSON;
+    function ImportErrorModeFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "onError": !(0, runtime_1.exists)(json, "onError") ? void 0 : json["onError"]
+      };
+    }
+    exports2.ImportErrorModeFromJSONTyped = ImportErrorModeFromJSONTyped;
+    function ImportErrorModeToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "onError": value.onError
+      };
+    }
+    exports2.ImportErrorModeToJSON = ImportErrorModeToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ImportModel.js
+var require_ImportModel = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ImportModel.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ImportModelToJSON = exports2.ImportModelFromJSONTyped = exports2.ImportModelFromJSON = exports2.instanceOfImportModel = exports2.ImportModelStatusEnum = void 0;
+    var runtime_1 = require_runtime2();
+    exports2.ImportModelStatusEnum = {
+      Pending: "Pending",
+      InProgress: "InProgress",
+      Failed: "Failed",
+      Completed: "Completed",
+      Cancelled: "Cancelled"
+    };
+    function instanceOfImportModel(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfImportModel = instanceOfImportModel;
+    function ImportModelFromJSON(json) {
+      return ImportModelFromJSONTyped(json, false);
+    }
+    exports2.ImportModelFromJSON = ImportModelFromJSON;
+    function ImportModelFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"],
+        "uri": !(0, runtime_1.exists)(json, "uri") ? void 0 : json["uri"],
+        "status": !(0, runtime_1.exists)(json, "status") ? void 0 : json["status"],
+        "createdAt": !(0, runtime_1.exists)(json, "createdAt") ? void 0 : new Date(json["createdAt"]),
+        "finishedAt": !(0, runtime_1.exists)(json, "finishedAt") ? void 0 : new Date(json["finishedAt"]),
+        "percentComplete": !(0, runtime_1.exists)(json, "percentComplete") ? void 0 : json["percentComplete"],
+        "recordsImported": !(0, runtime_1.exists)(json, "recordsImported") ? void 0 : json["recordsImported"],
+        "error": !(0, runtime_1.exists)(json, "error") ? void 0 : json["error"]
+      };
+    }
+    exports2.ImportModelFromJSONTyped = ImportModelFromJSONTyped;
+    function ImportModelToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id,
+        "uri": value.uri,
+        "status": value.status,
+        "createdAt": value.createdAt === void 0 ? void 0 : value.createdAt.toISOString(),
+        "finishedAt": value.finishedAt === void 0 ? void 0 : value.finishedAt.toISOString(),
+        "percentComplete": value.percentComplete,
+        "recordsImported": value.recordsImported,
+        "error": value.error
+      };
+    }
+    exports2.ImportModelToJSON = ImportModelToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/NamespaceSummary.js
+var require_NamespaceSummary = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/NamespaceSummary.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.NamespaceSummaryToJSON = exports2.NamespaceSummaryFromJSONTyped = exports2.NamespaceSummaryFromJSON = exports2.instanceOfNamespaceSummary = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfNamespaceSummary(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfNamespaceSummary = instanceOfNamespaceSummary;
+    function NamespaceSummaryFromJSON(json) {
+      return NamespaceSummaryFromJSONTyped(json, false);
+    }
+    exports2.NamespaceSummaryFromJSON = NamespaceSummaryFromJSON;
+    function NamespaceSummaryFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "vectorCount": !(0, runtime_1.exists)(json, "vectorCount") ? void 0 : json["vectorCount"]
+      };
+    }
+    exports2.NamespaceSummaryFromJSONTyped = NamespaceSummaryFromJSONTyped;
+    function NamespaceSummaryToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "vectorCount": value.vectorCount
+      };
+    }
+    exports2.NamespaceSummaryToJSON = NamespaceSummaryToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/IndexDescription.js
+var require_IndexDescription = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/IndexDescription.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.IndexDescriptionToJSON = exports2.IndexDescriptionFromJSONTyped = exports2.IndexDescriptionFromJSON = exports2.instanceOfIndexDescription = void 0;
+    var runtime_1 = require_runtime2();
+    var NamespaceSummary_1 = require_NamespaceSummary();
+    function instanceOfIndexDescription(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfIndexDescription = instanceOfIndexDescription;
+    function IndexDescriptionFromJSON(json) {
+      return IndexDescriptionFromJSONTyped(json, false);
+    }
+    exports2.IndexDescriptionFromJSON = IndexDescriptionFromJSON;
+    function IndexDescriptionFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "namespaces": !(0, runtime_1.exists)(json, "namespaces") ? void 0 : (0, runtime_1.mapValues)(json["namespaces"], NamespaceSummary_1.NamespaceSummaryFromJSON),
+        "dimension": !(0, runtime_1.exists)(json, "dimension") ? void 0 : json["dimension"],
+        "indexFullness": !(0, runtime_1.exists)(json, "indexFullness") ? void 0 : json["indexFullness"],
+        "totalVectorCount": !(0, runtime_1.exists)(json, "totalVectorCount") ? void 0 : json["totalVectorCount"]
+      };
+    }
+    exports2.IndexDescriptionFromJSONTyped = IndexDescriptionFromJSONTyped;
+    function IndexDescriptionToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "namespaces": value.namespaces === void 0 ? void 0 : (0, runtime_1.mapValues)(value.namespaces, NamespaceSummary_1.NamespaceSummaryToJSON),
+        "dimension": value.dimension,
+        "indexFullness": value.indexFullness,
+        "totalVectorCount": value.totalVectorCount
+      };
+    }
+    exports2.IndexDescriptionToJSON = IndexDescriptionToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Pagination.js
+var require_Pagination = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/Pagination.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.PaginationToJSON = exports2.PaginationFromJSONTyped = exports2.PaginationFromJSON = exports2.instanceOfPagination = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfPagination(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfPagination = instanceOfPagination;
+    function PaginationFromJSON(json) {
+      return PaginationFromJSONTyped(json, false);
+    }
+    exports2.PaginationFromJSON = PaginationFromJSON;
+    function PaginationFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "next": !(0, runtime_1.exists)(json, "next") ? void 0 : json["next"]
+      };
+    }
+    exports2.PaginationFromJSONTyped = PaginationFromJSONTyped;
+    function PaginationToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "next": value.next
+      };
+    }
+    exports2.PaginationToJSON = PaginationToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListImportsResponse.js
+var require_ListImportsResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListImportsResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ListImportsResponseToJSON = exports2.ListImportsResponseFromJSONTyped = exports2.ListImportsResponseFromJSON = exports2.instanceOfListImportsResponse = void 0;
+    var runtime_1 = require_runtime2();
+    var ImportModel_1 = require_ImportModel();
+    var Pagination_1 = require_Pagination();
+    function instanceOfListImportsResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfListImportsResponse = instanceOfListImportsResponse;
+    function ListImportsResponseFromJSON(json) {
+      return ListImportsResponseFromJSONTyped(json, false);
+    }
+    exports2.ListImportsResponseFromJSON = ListImportsResponseFromJSON;
+    function ListImportsResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "data": !(0, runtime_1.exists)(json, "data") ? void 0 : json["data"].map(ImportModel_1.ImportModelFromJSON),
+        "pagination": !(0, runtime_1.exists)(json, "pagination") ? void 0 : (0, Pagination_1.PaginationFromJSON)(json["pagination"])
+      };
+    }
+    exports2.ListImportsResponseFromJSONTyped = ListImportsResponseFromJSONTyped;
+    function ListImportsResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "data": value.data === void 0 ? void 0 : value.data.map(ImportModel_1.ImportModelToJSON),
+        "pagination": (0, Pagination_1.PaginationToJSON)(value.pagination)
+      };
+    }
+    exports2.ListImportsResponseToJSON = ListImportsResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListItem.js
+var require_ListItem = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListItem.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ListItemToJSON = exports2.ListItemFromJSONTyped = exports2.ListItemFromJSON = exports2.instanceOfListItem = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfListItem(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfListItem = instanceOfListItem;
+    function ListItemFromJSON(json) {
+      return ListItemFromJSONTyped(json, false);
+    }
+    exports2.ListItemFromJSON = ListItemFromJSON;
+    function ListItemFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
+      };
+    }
+    exports2.ListItemFromJSONTyped = ListItemFromJSONTyped;
+    function ListItemToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id
+      };
+    }
+    exports2.ListItemToJSON = ListItemToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListResponse.js
+var require_ListResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ListResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ListResponseToJSON = exports2.ListResponseFromJSONTyped = exports2.ListResponseFromJSON = exports2.instanceOfListResponse = void 0;
+    var runtime_1 = require_runtime2();
+    var ListItem_1 = require_ListItem();
+    var Pagination_1 = require_Pagination();
+    var Usage_1 = require_Usage();
+    function instanceOfListResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfListResponse = instanceOfListResponse;
+    function ListResponseFromJSON(json) {
+      return ListResponseFromJSONTyped(json, false);
+    }
+    exports2.ListResponseFromJSON = ListResponseFromJSON;
+    function ListResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "vectors": !(0, runtime_1.exists)(json, "vectors") ? void 0 : json["vectors"].map(ListItem_1.ListItemFromJSON),
+        "pagination": !(0, runtime_1.exists)(json, "pagination") ? void 0 : (0, Pagination_1.PaginationFromJSON)(json["pagination"]),
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "usage": !(0, runtime_1.exists)(json, "usage") ? void 0 : (0, Usage_1.UsageFromJSON)(json["usage"])
+      };
+    }
+    exports2.ListResponseFromJSONTyped = ListResponseFromJSONTyped;
+    function ListResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "vectors": value.vectors === void 0 ? void 0 : value.vectors.map(ListItem_1.ListItemToJSON),
+        "pagination": (0, Pagination_1.PaginationToJSON)(value.pagination),
+        "namespace": value.namespace,
+        "usage": (0, Usage_1.UsageToJSON)(value.usage)
+      };
+    }
+    exports2.ListResponseToJSON = ListResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ProtobufAny.js
+var require_ProtobufAny = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ProtobufAny.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ProtobufAnyToJSON = exports2.ProtobufAnyFromJSONTyped = exports2.ProtobufAnyFromJSON = exports2.instanceOfProtobufAny = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfProtobufAny(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfProtobufAny = instanceOfProtobufAny;
+    function ProtobufAnyFromJSON(json) {
+      return ProtobufAnyFromJSONTyped(json, false);
+    }
+    exports2.ProtobufAnyFromJSON = ProtobufAnyFromJSON;
+    function ProtobufAnyFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "typeUrl": !(0, runtime_1.exists)(json, "typeUrl") ? void 0 : json["typeUrl"],
+        "value": !(0, runtime_1.exists)(json, "value") ? void 0 : json["value"]
+      };
+    }
+    exports2.ProtobufAnyFromJSONTyped = ProtobufAnyFromJSONTyped;
+    function ProtobufAnyToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "typeUrl": value.typeUrl,
+        "value": value.value
+      };
+    }
+    exports2.ProtobufAnyToJSON = ProtobufAnyToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ProtobufNullValue.js
+var require_ProtobufNullValue = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ProtobufNullValue.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ProtobufNullValueToJSON = exports2.ProtobufNullValueFromJSONTyped = exports2.ProtobufNullValueFromJSON = exports2.ProtobufNullValue = void 0;
+    exports2.ProtobufNullValue = {
+      NullValue: "NULL_VALUE"
+    };
+    function ProtobufNullValueFromJSON(json) {
+      return ProtobufNullValueFromJSONTyped(json, false);
+    }
+    exports2.ProtobufNullValueFromJSON = ProtobufNullValueFromJSON;
+    function ProtobufNullValueFromJSONTyped(json, ignoreDiscriminator) {
+      return json;
+    }
+    exports2.ProtobufNullValueFromJSONTyped = ProtobufNullValueFromJSONTyped;
+    function ProtobufNullValueToJSON(value) {
+      return value;
+    }
+    exports2.ProtobufNullValueToJSON = ProtobufNullValueToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryVector.js
+var require_QueryVector = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryVector.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.QueryVectorToJSON = exports2.QueryVectorFromJSONTyped = exports2.QueryVectorFromJSON = exports2.instanceOfQueryVector = void 0;
+    var runtime_1 = require_runtime2();
+    var SparseValues_1 = require_SparseValues();
+    function instanceOfQueryVector(value) {
+      var isInstance = true;
+      isInstance = isInstance && "values" in value;
+      return isInstance;
+    }
+    exports2.instanceOfQueryVector = instanceOfQueryVector;
+    function QueryVectorFromJSON(json) {
+      return QueryVectorFromJSONTyped(json, false);
+    }
+    exports2.QueryVectorFromJSON = QueryVectorFromJSON;
+    function QueryVectorFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "values": json["values"],
+        "sparseValues": !(0, runtime_1.exists)(json, "sparseValues") ? void 0 : (0, SparseValues_1.SparseValuesFromJSON)(json["sparseValues"]),
+        "topK": !(0, runtime_1.exists)(json, "topK") ? void 0 : json["topK"],
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "filter": !(0, runtime_1.exists)(json, "filter") ? void 0 : json["filter"]
+      };
+    }
+    exports2.QueryVectorFromJSONTyped = QueryVectorFromJSONTyped;
+    function QueryVectorToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "values": value.values,
+        "sparseValues": (0, SparseValues_1.SparseValuesToJSON)(value.sparseValues),
+        "topK": value.topK,
+        "namespace": value.namespace,
+        "filter": value.filter
+      };
+    }
+    exports2.QueryVectorToJSON = QueryVectorToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryRequest.js
+var require_QueryRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.QueryRequestToJSON = exports2.QueryRequestFromJSONTyped = exports2.QueryRequestFromJSON = exports2.instanceOfQueryRequest = void 0;
+    var runtime_1 = require_runtime2();
+    var QueryVector_1 = require_QueryVector();
+    var SparseValues_1 = require_SparseValues();
+    function instanceOfQueryRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "topK" in value;
+      return isInstance;
+    }
+    exports2.instanceOfQueryRequest = instanceOfQueryRequest;
+    function QueryRequestFromJSON(json) {
+      return QueryRequestFromJSONTyped(json, false);
+    }
+    exports2.QueryRequestFromJSON = QueryRequestFromJSON;
+    function QueryRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "topK": json["topK"],
+        "filter": !(0, runtime_1.exists)(json, "filter") ? void 0 : json["filter"],
+        "includeValues": !(0, runtime_1.exists)(json, "includeValues") ? void 0 : json["includeValues"],
+        "includeMetadata": !(0, runtime_1.exists)(json, "includeMetadata") ? void 0 : json["includeMetadata"],
+        "queries": !(0, runtime_1.exists)(json, "queries") ? void 0 : json["queries"].map(QueryVector_1.QueryVectorFromJSON),
+        "vector": !(0, runtime_1.exists)(json, "vector") ? void 0 : json["vector"],
+        "sparseVector": !(0, runtime_1.exists)(json, "sparseVector") ? void 0 : (0, SparseValues_1.SparseValuesFromJSON)(json["sparseVector"]),
+        "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
+      };
+    }
+    exports2.QueryRequestFromJSONTyped = QueryRequestFromJSONTyped;
+    function QueryRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "namespace": value.namespace,
+        "topK": value.topK,
+        "filter": value.filter,
+        "includeValues": value.includeValues,
+        "includeMetadata": value.includeMetadata,
+        "queries": value.queries === void 0 ? void 0 : value.queries.map(QueryVector_1.QueryVectorToJSON),
+        "vector": value.vector,
+        "sparseVector": (0, SparseValues_1.SparseValuesToJSON)(value.sparseVector),
+        "id": value.id
+      };
+    }
+    exports2.QueryRequestToJSON = QueryRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ScoredVector.js
+var require_ScoredVector = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/ScoredVector.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ScoredVectorToJSON = exports2.ScoredVectorFromJSONTyped = exports2.ScoredVectorFromJSON = exports2.instanceOfScoredVector = void 0;
+    var runtime_1 = require_runtime2();
+    var SparseValues_1 = require_SparseValues();
+    function instanceOfScoredVector(value) {
+      var isInstance = true;
+      isInstance = isInstance && "id" in value;
+      return isInstance;
+    }
+    exports2.instanceOfScoredVector = instanceOfScoredVector;
+    function ScoredVectorFromJSON(json) {
+      return ScoredVectorFromJSONTyped(json, false);
+    }
+    exports2.ScoredVectorFromJSON = ScoredVectorFromJSON;
+    function ScoredVectorFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": json["id"],
+        "score": !(0, runtime_1.exists)(json, "score") ? void 0 : json["score"],
+        "values": !(0, runtime_1.exists)(json, "values") ? void 0 : json["values"],
+        "sparseValues": !(0, runtime_1.exists)(json, "sparseValues") ? void 0 : (0, SparseValues_1.SparseValuesFromJSON)(json["sparseValues"]),
+        "metadata": !(0, runtime_1.exists)(json, "metadata") ? void 0 : json["metadata"]
+      };
+    }
+    exports2.ScoredVectorFromJSONTyped = ScoredVectorFromJSONTyped;
+    function ScoredVectorToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id,
+        "score": value.score,
+        "values": value.values,
+        "sparseValues": (0, SparseValues_1.SparseValuesToJSON)(value.sparseValues),
+        "metadata": value.metadata
+      };
+    }
+    exports2.ScoredVectorToJSON = ScoredVectorToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/SingleQueryResults.js
+var require_SingleQueryResults = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/SingleQueryResults.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.SingleQueryResultsToJSON = exports2.SingleQueryResultsFromJSONTyped = exports2.SingleQueryResultsFromJSON = exports2.instanceOfSingleQueryResults = void 0;
+    var runtime_1 = require_runtime2();
+    var ScoredVector_1 = require_ScoredVector();
+    function instanceOfSingleQueryResults(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfSingleQueryResults = instanceOfSingleQueryResults;
+    function SingleQueryResultsFromJSON(json) {
+      return SingleQueryResultsFromJSONTyped(json, false);
+    }
+    exports2.SingleQueryResultsFromJSON = SingleQueryResultsFromJSON;
+    function SingleQueryResultsFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "matches": !(0, runtime_1.exists)(json, "matches") ? void 0 : json["matches"].map(ScoredVector_1.ScoredVectorFromJSON),
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"]
+      };
+    }
+    exports2.SingleQueryResultsFromJSONTyped = SingleQueryResultsFromJSONTyped;
+    function SingleQueryResultsToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "matches": value.matches === void 0 ? void 0 : value.matches.map(ScoredVector_1.ScoredVectorToJSON),
+        "namespace": value.namespace
+      };
+    }
+    exports2.SingleQueryResultsToJSON = SingleQueryResultsToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryResponse.js
+var require_QueryResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/QueryResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.QueryResponseToJSON = exports2.QueryResponseFromJSONTyped = exports2.QueryResponseFromJSON = exports2.instanceOfQueryResponse = void 0;
+    var runtime_1 = require_runtime2();
+    var ScoredVector_1 = require_ScoredVector();
+    var SingleQueryResults_1 = require_SingleQueryResults();
+    var Usage_1 = require_Usage();
+    function instanceOfQueryResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfQueryResponse = instanceOfQueryResponse;
+    function QueryResponseFromJSON(json) {
+      return QueryResponseFromJSONTyped(json, false);
+    }
+    exports2.QueryResponseFromJSON = QueryResponseFromJSON;
+    function QueryResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "results": !(0, runtime_1.exists)(json, "results") ? void 0 : json["results"].map(SingleQueryResults_1.SingleQueryResultsFromJSON),
+        "matches": !(0, runtime_1.exists)(json, "matches") ? void 0 : json["matches"].map(ScoredVector_1.ScoredVectorFromJSON),
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"],
+        "usage": !(0, runtime_1.exists)(json, "usage") ? void 0 : (0, Usage_1.UsageFromJSON)(json["usage"])
+      };
+    }
+    exports2.QueryResponseFromJSONTyped = QueryResponseFromJSONTyped;
+    function QueryResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "results": value.results === void 0 ? void 0 : value.results.map(SingleQueryResults_1.SingleQueryResultsToJSON),
+        "matches": value.matches === void 0 ? void 0 : value.matches.map(ScoredVector_1.ScoredVectorToJSON),
+        "namespace": value.namespace,
+        "usage": (0, Usage_1.UsageToJSON)(value.usage)
+      };
+    }
+    exports2.QueryResponseToJSON = QueryResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/RpcStatus.js
+var require_RpcStatus = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/RpcStatus.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RpcStatusToJSON = exports2.RpcStatusFromJSONTyped = exports2.RpcStatusFromJSON = exports2.instanceOfRpcStatus = void 0;
+    var runtime_1 = require_runtime2();
+    var ProtobufAny_1 = require_ProtobufAny();
+    function instanceOfRpcStatus(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfRpcStatus = instanceOfRpcStatus;
+    function RpcStatusFromJSON(json) {
+      return RpcStatusFromJSONTyped(json, false);
+    }
+    exports2.RpcStatusFromJSON = RpcStatusFromJSON;
+    function RpcStatusFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "code": !(0, runtime_1.exists)(json, "code") ? void 0 : json["code"],
+        "message": !(0, runtime_1.exists)(json, "message") ? void 0 : json["message"],
+        "details": !(0, runtime_1.exists)(json, "details") ? void 0 : json["details"].map(ProtobufAny_1.ProtobufAnyFromJSON)
+      };
+    }
+    exports2.RpcStatusFromJSONTyped = RpcStatusFromJSONTyped;
+    function RpcStatusToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "code": value.code,
+        "message": value.message,
+        "details": value.details === void 0 ? void 0 : value.details.map(ProtobufAny_1.ProtobufAnyToJSON)
+      };
+    }
+    exports2.RpcStatusToJSON = RpcStatusToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/StartImportRequest.js
+var require_StartImportRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/StartImportRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.StartImportRequestToJSON = exports2.StartImportRequestFromJSONTyped = exports2.StartImportRequestFromJSON = exports2.instanceOfStartImportRequest = void 0;
+    var runtime_1 = require_runtime2();
+    var ImportErrorMode_1 = require_ImportErrorMode();
+    function instanceOfStartImportRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "uri" in value;
+      return isInstance;
+    }
+    exports2.instanceOfStartImportRequest = instanceOfStartImportRequest;
+    function StartImportRequestFromJSON(json) {
+      return StartImportRequestFromJSONTyped(json, false);
+    }
+    exports2.StartImportRequestFromJSON = StartImportRequestFromJSON;
+    function StartImportRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "integrationId": !(0, runtime_1.exists)(json, "integrationId") ? void 0 : json["integrationId"],
+        "uri": json["uri"],
+        "errorMode": !(0, runtime_1.exists)(json, "errorMode") ? void 0 : (0, ImportErrorMode_1.ImportErrorModeFromJSON)(json["errorMode"])
+      };
+    }
+    exports2.StartImportRequestFromJSONTyped = StartImportRequestFromJSONTyped;
+    function StartImportRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "integrationId": value.integrationId,
+        "uri": value.uri,
+        "errorMode": (0, ImportErrorMode_1.ImportErrorModeToJSON)(value.errorMode)
+      };
+    }
+    exports2.StartImportRequestToJSON = StartImportRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/StartImportResponse.js
+var require_StartImportResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/StartImportResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.StartImportResponseToJSON = exports2.StartImportResponseFromJSONTyped = exports2.StartImportResponseFromJSON = exports2.instanceOfStartImportResponse = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfStartImportResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfStartImportResponse = instanceOfStartImportResponse;
+    function StartImportResponseFromJSON(json) {
+      return StartImportResponseFromJSONTyped(json, false);
+    }
+    exports2.StartImportResponseFromJSON = StartImportResponseFromJSON;
+    function StartImportResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": !(0, runtime_1.exists)(json, "id") ? void 0 : json["id"]
+      };
+    }
+    exports2.StartImportResponseFromJSONTyped = StartImportResponseFromJSONTyped;
+    function StartImportResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id
+      };
+    }
+    exports2.StartImportResponseToJSON = StartImportResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpdateRequest.js
+var require_UpdateRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpdateRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UpdateRequestToJSON = exports2.UpdateRequestFromJSONTyped = exports2.UpdateRequestFromJSON = exports2.instanceOfUpdateRequest = void 0;
+    var runtime_1 = require_runtime2();
+    var SparseValues_1 = require_SparseValues();
+    function instanceOfUpdateRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "id" in value;
+      return isInstance;
+    }
+    exports2.instanceOfUpdateRequest = instanceOfUpdateRequest;
+    function UpdateRequestFromJSON(json) {
+      return UpdateRequestFromJSONTyped(json, false);
+    }
+    exports2.UpdateRequestFromJSON = UpdateRequestFromJSON;
+    function UpdateRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "id": json["id"],
+        "values": !(0, runtime_1.exists)(json, "values") ? void 0 : json["values"],
+        "sparseValues": !(0, runtime_1.exists)(json, "sparseValues") ? void 0 : (0, SparseValues_1.SparseValuesFromJSON)(json["sparseValues"]),
+        "setMetadata": !(0, runtime_1.exists)(json, "setMetadata") ? void 0 : json["setMetadata"],
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"]
+      };
+    }
+    exports2.UpdateRequestFromJSONTyped = UpdateRequestFromJSONTyped;
+    function UpdateRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "id": value.id,
+        "values": value.values,
+        "sparseValues": (0, SparseValues_1.SparseValuesToJSON)(value.sparseValues),
+        "setMetadata": value.setMetadata,
+        "namespace": value.namespace
+      };
+    }
+    exports2.UpdateRequestToJSON = UpdateRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpsertRequest.js
+var require_UpsertRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpsertRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UpsertRequestToJSON = exports2.UpsertRequestFromJSONTyped = exports2.UpsertRequestFromJSON = exports2.instanceOfUpsertRequest = void 0;
+    var runtime_1 = require_runtime2();
+    var Vector_1 = require_Vector();
+    function instanceOfUpsertRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "vectors" in value;
+      return isInstance;
+    }
+    exports2.instanceOfUpsertRequest = instanceOfUpsertRequest;
+    function UpsertRequestFromJSON(json) {
+      return UpsertRequestFromJSONTyped(json, false);
+    }
+    exports2.UpsertRequestFromJSON = UpsertRequestFromJSON;
+    function UpsertRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "vectors": json["vectors"].map(Vector_1.VectorFromJSON),
+        "namespace": !(0, runtime_1.exists)(json, "namespace") ? void 0 : json["namespace"]
+      };
+    }
+    exports2.UpsertRequestFromJSONTyped = UpsertRequestFromJSONTyped;
+    function UpsertRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "vectors": value.vectors.map(Vector_1.VectorToJSON),
+        "namespace": value.namespace
+      };
+    }
+    exports2.UpsertRequestToJSON = UpsertRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpsertResponse.js
+var require_UpsertResponse = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/UpsertResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UpsertResponseToJSON = exports2.UpsertResponseFromJSONTyped = exports2.UpsertResponseFromJSON = exports2.instanceOfUpsertResponse = void 0;
+    var runtime_1 = require_runtime2();
+    function instanceOfUpsertResponse(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfUpsertResponse = instanceOfUpsertResponse;
+    function UpsertResponseFromJSON(json) {
+      return UpsertResponseFromJSONTyped(json, false);
+    }
+    exports2.UpsertResponseFromJSON = UpsertResponseFromJSON;
+    function UpsertResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "upsertedCount": !(0, runtime_1.exists)(json, "upsertedCount") ? void 0 : json["upsertedCount"]
+      };
+    }
+    exports2.UpsertResponseFromJSONTyped = UpsertResponseFromJSONTyped;
+    function UpsertResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "upsertedCount": value.upsertedCount
+      };
+    }
+    exports2.UpsertResponseToJSON = UpsertResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/index.js
+var require_models2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/models/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_DeleteRequest(), exports2);
+    __exportStar(require_DescribeIndexStatsRequest(), exports2);
+    __exportStar(require_FetchResponse(), exports2);
+    __exportStar(require_ImportErrorMode(), exports2);
+    __exportStar(require_ImportModel(), exports2);
+    __exportStar(require_IndexDescription(), exports2);
+    __exportStar(require_ListImportsResponse(), exports2);
+    __exportStar(require_ListItem(), exports2);
+    __exportStar(require_ListResponse(), exports2);
+    __exportStar(require_NamespaceSummary(), exports2);
+    __exportStar(require_Pagination(), exports2);
+    __exportStar(require_ProtobufAny(), exports2);
+    __exportStar(require_ProtobufNullValue(), exports2);
+    __exportStar(require_QueryRequest(), exports2);
+    __exportStar(require_QueryResponse(), exports2);
+    __exportStar(require_QueryVector(), exports2);
+    __exportStar(require_RpcStatus(), exports2);
+    __exportStar(require_ScoredVector(), exports2);
+    __exportStar(require_SingleQueryResults(), exports2);
+    __exportStar(require_SparseValues(), exports2);
+    __exportStar(require_StartImportRequest(), exports2);
+    __exportStar(require_StartImportResponse(), exports2);
+    __exportStar(require_UpdateRequest(), exports2);
+    __exportStar(require_UpsertRequest(), exports2);
+    __exportStar(require_UpsertResponse(), exports2);
+    __exportStar(require_Usage(), exports2);
+    __exportStar(require_Vector(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/BulkOperationsApi.js
+var require_BulkOperationsApi = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/BulkOperationsApi.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.BulkOperationsApi = void 0;
+    var runtime = __importStar(require_runtime2());
+    var index_1 = require_models2();
+    var BulkOperationsApi = (
+      /** @class */
+      function(_super) {
+        __extends(BulkOperationsApi2, _super);
+        function BulkOperationsApi2() {
+          return _super !== null && _super.apply(this, arguments) || this;
+        }
+        BulkOperationsApi2.prototype.cancelBulkImportRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.id === null || requestParameters.id === void 0) {
+                    throw new runtime.RequiredError("id", "Required parameter requestParameters.id was null or undefined when calling cancelBulkImport.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/bulk/imports/{id}".replace("{".concat("id", "}"), encodeURIComponent(String(requestParameters.id))),
+                    method: "DELETE",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response)];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.cancelBulkImport = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.cancelBulkImportRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.describeBulkImportRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.id === null || requestParameters.id === void 0) {
+                    throw new runtime.RequiredError("id", "Required parameter requestParameters.id was null or undefined when calling describeBulkImport.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/bulk/imports/{id}".replace("{".concat("id", "}"), encodeURIComponent(String(requestParameters.id))),
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.ImportModelFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.describeBulkImport = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.describeBulkImportRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.listBulkImportsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  if (requestParameters.limit !== void 0) {
+                    queryParameters["limit"] = requestParameters.limit;
+                  }
+                  if (requestParameters.paginationToken !== void 0) {
+                    queryParameters["paginationToken"] = requestParameters.paginationToken;
+                  }
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/bulk/imports",
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.ListImportsResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.listBulkImports = function(requestParameters, initOverrides) {
+          if (requestParameters === void 0) {
+            requestParameters = {};
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.listBulkImportsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.startBulkImportRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.startImportRequest === null || requestParameters.startImportRequest === void 0) {
+                    throw new runtime.RequiredError("startImportRequest", "Required parameter requestParameters.startImportRequest was null or undefined when calling startBulkImport.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/bulk/imports",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.StartImportRequestToJSON)(requestParameters.startImportRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.StartImportResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        BulkOperationsApi2.prototype.startBulkImport = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.startBulkImportRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return BulkOperationsApi2;
+      }(runtime.BaseAPI)
+    );
+    exports2.BulkOperationsApi = BulkOperationsApi;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/VectorOperationsApi.js
+var require_VectorOperationsApi = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/VectorOperationsApi.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.VectorOperationsApi = void 0;
+    var runtime = __importStar(require_runtime2());
+    var index_1 = require_models2();
+    var VectorOperationsApi = (
+      /** @class */
+      function(_super) {
+        __extends(VectorOperationsApi2, _super);
+        function VectorOperationsApi2() {
+          return _super !== null && _super.apply(this, arguments) || this;
+        }
+        VectorOperationsApi2.prototype.deleteVectorsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.deleteRequest === null || requestParameters.deleteRequest === void 0) {
+                    throw new runtime.RequiredError("deleteRequest", "Required parameter requestParameters.deleteRequest was null or undefined when calling deleteVectors.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/vectors/delete",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.DeleteRequestToJSON)(requestParameters.deleteRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response)];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.deleteVectors = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.deleteVectorsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.describeIndexStatsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.describeIndexStatsRequest === null || requestParameters.describeIndexStatsRequest === void 0) {
+                    throw new runtime.RequiredError("describeIndexStatsRequest", "Required parameter requestParameters.describeIndexStatsRequest was null or undefined when calling describeIndexStats.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/describe_index_stats",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.DescribeIndexStatsRequestToJSON)(requestParameters.describeIndexStatsRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.IndexDescriptionFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.describeIndexStats = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.describeIndexStatsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.fetchVectorsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.ids === null || requestParameters.ids === void 0) {
+                    throw new runtime.RequiredError("ids", "Required parameter requestParameters.ids was null or undefined when calling fetchVectors.");
+                  }
+                  queryParameters = {};
+                  if (requestParameters.ids) {
+                    queryParameters["ids"] = requestParameters.ids;
+                  }
+                  if (requestParameters.namespace !== void 0) {
+                    queryParameters["namespace"] = requestParameters.namespace;
+                  }
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/vectors/fetch",
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.FetchResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.fetchVectors = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.fetchVectorsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.listVectorsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  if (requestParameters.prefix !== void 0) {
+                    queryParameters["prefix"] = requestParameters.prefix;
+                  }
+                  if (requestParameters.limit !== void 0) {
+                    queryParameters["limit"] = requestParameters.limit;
+                  }
+                  if (requestParameters.paginationToken !== void 0) {
+                    queryParameters["paginationToken"] = requestParameters.paginationToken;
+                  }
+                  if (requestParameters.namespace !== void 0) {
+                    queryParameters["namespace"] = requestParameters.namespace;
+                  }
+                  headerParameters = {};
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/vectors/list",
+                    method: "GET",
+                    headers: headerParameters,
+                    query: queryParameters
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.ListResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.listVectors = function(requestParameters, initOverrides) {
+          if (requestParameters === void 0) {
+            requestParameters = {};
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.listVectorsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.queryVectorsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.queryRequest === null || requestParameters.queryRequest === void 0) {
+                    throw new runtime.RequiredError("queryRequest", "Required parameter requestParameters.queryRequest was null or undefined when calling queryVectors.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/query",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.QueryRequestToJSON)(requestParameters.queryRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.QueryResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.queryVectors = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.queryVectorsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.updateVectorRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.updateRequest === null || requestParameters.updateRequest === void 0) {
+                    throw new runtime.RequiredError("updateRequest", "Required parameter requestParameters.updateRequest was null or undefined when calling updateVector.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/vectors/update",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.UpdateRequestToJSON)(requestParameters.updateRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response)];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.updateVector = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.updateVectorRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.upsertVectorsRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (requestParameters.upsertRequest === null || requestParameters.upsertRequest === void 0) {
+                    throw new runtime.RequiredError("upsertRequest", "Required parameter requestParameters.upsertRequest was null or undefined when calling upsertVectors.");
+                  }
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/vectors/upsert",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.UpsertRequestToJSON)(requestParameters.upsertRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.UpsertResponseFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        VectorOperationsApi2.prototype.upsertVectors = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.upsertVectorsRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return VectorOperationsApi2;
+      }(runtime.BaseAPI)
+    );
+    exports2.VectorOperationsApi = VectorOperationsApi;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/index.js
+var require_apis2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/apis/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_BulkOperationsApi(), exports2);
+    __exportStar(require_VectorOperationsApi(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/api_version.js
+var require_api_version2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/api_version.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.X_PINECONE_API_VERSION = void 0;
+    exports2.X_PINECONE_API_VERSION = "2024-10";
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/index.js
+var require_db_data = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/db_data/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_runtime2(), exports2);
+    __exportStar(require_apis2(), exports2);
+    __exportStar(require_models2(), exports2);
+    __exportStar(require_api_version2(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/vectorOperationsProvider.js
+var require_vectorOperationsProvider = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/vectorOperationsProvider.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.VectorOperationsProvider = void 0;
+    var db_data_1 = require_db_data();
+    var utils_1 = require_utils6();
+    var indexHostSingleton_1 = require_indexHostSingleton();
+    var middleware_1 = require_middleware();
+    var VectorOperationsProvider = (
+      /** @class */
+      function() {
+        function VectorOperationsProvider2(config5, indexName, indexHostUrl, additionalHeaders) {
+          this.config = config5;
+          this.indexName = indexName;
+          this.indexHostUrl = (0, utils_1.normalizeUrl)(indexHostUrl);
+          this.additionalHeaders = additionalHeaders;
+        }
+        VectorOperationsProvider2.prototype.provide = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  if (this.vectorOperations) {
+                    return [2, this.vectorOperations];
+                  }
+                  if (!this.indexHostUrl) return [3, 1];
+                  this.vectorOperations = this.buildDataOperationsConfig();
+                  return [3, 3];
+                case 1:
+                  _a = this;
+                  return [4, indexHostSingleton_1.IndexHostSingleton.getHostUrl(this.config, this.indexName)];
+                case 2:
+                  _a.indexHostUrl = _b.sent();
+                  this.vectorOperations = this.buildDataOperationsConfig();
+                  _b.label = 3;
+                case 3:
+                  return [2, this.vectorOperations];
+              }
+            });
+          });
+        };
+        VectorOperationsProvider2.prototype.buildDataOperationsConfig = function() {
+          var headers2 = this.additionalHeaders || null;
+          var indexConfigurationParameters = {
+            basePath: this.indexHostUrl,
+            apiKey: this.config.apiKey,
+            queryParamsStringify: utils_1.queryParamsStringify,
+            headers: __assign({ "User-Agent": (0, utils_1.buildUserAgent)(this.config), "X-Pinecone-Api-Version": db_data_1.X_PINECONE_API_VERSION }, headers2),
+            fetchApi: (0, utils_1.getFetch)(this.config),
+            middleware: middleware_1.middleware
+          };
+          var indexConfiguration = new db_data_1.Configuration(indexConfigurationParameters);
+          return new db_data_1.VectorOperationsApi(indexConfiguration);
+        };
+        return VectorOperationsProvider2;
+      }()
+    );
+    exports2.VectorOperationsProvider = VectorOperationsProvider;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/vectors/list.js
+var require_list = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/vectors/list.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.listPaginated = void 0;
+    var validateProperties_1 = require_validateProperties();
+    var ListOptionsProperties = [
+      "prefix",
+      "limit",
+      "paginationToken"
+    ];
+    var listPaginated = function(apiProvider, namespace) {
+      var validator2 = function(options) {
+        if (options) {
+          (0, validateProperties_1.ValidateProperties)(options, ListOptionsProperties);
+        }
+        if (options.limit && options.limit < 0) {
+          throw new Error("`limit` property must be greater than 0");
+        }
+      };
+      return function(options) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var listRequest, api;
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                if (options) {
+                  validator2(options);
+                }
+                listRequest = __assign(__assign({}, options), { namespace });
+                return [4, apiProvider.provide()];
+              case 1:
+                api = _a.sent();
+                return [4, api.listVectors(listRequest)];
+              case 2:
+                return [2, _a.sent()];
+            }
+          });
+        });
+      };
+    };
+    exports2.listPaginated = listPaginated;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/bulk/startImport.js
+var require_startImport = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/bulk/startImport.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.StartImportCommand = void 0;
+    var db_data_1 = require_db_data();
+    var errors_1 = require_errors();
+    var StartImportCommand = (
+      /** @class */
+      function() {
+        function StartImportCommand2(apiProvider, namespace) {
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        StartImportCommand2.prototype.run = function(uri2, errorMode, integrationId) {
+          return __awaiter(this, void 0, void 0, function() {
+            var error, req, api;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  if (!uri2) {
+                    throw new errors_1.PineconeArgumentError("`uri` field is required and must start with the scheme of a supported storage provider.");
+                  }
+                  error = db_data_1.ImportErrorModeOnErrorEnum.Continue;
+                  if (errorMode) {
+                    if (errorMode.toLowerCase() !== "continue" && errorMode.toLowerCase() !== "abort") {
+                      throw new errors_1.PineconeArgumentError('`errorMode` must be one of "Continue" or "Abort"');
+                    }
+                    if ((errorMode === null || errorMode === void 0 ? void 0 : errorMode.toLowerCase()) == "abort") {
+                      error = db_data_1.ImportErrorModeOnErrorEnum.Abort;
+                    }
+                  }
+                  req = {
+                    startImportRequest: {
+                      uri: uri2,
+                      errorMode: { onError: error },
+                      integrationId
+                    }
+                  };
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.startBulkImport(req)];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return StartImportCommand2;
+      }()
+    );
+    exports2.StartImportCommand = StartImportCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/bulk/listImports.js
+var require_listImports = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/bulk/listImports.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ListImportsCommand = void 0;
+    var ListImportsCommand = (
+      /** @class */
+      function() {
+        function ListImportsCommand2(apiProvider, namespace) {
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        ListImportsCommand2.prototype.run = function(limit, paginationToken) {
+          return __awaiter(this, void 0, void 0, function() {
+            var req, api;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  req = {
+                    limit,
+                    paginationToken
+                  };
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.listBulkImports(req)];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return ListImportsCommand2;
+      }()
+    );
+    exports2.ListImportsCommand = ListImportsCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/bulk/describeImport.js
+var require_describeImport = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/bulk/describeImport.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.DescribeImportCommand = void 0;
+    var DescribeImportCommand = (
+      /** @class */
+      function() {
+        function DescribeImportCommand2(apiProvider, namespace) {
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        DescribeImportCommand2.prototype.run = function(id) {
+          return __awaiter(this, void 0, void 0, function() {
+            var req, api;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  req = {
+                    id
+                  };
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.describeBulkImport(req)];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return DescribeImportCommand2;
+      }()
+    );
+    exports2.DescribeImportCommand = DescribeImportCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/bulk/cancelImport.js
+var require_cancelImport = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/bulk/cancelImport.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.CancelImportCommand = void 0;
+    var CancelImportCommand = (
+      /** @class */
+      function() {
+        function CancelImportCommand2(apiProvider, namespace) {
+          this.apiProvider = apiProvider;
+          this.namespace = namespace;
+        }
+        CancelImportCommand2.prototype.run = function(id) {
+          return __awaiter(this, void 0, void 0, function() {
+            var req, api;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  req = {
+                    id
+                  };
+                  return [4, this.apiProvider.provide()];
+                case 1:
+                  api = _a.sent();
+                  return [4, api.cancelBulkImport(req)];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return CancelImportCommand2;
+      }()
+    );
+    exports2.CancelImportCommand = CancelImportCommand;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/bulk/bulkOperationsProvider.js
+var require_bulkOperationsProvider = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/bulk/bulkOperationsProvider.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.BulkOperationsProvider = void 0;
+    var db_data_1 = require_db_data();
+    var utils_1 = require_utils6();
+    var indexHostSingleton_1 = require_indexHostSingleton();
+    var middleware_1 = require_middleware();
+    var BulkOperationsProvider = (
+      /** @class */
+      function() {
+        function BulkOperationsProvider2(config5, indexName, indexHostUrl, additionalHeaders) {
+          this.config = config5;
+          this.indexName = indexName;
+          this.indexHostUrl = (0, utils_1.normalizeUrl)(indexHostUrl);
+          this.additionalHeaders = additionalHeaders;
+        }
+        BulkOperationsProvider2.prototype.provide = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  if (this.bulkOperations) {
+                    return [2, this.bulkOperations];
+                  }
+                  if (!this.indexHostUrl) return [3, 1];
+                  this.bulkOperations = this.buildBulkOperationsConfig();
+                  return [3, 3];
+                case 1:
+                  _a = this;
+                  return [4, indexHostSingleton_1.IndexHostSingleton.getHostUrl(this.config, this.indexName)];
+                case 2:
+                  _a.indexHostUrl = _b.sent();
+                  this.bulkOperations = this.buildBulkOperationsConfig();
+                  _b.label = 3;
+                case 3:
+                  return [2, this.bulkOperations];
+              }
+            });
+          });
+        };
+        BulkOperationsProvider2.prototype.buildBulkOperationsConfig = function() {
+          var headers2 = this.additionalHeaders || null;
+          var indexConfigurationParameters = {
+            basePath: this.indexHostUrl,
+            apiKey: this.config.apiKey,
+            queryParamsStringify: utils_1.queryParamsStringify,
+            headers: __assign({ "User-Agent": (0, utils_1.buildUserAgent)(this.config), "X-Pinecone-Api-Version": db_data_1.X_PINECONE_API_VERSION }, headers2),
+            fetchApi: (0, utils_1.getFetch)(this.config),
+            middleware: middleware_1.middleware
+          };
+          var indexConfiguration = new db_data_1.Configuration(indexConfigurationParameters);
+          return new db_data_1.BulkOperationsApi(indexConfiguration);
+        };
+        return BulkOperationsProvider2;
+      }()
+    );
+    exports2.BulkOperationsProvider = BulkOperationsProvider;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/data/index.js
+var require_data = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/data/index.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Index = void 0;
+    var upsert_1 = require_upsert();
+    var fetch_1 = require_fetch2();
+    var update_1 = require_update();
+    var query_1 = require_query2();
+    var deleteOne_1 = require_deleteOne();
+    var deleteMany_1 = require_deleteMany();
+    var deleteAll_1 = require_deleteAll();
+    var describeIndexStats_1 = require_describeIndexStats();
+    var vectorOperationsProvider_1 = require_vectorOperationsProvider();
+    var list_1 = require_list();
+    var startImport_1 = require_startImport();
+    var listImports_1 = require_listImports();
+    var describeImport_1 = require_describeImport();
+    var cancelImport_1 = require_cancelImport();
+    var bulkOperationsProvider_1 = require_bulkOperationsProvider();
+    var Index = (
+      /** @class */
+      function() {
+        function Index2(indexName, config5, namespace, indexHostUrl, additionalHeaders) {
+          if (namespace === void 0) {
+            namespace = "";
+          }
+          this.config = config5;
+          this.target = {
+            index: indexName,
+            namespace,
+            indexHostUrl
+          };
+          var dataOperationsProvider = new vectorOperationsProvider_1.VectorOperationsProvider(config5, indexName, indexHostUrl, additionalHeaders);
+          this._deleteAll = (0, deleteAll_1.deleteAll)(dataOperationsProvider, namespace);
+          this._deleteMany = (0, deleteMany_1.deleteMany)(dataOperationsProvider, namespace);
+          this._deleteOne = (0, deleteOne_1.deleteOne)(dataOperationsProvider, namespace);
+          this._describeIndexStats = (0, describeIndexStats_1.describeIndexStats)(dataOperationsProvider);
+          this._listPaginated = (0, list_1.listPaginated)(dataOperationsProvider, namespace);
+          this._fetchCommand = new fetch_1.FetchCommand(dataOperationsProvider, namespace);
+          this._queryCommand = new query_1.QueryCommand(dataOperationsProvider, namespace);
+          this._updateCommand = new update_1.UpdateCommand(dataOperationsProvider, namespace);
+          this._upsertCommand = new upsert_1.UpsertCommand(dataOperationsProvider, namespace);
+          var bulkApiProvider = new bulkOperationsProvider_1.BulkOperationsProvider(config5, indexName, indexHostUrl, additionalHeaders);
+          this._startImportCommand = new startImport_1.StartImportCommand(bulkApiProvider, namespace);
+          this._listImportsCommand = new listImports_1.ListImportsCommand(bulkApiProvider, namespace);
+          this._describeImportCommand = new describeImport_1.DescribeImportCommand(bulkApiProvider, namespace);
+          this._cancelImportCommand = new cancelImport_1.CancelImportCommand(bulkApiProvider, namespace);
+        }
+        Index2.prototype.deleteAll = function() {
+          return this._deleteAll();
+        };
+        Index2.prototype.deleteMany = function(options) {
+          return this._deleteMany(options);
+        };
+        Index2.prototype.deleteOne = function(id) {
+          return this._deleteOne(id);
+        };
+        Index2.prototype.describeIndexStats = function() {
+          return this._describeIndexStats();
+        };
+        Index2.prototype.listPaginated = function(options) {
+          return this._listPaginated(options);
+        };
+        Index2.prototype.namespace = function(namespace) {
+          return new Index2(this.target.index, this.config, namespace, this.target.indexHostUrl);
+        };
+        Index2.prototype.upsert = function(data) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._upsertCommand.run(data, this.config.maxRetries)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.fetch = function(options) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._fetchCommand.run(options)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.query = function(options) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._queryCommand.run(options)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.update = function(options) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._updateCommand.run(options, this.config.maxRetries)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.startImport = function(uri2, errorMode, integration) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._startImportCommand.run(uri2, errorMode, integration)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.listImports = function(limit, paginationToken) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._listImportsCommand.run(limit, paginationToken)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.describeImport = function(id) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._describeImportCommand.run(id)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        Index2.prototype.cancelImport = function(id) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._cancelImportCommand.run(id)];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return Index2;
+      }()
+    );
+    exports2.Index = Index;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/models/embeddingsList.js
+var require_embeddingsList = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/models/embeddingsList.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __spreadArray = exports2 && exports2.__spreadArray || function(to, from, pack) {
+      if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+      return to.concat(ar || Array.prototype.slice.call(from));
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingsList = void 0;
+    var EmbeddingsList = (
+      /** @class */
+      function(_super) {
+        __extends(EmbeddingsList2, _super);
+        function EmbeddingsList2(model2, data, usage) {
+          if (data === void 0) {
+            data = [];
+          }
+          var _this = _super.apply(this, data) || this;
+          Object.setPrototypeOf(_this, EmbeddingsList2.prototype);
+          _this.model = model2;
+          _this.data = data;
+          _this.usage = usage;
+          return _this;
+        }
+        EmbeddingsList2.prototype.toString = function() {
+          var truncatedData = this.truncateDataForDisplay();
+          var dataObject = truncatedData.map(function(embedding) {
+            var _a;
+            if (typeof embedding === "string") {
+              return "    ".concat(embedding);
+            }
+            var embeddingObject = JSON.stringify(embedding, function(key, value) {
+              return key === "values" && Array.isArray(value) ? value : value;
+            });
+            embeddingObject = embeddingObject.replace(/:/g, ": ");
+            var valuesArray = ((_a = embeddingObject.match(/"values": \[(.*?)\]/)) === null || _a === void 0 ? void 0 : _a[1]) || "";
+            var formattedEmbedding = valuesArray.split(",").join(", ").replace(/"/g, "");
+            embeddingObject = embeddingObject.replace(/("values": )\[(.*?)\]/, "$1[".concat(formattedEmbedding, "]"));
+            return "    ".concat(embeddingObject);
+          }).join(",\n");
+          var usageObject = JSON.stringify(this.usage).replace(/:/g, ": ");
+          return "EmbeddingsList({\n" + '  "model": "'.concat(this.model, '",\n') + '  "data": [\n' + "".concat(dataObject, "\n") + "   ],\n" + '  "usage": '.concat(usageObject, "\n") + "  })";
+        };
+        EmbeddingsList2.prototype.toJSON = function() {
+          return {
+            model: this.model,
+            data: this.truncateDataForDisplay(),
+            usage: this.usage
+          };
+        };
+        EmbeddingsList2.prototype.get = function(index) {
+          return this[index];
+        };
+        EmbeddingsList2.prototype.indexOf = function(element) {
+          return this.data ? this.data.indexOf(element) : -1;
+        };
+        EmbeddingsList2.prototype.truncateValuesForDisplay = function(values) {
+          if (!values || values.length <= 4) {
+            return values ? values : [];
+          }
+          return __spreadArray(__spreadArray(__spreadArray([], values.slice(0, 2), true), ["..."], false), values.slice(-2), true);
+        };
+        EmbeddingsList2.prototype.truncateDataForDisplay = function() {
+          var _this = this;
+          if (!this.data)
+            return [];
+          if (this.data.length <= 5) {
+            return this.data.map(function(embedding) {
+              return {
+                values: embedding.values ? _this.truncateValuesForDisplay(embedding.values) : []
+              };
+            });
+          }
+          return __spreadArray(__spreadArray(__spreadArray([], this.data.slice(0, 2).map(function(embedding) {
+            return {
+              values: embedding.values ? _this.truncateValuesForDisplay(embedding.values) : []
+            };
+          }), true), [
+            "   ... (".concat(this.data.length - 4, " more embeddings) ...")
+          ], false), this.data.slice(-2).map(function(embedding) {
+            return {
+              values: embedding.values ? _this.truncateValuesForDisplay(embedding.values) : []
+            };
+          }), true);
+        };
+        return EmbeddingsList2;
+      }(Array)
+    );
+    exports2.EmbeddingsList = EmbeddingsList;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/models/index.js
+var require_models3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/models/index.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingsList = void 0;
+    var embeddingsList_1 = require_embeddingsList();
+    Object.defineProperty(exports2, "EmbeddingsList", { enumerable: true, get: function() {
+      return embeddingsList_1.EmbeddingsList;
+    } });
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/inference/inference.js
+var require_inference = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/inference/inference.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Inference = void 0;
+    var models_1 = require_models3();
+    var errors_1 = require_errors();
+    var Inference = (
+      /** @class */
+      function() {
+        function Inference2(inferenceApi) {
+          this._inferenceApi = inferenceApi;
+        }
+        Inference2.prototype._formatInputs = function(data) {
+          return data.map(function(str) {
+            return { text: str };
+          });
+        };
+        Inference2.prototype.embed = function(model2, inputs, params) {
+          return __awaiter(this, void 0, void 0, function() {
+            var typedAndFormattedInputs, typedRequest, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  typedAndFormattedInputs = this._formatInputs(inputs);
+                  typedRequest = {
+                    embedRequest: {
+                      model: model2,
+                      inputs: typedAndFormattedInputs,
+                      parameters: params
+                    }
+                  };
+                  return [4, this._inferenceApi.embed(typedRequest)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new models_1.EmbeddingsList(response.model, response.data, response.usage)];
+              }
+            });
+          });
+        };
+        Inference2.prototype.rerank = function(model2, query, documents, options) {
+          if (options === void 0) {
+            options = {};
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var _a, topN, _b, returnDocuments, _c, parameters, _d, rankFields, newDocuments, req;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  if (documents.length == 0) {
+                    throw new errors_1.PineconeArgumentError("You must pass at least one document to rerank");
+                  }
+                  if (query.length == 0) {
+                    throw new errors_1.PineconeArgumentError("You must pass a query to rerank");
+                  }
+                  if (model2.length == 0) {
+                    throw new errors_1.PineconeArgumentError("You must pass the name of a supported reranking model in order to rerank documents. See https://docs.pinecone.io/models for supported models.");
+                  }
+                  _a = options.topN, topN = _a === void 0 ? documents.length : _a, _b = options.returnDocuments, returnDocuments = _b === void 0 ? true : _b, _c = options.parameters, parameters = _c === void 0 ? {} : _c;
+                  _d = options.rankFields, rankFields = _d === void 0 ? ["text"] : _d;
+                  newDocuments = documents.map(function(doc) {
+                    return typeof doc === "string" ? { text: doc } : doc;
+                  });
+                  if (!options.rankFields) {
+                    if (!newDocuments.every(function(doc) {
+                      return typeof doc === "object" && doc.text;
+                    })) {
+                      throw new errors_1.PineconeArgumentError('Documents must be a list of strings or objects containing the "text" field');
+                    }
+                  }
+                  if (options.rankFields) {
+                    rankFields = options.rankFields;
+                  }
+                  req = {
+                    rerankRequest: {
+                      model: model2,
+                      query,
+                      documents: newDocuments,
+                      topN,
+                      returnDocuments,
+                      rankFields,
+                      parameters
+                    }
+                  };
+                  return [4, this._inferenceApi.rerank(req)];
+                case 1:
+                  return [2, _e.sent()];
+              }
+            });
+          });
+        };
+        return Inference2;
+      }()
+    );
+    exports2.Inference = Inference;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/inference/index.js
+var require_inference2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/inference/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_inference(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/runtime.js
+var require_runtime3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/runtime.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.TextApiResponse = exports2.BlobApiResponse = exports2.VoidApiResponse = exports2.JSONApiResponse = exports2.canConsumeForm = exports2.mapValues = exports2.querystring = exports2.exists = exports2.COLLECTION_FORMATS = exports2.RequiredError = exports2.FetchError = exports2.ResponseError = exports2.BaseAPI = exports2.DefaultConfig = exports2.Configuration = exports2.BASE_PATH = void 0;
+    exports2.BASE_PATH = "https://api.pinecone.io".replace(/\/+$/, "");
+    var Configuration = (
+      /** @class */
+      function() {
+        function Configuration2(configuration) {
+          if (configuration === void 0) {
+            configuration = {};
+          }
+          this.configuration = configuration;
+        }
+        Object.defineProperty(Configuration2.prototype, "config", {
+          set: function(configuration) {
+            this.configuration = configuration;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "basePath", {
+          get: function() {
+            return this.configuration.basePath != null ? this.configuration.basePath : exports2.BASE_PATH;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "fetchApi", {
+          get: function() {
+            return this.configuration.fetchApi;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "middleware", {
+          get: function() {
+            return this.configuration.middleware || [];
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "queryParamsStringify", {
+          get: function() {
+            return this.configuration.queryParamsStringify || querystring;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "username", {
+          get: function() {
+            return this.configuration.username;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "password", {
+          get: function() {
+            return this.configuration.password;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "apiKey", {
+          get: function() {
+            var apiKey = this.configuration.apiKey;
+            if (apiKey) {
+              return typeof apiKey === "function" ? apiKey : function() {
+                return apiKey;
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "accessToken", {
+          get: function() {
+            var _this = this;
+            var accessToken = this.configuration.accessToken;
+            if (accessToken) {
+              return typeof accessToken === "function" ? accessToken : function() {
+                return __awaiter(_this, void 0, void 0, function() {
+                  return __generator(this, function(_a) {
+                    return [2, accessToken];
+                  });
+                });
+              };
+            }
+            return void 0;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "headers", {
+          get: function() {
+            return this.configuration.headers;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        Object.defineProperty(Configuration2.prototype, "credentials", {
+          get: function() {
+            return this.configuration.credentials;
+          },
+          enumerable: false,
+          configurable: true
+        });
+        return Configuration2;
+      }()
+    );
+    exports2.Configuration = Configuration;
+    exports2.DefaultConfig = new Configuration();
+    var BaseAPI = (
+      /** @class */
+      function() {
+        function BaseAPI2(configuration) {
+          if (configuration === void 0) {
+            configuration = exports2.DefaultConfig;
+          }
+          var _this = this;
+          this.configuration = configuration;
+          this.fetchApi = function(url2, init2) {
+            return __awaiter(_this, void 0, void 0, function() {
+              var fetchParams, _i, _a, middleware, response, e_1, _b, _c, middleware, _d, _e, middleware;
+              return __generator(this, function(_f) {
+                switch (_f.label) {
+                  case 0:
+                    fetchParams = { url: url2, init: init2 };
+                    _i = 0, _a = this.middleware;
+                    _f.label = 1;
+                  case 1:
+                    if (!(_i < _a.length)) return [3, 4];
+                    middleware = _a[_i];
+                    if (!middleware.pre) return [3, 3];
+                    return [4, middleware.pre(__assign({ fetch: this.fetchApi }, fetchParams))];
+                  case 2:
+                    fetchParams = _f.sent() || fetchParams;
+                    _f.label = 3;
+                  case 3:
+                    _i++;
+                    return [3, 1];
+                  case 4:
+                    response = void 0;
+                    _f.label = 5;
+                  case 5:
+                    _f.trys.push([5, 7, , 12]);
+                    return [4, (this.configuration.fetchApi || fetch)(fetchParams.url, fetchParams.init)];
+                  case 6:
+                    response = _f.sent();
+                    return [3, 12];
+                  case 7:
+                    e_1 = _f.sent();
+                    _b = 0, _c = this.middleware;
+                    _f.label = 8;
+                  case 8:
+                    if (!(_b < _c.length)) return [3, 11];
+                    middleware = _c[_b];
+                    if (!middleware.onError) return [3, 10];
+                    return [4, middleware.onError({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      error: e_1,
+                      response: response ? response.clone() : void 0
+                    })];
+                  case 9:
+                    response = _f.sent() || response;
+                    _f.label = 10;
+                  case 10:
+                    _b++;
+                    return [3, 8];
+                  case 11:
+                    if (response === void 0) {
+                      if (e_1 instanceof Error) {
+                        throw new FetchError(e_1, "The request failed and the interceptors did not return an alternative response");
+                      } else {
+                        throw e_1;
+                      }
+                    }
+                    return [3, 12];
+                  case 12:
+                    _d = 0, _e = this.middleware;
+                    _f.label = 13;
+                  case 13:
+                    if (!(_d < _e.length)) return [3, 16];
+                    middleware = _e[_d];
+                    if (!middleware.post) return [3, 15];
+                    return [4, middleware.post({
+                      fetch: this.fetchApi,
+                      url: fetchParams.url,
+                      init: fetchParams.init,
+                      response: response.clone()
+                    })];
+                  case 14:
+                    response = _f.sent() || response;
+                    _f.label = 15;
+                  case 15:
+                    _d++;
+                    return [3, 13];
+                  case 16:
+                    return [2, response];
+                }
+              });
+            });
+          };
+          this.middleware = configuration.middleware;
+        }
+        BaseAPI2.prototype.withMiddleware = function() {
+          var _a;
+          var middlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            middlewares[_i] = arguments[_i];
+          }
+          var next = this.clone();
+          next.middleware = (_a = next.middleware).concat.apply(_a, middlewares);
+          return next;
+        };
+        BaseAPI2.prototype.withPreMiddleware = function() {
+          var preMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            preMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = preMiddlewares.map(function(pre) {
+            return { pre };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.withPostMiddleware = function() {
+          var postMiddlewares = [];
+          for (var _i = 0; _i < arguments.length; _i++) {
+            postMiddlewares[_i] = arguments[_i];
+          }
+          var middlewares = postMiddlewares.map(function(post) {
+            return { post };
+          });
+          return this.withMiddleware.apply(this, middlewares);
+        };
+        BaseAPI2.prototype.isJsonMime = function(mime) {
+          if (!mime) {
+            return false;
+          }
+          return BaseAPI2.jsonRegex.test(mime);
+        };
+        BaseAPI2.prototype.request = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a, url2, init2, response;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  return [4, this.createFetchParams(context, initOverrides)];
+                case 1:
+                  _a = _b.sent(), url2 = _a.url, init2 = _a.init;
+                  return [4, this.fetchApi(url2, init2)];
+                case 2:
+                  response = _b.sent();
+                  if (response && (response.status >= 200 && response.status < 300)) {
+                    return [2, response];
+                  }
+                  throw new ResponseError(response, "Response returned an error code");
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.createFetchParams = function(context, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var url2, headers2, initOverrideFn, initParams, overriddenInit, _a, body2, init2;
+            var _this = this;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  url2 = this.configuration.basePath + context.path;
+                  if (context.query !== void 0 && Object.keys(context.query).length !== 0) {
+                    url2 += "?" + this.configuration.queryParamsStringify(context.query);
+                  }
+                  headers2 = Object.assign({}, this.configuration.headers, context.headers);
+                  Object.keys(headers2).forEach(function(key) {
+                    return headers2[key] === void 0 ? delete headers2[key] : {};
+                  });
+                  initOverrideFn = typeof initOverrides === "function" ? initOverrides : function() {
+                    return __awaiter(_this, void 0, void 0, function() {
+                      return __generator(this, function(_a2) {
+                        return [2, initOverrides];
+                      });
+                    });
+                  };
+                  initParams = {
+                    method: context.method,
+                    headers: headers2,
+                    body: context.body,
+                    credentials: this.configuration.credentials
+                  };
+                  _a = [__assign({}, initParams)];
+                  return [4, initOverrideFn({
+                    init: initParams,
+                    context
+                  })];
+                case 1:
+                  overriddenInit = __assign.apply(void 0, _a.concat([_b.sent()]));
+                  if (isFormData2(overriddenInit.body) || overriddenInit.body instanceof URLSearchParams || isBlob2(overriddenInit.body)) {
+                    body2 = overriddenInit.body;
+                  } else if (this.isJsonMime(headers2["Content-Type"])) {
+                    body2 = JSON.stringify(overriddenInit.body);
+                  } else {
+                    body2 = overriddenInit.body;
+                  }
+                  init2 = __assign(__assign({}, overriddenInit), { body: body2 });
+                  return [2, { url: url2, init: init2 }];
+              }
+            });
+          });
+        };
+        BaseAPI2.prototype.clone = function() {
+          var constructor = this.constructor;
+          var next = new constructor(this.configuration);
+          next.middleware = this.middleware.slice();
+          return next;
+        };
+        BaseAPI2.jsonRegex = new RegExp("^(:?application/json|[^;/ 	]+/[^;/ 	]+[+]json)[ 	]*(:?;.*)?$", "i");
+        return BaseAPI2;
+      }()
+    );
+    exports2.BaseAPI = BaseAPI;
+    function isBlob2(value) {
+      return typeof Blob !== "undefined" && value instanceof Blob;
+    }
+    function isFormData2(value) {
+      return typeof FormData !== "undefined" && value instanceof FormData;
+    }
+    var ResponseError = (
+      /** @class */
+      function(_super) {
+        __extends(ResponseError2, _super);
+        function ResponseError2(response, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.response = response;
+          _this.name = "ResponseError";
+          return _this;
+        }
+        return ResponseError2;
+      }(Error)
+    );
+    exports2.ResponseError = ResponseError;
+    var FetchError = (
+      /** @class */
+      function(_super) {
+        __extends(FetchError2, _super);
+        function FetchError2(cause, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.cause = cause;
+          _this.name = "FetchError";
+          return _this;
+        }
+        return FetchError2;
+      }(Error)
+    );
+    exports2.FetchError = FetchError;
+    var RequiredError = (
+      /** @class */
+      function(_super) {
+        __extends(RequiredError2, _super);
+        function RequiredError2(field, msg) {
+          var _this = _super.call(this, msg) || this;
+          _this.field = field;
+          _this.name = "RequiredError";
+          return _this;
+        }
+        return RequiredError2;
+      }(Error)
+    );
+    exports2.RequiredError = RequiredError;
+    exports2.COLLECTION_FORMATS = {
+      csv: ",",
+      ssv: " ",
+      tsv: "	",
+      pipes: "|"
+    };
+    function exists(json, key) {
+      var value = json[key];
+      return value !== null && value !== void 0;
+    }
+    exports2.exists = exists;
+    function querystring(params, prefix) {
+      if (prefix === void 0) {
+        prefix = "";
+      }
+      return Object.keys(params).map(function(key) {
+        return querystringSingleKey(key, params[key], prefix);
+      }).filter(function(part) {
+        return part.length > 0;
+      }).join("&");
+    }
+    exports2.querystring = querystring;
+    function querystringSingleKey(key, value, keyPrefix) {
+      if (keyPrefix === void 0) {
+        keyPrefix = "";
+      }
+      var fullKey = keyPrefix + (keyPrefix.length ? "[".concat(key, "]") : key);
+      if (value instanceof Array) {
+        var multiValue = value.map(function(singleValue) {
+          return encodeURIComponent(String(singleValue));
+        }).join("&".concat(encodeURIComponent(fullKey), "="));
+        return "".concat(encodeURIComponent(fullKey), "=").concat(multiValue);
+      }
+      if (value instanceof Set) {
+        var valueAsArray = Array.from(value);
+        return querystringSingleKey(key, valueAsArray, keyPrefix);
+      }
+      if (value instanceof Date) {
+        return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(value.toISOString()));
+      }
+      if (value instanceof Object) {
+        return querystring(value, fullKey);
+      }
+      return "".concat(encodeURIComponent(fullKey), "=").concat(encodeURIComponent(String(value)));
+    }
+    function mapValues(data, fn) {
+      return Object.keys(data).reduce(function(acc, key) {
+        var _a;
+        return __assign(__assign({}, acc), (_a = {}, _a[key] = fn(data[key]), _a));
+      }, {});
+    }
+    exports2.mapValues = mapValues;
+    function canConsumeForm(consumes) {
+      for (var _i = 0, consumes_1 = consumes; _i < consumes_1.length; _i++) {
+        var consume = consumes_1[_i];
+        if ("multipart/form-data" === consume.contentType) {
+          return true;
+        }
+      }
+      return false;
+    }
+    exports2.canConsumeForm = canConsumeForm;
+    var JSONApiResponse = (
+      /** @class */
+      function() {
+        function JSONApiResponse2(raw, transformer) {
+          if (transformer === void 0) {
+            transformer = function(jsonValue) {
+              return jsonValue;
+            };
+          }
+          this.raw = raw;
+          this.transformer = transformer;
+        }
+        JSONApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var _a;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  _a = this.transformer;
+                  return [4, this.raw.json()];
+                case 1:
+                  return [2, _a.apply(this, [_b.sent()])];
+              }
+            });
+          });
+        };
+        return JSONApiResponse2;
+      }()
+    );
+    exports2.JSONApiResponse = JSONApiResponse;
+    var VoidApiResponse = (
+      /** @class */
+      function() {
+        function VoidApiResponse2(raw) {
+          this.raw = raw;
+        }
+        VoidApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, void 0];
+            });
+          });
+        };
+        return VoidApiResponse2;
+      }()
+    );
+    exports2.VoidApiResponse = VoidApiResponse;
+    var BlobApiResponse = (
+      /** @class */
+      function() {
+        function BlobApiResponse2(raw) {
+          this.raw = raw;
+        }
+        BlobApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.blob()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return BlobApiResponse2;
+      }()
+    );
+    exports2.BlobApiResponse = BlobApiResponse;
+    var TextApiResponse = (
+      /** @class */
+      function() {
+        function TextApiResponse2(raw) {
+          this.raw = raw;
+        }
+        TextApiResponse2.prototype.value = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.raw.text()];
+                case 1:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        ;
+        return TextApiResponse2;
+      }()
+    );
+    exports2.TextApiResponse = TextApiResponse;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequestInputsInner.js
+var require_EmbedRequestInputsInner = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequestInputsInner.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbedRequestInputsInnerToJSON = exports2.EmbedRequestInputsInnerFromJSONTyped = exports2.EmbedRequestInputsInnerFromJSON = exports2.instanceOfEmbedRequestInputsInner = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfEmbedRequestInputsInner(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfEmbedRequestInputsInner = instanceOfEmbedRequestInputsInner;
+    function EmbedRequestInputsInnerFromJSON(json) {
+      return EmbedRequestInputsInnerFromJSONTyped(json, false);
+    }
+    exports2.EmbedRequestInputsInnerFromJSON = EmbedRequestInputsInnerFromJSON;
+    function EmbedRequestInputsInnerFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "text": !(0, runtime_1.exists)(json, "text") ? void 0 : json["text"]
+      };
+    }
+    exports2.EmbedRequestInputsInnerFromJSONTyped = EmbedRequestInputsInnerFromJSONTyped;
+    function EmbedRequestInputsInnerToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "text": value.text
+      };
+    }
+    exports2.EmbedRequestInputsInnerToJSON = EmbedRequestInputsInnerToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequestParameters.js
+var require_EmbedRequestParameters = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequestParameters.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbedRequestParametersToJSON = exports2.EmbedRequestParametersFromJSONTyped = exports2.EmbedRequestParametersFromJSON = exports2.instanceOfEmbedRequestParameters = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfEmbedRequestParameters(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfEmbedRequestParameters = instanceOfEmbedRequestParameters;
+    function EmbedRequestParametersFromJSON(json) {
+      return EmbedRequestParametersFromJSONTyped(json, false);
+    }
+    exports2.EmbedRequestParametersFromJSON = EmbedRequestParametersFromJSON;
+    function EmbedRequestParametersFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "inputType": !(0, runtime_1.exists)(json, "input_type") ? void 0 : json["input_type"],
+        "truncate": !(0, runtime_1.exists)(json, "truncate") ? void 0 : json["truncate"]
+      };
+    }
+    exports2.EmbedRequestParametersFromJSONTyped = EmbedRequestParametersFromJSONTyped;
+    function EmbedRequestParametersToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "input_type": value.inputType,
+        "truncate": value.truncate
+      };
+    }
+    exports2.EmbedRequestParametersToJSON = EmbedRequestParametersToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequest.js
+var require_EmbedRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbedRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbedRequestToJSON = exports2.EmbedRequestFromJSONTyped = exports2.EmbedRequestFromJSON = exports2.instanceOfEmbedRequest = void 0;
+    var runtime_1 = require_runtime3();
+    var EmbedRequestInputsInner_1 = require_EmbedRequestInputsInner();
+    var EmbedRequestParameters_1 = require_EmbedRequestParameters();
+    function instanceOfEmbedRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "model" in value;
+      isInstance = isInstance && "inputs" in value;
+      return isInstance;
+    }
+    exports2.instanceOfEmbedRequest = instanceOfEmbedRequest;
+    function EmbedRequestFromJSON(json) {
+      return EmbedRequestFromJSONTyped(json, false);
+    }
+    exports2.EmbedRequestFromJSON = EmbedRequestFromJSON;
+    function EmbedRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "model": json["model"],
+        "parameters": !(0, runtime_1.exists)(json, "parameters") ? void 0 : (0, EmbedRequestParameters_1.EmbedRequestParametersFromJSON)(json["parameters"]),
+        "inputs": json["inputs"].map(EmbedRequestInputsInner_1.EmbedRequestInputsInnerFromJSON)
+      };
+    }
+    exports2.EmbedRequestFromJSONTyped = EmbedRequestFromJSONTyped;
+    function EmbedRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "model": value.model,
+        "parameters": (0, EmbedRequestParameters_1.EmbedRequestParametersToJSON)(value.parameters),
+        "inputs": value.inputs.map(EmbedRequestInputsInner_1.EmbedRequestInputsInnerToJSON)
+      };
+    }
+    exports2.EmbedRequestToJSON = EmbedRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/Embedding.js
+var require_Embedding = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/Embedding.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingToJSON = exports2.EmbeddingFromJSONTyped = exports2.EmbeddingFromJSON = exports2.instanceOfEmbedding = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfEmbedding(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfEmbedding = instanceOfEmbedding;
+    function EmbeddingFromJSON(json) {
+      return EmbeddingFromJSONTyped(json, false);
+    }
+    exports2.EmbeddingFromJSON = EmbeddingFromJSON;
+    function EmbeddingFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "values": !(0, runtime_1.exists)(json, "values") ? void 0 : json["values"]
+      };
+    }
+    exports2.EmbeddingFromJSONTyped = EmbeddingFromJSONTyped;
+    function EmbeddingToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "values": value.values
+      };
+    }
+    exports2.EmbeddingToJSON = EmbeddingToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbeddingsListUsage.js
+var require_EmbeddingsListUsage = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbeddingsListUsage.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingsListUsageToJSON = exports2.EmbeddingsListUsageFromJSONTyped = exports2.EmbeddingsListUsageFromJSON = exports2.instanceOfEmbeddingsListUsage = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfEmbeddingsListUsage(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfEmbeddingsListUsage = instanceOfEmbeddingsListUsage;
+    function EmbeddingsListUsageFromJSON(json) {
+      return EmbeddingsListUsageFromJSONTyped(json, false);
+    }
+    exports2.EmbeddingsListUsageFromJSON = EmbeddingsListUsageFromJSON;
+    function EmbeddingsListUsageFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "totalTokens": !(0, runtime_1.exists)(json, "total_tokens") ? void 0 : json["total_tokens"]
+      };
+    }
+    exports2.EmbeddingsListUsageFromJSONTyped = EmbeddingsListUsageFromJSONTyped;
+    function EmbeddingsListUsageToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "total_tokens": value.totalTokens
+      };
+    }
+    exports2.EmbeddingsListUsageToJSON = EmbeddingsListUsageToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbeddingsList.js
+var require_EmbeddingsList = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/EmbeddingsList.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingsListToJSON = exports2.EmbeddingsListFromJSONTyped = exports2.EmbeddingsListFromJSON = exports2.instanceOfEmbeddingsList = void 0;
+    var Embedding_1 = require_Embedding();
+    var EmbeddingsListUsage_1 = require_EmbeddingsListUsage();
+    function instanceOfEmbeddingsList(value) {
+      var isInstance = true;
+      isInstance = isInstance && "model" in value;
+      isInstance = isInstance && "data" in value;
+      isInstance = isInstance && "usage" in value;
+      return isInstance;
+    }
+    exports2.instanceOfEmbeddingsList = instanceOfEmbeddingsList;
+    function EmbeddingsListFromJSON(json) {
+      return EmbeddingsListFromJSONTyped(json, false);
+    }
+    exports2.EmbeddingsListFromJSON = EmbeddingsListFromJSON;
+    function EmbeddingsListFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "model": json["model"],
+        "data": json["data"].map(Embedding_1.EmbeddingFromJSON),
+        "usage": (0, EmbeddingsListUsage_1.EmbeddingsListUsageFromJSON)(json["usage"])
+      };
+    }
+    exports2.EmbeddingsListFromJSONTyped = EmbeddingsListFromJSONTyped;
+    function EmbeddingsListToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "model": value.model,
+        "data": value.data.map(Embedding_1.EmbeddingToJSON),
+        "usage": (0, EmbeddingsListUsage_1.EmbeddingsListUsageToJSON)(value.usage)
+      };
+    }
+    exports2.EmbeddingsListToJSON = EmbeddingsListToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/ErrorResponseError.js
+var require_ErrorResponseError2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/ErrorResponseError.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ErrorResponseErrorToJSON = exports2.ErrorResponseErrorFromJSONTyped = exports2.ErrorResponseErrorFromJSON = exports2.instanceOfErrorResponseError = exports2.ErrorResponseErrorCodeEnum = void 0;
+    var runtime_1 = require_runtime3();
+    exports2.ErrorResponseErrorCodeEnum = {
+      Ok: "OK",
+      Unknown: "UNKNOWN",
+      InvalidArgument: "INVALID_ARGUMENT",
+      DeadlineExceeded: "DEADLINE_EXCEEDED",
+      QuotaExceeded: "QUOTA_EXCEEDED",
+      NotFound: "NOT_FOUND",
+      AlreadyExists: "ALREADY_EXISTS",
+      PermissionDenied: "PERMISSION_DENIED",
+      Unauthenticated: "UNAUTHENTICATED",
+      ResourceExhausted: "RESOURCE_EXHAUSTED",
+      FailedPrecondition: "FAILED_PRECONDITION",
+      Aborted: "ABORTED",
+      OutOfRange: "OUT_OF_RANGE",
+      Unimplemented: "UNIMPLEMENTED",
+      Internal: "INTERNAL",
+      Unavailable: "UNAVAILABLE",
+      DataLoss: "DATA_LOSS",
+      Forbidden: "FORBIDDEN"
+    };
+    function instanceOfErrorResponseError(value) {
+      var isInstance = true;
+      isInstance = isInstance && "code" in value;
+      isInstance = isInstance && "message" in value;
+      return isInstance;
+    }
+    exports2.instanceOfErrorResponseError = instanceOfErrorResponseError;
+    function ErrorResponseErrorFromJSON(json) {
+      return ErrorResponseErrorFromJSONTyped(json, false);
+    }
+    exports2.ErrorResponseErrorFromJSON = ErrorResponseErrorFromJSON;
+    function ErrorResponseErrorFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "code": json["code"],
+        "message": json["message"],
+        "details": !(0, runtime_1.exists)(json, "details") ? void 0 : json["details"]
+      };
+    }
+    exports2.ErrorResponseErrorFromJSONTyped = ErrorResponseErrorFromJSONTyped;
+    function ErrorResponseErrorToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "code": value.code,
+        "message": value.message,
+        "details": value.details
+      };
+    }
+    exports2.ErrorResponseErrorToJSON = ErrorResponseErrorToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/ErrorResponse.js
+var require_ErrorResponse2 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/ErrorResponse.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ErrorResponseToJSON = exports2.ErrorResponseFromJSONTyped = exports2.ErrorResponseFromJSON = exports2.instanceOfErrorResponse = void 0;
+    var ErrorResponseError_1 = require_ErrorResponseError2();
+    function instanceOfErrorResponse(value) {
+      var isInstance = true;
+      isInstance = isInstance && "status" in value;
+      isInstance = isInstance && "error" in value;
+      return isInstance;
+    }
+    exports2.instanceOfErrorResponse = instanceOfErrorResponse;
+    function ErrorResponseFromJSON(json) {
+      return ErrorResponseFromJSONTyped(json, false);
+    }
+    exports2.ErrorResponseFromJSON = ErrorResponseFromJSON;
+    function ErrorResponseFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "status": json["status"],
+        "error": (0, ErrorResponseError_1.ErrorResponseErrorFromJSON)(json["error"])
+      };
+    }
+    exports2.ErrorResponseFromJSONTyped = ErrorResponseFromJSONTyped;
+    function ErrorResponseToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "status": value.status,
+        "error": (0, ErrorResponseError_1.ErrorResponseErrorToJSON)(value.error)
+      };
+    }
+    exports2.ErrorResponseToJSON = ErrorResponseToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RankedDocument.js
+var require_RankedDocument = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RankedDocument.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RankedDocumentToJSON = exports2.RankedDocumentFromJSONTyped = exports2.RankedDocumentFromJSON = exports2.instanceOfRankedDocument = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfRankedDocument(value) {
+      var isInstance = true;
+      isInstance = isInstance && "index" in value;
+      isInstance = isInstance && "score" in value;
+      return isInstance;
+    }
+    exports2.instanceOfRankedDocument = instanceOfRankedDocument;
+    function RankedDocumentFromJSON(json) {
+      return RankedDocumentFromJSONTyped(json, false);
+    }
+    exports2.RankedDocumentFromJSON = RankedDocumentFromJSON;
+    function RankedDocumentFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "index": json["index"],
+        "score": json["score"],
+        "document": !(0, runtime_1.exists)(json, "document") ? void 0 : json["document"]
+      };
+    }
+    exports2.RankedDocumentFromJSONTyped = RankedDocumentFromJSONTyped;
+    function RankedDocumentToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "index": value.index,
+        "score": value.score,
+        "document": value.document
+      };
+    }
+    exports2.RankedDocumentToJSON = RankedDocumentToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankRequest.js
+var require_RerankRequest = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankRequest.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RerankRequestToJSON = exports2.RerankRequestFromJSONTyped = exports2.RerankRequestFromJSON = exports2.instanceOfRerankRequest = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfRerankRequest(value) {
+      var isInstance = true;
+      isInstance = isInstance && "model" in value;
+      isInstance = isInstance && "query" in value;
+      isInstance = isInstance && "documents" in value;
+      return isInstance;
+    }
+    exports2.instanceOfRerankRequest = instanceOfRerankRequest;
+    function RerankRequestFromJSON(json) {
+      return RerankRequestFromJSONTyped(json, false);
+    }
+    exports2.RerankRequestFromJSON = RerankRequestFromJSON;
+    function RerankRequestFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "model": json["model"],
+        "query": json["query"],
+        "topN": !(0, runtime_1.exists)(json, "top_n") ? void 0 : json["top_n"],
+        "returnDocuments": !(0, runtime_1.exists)(json, "return_documents") ? void 0 : json["return_documents"],
+        "rankFields": !(0, runtime_1.exists)(json, "rank_fields") ? void 0 : json["rank_fields"],
+        "documents": json["documents"],
+        "parameters": !(0, runtime_1.exists)(json, "parameters") ? void 0 : json["parameters"]
+      };
+    }
+    exports2.RerankRequestFromJSONTyped = RerankRequestFromJSONTyped;
+    function RerankRequestToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "model": value.model,
+        "query": value.query,
+        "top_n": value.topN,
+        "return_documents": value.returnDocuments,
+        "rank_fields": value.rankFields,
+        "documents": value.documents,
+        "parameters": value.parameters
+      };
+    }
+    exports2.RerankRequestToJSON = RerankRequestToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankResultUsage.js
+var require_RerankResultUsage = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankResultUsage.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RerankResultUsageToJSON = exports2.RerankResultUsageFromJSONTyped = exports2.RerankResultUsageFromJSON = exports2.instanceOfRerankResultUsage = void 0;
+    var runtime_1 = require_runtime3();
+    function instanceOfRerankResultUsage(value) {
+      var isInstance = true;
+      return isInstance;
+    }
+    exports2.instanceOfRerankResultUsage = instanceOfRerankResultUsage;
+    function RerankResultUsageFromJSON(json) {
+      return RerankResultUsageFromJSONTyped(json, false);
+    }
+    exports2.RerankResultUsageFromJSON = RerankResultUsageFromJSON;
+    function RerankResultUsageFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "rerankUnits": !(0, runtime_1.exists)(json, "rerank_units") ? void 0 : json["rerank_units"]
+      };
+    }
+    exports2.RerankResultUsageFromJSONTyped = RerankResultUsageFromJSONTyped;
+    function RerankResultUsageToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "rerank_units": value.rerankUnits
+      };
+    }
+    exports2.RerankResultUsageToJSON = RerankResultUsageToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankResult.js
+var require_RerankResult = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/RerankResult.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.RerankResultToJSON = exports2.RerankResultFromJSONTyped = exports2.RerankResultFromJSON = exports2.instanceOfRerankResult = void 0;
+    var RankedDocument_1 = require_RankedDocument();
+    var RerankResultUsage_1 = require_RerankResultUsage();
+    function instanceOfRerankResult(value) {
+      var isInstance = true;
+      isInstance = isInstance && "model" in value;
+      isInstance = isInstance && "data" in value;
+      isInstance = isInstance && "usage" in value;
+      return isInstance;
+    }
+    exports2.instanceOfRerankResult = instanceOfRerankResult;
+    function RerankResultFromJSON(json) {
+      return RerankResultFromJSONTyped(json, false);
+    }
+    exports2.RerankResultFromJSON = RerankResultFromJSON;
+    function RerankResultFromJSONTyped(json, ignoreDiscriminator) {
+      if (json === void 0 || json === null) {
+        return json;
+      }
+      return {
+        "model": json["model"],
+        "data": json["data"].map(RankedDocument_1.RankedDocumentFromJSON),
+        "usage": (0, RerankResultUsage_1.RerankResultUsageFromJSON)(json["usage"])
+      };
+    }
+    exports2.RerankResultFromJSONTyped = RerankResultFromJSONTyped;
+    function RerankResultToJSON(value) {
+      if (value === void 0) {
+        return void 0;
+      }
+      if (value === null) {
+        return null;
+      }
+      return {
+        "model": value.model,
+        "data": value.data.map(RankedDocument_1.RankedDocumentToJSON),
+        "usage": (0, RerankResultUsage_1.RerankResultUsageToJSON)(value.usage)
+      };
+    }
+    exports2.RerankResultToJSON = RerankResultToJSON;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/index.js
+var require_models4 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/models/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_EmbedRequest(), exports2);
+    __exportStar(require_EmbedRequestInputsInner(), exports2);
+    __exportStar(require_EmbedRequestParameters(), exports2);
+    __exportStar(require_Embedding(), exports2);
+    __exportStar(require_EmbeddingsList(), exports2);
+    __exportStar(require_EmbeddingsListUsage(), exports2);
+    __exportStar(require_ErrorResponse2(), exports2);
+    __exportStar(require_ErrorResponseError2(), exports2);
+    __exportStar(require_RankedDocument(), exports2);
+    __exportStar(require_RerankRequest(), exports2);
+    __exportStar(require_RerankResult(), exports2);
+    __exportStar(require_RerankResultUsage(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/apis/InferenceApi.js
+var require_InferenceApi = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/apis/InferenceApi.js"(exports2) {
+    "use strict";
+    var __extends = exports2 && exports2.__extends || /* @__PURE__ */ function() {
+      var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+          d2.__proto__ = b2;
+        } || function(d2, b2) {
+          for (var p in b2) if (Object.prototype.hasOwnProperty.call(b2, p)) d2[p] = b2[p];
+        };
+        return extendStatics(d, b);
+      };
+      return function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+    }();
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.InferenceApi = void 0;
+    var runtime = __importStar(require_runtime3());
+    var index_1 = require_models4();
+    var InferenceApi = (
+      /** @class */
+      function(_super) {
+        __extends(InferenceApi2, _super);
+        function InferenceApi2() {
+          return _super !== null && _super.apply(this, arguments) || this;
+        }
+        InferenceApi2.prototype.embedRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/embed",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.EmbedRequestToJSON)(requestParameters.embedRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.EmbeddingsListFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        InferenceApi2.prototype.embed = function(requestParameters, initOverrides) {
+          if (requestParameters === void 0) {
+            requestParameters = {};
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.embedRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        InferenceApi2.prototype.rerankRaw = function(requestParameters, initOverrides) {
+          return __awaiter(this, void 0, void 0, function() {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  queryParameters = {};
+                  headerParameters = {};
+                  headerParameters["Content-Type"] = "application/json";
+                  if (this.configuration && this.configuration.apiKey) {
+                    headerParameters["Api-Key"] = this.configuration.apiKey("Api-Key");
+                  }
+                  return [4, this.request({
+                    path: "/rerank",
+                    method: "POST",
+                    headers: headerParameters,
+                    query: queryParameters,
+                    body: (0, index_1.RerankRequestToJSON)(requestParameters.rerankRequest)
+                  }, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [2, new runtime.JSONApiResponse(response, function(jsonValue) {
+                    return (0, index_1.RerankResultFromJSON)(jsonValue);
+                  })];
+              }
+            });
+          });
+        };
+        InferenceApi2.prototype.rerank = function(requestParameters, initOverrides) {
+          if (requestParameters === void 0) {
+            requestParameters = {};
+          }
+          return __awaiter(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.rerankRaw(requestParameters, initOverrides)];
+                case 1:
+                  response = _a.sent();
+                  return [4, response.value()];
+                case 2:
+                  return [2, _a.sent()];
+              }
+            });
+          });
+        };
+        return InferenceApi2;
+      }(runtime.BaseAPI)
+    );
+    exports2.InferenceApi = InferenceApi;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/apis/index.js
+var require_apis3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/apis/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_InferenceApi(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/api_version.js
+var require_api_version3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/api_version.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.X_PINECONE_API_VERSION = void 0;
+    exports2.X_PINECONE_API_VERSION = "2024-10";
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/index.js
+var require_inference3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/inference/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_runtime3(), exports2);
+    __exportStar(require_apis3(), exports2);
+    __exportStar(require_models4(), exports2);
+    __exportStar(require_api_version3(), exports2);
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/inference/inferenceOperationsBuilder.js
+var require_inferenceOperationsBuilder = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/inference/inferenceOperationsBuilder.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.inferenceOperationsBuilder = void 0;
+    var inference_1 = require_inference3();
+    var utils_1 = require_utils6();
+    var middleware_1 = require_middleware();
+    var inferenceOperationsBuilder = function(config5) {
+      var apiKey = config5.apiKey;
+      var controllerPath = (0, utils_1.normalizeUrl)(config5.controllerHostUrl) || "https://api.pinecone.io";
+      var headers2 = config5.additionalHeaders || null;
+      var apiConfig = {
+        basePath: controllerPath,
+        apiKey,
+        queryParamsStringify: utils_1.queryParamsStringify,
+        headers: __assign({ "User-Agent": (0, utils_1.buildUserAgent)(config5), "X-Pinecone-Api-Version": inference_1.X_PINECONE_API_VERSION }, headers2),
+        fetchApi: (0, utils_1.getFetch)(config5),
+        middleware: middleware_1.middleware
+      };
+      return new inference_1.InferenceApi(new inference_1.Configuration(apiConfig));
+    };
+    exports2.inferenceOperationsBuilder = inferenceOperationsBuilder;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/pinecone.js
+var require_pinecone = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/pinecone.js"(exports2) {
+    "use strict";
+    var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body2) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body2.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Pinecone = void 0;
+    var control_1 = require_control();
+    var indexHostSingleton_1 = require_indexHostSingleton();
+    var errors_1 = require_errors();
+    var data_1 = require_data();
+    var inference_1 = require_inference2();
+    var inferenceOperationsBuilder_1 = require_inferenceOperationsBuilder();
+    var environment_1 = require_environment();
+    var validateProperties_1 = require_validateProperties();
+    var types_1 = require_types3();
+    var Pinecone2 = (
+      /** @class */
+      function() {
+        function Pinecone3(options) {
+          if (options === void 0) {
+            options = this._readEnvironmentConfig();
+          }
+          if (!options.apiKey) {
+            throw new errors_1.PineconeConfigurationError("The client configuration must have required property: apiKey.");
+          }
+          (0, validateProperties_1.ValidateProperties)(options, types_1.PineconeConfigurationProperties);
+          this.config = options;
+          this._checkForBrowser();
+          var api = (0, control_1.indexOperationsBuilder)(this.config);
+          var infApi = (0, inferenceOperationsBuilder_1.inferenceOperationsBuilder)(this.config);
+          this._configureIndex = (0, control_1.configureIndex)(api);
+          this._createCollection = (0, control_1.createCollection)(api);
+          this._createIndex = (0, control_1.createIndex)(api);
+          this._describeCollection = (0, control_1.describeCollection)(api);
+          this._deleteCollection = (0, control_1.deleteCollection)(api);
+          this._describeIndex = (0, control_1.describeIndex)(api);
+          this._deleteIndex = (0, control_1.deleteIndex)(api);
+          this._listCollections = (0, control_1.listCollections)(api);
+          this._listIndexes = (0, control_1.listIndexes)(api);
+          this.inference = new inference_1.Inference(infApi);
+        }
+        Pinecone3.prototype._readEnvironmentConfig = function() {
+          if (typeof process === "undefined" || !process || !process.env) {
+            throw new errors_1.PineconeEnvironmentVarsNotSupportedError("Your execution environment does not support reading environment variables from process.env, so a configuration object is required when calling new Pinecone().");
+          }
+          var environmentConfig = {};
+          var requiredEnvVarMap = {
+            apiKey: "PINECONE_API_KEY"
+          };
+          var missingVars = [];
+          for (var _i = 0, _a = Object.entries(requiredEnvVarMap); _i < _a.length; _i++) {
+            var _b = _a[_i], key = _b[0], envVar = _b[1];
+            var value = process.env[envVar] || "";
+            if (!value) {
+              missingVars.push(envVar);
+            }
+            environmentConfig[key] = value;
+          }
+          if (missingVars.length > 0) {
+            throw new errors_1.PineconeConfigurationError("Since you called 'new Pinecone()' with no configuration object, we attempted to find client configuration in environment variables but the required environment variables were not set. Missing variables: ".concat(missingVars.join(", "), "."));
+          }
+          var optionalEnvVarMap = {
+            controllerHostUrl: "PINECONE_CONTROLLER_HOST"
+          };
+          for (var _c = 0, _d = Object.entries(optionalEnvVarMap); _c < _d.length; _c++) {
+            var _e = _d[_c], key = _e[0], envVar = _e[1];
+            var value = process.env[envVar];
+            if (value !== void 0) {
+              environmentConfig[key] = value;
+            }
+          }
+          return environmentConfig;
+        };
+        Pinecone3.prototype.describeIndex = function(indexName) {
+          return __awaiter(this, void 0, void 0, function() {
+            var indexModel;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._describeIndex(indexName)];
+                case 1:
+                  indexModel = _a.sent();
+                  if (indexModel.host) {
+                    indexHostSingleton_1.IndexHostSingleton._set(this.config, indexName, indexModel.host);
+                  }
+                  return [2, Promise.resolve(indexModel)];
+              }
+            });
+          });
+        };
+        Pinecone3.prototype.listIndexes = function() {
+          return __awaiter(this, void 0, void 0, function() {
+            var indexList, i, index;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._listIndexes()];
+                case 1:
+                  indexList = _a.sent();
+                  if (indexList.indexes && indexList.indexes.length > 0) {
+                    for (i = 0; i < indexList.indexes.length; i++) {
+                      index = indexList.indexes[i];
+                      indexHostSingleton_1.IndexHostSingleton._set(this.config, index.name, index.host);
+                    }
+                  }
+                  return [2, Promise.resolve(indexList)];
+              }
+            });
+          });
+        };
+        Pinecone3.prototype.createIndex = function(options) {
+          return this._createIndex(options);
+        };
+        Pinecone3.prototype.deleteIndex = function(indexName) {
+          return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this._deleteIndex(indexName)];
+                case 1:
+                  _a.sent();
+                  indexHostSingleton_1.IndexHostSingleton._delete(this.config, indexName);
+                  return [2, Promise.resolve()];
+              }
+            });
+          });
+        };
+        Pinecone3.prototype.configureIndex = function(indexName, options) {
+          return this._configureIndex(indexName, options, this.config.maxRetries);
+        };
+        Pinecone3.prototype.createCollection = function(options) {
+          return this._createCollection(options);
+        };
+        Pinecone3.prototype.listCollections = function() {
+          return this._listCollections();
+        };
+        Pinecone3.prototype.deleteCollection = function(collectionName) {
+          return this._deleteCollection(collectionName);
+        };
+        Pinecone3.prototype.describeCollection = function(collectionName) {
+          return this._describeCollection(collectionName);
+        };
+        Pinecone3.prototype._checkForBrowser = function() {
+          if ((0, environment_1.isBrowser)()) {
+            console.warn("The Pinecone SDK is intended for server-side use only. Using the SDK within a browser context can expose your API key(s). If you have deployed the SDK to production in a browser, please rotate your API keys.");
+          }
+        };
+        Pinecone3.prototype.getConfig = function() {
+          return this.config;
+        };
+        Pinecone3.prototype.index = function(indexName, indexHostUrl, additionalHeaders) {
+          return new data_1.Index(indexName, this.config, void 0, indexHostUrl, additionalHeaders);
+        };
+        Pinecone3.prototype.Index = function(indexName, indexHostUrl, additionalHeaders) {
+          return this.index(indexName, indexHostUrl, additionalHeaders);
+        };
+        return Pinecone3;
+      }()
+    );
+    exports2.Pinecone = Pinecone2;
+  }
+});
+
+// node_modules/@pinecone-database/pinecone/dist/index.js
+var require_dist3 = __commonJS({
+  "node_modules/@pinecone-database/pinecone/dist/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    } : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EmbeddingsList = exports2.Errors = exports2.Index = exports2.Pinecone = void 0;
+    var pinecone_1 = require_pinecone();
+    Object.defineProperty(exports2, "Pinecone", { enumerable: true, get: function() {
+      return pinecone_1.Pinecone;
+    } });
+    var data_1 = require_data();
+    Object.defineProperty(exports2, "Index", { enumerable: true, get: function() {
+      return data_1.Index;
+    } });
+    exports2.Errors = __importStar(require_errors());
+    var embeddingsList_1 = require_embeddingsList();
+    Object.defineProperty(exports2, "EmbeddingsList", { enumerable: true, get: function() {
+      return embeddingsList_1.EmbeddingsList;
+    } });
+  }
+});
+
+// node_modules/@langchain/core/dist/documents/document.js
+var Document;
+var init_document = __esm({
+  "node_modules/@langchain/core/dist/documents/document.js"() {
+    Document = class {
+      constructor(fields) {
+        Object.defineProperty(this, "pageContent", {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: void 0
+        });
+        Object.defineProperty(this, "metadata", {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: void 0
+        });
+        Object.defineProperty(this, "id", {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: void 0
+        });
+        this.pageContent = fields.pageContent !== void 0 ? fields.pageContent.toString() : "";
+        this.metadata = fields.metadata ?? {};
+        this.id = fields.id;
+      }
+    };
+  }
+});
+
 // node_modules/langchain/dist/agents/agent.js
 function isAgentAction(input) {
   return !Array.isArray(input) && input?.tool !== void 0;
@@ -92627,10 +105906,10 @@ var init_agent = __esm({
         });
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      static fromRunnables([first, ...runnables], config4) {
-        const sequence = RunnableSequence.from([first, ...runnables], config4.name);
-        sequence.singleAction = config4.singleAction;
-        sequence.streamRunnable = config4.streamRunnable;
+      static fromRunnables([first, ...runnables], config5) {
+        const sequence = RunnableSequence.from([first, ...runnables], config5.name);
+        sequence.singleAction = config5.singleAction;
+        sequence.streamRunnable = config5.streamRunnable;
         return sequence;
       }
       static isAgentRunnableSequence(x) {
@@ -92671,9 +105950,9 @@ var init_agent = __esm({
         this.defaultRunName = fields.defaultRunName ?? this.runnable.name ?? this.defaultRunName;
         this.streamRunnable = fields.streamRunnable ?? this.streamRunnable;
       }
-      async plan(steps, inputs, callbackManager, config4) {
+      async plan(steps, inputs, callbackManager, config5) {
         const combinedInput = { ...inputs, steps };
-        const combinedConfig = patchConfig(config4, {
+        const combinedConfig = patchConfig(config5, {
           callbacks: callbackManager,
           runName: this.defaultRunName
         });
@@ -92743,9 +106022,9 @@ var init_agent = __esm({
         this.defaultRunName = fields.defaultRunName ?? this.runnable.name ?? this.defaultRunName;
         this.streamRunnable = fields.streamRunnable ?? this.streamRunnable;
       }
-      async plan(steps, inputs, callbackManager, config4) {
+      async plan(steps, inputs, callbackManager, config5) {
         const combinedInput = { ...inputs, steps };
-        const combinedConfig = patchConfig(config4, {
+        const combinedConfig = patchConfig(config5, {
           callbacks: callbackManager,
           runName: this.defaultRunName
         });
@@ -93592,12 +106871,6 @@ var init_length_based = __esm({
   }
 });
 
-// node_modules/@langchain/core/dist/documents/document.js
-var init_document = __esm({
-  "node_modules/@langchain/core/dist/documents/document.js"() {
-  }
-});
-
 // node_modules/@langchain/core/dist/example_selectors/semantic_similarity.js
 var init_semantic_similarity = __esm({
   "node_modules/@langchain/core/dist/example_selectors/semantic_similarity.js"() {
@@ -93994,20 +107267,20 @@ var init_base11 = __esm({
        * @returns Promise that resolves with the output of the chain run.
        */
       async invoke(input, options) {
-        const config4 = ensureConfig(options);
+        const config5 = ensureConfig(options);
         const fullValues = await this._formatValues(input);
-        const callbackManager_ = await CallbackManager.configure(config4?.callbacks, this.callbacks, config4?.tags, this.tags, config4?.metadata, this.metadata, { verbose: this.verbose });
-        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), fullValues, void 0, void 0, void 0, void 0, config4?.runName);
+        const callbackManager_ = await CallbackManager.configure(config5?.callbacks, this.callbacks, config5?.tags, this.tags, config5?.metadata, this.metadata, { verbose: this.verbose });
+        const runManager = await callbackManager_?.handleChainStart(this.toJSON(), fullValues, void 0, void 0, void 0, void 0, config5?.runName);
         let outputValues;
         try {
           outputValues = await (fullValues.signal ? Promise.race([
-            this._call(fullValues, runManager, config4),
+            this._call(fullValues, runManager, config5),
             new Promise((_, reject) => {
               fullValues.signal?.addEventListener("abort", () => {
                 reject(new Error("AbortError"));
               });
             })
-          ]) : this._call(fullValues, runManager, config4));
+          ]) : this._call(fullValues, runManager, config5));
         } catch (e) {
           await runManager?.handleChainError(e);
           throw e;
@@ -94045,14 +107318,14 @@ var init_base11 = __esm({
         throw new Error("Method not implemented.");
       }
       /** @deprecated Use .invoke() instead. Will be removed in 0.2.0. */
-      async run(input, config4) {
+      async run(input, config5) {
         const inputKeys = this.inputKeys.filter((k) => !this.memory?.memoryKeys.includes(k));
         const isKeylessInput = inputKeys.length <= 1;
         if (!isKeylessInput) {
           throw new Error(`Chain ${this._chainType()} expects multiple inputs, cannot use 'run' `);
         }
         const values = inputKeys.length ? { [inputKeys[0]]: input } : {};
-        const returnValues = await this.call(values, config4);
+        const returnValues = await this.call(values, config5);
         const keys = Object.keys(returnValues);
         if (keys.length === 1) {
           return returnValues[keys[0]];
@@ -94080,8 +107353,8 @@ var init_base11 = __esm({
        *
        * Wraps _call and handles memory.
        */
-      async call(values, config4, tags) {
-        const parsedConfig = { tags, ...parseCallbackConfigArg(config4) };
+      async call(values, config5, tags) {
+        const parsedConfig = { tags, ...parseCallbackConfigArg(config5) };
         return this.invoke(values, parsedConfig);
       }
       /**
@@ -94089,8 +107362,8 @@ var init_base11 = __esm({
        *
        * Call the chain on all inputs in the list
        */
-      async apply(inputs, config4) {
-        return Promise.all(inputs.map(async (i, idx) => this.call(i, config4?.[idx])));
+      async apply(inputs, config5) {
+        return Promise.all(inputs.map(async (i, idx) => this.call(i, config5?.[idx])));
       }
       /**
        * Load a chain from a json-like object describing it.
@@ -94301,8 +107574,8 @@ var init_llm_chain = __esm({
        *
        * Wraps _call and handles memory.
        */
-      call(values, config4) {
-        return super.call(values, config4);
+      call(values, config5) {
+        return super.call(values, config5);
       }
       /** @ignore */
       async _call(values, runManager) {
@@ -94867,16 +108140,16 @@ var require_parser_cache = __commonJS({
     var parserCache = createLRU({
       max: 15e3
     });
-    function keyFromFields(type, fields, options, config4) {
+    function keyFromFields(type, fields, options, config5) {
       const res = [
         type,
         typeof options.nestTables,
         options.nestTables,
         Boolean(options.rowsAsArray),
-        Boolean(options.supportBigNumbers || config4.supportBigNumbers),
-        Boolean(options.bigNumberStrings || config4.bigNumberStrings),
+        Boolean(options.supportBigNumbers || config5.supportBigNumbers),
+        Boolean(options.bigNumberStrings || config5.bigNumberStrings),
         typeof options.typeCast,
-        options.timezone || config4.timezone,
+        options.timezone || config5.timezone,
         Boolean(options.decimalNumbers),
         options.dateStrings
       ];
@@ -94894,13 +108167,13 @@ var require_parser_cache = __commonJS({
       }
       return JSON.stringify(res, null, 0);
     }
-    function getParser(type, fields, options, config4, compiler) {
-      const key = keyFromFields(type, fields, options, config4);
+    function getParser(type, fields, options, config5, compiler) {
+      const key = keyFromFields(type, fields, options, config5);
       let parser = parserCache.get(key);
       if (parser) {
         return parser;
       }
-      parser = compiler(fields, options, config4);
+      parser = compiler(fields, options, config5);
       parserCache.set(key, parser);
       return parser;
     }
@@ -95235,7 +108508,7 @@ var require_denque = __commonJS({
 });
 
 // node_modules/mysql2/lib/constants/errors.js
-var require_errors = __commonJS({
+var require_errors2 = __commonJS({
   "node_modules/mysql2/lib/constants/errors.js"(exports2) {
     "use strict";
     exports2.EE_CANTCREATEFILE = 1;
@@ -103310,7 +116583,7 @@ var require_string = __commonJS({
 });
 
 // node_modules/mysql2/lib/constants/types.js
-var require_types2 = __commonJS({
+var require_types4 = __commonJS({
   "node_modules/mysql2/lib/constants/types.js"(exports2, module2) {
     "use strict";
     module2.exports = {
@@ -103406,11 +116679,11 @@ var require_types2 = __commonJS({
 var require_packet = __commonJS({
   "node_modules/mysql2/lib/packets/packet.js"(exports2, module2) {
     "use strict";
-    var ErrorCodeToName = require_errors();
+    var ErrorCodeToName = require_errors2();
     var NativeBuffer = require("buffer").Buffer;
     var Long = require_umd();
     var StringParser = require_string();
-    var Types = require_types2();
+    var Types = require_types4();
     var INVALID_DATE = /* @__PURE__ */ new Date(NaN);
     var pad = "000000000000";
     function leftPad(num, value) {
@@ -104490,7 +117763,7 @@ var require_auth_switch_response = __commonJS({
 var require_binary_row = __commonJS({
   "node_modules/mysql2/lib/packets/binary_row.js"(exports2, module2) {
     "use strict";
-    var Types = require_types2();
+    var Types = require_types4();
     var Packet = require_packet();
     var binaryReader = new Array(256);
     var BinaryRow = class _BinaryRow {
@@ -105264,7 +118537,7 @@ var require_column_definition = __commonJS({
         };
       }
       [Symbol.for("nodejs.util.inspect.custom")](depth, inspectOptions, inspect) {
-        const Types = require_types2();
+        const Types = require_types4();
         const typeNames = [];
         for (const t in Types) {
           typeNames[Types[t]] = t;
@@ -105463,7 +118736,7 @@ var require_execute = __commonJS({
     "use strict";
     var CursorType = require_cursor();
     var CommandCodes = require_commands();
-    var Types = require_types2();
+    var Types = require_types4();
     var Packet = require_packet();
     var CharsetToEncoding = require_charset_encodings();
     function isJSON(value) {
@@ -105911,7 +119184,7 @@ var require_prepared_statement_header = __commonJS({
 });
 
 // node_modules/mysql2/lib/packets/query.js
-var require_query2 = __commonJS({
+var require_query3 = __commonJS({
   "node_modules/mysql2/lib/packets/query.js"(exports2, module2) {
     "use strict";
     var Packet = require_packet();
@@ -106269,7 +119542,7 @@ var require_packets = __commonJS({
     var HandshakeResponse = require_handshake_response();
     var PrepareStatement = require_prepare_statement();
     var PreparedStatementHeader = require_prepared_statement_header();
-    var Query = require_query2();
+    var Query = require_query3();
     var RegisterSlave = require_register_slave();
     var ResultSetHeader = require_resultset_header();
     var SSLRequest = require_ssl_request();
@@ -107132,7 +120405,7 @@ var require_server_handshake = __commonJS({
   "node_modules/mysql2/lib/commands/server_handshake.js"(exports2, module2) {
     "use strict";
     var CommandCode = require_commands();
-    var Errors = require_errors();
+    var Errors = require_errors2();
     var Command = require_command();
     var Packets = require_packets();
     var ServerHandshake = class _ServerHandshake extends Command {
@@ -107831,7 +121104,7 @@ var require_generate_function = __commonJS({
 var require_text_parser = __commonJS({
   "node_modules/mysql2/lib/parsers/text_parser.js"(exports2, module2) {
     "use strict";
-    var Types = require_types2();
+    var Types = require_types4();
     var Charsets = require_charsets();
     var helpers = require_helpers();
     var genFunc = require_generate_function();
@@ -107840,15 +121113,15 @@ var require_text_parser = __commonJS({
     for (const t in Types) {
       typeNames[Types[t]] = t;
     }
-    function readCodeFor(type, charset, encodingExpr, config4, options) {
+    function readCodeFor(type, charset, encodingExpr, config5, options) {
       const supportBigNumbers = Boolean(
-        options.supportBigNumbers || config4.supportBigNumbers
+        options.supportBigNumbers || config5.supportBigNumbers
       );
       const bigNumberStrings = Boolean(
-        options.bigNumberStrings || config4.bigNumberStrings
+        options.bigNumberStrings || config5.bigNumberStrings
       );
-      const timezone = options.timezone || config4.timezone;
-      const dateStrings = options.dateStrings || config4.dateStrings;
+      const timezone = options.timezone || config5.timezone;
+      const dateStrings = options.dateStrings || config5.dateStrings;
       switch (type) {
         case Types.TINY:
         case Types.SHORT:
@@ -107868,7 +121141,7 @@ var require_text_parser = __commonJS({
           return "packet.readLengthCodedNumber()";
         case Types.DECIMAL:
         case Types.NEWDECIMAL:
-          if (config4.decimalNumbers) {
+          if (config5.decimalNumbers) {
             return "packet.parseLengthCodedFloat()";
           }
           return 'packet.readLengthCodedString("ascii")';
@@ -107890,7 +121163,7 @@ var require_text_parser = __commonJS({
         case Types.VECTOR:
           return "packet.parseVector()";
         case Types.JSON:
-          return config4.jsonStrings ? 'packet.readLengthCodedString("utf8")' : 'JSON.parse(packet.readLengthCodedString("utf8"))';
+          return config5.jsonStrings ? 'packet.readLengthCodedString("utf8")' : 'JSON.parse(packet.readLengthCodedString("utf8"))';
         default:
           if (charset === Charsets.BINARY) {
             return "packet.readLengthCodedBuffer()";
@@ -107898,9 +121171,9 @@ var require_text_parser = __commonJS({
           return `packet.readLengthCodedString(${encodingExpr})`;
       }
     }
-    function compile(fields, options, config4) {
-      if (typeof config4.typeCast === "function" && typeof options.typeCast !== "function") {
-        options.typeCast = config4.typeCast;
+    function compile(fields, options, config5) {
+      if (typeof config5.typeCast === "function" && typeof options.typeCast !== "function") {
+        options.typeCast = config5.typeCast;
       }
       function wrap2(field, _this) {
         return {
@@ -107977,7 +121250,7 @@ var require_text_parser = __commonJS({
             fields[i].columnType,
             fields[i].characterSet,
             encodingExpr,
-            config4,
+            config5,
             options
           );
           if (typeof options.typeCast === "function") {
@@ -107992,7 +121265,7 @@ var require_text_parser = __commonJS({
       parserFn("return result;");
       parserFn("}");
       parserFn("};")("})()");
-      if (config4.debug) {
+      if (config5.debug) {
         helpers.printDebugWithCode(
           "Compiled text protocol row parser",
           parserFn.toString()
@@ -108003,15 +121276,15 @@ var require_text_parser = __commonJS({
       }
       return parserFn.toFunction();
     }
-    function getTextParser(fields, options, config4) {
-      return parserCache.getParser("text", fields, options, config4, compile);
+    function getTextParser(fields, options, config5) {
+      return parserCache.getParser("text", fields, options, config5, compile);
     }
     module2.exports = getTextParser;
   }
 });
 
 // node_modules/mysql2/lib/commands/query.js
-var require_query3 = __commonJS({
+var require_query4 = __commonJS({
   "node_modules/mysql2/lib/commands/query.js"(exports2, module2) {
     "use strict";
     var process2 = require("process");
@@ -108327,7 +121600,7 @@ var require_binary_parser = __commonJS({
     "use strict";
     var FieldFlags = require_field_flags();
     var Charsets = require_charsets();
-    var Types = require_types2();
+    var Types = require_types4();
     var helpers = require_helpers();
     var genFunc = require_generate_function();
     var parserCache = require_parser_cache();
@@ -108335,15 +121608,15 @@ var require_binary_parser = __commonJS({
     for (const t in Types) {
       typeNames[Types[t]] = t;
     }
-    function readCodeFor(field, config4, options, fieldNum) {
+    function readCodeFor(field, config5, options, fieldNum) {
       const supportBigNumbers = Boolean(
-        options.supportBigNumbers || config4.supportBigNumbers
+        options.supportBigNumbers || config5.supportBigNumbers
       );
       const bigNumberStrings = Boolean(
-        options.bigNumberStrings || config4.bigNumberStrings
+        options.bigNumberStrings || config5.bigNumberStrings
       );
-      const timezone = options.timezone || config4.timezone;
-      const dateStrings = options.dateStrings || config4.dateStrings;
+      const timezone = options.timezone || config5.timezone;
+      const dateStrings = options.dateStrings || config5.dateStrings;
       const unsigned = field.flags & FieldFlags.UNSIGNED;
       switch (field.columnType) {
         case Types.TINY:
@@ -108373,7 +121646,7 @@ var require_binary_parser = __commonJS({
           return "packet.readTimeString()";
         case Types.DECIMAL:
         case Types.NEWDECIMAL:
-          if (config4.decimalNumbers) {
+          if (config5.decimalNumbers) {
             return "packet.parseLengthCodedFloat();";
           }
           return 'packet.readLengthCodedString("ascii");';
@@ -108382,7 +121655,7 @@ var require_binary_parser = __commonJS({
         case Types.VECTOR:
           return "packet.parseVector()";
         case Types.JSON:
-          return config4.jsonStrings ? 'packet.readLengthCodedString("utf8")' : 'JSON.parse(packet.readLengthCodedString("utf8"));';
+          return config5.jsonStrings ? 'packet.readLengthCodedString("utf8")' : 'JSON.parse(packet.readLengthCodedString("utf8"));';
         case Types.LONGLONG:
           if (!supportBigNumbers) {
             return unsigned ? "packet.readInt64JSNumber();" : "packet.readSInt64JSNumber();";
@@ -108398,7 +121671,7 @@ var require_binary_parser = __commonJS({
           return `packet.readLengthCodedString(fields[${fieldNum}].encoding)`;
       }
     }
-    function compile(fields, options, config4) {
+    function compile(fields, options, config5) {
       const parserFn = genFunc();
       const nullBitmapLength = Math.floor((fields.length + 7 + 2) / 8);
       function wrap2(field, packet) {
@@ -108446,8 +121719,8 @@ var require_binary_parser = __commonJS({
       } else {
         parserFn("const result = {};");
       }
-      if (typeof config4.typeCast === "function" && typeof options.typeCast !== "function") {
-        options.typeCast = config4.typeCast;
+      if (typeof config5.typeCast === "function" && typeof options.typeCast !== "function") {
+        options.typeCast = config5.typeCast;
       }
       parserFn("packet.readInt8();");
       for (let i = 0; i < nullBitmapLength; ++i) {
@@ -108479,7 +121752,7 @@ var require_binary_parser = __commonJS({
         } else {
           const fieldWrapperVar = `fieldWrapper${i}`;
           parserFn(`const ${fieldWrapperVar} = wrap(fields[${i}], packet);`);
-          const readCode = readCodeFor(fields[i], config4, options, i);
+          const readCode = readCodeFor(fields[i], config5, options, i);
           if (typeof options.typeCast === "function") {
             parserFn(
               `${lvalue} = options.typeCast(${fieldWrapperVar}, function() { return ${readCode} });`
@@ -108498,7 +121771,7 @@ var require_binary_parser = __commonJS({
       parserFn("return result;");
       parserFn("}");
       parserFn("};")("})()");
-      if (config4.debug) {
+      if (config5.debug) {
         helpers.printDebugWithCode(
           "Compiled binary protocol row parser",
           parserFn.toString()
@@ -108506,8 +121779,8 @@ var require_binary_parser = __commonJS({
       }
       return parserFn.toFunction({ wrap: wrap2 });
     }
-    function getBinaryParser(fields, options, config4) {
-      return parserCache.getParser("binary", fields, options, config4, compile);
+    function getBinaryParser(fields, options, config5) {
+      return parserCache.getParser("binary", fields, options, config5, compile);
     }
     module2.exports = getBinaryParser;
   }
@@ -108518,7 +121791,7 @@ var require_execute2 = __commonJS({
   "node_modules/mysql2/lib/commands/execute.js"(exports2, module2) {
     "use strict";
     var Command = require_command();
-    var Query = require_query3();
+    var Query = require_query4();
     var Packets = require_packets();
     var getBinaryParser = require_binary_parser();
     var Execute = class _Execute extends Command {
@@ -109098,7 +122371,7 @@ var require_commands2 = __commonJS({
     "use strict";
     var ClientHandshake = require_client_handshake();
     var ServerHandshake = require_server_handshake();
-    var Query = require_query3();
+    var Query = require_query4();
     var Prepare = require_prepare();
     var CloseStatement = require_close_statement2();
     var Execute = require_execute2();
@@ -110693,21 +123966,21 @@ var require_named_placeholders = __commonJS({
       }
       return [query];
     }
-    function createCompiler(config4) {
-      if (!config4)
-        config4 = {};
-      if (!config4.placeholder) {
-        config4.placeholder = "?";
+    function createCompiler(config5) {
+      if (!config5)
+        config5 = {};
+      if (!config5.placeholder) {
+        config5.placeholder = "?";
       }
       let ncache = 100;
       let cache2;
-      if (typeof config4.cache === "number") {
-        ncache = config4.cache;
+      if (typeof config5.cache === "number") {
+        ncache = config5.cache;
       }
-      if (typeof config4.cache === "object") {
-        cache2 = config4.cache;
+      if (typeof config5.cache === "object") {
+        cache2 = config5.cache;
       }
-      if (config4.cache !== false && !cache2) {
+      if (config5.cache !== false && !cache2) {
         cache2 = new (require_lru_cache2())({ max: ncache });
       }
       function toArrayParams(tree, params) {
@@ -110736,17 +124009,17 @@ var require_named_placeholders = __commonJS({
         let unnamed = noTailingSemicolon(tree[0][0]);
         for (let i = 1; i < tree[0].length; ++i) {
           if (tree[0][i - 1].slice(-1) == ":") {
-            unnamed += config4.placeholder;
+            unnamed += config5.placeholder;
           }
-          unnamed += config4.placeholder;
+          unnamed += config5.placeholder;
           unnamed += noTailingSemicolon(tree[0][i]);
         }
         const last = tree[0][tree[0].length - 1];
         if (tree[0].length == tree[1].length) {
           if (last.slice(-1) == ":") {
-            unnamed += config4.placeholder;
+            unnamed += config5.placeholder;
           }
-          unnamed += config4.placeholder;
+          unnamed += config5.placeholder;
         }
         return [unnamed, tree[1]];
       }
@@ -111551,10 +124824,10 @@ var require_connection = __commonJS({
         this.addCommand = this._addCommandClosedState;
         return quitCmd;
       }
-      static createQuery(sql, values, cb, config4) {
+      static createQuery(sql, values, cb, config5) {
         let options = {
-          rowsAsArray: config4.rowsAsArray,
-          infileStreamFactory: config4.infileStreamFactory
+          rowsAsArray: config5.rowsAsArray,
+          infileStreamFactory: config5.infileStreamFactory
         };
         if (typeof sql === "object") {
           options = {
@@ -112446,13 +125719,13 @@ var require_pool_cluster = __commonJS({
       }
     };
     var PoolCluster = class extends EventEmitter2 {
-      constructor(config4) {
+      constructor(config5) {
         super();
-        config4 = config4 || {};
-        this._canRetry = typeof config4.canRetry === "undefined" ? true : config4.canRetry;
-        this._removeNodeErrorCount = config4.removeNodeErrorCount || 5;
-        this._restoreNodeTimeout = config4.restoreNodeTimeout || 0;
-        this._defaultSelector = config4.defaultSelector || "RR";
+        config5 = config5 || {};
+        this._canRetry = typeof config5.canRetry === "undefined" ? true : config5.canRetry;
+        this._removeNodeErrorCount = config5.removeNodeErrorCount || 5;
+        this._restoreNodeTimeout = config5.restoreNodeTimeout || 0;
+        this._defaultSelector = config5.defaultSelector || "RR";
         this._closed = false;
         this._lastId = 0;
         this._nodes = {};
@@ -112473,16 +125746,16 @@ var require_pool_cluster = __commonJS({
         }
         return this._namespaces[key];
       }
-      add(id, config4) {
+      add(id, config5) {
         if (typeof id === "object") {
-          config4 = id;
+          config5 = id;
           id = `CLUSTER::${++this._lastId}`;
         }
         if (typeof this._nodes[id] === "undefined") {
           this._nodes[id] = {
             id,
             errorCount: 0,
-            pool: new Pool({ config: new PoolConfig(config4) }),
+            pool: new Pool({ config: new PoolConfig(config5) }),
             _offlineUntil: 0
           };
           this._serviceableNodeIds.push(id);
@@ -112646,8 +125919,8 @@ var require_create_pool = __commonJS({
     "use strict";
     var Pool = require_pool3();
     var PoolConfig = require_pool_config();
-    function createPool(config4) {
-      return new Pool({ config: new PoolConfig(config4) });
+    function createPool(config5) {
+      return new Pool({ config: new PoolConfig(config5) });
     }
     module2.exports = createPool;
   }
@@ -112658,8 +125931,8 @@ var require_create_pool_cluster = __commonJS({
   "node_modules/mysql2/lib/create_pool_cluster.js"(exports2, module2) {
     "use strict";
     var PoolCluster = require_pool_cluster();
-    function createPoolCluster(config4) {
-      return new PoolCluster(config4);
+    function createPoolCluster(config5) {
+      return new PoolCluster(config5);
     }
     module2.exports = createPoolCluster;
   }
@@ -112822,7 +126095,7 @@ var require_promise = __commonJS({
     exports2.PromisePool = PromisePool;
     exports2.PromiseConnection = PromiseConnection;
     exports2.PromisePoolConnection = PromisePoolConnection;
-    exports2.__defineGetter__("Types", () => require_types2());
+    exports2.__defineGetter__("Types", () => require_types4());
     exports2.__defineGetter__(
       "Charsets",
       () => require_charsets()
@@ -112841,7 +126114,7 @@ var require_promise = __commonJS({
 });
 
 // src/app.js
-var import_dotenv3 = __toESM(require_main());
+var import_dotenv4 = __toESM(require_main());
 var import_fs = __toESM(require("fs"));
 var import_express2 = __toESM(require_express2());
 
@@ -113273,25 +126546,25 @@ var BaseChatModel = class _BaseChatModel extends BaseLanguageModel {
     }
     return result.content;
   }
-  withStructuredOutput(outputSchema, config4) {
+  withStructuredOutput(outputSchema, config5) {
     if (typeof this.bindTools !== "function") {
       throw new Error(`Chat model must implement ".bindTools()" to use withStructuredOutput.`);
     }
-    if (config4?.strict) {
+    if (config5?.strict) {
       throw new Error(`"strict" mode is not supported for this model by default.`);
     }
     const schema = outputSchema;
-    const name = config4?.name;
+    const name = config5?.name;
     const description = schema.description ?? "A function available to call.";
-    const method = config4?.method;
-    const includeRaw = config4?.includeRaw;
+    const method = config5?.method;
+    const includeRaw = config5?.includeRaw;
     if (method === "jsonMode") {
       throw new Error(`Base withStructuredOutput implementation only supports "functionCalling" as a method.`);
     }
     let functionName = name ?? "extract";
-    let tools2;
+    let tools;
     if (isZodSchema(schema)) {
-      tools2 = [
+      tools = [
         {
           type: "function",
           function: {
@@ -113305,7 +126578,7 @@ var BaseChatModel = class _BaseChatModel extends BaseLanguageModel {
       if ("name" in schema) {
         functionName = schema.name;
       }
-      tools2 = [
+      tools = [
         {
           type: "function",
           function: {
@@ -113316,7 +126589,7 @@ var BaseChatModel = class _BaseChatModel extends BaseLanguageModel {
         }
       ];
     }
-    const llm = this.bindTools(tools2);
+    const llm = this.bindTools(tools);
     const outputParser = RunnableLambda.from((input) => {
       if (!input.tool_calls || input.tool_calls.length === 0) {
         throw new Error("No tool calls found in the response.");
@@ -113334,7 +126607,7 @@ var BaseChatModel = class _BaseChatModel extends BaseLanguageModel {
     }
     const parserAssign = RunnablePassthrough.assign({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      parsed: (input, config5) => outputParser.invoke(input.raw, config5)
+      parsed: (input, config6) => outputParser.invoke(input.raw, config6)
     });
     const parserNone = RunnablePassthrough.assign({
       parsed: () => null
@@ -113730,7 +127003,7 @@ var extractMimeType = (str) => {
   }
   return null;
 };
-function getGeminiAPI(config4) {
+function getGeminiAPI(config5) {
   function messageContentText(content) {
     if (content?.text && content?.text.length > 0) {
       return {
@@ -113768,7 +127041,7 @@ function getGeminiAPI(config4) {
     };
   }
   async function fileUriContentToBlob(uri2) {
-    return config4?.mediaManager?.getMediaBlob(uri2);
+    return config5?.mediaManager?.getMediaBlob(uri2);
   }
   async function messageContentMedia(content) {
     if ("mimeType" in content && "data" in content) {
@@ -113881,7 +127154,7 @@ function getGeminiAPI(config4) {
     ];
   }
   async function systemMessageToContent(message) {
-    return config4?.useSystemInstruction ? roleMessageToContent("system", message) : [
+    return config5?.useSystemInstruction ? roleMessageToContent("system", message) : [
       ...await roleMessageToContent("user", message),
       ...await roleMessageToContent("model", new AIMessage("Ok"))
     ];
@@ -114053,7 +127326,7 @@ function getGeminiAPI(config4) {
     return ret;
   }
   function safeResponseTo(response, responseTo) {
-    const safetyHandler = config4?.safetyHandler ?? new DefaultGeminiSafetyHandler();
+    const safetyHandler = config5?.safetyHandler ?? new DefaultGeminiSafetyHandler();
     try {
       const safeResponse = safetyHandler.handle(response);
       return responseTo(safeResponse);
@@ -114269,8 +127542,8 @@ function getGeminiAPI(config4) {
     };
     const rawTools = partsToToolsRaw(parts);
     if (rawTools.length > 0) {
-      const tools2 = toolsRawToTools(rawTools);
-      for (const tool2 of tools2) {
+      const tools = toolsRawToTools(rawTools);
+      for (const tool2 of tools) {
         fields.tool_call_chunks?.push({
           name: tool2.function.name,
           args: tool2.function.arguments,
@@ -114294,7 +127567,7 @@ function getGeminiAPI(config4) {
         }
       }
       fields.additional_kwargs = {
-        tool_calls: tools2
+        tool_calls: tools
       };
     }
     return fields;
@@ -114404,7 +127677,7 @@ function getGeminiAPI(config4) {
     return ret;
   }
   async function formatSystemInstruction(input) {
-    if (!config4?.useSystemInstruction) {
+    if (!config5?.useSystemInstruction) {
       return {};
     }
     const it = inputType(input);
@@ -114433,7 +127706,7 @@ function getGeminiAPI(config4) {
   }
   function cleanGeminiTool(tool2) {
     const orig = searchToolName(tool2);
-    const adj = config4?.googleSearchToolAdjustment;
+    const adj = config5?.googleSearchToolAdjustment;
     if (orig && adj && adj !== orig) {
       return {
         [adj]: {}
@@ -114443,13 +127716,13 @@ function getGeminiAPI(config4) {
     }
   }
   function formatTools(parameters) {
-    const tools2 = parameters?.tools;
-    if (!tools2 || tools2.length === 0) {
+    const tools = parameters?.tools;
+    if (!tools || tools.length === 0) {
       return [];
     }
     const langChainTools = [];
     const otherTools = [];
-    tools2.forEach((tool2) => {
+    tools.forEach((tool2) => {
       if (isLangChainTool(tool2)) {
         langChainTools.push(tool2);
       } else {
@@ -114487,7 +127760,7 @@ function getGeminiAPI(config4) {
     const typedInput = input;
     const contents = await formatContents(typedInput, parameters);
     const generationConfig = formatGenerationConfig(parameters);
-    const tools2 = formatTools(parameters);
+    const tools = formatTools(parameters);
     const toolConfig = formatToolConfig(parameters);
     const safetySettings = formatSafetySettings(parameters);
     const systemInstruction = await formatSystemInstruction(typedInput);
@@ -114495,8 +127768,8 @@ function getGeminiAPI(config4) {
       contents,
       generationConfig
     };
-    if (tools2 && tools2.length) {
-      ret.tools = tools2;
+    if (tools && tools.length) {
+      ret.tools = tools;
     }
     if (toolConfig) {
       ret.toolConfig = toolConfig;
@@ -114540,7 +127813,7 @@ function isModelGemini(modelName) {
 
 // node_modules/@langchain/google-common/dist/utils/anthropic.js
 init_outputs2();
-function getAnthropicAPI(config4) {
+function getAnthropicAPI(config5) {
   function partToString(part) {
     return "text" in part ? part.text : "";
   }
@@ -114813,7 +128086,7 @@ function getAnthropicAPI(config4) {
     };
   }
   function formatAnthropicVersion() {
-    return config4?.version ?? "vertex-2023-10-16";
+    return config5?.version ?? "vertex-2023-10-16";
   }
   function textContentToAnthropicContent(content) {
     return content;
@@ -114979,9 +128252,9 @@ ${contentString}`;
     }
   }
   function formatTools(parameters) {
-    const tools2 = parameters?.tools ?? [];
+    const tools = parameters?.tools ?? [];
     const ret = [];
-    tools2.forEach((tool2) => {
+    tools.forEach((tool2) => {
       const anthropicTools = formatTool(tool2);
       anthropicTools.forEach((anthropicTool) => {
         if (anthropicTool) {
@@ -115020,15 +128293,15 @@ ${contentString}`;
     const messages2 = formatMessages(typedInput);
     const settings = formatSettings(parameters);
     const system = formatSystem(typedInput);
-    const tools2 = formatTools(parameters);
+    const tools = formatTools(parameters);
     const toolChoice = formatToolChoice(parameters);
     const ret = {
       anthropic_version: anthropicVersion,
       messages: messages2,
       ...settings
     };
-    if (tools2 && tools2.length && parameters?.tool_choice !== "none") {
-      ret.tools = tools2;
+    if (tools && tools.length && parameters?.tool_choice !== "none") {
+      ret.tools = tools;
     }
     if (toolChoice) {
       ret.tool_choice = toolChoice;
@@ -115092,10 +128365,10 @@ function isGeminiTool(tool2) {
 function isGeminiNonFunctionTool(tool2) {
   return isGeminiTool(tool2) && !("functionDeclaration" in tool2);
 }
-function convertToGeminiTools(tools2) {
+function convertToGeminiTools(tools) {
   const geminiTools = [];
   let functionDeclarationsIndex = -1;
-  tools2.forEach((tool2) => {
+  tools.forEach((tool2) => {
     if (isGeminiNonFunctionTool(tool2)) {
       geminiTools.push(tool2);
     } else {
@@ -115151,9 +128424,9 @@ function copyAIModelParamsInto(params, options, target) {
     ret.tool_choice = toolChoice.tool_choice;
     ret.allowed_function_names = toolChoice.allowed_function_names;
   }
-  const tools2 = options?.tools;
-  if (tools2) {
-    ret.tools = convertToGeminiTools(tools2);
+  const tools = options?.tools;
+  if (tools) {
+    ret.tools = convertToGeminiTools(tools);
   }
   return ret;
 }
@@ -116194,8 +129467,8 @@ var ChatGoogleBase = class extends BaseChatModel {
   get platform() {
     return this.connection.platform;
   }
-  bindTools(tools2, kwargs) {
-    return this.bind({ tools: convertToGeminiTools(tools2), ...kwargs });
+  bindTools(tools, kwargs) {
+    return this.bind({ tools: convertToGeminiTools(tools), ...kwargs });
   }
   // Replace
   _llmType() {
@@ -116265,20 +129538,20 @@ var ChatGoogleBase = class extends BaseChatModel {
   _combineLLMOutput() {
     return [];
   }
-  withStructuredOutput(outputSchema, config4) {
+  withStructuredOutput(outputSchema, config5) {
     const schema = outputSchema;
-    const name = config4?.name;
-    const method = config4?.method;
-    const includeRaw = config4?.includeRaw;
+    const name = config5?.name;
+    const method = config5?.method;
+    const includeRaw = config5?.includeRaw;
     if (method === "jsonMode") {
       throw new Error(`Google only supports "functionCalling" as a method.`);
     }
     let functionName = name ?? "extract";
     let outputParser;
-    let tools2;
+    let tools;
     if (isZodSchema2(schema)) {
       const jsonSchema = zodToGeminiParameters(schema);
-      tools2 = [
+      tools = [
         {
           functionDeclarations: [
             {
@@ -116306,7 +129579,7 @@ var ChatGoogleBase = class extends BaseChatModel {
           parameters: schema
         };
       }
-      tools2 = [
+      tools = [
         {
           functionDeclarations: [geminiFunctionDefinition]
         }
@@ -116317,7 +129590,7 @@ var ChatGoogleBase = class extends BaseChatModel {
       });
     }
     const llm = this.bind({
-      tools: tools2,
+      tools,
       tool_choice: functionName
     });
     if (!includeRaw) {
@@ -116327,7 +129600,7 @@ var ChatGoogleBase = class extends BaseChatModel {
     }
     const parserAssign = RunnablePassthrough.assign({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      parsed: (input, config5) => outputParser.invoke(input.raw, config5)
+      parsed: (input, config6) => outputParser.invoke(input.raw, config6)
     });
     const parserNone = RunnablePassthrough.assign({
       parsed: () => null
@@ -116365,6 +129638,25 @@ init_outputs2();
 
 // node_modules/@langchain/core/dist/embeddings.js
 init_async_caller2();
+var Embeddings = class {
+  constructor(params) {
+    Object.defineProperty(this, "caller", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.caller = new AsyncCaller2(params ?? {});
+  }
+};
+
+// node_modules/@langchain/core/dist/utils/chunk_array.js
+var chunkArray = (arr2, chunkSize) => arr2.reduce((chunks, elem, index) => {
+  const chunkIndex = Math.floor(index / chunkSize);
+  const chunk = chunks[chunkIndex] || [];
+  chunks[chunkIndex] = chunk.concat([elem]);
+  return chunks;
+}, []);
 
 // node_modules/@langchain/google-common/dist/output_parsers.js
 init_output_parsers2();
@@ -116583,10 +129875,10 @@ var StructuredTool = class extends BaseLangChain {
    * @param config Optional configuration for the tool.
    * @returns A Promise that resolves with a string.
    */
-  async invoke(input, config4) {
+  async invoke(input, config5) {
     let tool_call_id;
     let toolInput;
-    let enrichedConfig = ensureConfig(config4);
+    let enrichedConfig = ensureConfig(config5);
     if (_isToolCall(input)) {
       tool_call_id = input.id;
       toolInput = input.args;
@@ -116626,13 +129918,13 @@ Details: ${e.message}`;
       }
       throw new ToolInputParsingException(message, JSON.stringify(arg));
     }
-    const config4 = parseCallbackConfigArg(configArg);
-    const callbackManager_ = CallbackManager.configure(config4.callbacks, this.callbacks, config4.tags || tags, this.tags, config4.metadata, this.metadata, { verbose: this.verbose });
-    const runManager = await callbackManager_?.handleToolStart(this.toJSON(), typeof parsed === "string" ? parsed : JSON.stringify(parsed), config4.runId, void 0, void 0, void 0, config4.runName);
-    delete config4.runId;
+    const config5 = parseCallbackConfigArg(configArg);
+    const callbackManager_ = CallbackManager.configure(config5.callbacks, this.callbacks, config5.tags || tags, this.tags, config5.metadata, this.metadata, { verbose: this.verbose });
+    const runManager = await callbackManager_?.handleToolStart(this.toJSON(), typeof parsed === "string" ? parsed : JSON.stringify(parsed), config5.runId, void 0, void 0, void 0, config5.runName);
+    delete config5.runId;
     let result;
     try {
-      result = await this._call(parsed, runManager, config4);
+      result = await this._call(parsed, runManager, config5);
     } catch (e) {
       await runManager?.handleToolError(e);
       throw e;
@@ -116650,8 +129942,8 @@ Result: ${JSON.stringify(result)}`);
       content = result;
     }
     let toolCallId;
-    if (config4 && "configurable" in config4) {
-      toolCallId = config4.configurable.tool_call_id;
+    if (config5 && "configurable" in config5) {
+      toolCallId = config5.configurable.tool_call_id;
     }
     const formattedOutput = _formatToolOutput({
       content,
@@ -116719,11 +130011,11 @@ var DynamicTool = class extends Tool {
    * @deprecated Use .invoke() instead. Will be removed in 0.3.0.
    */
   async call(arg, configArg) {
-    const config4 = parseCallbackConfigArg(configArg);
-    if (config4.runName === void 0) {
-      config4.runName = this.name;
+    const config5 = parseCallbackConfigArg(configArg);
+    if (config5.runName === void 0) {
+      config5.runName = this.name;
     }
-    return super.call(arg, config4);
+    return super.call(arg, config5);
   }
   /** @ignore */
   async _call(input, runManager, parentConfig) {
@@ -116770,11 +130062,11 @@ var DynamicStructuredTool = class extends StructuredTool {
    * @deprecated Use .invoke() instead. Will be removed in 0.3.0.
    */
   async call(arg, configArg, tags) {
-    const config4 = parseCallbackConfigArg(configArg);
-    if (config4.runName === void 0) {
-      config4.runName = this.name;
+    const config5 = parseCallbackConfigArg(configArg);
+    if (config5.runName === void 0) {
+      config5.runName = this.name;
     }
-    return super.call(arg, config4, tags);
+    return super.call(arg, config5, tags);
   }
   _call(arg, runManager, parentConfig) {
     return this.func(arg, runManager, parentConfig);
@@ -116785,9 +130077,9 @@ function tool(func, fields) {
     return new DynamicTool({
       ...fields,
       description: fields.description ?? fields.schema?.description ?? `${fields.name} tool`,
-      func: async (input, runManager, config4) => {
+      func: async (input, runManager, config5) => {
         return new Promise((resolve, reject) => {
-          const childConfig = patchConfig(config4, {
+          const childConfig = patchConfig(config5, {
             callbacks: runManager?.getChild()
           });
           void AsyncLocalStorageProviderSingleton2.runWithConfig(pickRunnableConfigKeys(childConfig), async () => {
@@ -116808,9 +130100,9 @@ function tool(func, fields) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     schema: fields.schema,
     // TODO: Consider moving into DynamicStructuredTool constructor
-    func: async (input, runManager, config4) => {
+    func: async (input, runManager, config5) => {
       return new Promise((resolve, reject) => {
-        const childConfig = patchConfig(config4, {
+        const childConfig = patchConfig(config5, {
           callbacks: runManager?.getChild()
         });
         void AsyncLocalStorageProviderSingleton2.runWithConfig(pickRunnableConfigKeys(childConfig), async () => {
@@ -117244,7 +130536,7 @@ var utils_default = {
 };
 
 // node_modules/axios/lib/core/AxiosError.js
-function AxiosError(message, code, config4, request, response) {
+function AxiosError(message, code, config5, request, response) {
   Error.call(this);
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, this.constructor);
@@ -117254,7 +130546,7 @@ function AxiosError(message, code, config4, request, response) {
   this.message = message;
   this.name = "AxiosError";
   code && (this.code = code);
-  config4 && (this.config = config4);
+  config5 && (this.config = config5);
   request && (this.request = request);
   if (response) {
     this.response = response;
@@ -117303,14 +130595,14 @@ var descriptors = {};
 });
 Object.defineProperties(AxiosError, descriptors);
 Object.defineProperty(prototype, "isAxiosError", { value: true });
-AxiosError.from = (error, code, config4, request, response, customProps) => {
+AxiosError.from = (error, code, config5, request, response, customProps) => {
   const axiosError = Object.create(prototype);
   utils_default.toFlatObject(error, axiosError, function filter2(obj) {
     return obj !== Error.prototype;
   }, (prop) => {
     return prop !== "isAxiosError";
   });
-  AxiosError.call(axiosError, error.message, code, config4, request, response);
+  AxiosError.call(axiosError, error.message, code, config5, request, response);
   axiosError.cause = error;
   axiosError.name = error.name;
   customProps && Object.assign(axiosError, customProps);
@@ -118051,12 +131343,12 @@ var AxiosHeaders_default = AxiosHeaders;
 
 // node_modules/axios/lib/core/transformData.js
 function transformData(fns, response) {
-  const config4 = this || defaults_default;
-  const context = response || config4;
+  const config5 = this || defaults_default;
+  const context = response || config5;
   const headers2 = AxiosHeaders_default.from(context.headers);
   let data = context.data;
   utils_default.forEach(fns, function transform(fn) {
-    data = fn.call(config4, data, headers2.normalize(), response ? response.status : void 0);
+    data = fn.call(config5, data, headers2.normalize(), response ? response.status : void 0);
   });
   headers2.normalize();
   return data;
@@ -118068,8 +131360,8 @@ function isCancel(value) {
 }
 
 // node_modules/axios/lib/cancel/CanceledError.js
-function CanceledError(message, config4, request) {
-  AxiosError_default.call(this, message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config4, request);
+function CanceledError(message, config5, request) {
+  AxiosError_default.call(this, message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config5, request);
   this.name = "CanceledError";
 }
 utils_default.inherits(CanceledError, AxiosError_default, {
@@ -118610,11 +131902,11 @@ var resolveFamily = ({ address, family }) => {
   };
 };
 var buildAddressEntry = (address, family) => resolveFamily(utils_default.isObject(address) ? address : { address, family });
-var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
+var http_default = isHttpAdapterSupported && function httpAdapter(config5) {
   return wrapAsync(async function dispatchHttpRequest(resolve, reject, onDone) {
-    let { data, lookup: lookup2, family } = config4;
-    const { responseType, responseEncoding } = config4;
-    const method = config4.method.toUpperCase();
+    let { data, lookup: lookup2, family } = config5;
+    const { responseType, responseEncoding } = config5;
+    const method = config5.method.toUpperCase();
     let isDone;
     let rejected = false;
     let req;
@@ -118632,11 +131924,11 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
     }
     const emitter = new import_events.EventEmitter();
     const onFinished = () => {
-      if (config4.cancelToken) {
-        config4.cancelToken.unsubscribe(abort);
+      if (config5.cancelToken) {
+        config5.cancelToken.unsubscribe(abort);
       }
-      if (config4.signal) {
-        config4.signal.removeEventListener("abort", abort);
+      if (config5.signal) {
+        config5.signal.removeEventListener("abort", abort);
       }
       emitter.removeAllListeners();
     };
@@ -118648,16 +131940,16 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       }
     });
     function abort(reason) {
-      emitter.emit("abort", !reason || reason.type ? new CanceledError_default(null, config4, req) : reason);
+      emitter.emit("abort", !reason || reason.type ? new CanceledError_default(null, config5, req) : reason);
     }
     emitter.once("abort", reject);
-    if (config4.cancelToken || config4.signal) {
-      config4.cancelToken && config4.cancelToken.subscribe(abort);
-      if (config4.signal) {
-        config4.signal.aborted ? abort() : config4.signal.addEventListener("abort", abort);
+    if (config5.cancelToken || config5.signal) {
+      config5.cancelToken && config5.cancelToken.subscribe(abort);
+      if (config5.signal) {
+        config5.signal.aborted ? abort() : config5.signal.addEventListener("abort", abort);
       }
     }
-    const fullPath = buildFullPath(config4.baseURL, config4.url);
+    const fullPath = buildFullPath(config5.baseURL, config5.url);
     const parsed = new URL(fullPath, platform_default.hasBrowserEnv ? platform_default.origin : void 0);
     const protocol = parsed.protocol || supportedProtocols[0];
     if (protocol === "data:") {
@@ -118667,15 +131959,15 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
           status: 405,
           statusText: "method not allowed",
           headers: {},
-          config: config4
+          config: config5
         });
       }
       try {
-        convertedData = fromDataURI(config4.url, responseType === "blob", {
-          Blob: config4.env && config4.env.Blob
+        convertedData = fromDataURI(config5.url, responseType === "blob", {
+          Blob: config5.env && config5.env.Blob
         });
       } catch (err) {
-        throw AxiosError_default.from(err, AxiosError_default.ERR_BAD_REQUEST, config4);
+        throw AxiosError_default.from(err, AxiosError_default.ERR_BAD_REQUEST, config5);
       }
       if (responseType === "text") {
         convertedData = convertedData.toString(responseEncoding);
@@ -118690,20 +131982,20 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
         status: 200,
         statusText: "OK",
         headers: new AxiosHeaders_default(),
-        config: config4
+        config: config5
       });
     }
     if (supportedProtocols.indexOf(protocol) === -1) {
       return reject(new AxiosError_default(
         "Unsupported protocol " + protocol,
         AxiosError_default.ERR_BAD_REQUEST,
-        config4
+        config5
       ));
     }
-    const headers2 = AxiosHeaders_default.from(config4.headers).normalize();
+    const headers2 = AxiosHeaders_default.from(config5.headers).normalize();
     headers2.set("User-Agent", "axios/" + VERSION, false);
-    const { onUploadProgress, onDownloadProgress } = config4;
-    const maxRate = config4.maxRate;
+    const { onUploadProgress, onDownloadProgress } = config5;
+    const maxRate = config5.maxRate;
     let maxUploadRate = void 0;
     let maxDownloadRate = void 0;
     if (utils_default.isSpecCompliantForm(data)) {
@@ -118737,15 +132029,15 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
         return reject(new AxiosError_default(
           "Data after transformation must be a string, an ArrayBuffer, a Buffer, or a Stream",
           AxiosError_default.ERR_BAD_REQUEST,
-          config4
+          config5
         ));
       }
       headers2.setContentLength(data.length, false);
-      if (config4.maxBodyLength > -1 && data.length > config4.maxBodyLength) {
+      if (config5.maxBodyLength > -1 && data.length > config5.maxBodyLength) {
         return reject(new AxiosError_default(
           "Request body larger than maxBodyLength limit",
           AxiosError_default.ERR_BAD_REQUEST,
-          config4
+          config5
         ));
       }
     }
@@ -118772,9 +132064,9 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       ));
     }
     let auth = void 0;
-    if (config4.auth) {
-      const username = config4.auth.username || "";
-      const password = config4.auth.password || "";
+    if (config5.auth) {
+      const username = config5.auth.username || "";
+      const password = config5.auth.password || "";
       auth = username + ":" + password;
     }
     if (!auth && parsed.username) {
@@ -118787,13 +132079,13 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
     try {
       path = buildURL(
         parsed.pathname + parsed.search,
-        config4.params,
-        config4.paramsSerializer
+        config5.params,
+        config5.paramsSerializer
       ).replace(/^\?/, "");
     } catch (err) {
       const customErr = new Error(err.message);
-      customErr.config = config4;
-      customErr.url = config4.url;
+      customErr.config = config5;
+      customErr.url = config5.url;
       customErr.exists = true;
       return reject(customErr);
     }
@@ -118806,7 +132098,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       path,
       method,
       headers: headers2.toJSON(),
-      agents: { http: config4.httpAgent, https: config4.httpsAgent },
+      agents: { http: config5.httpAgent, https: config5.httpsAgent },
       auth,
       protocol,
       family,
@@ -118814,36 +132106,36 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       beforeRedirects: {}
     };
     !utils_default.isUndefined(lookup2) && (options.lookup = lookup2);
-    if (config4.socketPath) {
-      options.socketPath = config4.socketPath;
+    if (config5.socketPath) {
+      options.socketPath = config5.socketPath;
     } else {
       options.hostname = parsed.hostname.startsWith("[") ? parsed.hostname.slice(1, -1) : parsed.hostname;
       options.port = parsed.port;
-      setProxy(options, config4.proxy, protocol + "//" + parsed.hostname + (parsed.port ? ":" + parsed.port : "") + options.path);
+      setProxy(options, config5.proxy, protocol + "//" + parsed.hostname + (parsed.port ? ":" + parsed.port : "") + options.path);
     }
     let transport;
     const isHttpsRequest = isHttps.test(options.protocol);
-    options.agent = isHttpsRequest ? config4.httpsAgent : config4.httpAgent;
-    if (config4.transport) {
-      transport = config4.transport;
-    } else if (config4.maxRedirects === 0) {
+    options.agent = isHttpsRequest ? config5.httpsAgent : config5.httpAgent;
+    if (config5.transport) {
+      transport = config5.transport;
+    } else if (config5.maxRedirects === 0) {
       transport = isHttpsRequest ? import_https.default : import_http.default;
     } else {
-      if (config4.maxRedirects) {
-        options.maxRedirects = config4.maxRedirects;
+      if (config5.maxRedirects) {
+        options.maxRedirects = config5.maxRedirects;
       }
-      if (config4.beforeRedirect) {
-        options.beforeRedirects.config = config4.beforeRedirect;
+      if (config5.beforeRedirect) {
+        options.beforeRedirects.config = config5.beforeRedirect;
       }
       transport = isHttpsRequest ? httpsFollow : httpFollow;
     }
-    if (config4.maxBodyLength > -1) {
-      options.maxBodyLength = config4.maxBodyLength;
+    if (config5.maxBodyLength > -1) {
+      options.maxBodyLength = config5.maxBodyLength;
     } else {
       options.maxBodyLength = Infinity;
     }
-    if (config4.insecureHTTPParser) {
-      options.insecureHTTPParser = config4.insecureHTTPParser;
+    if (config5.insecureHTTPParser) {
+      options.insecureHTTPParser = config5.insecureHTTPParser;
     }
     req = transport.request(options, function handleResponse(res) {
       if (req.destroyed) return;
@@ -118864,7 +132156,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       }
       let responseStream = res;
       const lastRequest = res.req || req;
-      if (config4.decompress !== false && res.headers["content-encoding"]) {
+      if (config5.decompress !== false && res.headers["content-encoding"]) {
         if (method === "HEAD" || res.statusCode === 204) {
           delete res.headers["content-encoding"];
         }
@@ -118898,7 +132190,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
         status: res.statusCode,
         statusText: res.statusMessage,
         headers: new AxiosHeaders_default(res.headers),
-        config: config4,
+        config: config5,
         request: lastRequest
       };
       if (responseType === "stream") {
@@ -118910,13 +132202,13 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
         responseStream.on("data", function handleStreamData(chunk) {
           responseBuffer.push(chunk);
           totalResponseBytes += chunk.length;
-          if (config4.maxContentLength > -1 && totalResponseBytes > config4.maxContentLength) {
+          if (config5.maxContentLength > -1 && totalResponseBytes > config5.maxContentLength) {
             rejected = true;
             responseStream.destroy();
             reject(new AxiosError_default(
-              "maxContentLength size of " + config4.maxContentLength + " exceeded",
+              "maxContentLength size of " + config5.maxContentLength + " exceeded",
               AxiosError_default.ERR_BAD_RESPONSE,
-              config4,
+              config5,
               lastRequest
             ));
           }
@@ -118928,7 +132220,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
           const err = new AxiosError_default(
             "stream has been aborted",
             AxiosError_default.ERR_BAD_RESPONSE,
-            config4,
+            config5,
             lastRequest
           );
           responseStream.destroy(err);
@@ -118936,7 +132228,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
         });
         responseStream.on("error", function handleStreamError(err) {
           if (req.destroyed) return;
-          reject(AxiosError_default.from(err, null, config4, lastRequest));
+          reject(AxiosError_default.from(err, null, config5, lastRequest));
         });
         responseStream.on("end", function handleStreamEnd() {
           try {
@@ -118949,7 +132241,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
             }
             response.data = responseData;
           } catch (err) {
-            return reject(AxiosError_default.from(err, null, config4, response.request, response));
+            return reject(AxiosError_default.from(err, null, config5, response.request, response));
           }
           settle(resolve, reject, response);
         });
@@ -118966,33 +132258,33 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       req.destroy(err);
     });
     req.on("error", function handleRequestError(err) {
-      reject(AxiosError_default.from(err, null, config4, req));
+      reject(AxiosError_default.from(err, null, config5, req));
     });
     req.on("socket", function handleRequestSocket(socket) {
       socket.setKeepAlive(true, 1e3 * 60);
     });
-    if (config4.timeout) {
-      const timeout = parseInt(config4.timeout, 10);
+    if (config5.timeout) {
+      const timeout = parseInt(config5.timeout, 10);
       if (Number.isNaN(timeout)) {
         reject(new AxiosError_default(
           "error trying to parse `config.timeout` to int",
           AxiosError_default.ERR_BAD_OPTION_VALUE,
-          config4,
+          config5,
           req
         ));
         return;
       }
       req.setTimeout(timeout, function handleRequestTimeout() {
         if (isDone) return;
-        let timeoutErrorMessage = config4.timeout ? "timeout of " + config4.timeout + "ms exceeded" : "timeout exceeded";
-        const transitional2 = config4.transitional || transitional_default;
-        if (config4.timeoutErrorMessage) {
-          timeoutErrorMessage = config4.timeoutErrorMessage;
+        let timeoutErrorMessage = config5.timeout ? "timeout of " + config5.timeout + "ms exceeded" : "timeout exceeded";
+        const transitional2 = config5.transitional || transitional_default;
+        if (config5.timeoutErrorMessage) {
+          timeoutErrorMessage = config5.timeoutErrorMessage;
         }
         reject(new AxiosError_default(
           timeoutErrorMessage,
           transitional2.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED,
-          config4,
+          config5,
           req
         ));
         abort();
@@ -119010,7 +132302,7 @@ var http_default = isHttpAdapterSupported && function httpAdapter(config4) {
       });
       data.on("close", () => {
         if (!ended && !errored) {
-          abort(new CanceledError_default("Request stream has been aborted", config4, req));
+          abort(new CanceledError_default("Request stream has been aborted", config5, req));
         }
       });
       data.pipe(req);
@@ -119066,7 +132358,7 @@ var cookies_default = platform_default.hasStandardBrowserEnv ? (
 var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? { ...thing } : thing;
 function mergeConfig(config1, config22) {
   config22 = config22 || {};
-  const config4 = {};
+  const config5 = {};
   function getMergedValue(target, source, prop, caseless) {
     if (utils_default.isPlainObject(target) && utils_default.isPlainObject(source)) {
       return utils_default.merge.call({ caseless }, target, source);
@@ -119137,17 +132429,17 @@ function mergeConfig(config1, config22) {
   utils_default.forEach(Object.keys(Object.assign({}, config1, config22)), function computeConfigValue(prop) {
     const merge2 = mergeMap[prop] || mergeDeepProperties;
     const configValue = merge2(config1[prop], config22[prop], prop);
-    utils_default.isUndefined(configValue) && merge2 !== mergeDirectKeys || (config4[prop] = configValue);
+    utils_default.isUndefined(configValue) && merge2 !== mergeDirectKeys || (config5[prop] = configValue);
   });
-  return config4;
+  return config5;
 }
 
 // node_modules/axios/lib/helpers/resolveConfig.js
-var resolveConfig_default = (config4) => {
-  const newConfig = mergeConfig({}, config4);
+var resolveConfig_default = (config5) => {
+  const newConfig = mergeConfig({}, config5);
   let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers: headers2, auth } = newConfig;
   newConfig.headers = headers2 = AxiosHeaders_default.from(headers2);
-  newConfig.url = buildURL(buildFullPath(newConfig.baseURL, newConfig.url), config4.params, config4.paramsSerializer);
+  newConfig.url = buildURL(buildFullPath(newConfig.baseURL, newConfig.url), config5.params, config5.paramsSerializer);
   if (auth) {
     headers2.set(
       "Authorization",
@@ -119177,9 +132469,9 @@ var resolveConfig_default = (config4) => {
 
 // node_modules/axios/lib/adapters/xhr.js
 var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
-var xhr_default = isXHRAdapterSupported && function(config4) {
+var xhr_default = isXHRAdapterSupported && function(config5) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
-    const _config = resolveConfig_default(config4);
+    const _config = resolveConfig_default(config5);
     let requestData = _config.data;
     const requestHeaders = AxiosHeaders_default.from(_config.headers).normalize();
     let { responseType, onUploadProgress, onDownloadProgress } = _config;
@@ -119208,7 +132500,7 @@ var xhr_default = isXHRAdapterSupported && function(config4) {
         status: request.status,
         statusText: request.statusText,
         headers: responseHeaders,
-        config: config4,
+        config: config5,
         request
       };
       settle(function _resolve(value) {
@@ -119237,11 +132529,11 @@ var xhr_default = isXHRAdapterSupported && function(config4) {
       if (!request) {
         return;
       }
-      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config4, request));
+      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config5, request));
       request = null;
     };
     request.onerror = function handleError() {
-      reject(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config4, request));
+      reject(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config5, request));
       request = null;
     };
     request.ontimeout = function handleTimeout() {
@@ -119253,7 +132545,7 @@ var xhr_default = isXHRAdapterSupported && function(config4) {
       reject(new AxiosError_default(
         timeoutErrorMessage,
         transitional2.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED,
-        config4,
+        config5,
         request
       ));
       request = null;
@@ -119284,7 +132576,7 @@ var xhr_default = isXHRAdapterSupported && function(config4) {
         if (!request) {
           return;
         }
-        reject(!cancel || cancel.type ? new CanceledError_default(null, config4, request) : cancel);
+        reject(!cancel || cancel.type ? new CanceledError_default(null, config5, request) : cancel);
         request.abort();
         request = null;
       };
@@ -119295,7 +132587,7 @@ var xhr_default = isXHRAdapterSupported && function(config4) {
     }
     const protocol = parseProtocol(_config.url);
     if (protocol && platform_default.protocols.indexOf(protocol) === -1) {
-      reject(new AxiosError_default("Unsupported protocol " + protocol + ":", AxiosError_default.ERR_BAD_REQUEST, config4));
+      reject(new AxiosError_default("Unsupported protocol " + protocol + ":", AxiosError_default.ERR_BAD_REQUEST, config5));
       return;
     }
     request.send(requestData || null);
@@ -119445,8 +132737,8 @@ var resolvers = {
 };
 isFetchSupported && ((res) => {
   ["text", "arrayBuffer", "blob", "formData", "stream"].forEach((type) => {
-    !resolvers[type] && (resolvers[type] = utils_default.isFunction(res[type]) ? (res2) => res2[type]() : (_, config4) => {
-      throw new AxiosError_default(`Response type '${type}' is not supported`, AxiosError_default.ERR_NOT_SUPPORT, config4);
+    !resolvers[type] && (resolvers[type] = utils_default.isFunction(res[type]) ? (res2) => res2[type]() : (_, config5) => {
+      throw new AxiosError_default(`Response type '${type}' is not supported`, AxiosError_default.ERR_NOT_SUPPORT, config5);
     });
   });
 })(new Response());
@@ -119478,7 +132770,7 @@ var resolveBodyLength = async (headers2, body2) => {
   const length = utils_default.toFiniteNumber(headers2.getContentLength());
   return length == null ? getBodyLength(body2) : length;
 };
-var fetch_default = isFetchSupported && (async (config4) => {
+var fetch_default = isFetchSupported && (async (config5) => {
   let {
     url: url2,
     method,
@@ -119492,7 +132784,7 @@ var fetch_default = isFetchSupported && (async (config4) => {
     headers: headers2,
     withCredentials = "same-origin",
     fetchOptions
-  } = resolveConfig_default(config4);
+  } = resolveConfig_default(config5);
   responseType = responseType ? (responseType + "").toLowerCase() : "text";
   let composedSignal = composeSignals_default([signal, cancelToken && cancelToken.toAbortSignal()], timeout);
   let request;
@@ -119553,7 +132845,7 @@ var fetch_default = isFetchSupported && (async (config4) => {
       );
     }
     responseType = responseType || "text";
-    let responseData = await resolvers[utils_default.findKey(resolvers, responseType) || "text"](response, config4);
+    let responseData = await resolvers[utils_default.findKey(resolvers, responseType) || "text"](response, config5);
     !isStreamResponse && unsubscribe && unsubscribe();
     return await new Promise((resolve, reject) => {
       settle(resolve, reject, {
@@ -119561,7 +132853,7 @@ var fetch_default = isFetchSupported && (async (config4) => {
         headers: AxiosHeaders_default.from(response.headers),
         status: response.status,
         statusText: response.statusText,
-        config: config4,
+        config: config5,
         request
       });
     });
@@ -119569,13 +132861,13 @@ var fetch_default = isFetchSupported && (async (config4) => {
     unsubscribe && unsubscribe();
     if (err && err.name === "TypeError" && /fetch/i.test(err.message)) {
       throw Object.assign(
-        new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config4, request),
+        new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config5, request),
         {
           cause: err.cause || err
         }
       );
     }
-    throw AxiosError_default.from(err, err && err.code, config4, request);
+    throw AxiosError_default.from(err, err && err.code, config5, request);
   }
 });
 
@@ -119634,41 +132926,41 @@ var adapters_default = {
 };
 
 // node_modules/axios/lib/core/dispatchRequest.js
-function throwIfCancellationRequested(config4) {
-  if (config4.cancelToken) {
-    config4.cancelToken.throwIfRequested();
+function throwIfCancellationRequested(config5) {
+  if (config5.cancelToken) {
+    config5.cancelToken.throwIfRequested();
   }
-  if (config4.signal && config4.signal.aborted) {
-    throw new CanceledError_default(null, config4);
+  if (config5.signal && config5.signal.aborted) {
+    throw new CanceledError_default(null, config5);
   }
 }
-function dispatchRequest(config4) {
-  throwIfCancellationRequested(config4);
-  config4.headers = AxiosHeaders_default.from(config4.headers);
-  config4.data = transformData.call(
-    config4,
-    config4.transformRequest
+function dispatchRequest(config5) {
+  throwIfCancellationRequested(config5);
+  config5.headers = AxiosHeaders_default.from(config5.headers);
+  config5.data = transformData.call(
+    config5,
+    config5.transformRequest
   );
-  if (["post", "put", "patch"].indexOf(config4.method) !== -1) {
-    config4.headers.setContentType("application/x-www-form-urlencoded", false);
+  if (["post", "put", "patch"].indexOf(config5.method) !== -1) {
+    config5.headers.setContentType("application/x-www-form-urlencoded", false);
   }
-  const adapter = adapters_default.getAdapter(config4.adapter || defaults_default.adapter);
-  return adapter(config4).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config4);
+  const adapter = adapters_default.getAdapter(config5.adapter || defaults_default.adapter);
+  return adapter(config5).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config5);
     response.data = transformData.call(
-      config4,
-      config4.transformResponse,
+      config5,
+      config5.transformResponse,
       response
     );
     response.headers = AxiosHeaders_default.from(response.headers);
     return response;
   }, function onAdapterRejection(reason) {
     if (!isCancel(reason)) {
-      throwIfCancellationRequested(config4);
+      throwIfCancellationRequested(config5);
       if (reason && reason.response) {
         reason.response.data = transformData.call(
-          config4,
-          config4.transformResponse,
+          config5,
+          config5.transformResponse,
           reason.response
         );
         reason.response.headers = AxiosHeaders_default.from(reason.response.headers);
@@ -119760,9 +133052,9 @@ var Axios = class {
    *
    * @returns {Promise} The Promise to be fulfilled
    */
-  async request(configOrUrl, config4) {
+  async request(configOrUrl, config5) {
     try {
-      return await this._request(configOrUrl, config4);
+      return await this._request(configOrUrl, config5);
     } catch (err) {
       if (err instanceof Error) {
         let dummy = {};
@@ -119780,15 +133072,15 @@ var Axios = class {
       throw err;
     }
   }
-  _request(configOrUrl, config4) {
+  _request(configOrUrl, config5) {
     if (typeof configOrUrl === "string") {
-      config4 = config4 || {};
-      config4.url = configOrUrl;
+      config5 = config5 || {};
+      config5.url = configOrUrl;
     } else {
-      config4 = configOrUrl || {};
+      config5 = configOrUrl || {};
     }
-    config4 = mergeConfig(this.defaults, config4);
-    const { transitional: transitional2, paramsSerializer, headers: headers2 } = config4;
+    config5 = mergeConfig(this.defaults, config5);
+    const { transitional: transitional2, paramsSerializer, headers: headers2 } = config5;
     if (transitional2 !== void 0) {
       validator_default.assertOptions(transitional2, {
         silentJSONParsing: validators2.transitional(validators2.boolean),
@@ -119798,7 +133090,7 @@ var Axios = class {
     }
     if (paramsSerializer != null) {
       if (utils_default.isFunction(paramsSerializer)) {
-        config4.paramsSerializer = {
+        config5.paramsSerializer = {
           serialize: paramsSerializer
         };
       } else {
@@ -119808,14 +133100,14 @@ var Axios = class {
         }, true);
       }
     }
-    validator_default.assertOptions(config4, {
+    validator_default.assertOptions(config5, {
       baseUrl: validators2.spelling("baseURL"),
       withXsrfToken: validators2.spelling("withXSRFToken")
     }, true);
-    config4.method = (config4.method || this.defaults.method || "get").toLowerCase();
+    config5.method = (config5.method || this.defaults.method || "get").toLowerCase();
     let contextHeaders = headers2 && utils_default.merge(
       headers2.common,
-      headers2[config4.method]
+      headers2[config5.method]
     );
     headers2 && utils_default.forEach(
       ["delete", "get", "head", "post", "put", "patch", "common"],
@@ -119823,11 +133115,11 @@ var Axios = class {
         delete headers2[method];
       }
     );
-    config4.headers = AxiosHeaders_default.concat(contextHeaders, headers2);
+    config5.headers = AxiosHeaders_default.concat(contextHeaders, headers2);
     const requestInterceptorChain = [];
     let synchronousRequestInterceptors = true;
     this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-      if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config4) === false) {
+      if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config5) === false) {
         return;
       }
       synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
@@ -119845,14 +133137,14 @@ var Axios = class {
       chain.unshift.apply(chain, requestInterceptorChain);
       chain.push.apply(chain, responseInterceptorChain);
       len = chain.length;
-      promise = Promise.resolve(config4);
+      promise = Promise.resolve(config5);
       while (i < len) {
         promise = promise.then(chain[i++], chain[i++]);
       }
       return promise;
     }
     len = requestInterceptorChain.length;
-    let newConfig = config4;
+    let newConfig = config5;
     i = 0;
     while (i < len) {
       const onFulfilled = requestInterceptorChain[i++];
@@ -119876,25 +133168,25 @@ var Axios = class {
     }
     return promise;
   }
-  getUri(config4) {
-    config4 = mergeConfig(this.defaults, config4);
-    const fullPath = buildFullPath(config4.baseURL, config4.url);
-    return buildURL(fullPath, config4.params, config4.paramsSerializer);
+  getUri(config5) {
+    config5 = mergeConfig(this.defaults, config5);
+    const fullPath = buildFullPath(config5.baseURL, config5.url);
+    return buildURL(fullPath, config5.params, config5.paramsSerializer);
   }
 };
 utils_default.forEach(["delete", "get", "head", "options"], function forEachMethodNoData(method) {
-  Axios.prototype[method] = function(url2, config4) {
-    return this.request(mergeConfig(config4 || {}, {
+  Axios.prototype[method] = function(url2, config5) {
+    return this.request(mergeConfig(config5 || {}, {
       method,
       url: url2,
-      data: (config4 || {}).data
+      data: (config5 || {}).data
     }));
   };
 });
 utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData(method) {
   function generateHTTPMethod(isForm) {
-    return function httpMethod(url2, data, config4) {
-      return this.request(mergeConfig(config4 || {}, {
+    return function httpMethod(url2, data, config5) {
+      return this.request(mergeConfig(config5 || {}, {
         method,
         headers: isForm ? {
           "Content-Type": "multipart/form-data"
@@ -119939,11 +133231,11 @@ var CancelToken = class _CancelToken {
       };
       return promise;
     };
-    executor(function cancel(message, config4, request) {
+    executor(function cancel(message, config5, request) {
       if (token2.reason) {
         return;
       }
-      token2.reason = new CanceledError_default(message, config4, request);
+      token2.reason = new CanceledError_default(message, config5, request);
       resolvePromise(token2.reason);
     });
   }
@@ -120170,37 +133462,988 @@ async function orderProductDigital(name, phone, paket_addon_id, subscription_typ
   return response;
 }
 
+// src/rag.js
+init_prompts3();
+init_runnables2();
+init_output_parsers2();
+
+// node_modules/@langchain/pinecone/dist/vectorstores.js
+init_esm_node();
+var import_flat = __toESM(require_flat(), 1);
+var import_pinecone = __toESM(require_dist3(), 1);
+
+// node_modules/@langchain/core/dist/retrievers/index.js
+init_manager();
+init_base4();
+init_config();
+var BaseRetriever = class extends Runnable {
+  /**
+   * Constructs a new `BaseRetriever` instance with optional configuration fields.
+   *
+   * @param fields - Optional input configuration that can include `callbacks`,
+   *                 `tags`, `metadata`, and `verbose` settings for custom retriever behavior.
+   */
+  constructor(fields) {
+    super(fields);
+    Object.defineProperty(this, "callbacks", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "tags", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "metadata", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "verbose", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.callbacks = fields?.callbacks;
+    this.tags = fields?.tags ?? [];
+    this.metadata = fields?.metadata ?? {};
+    this.verbose = fields?.verbose ?? false;
+  }
+  /**
+   * TODO: This should be an abstract method, but we'd like to avoid breaking
+   * changes to people currently using subclassed custom retrievers.
+   * Change it on next major release.
+   */
+  /**
+   * Placeholder method for retrieving relevant documents based on a query.
+   *
+   * This method is intended to be implemented by subclasses and will be
+   * converted to an abstract method in the next major release. Currently, it
+   * throws an error if not implemented, ensuring that custom retrievers define
+   * the specific retrieval logic.
+   *
+   * @param _query - The query string used to search for relevant documents.
+   * @param _callbacks - (optional) Callback manager for managing callbacks
+   *                     during retrieval.
+   * @returns A promise resolving to an array of `DocumentInterface` instances relevant to the query.
+   * @throws {Error} Throws an error indicating the method is not implemented.
+   */
+  _getRelevantDocuments(_query, _callbacks) {
+    throw new Error("Not implemented!");
+  }
+  /**
+   * Executes a retrieval operation.
+   *
+   * @param input - The query string used to search for relevant documents.
+   * @param options - (optional) Configuration options for the retrieval run,
+   *                  which may include callbacks, tags, and metadata.
+   * @returns A promise that resolves to an array of `DocumentInterface` instances
+   *          representing the most relevant documents to the query.
+   */
+  async invoke(input, options) {
+    return this.getRelevantDocuments(input, ensureConfig(options));
+  }
+  /**
+   * @deprecated Use .invoke() instead. Will be removed in 0.3.0.
+   *
+   * Main method used to retrieve relevant documents. It takes a query
+   * string and an optional configuration object, and returns a promise that
+   * resolves to an array of `Document` objects. This method handles the
+   * retrieval process, including starting and ending callbacks, and error
+   * handling.
+   * @param query The query string to retrieve relevant documents for.
+   * @param config Optional configuration object for the retrieval process.
+   * @returns A promise that resolves to an array of `Document` objects.
+   */
+  async getRelevantDocuments(query, config5) {
+    const parsedConfig = ensureConfig(parseCallbackConfigArg(config5));
+    const callbackManager_ = await CallbackManager.configure(parsedConfig.callbacks, this.callbacks, parsedConfig.tags, this.tags, parsedConfig.metadata, this.metadata, { verbose: this.verbose });
+    const runManager = await callbackManager_?.handleRetrieverStart(this.toJSON(), query, parsedConfig.runId, void 0, void 0, void 0, parsedConfig.runName);
+    try {
+      const results = await this._getRelevantDocuments(query, runManager);
+      await runManager?.handleRetrieverEnd(results);
+      return results;
+    } catch (error) {
+      await runManager?.handleRetrieverError(error);
+      throw error;
+    }
+  }
+};
+
+// node_modules/@langchain/core/dist/vectorstores.js
+init_serializable();
+var VectorStoreRetriever = class extends BaseRetriever {
+  static lc_name() {
+    return "VectorStoreRetriever";
+  }
+  get lc_namespace() {
+    return ["langchain_core", "vectorstores"];
+  }
+  /**
+   * Returns the type of vector store, as defined by the `vectorStore` instance.
+   *
+   * @returns {string} The vector store type.
+   */
+  _vectorstoreType() {
+    return this.vectorStore._vectorstoreType();
+  }
+  /**
+   * Initializes a new instance of `VectorStoreRetriever` with the specified configuration.
+   *
+   * This constructor configures the retriever to interact with a given `VectorStore`
+   * and supports different retrieval strategies, including similarity search and maximal
+   * marginal relevance (MMR) search. Various options allow customization of the number
+   * of documents retrieved per query, filtering based on conditions, and fine-tuning
+   * MMR-specific parameters.
+   *
+   * @param fields - Configuration options for setting up the retriever:
+   *
+   *   - `vectorStore` (required): The `VectorStore` instance implementing `VectorStoreInterface`
+   *     that will be used to store and retrieve document embeddings. This is the core component
+   *     of the retriever, enabling vector-based similarity and MMR searches.
+   *
+   *   - `k` (optional): Specifies the number of documents to retrieve per search query. If not
+   *     provided, defaults to 4. This count determines the number of most relevant documents returned
+   *     for each search operation, balancing performance with comprehensiveness.
+   *
+   *   - `searchType` (optional): Defines the search approach used by the retriever, allowing for
+   *     flexibility between two methods:
+   *       - `"similarity"` (default): A similarity-based search, retrieving documents with high vector
+   *         similarity to the query. This type prioritizes relevance and is often used when diversity
+   *         among results is less critical.
+   *       - `"mmr"`: Maximal Marginal Relevance search, which combines relevance with diversity. MMR
+   *         is useful for scenarios where varied content is essential, as it selects results that
+   *         both match the query and introduce content diversity.
+   *
+   *   - `filter` (optional): A filter of type `FilterType`, defined by the vector store, that allows
+   *     for refined and targeted search results. This filter applies specified conditions to limit
+   *     which documents are eligible for retrieval, offering control over the scope of results.
+   *
+   *   - `searchKwargs` (optional, applicable only if `searchType` is `"mmr"`): Additional settings
+   *     for configuring MMR-specific behavior. These parameters allow further tuning of the MMR
+   *     search process:
+   *       - `fetchK`: The initial number of documents fetched from the vector store before the MMR
+   *         algorithm is applied. Fetching a larger set enables the algorithm to select a more
+   *         diverse subset of documents.
+   *       - `lambda`: A parameter controlling the relevance-diversity balance, where 0 emphasizes
+   *         diversity and 1 prioritizes relevance. Intermediate values provide a blend of the two,
+   *         allowing customization based on the importance of content variety relative to query relevance.
+   */
+  constructor(fields) {
+    super(fields);
+    Object.defineProperty(this, "vectorStore", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "k", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: 4
+    });
+    Object.defineProperty(this, "searchType", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "similarity"
+    });
+    Object.defineProperty(this, "searchKwargs", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "filter", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.vectorStore = fields.vectorStore;
+    this.k = fields.k ?? this.k;
+    this.searchType = fields.searchType ?? this.searchType;
+    this.filter = fields.filter;
+    if (fields.searchType === "mmr") {
+      this.searchKwargs = fields.searchKwargs;
+    }
+  }
+  /**
+   * Retrieves relevant documents based on the specified query, using either
+   * similarity or maximal marginal relevance (MMR) search.
+   *
+   * If `searchType` is set to `"mmr"`, performs an MMR search to balance
+   * similarity and diversity among results. If `searchType` is `"similarity"`,
+   * retrieves results purely based on similarity to the query.
+   *
+   * @param query - The query string used to find relevant documents.
+   * @param runManager - Optional callback manager for tracking retrieval progress.
+   * @returns A promise that resolves to an array of `DocumentInterface` instances
+   *          representing the most relevant documents to the query.
+   * @throws {Error} Throws an error if MMR search is requested but not supported
+   *                 by the vector store.
+   * @protected
+   */
+  async _getRelevantDocuments(query, runManager) {
+    if (this.searchType === "mmr") {
+      if (typeof this.vectorStore.maxMarginalRelevanceSearch !== "function") {
+        throw new Error(`The vector store backing this retriever, ${this._vectorstoreType()} does not support max marginal relevance search.`);
+      }
+      return this.vectorStore.maxMarginalRelevanceSearch(query, {
+        k: this.k,
+        filter: this.filter,
+        ...this.searchKwargs
+      }, runManager?.getChild("vectorstore"));
+    }
+    return this.vectorStore.similaritySearch(query, this.k, this.filter, runManager?.getChild("vectorstore"));
+  }
+  /**
+   * Adds an array of documents to the vector store, embedding them as part of
+   * the storage process.
+   *
+   * This method delegates document embedding and storage to the `addDocuments`
+   * method of the underlying vector store.
+   *
+   * @param documents - An array of documents to embed and add to the vector store.
+   * @param options - Optional settings to customize document addition.
+   * @returns A promise that resolves to an array of document IDs or `void`,
+   *          depending on the vector store's implementation.
+   */
+  async addDocuments(documents, options) {
+    return this.vectorStore.addDocuments(documents, options);
+  }
+};
+var VectorStore = class extends Serializable {
+  /**
+   * Initializes a new vector store with embeddings and database configuration.
+   *
+   * @param embeddings - Instance of `EmbeddingsInterface` used to embed queries.
+   * @param dbConfig - Configuration settings for the database or storage system.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(embeddings, dbConfig) {
+    super(dbConfig);
+    Object.defineProperty(this, "lc_namespace", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: ["langchain", "vectorstores", this._vectorstoreType()]
+    });
+    Object.defineProperty(this, "embeddings", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.embeddings = embeddings;
+  }
+  /**
+   * Deletes documents from the vector store based on the specified parameters.
+   *
+   * @param _params - Flexible key-value pairs defining conditions for document deletion.
+   * @returns A promise that resolves once the deletion is complete.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async delete(_params) {
+    throw new Error("Not implemented.");
+  }
+  /**
+   * Searches for documents similar to a text query by embedding the query and
+   * performing a similarity search on the resulting vector.
+   *
+   * @param query - Text query for finding similar documents.
+   * @param k - Number of similar results to return. Defaults to 4.
+   * @param filter - Optional filter based on `FilterType`.
+   * @param _callbacks - Optional callbacks for monitoring search progress
+   * @returns A promise resolving to an array of `DocumentInterface` instances representing similar documents.
+   */
+  async similaritySearch(query, k = 4, filter2 = void 0, _callbacks = void 0) {
+    const results = await this.similaritySearchVectorWithScore(await this.embeddings.embedQuery(query), k, filter2);
+    return results.map((result) => result[0]);
+  }
+  /**
+   * Searches for documents similar to a text query by embedding the query,
+   * and returns results with similarity scores.
+   *
+   * @param query - Text query for finding similar documents.
+   * @param k - Number of similar results to return. Defaults to 4.
+   * @param filter - Optional filter based on `FilterType`.
+   * @param _callbacks - Optional callbacks for monitoring search progress
+   * @returns A promise resolving to an array of tuples, each containing a
+   *          document and its similarity score.
+   */
+  async similaritySearchWithScore(query, k = 4, filter2 = void 0, _callbacks = void 0) {
+    return this.similaritySearchVectorWithScore(await this.embeddings.embedQuery(query), k, filter2);
+  }
+  /**
+   * Creates a `VectorStore` instance from an array of text strings and optional
+   * metadata, using the specified embeddings and database configuration.
+   *
+   * Subclasses must implement this method to define how text and metadata
+   * are embedded and stored in the vector store. Throws an error if not overridden.
+   *
+   * @param _texts - Array of strings representing the text documents to be stored.
+   * @param _metadatas - Metadata for the texts, either as an array (one for each text)
+   *                     or a single object (applied to all texts).
+   * @param _embeddings - Instance of `EmbeddingsInterface` to embed the texts.
+   * @param _dbConfig - Database configuration settings.
+   * @returns A promise that resolves to a new `VectorStore` instance.
+   * @throws {Error} Throws an error if this method is not overridden by a subclass.
+   */
+  static fromTexts(_texts, _metadatas, _embeddings, _dbConfig) {
+    throw new Error("the Langchain vectorstore implementation you are using forgot to override this, please report a bug");
+  }
+  /**
+   * Creates a `VectorStore` instance from an array of documents, using the specified
+   * embeddings and database configuration.
+   *
+   * Subclasses must implement this method to define how documents are embedded
+   * and stored. Throws an error if not overridden.
+   *
+   * @param _docs - Array of `DocumentInterface` instances representing the documents to be stored.
+   * @param _embeddings - Instance of `EmbeddingsInterface` to embed the documents.
+   * @param _dbConfig - Database configuration settings.
+   * @returns A promise that resolves to a new `VectorStore` instance.
+   * @throws {Error} Throws an error if this method is not overridden by a subclass.
+   */
+  static fromDocuments(_docs, _embeddings, _dbConfig) {
+    throw new Error("the Langchain vectorstore implementation you are using forgot to override this, please report a bug");
+  }
+  /**
+   * Creates a `VectorStoreRetriever` instance with flexible configuration options.
+   *
+   * @param kOrFields
+   *    - If a number is provided, it sets the `k` parameter (number of items to retrieve).
+   *    - If an object is provided, it should contain various configuration options.
+   * @param filter
+   *    - Optional filter criteria to limit the items retrieved based on the specified filter type.
+   * @param callbacks
+   *    - Optional callbacks that may be triggered at specific stages of the retrieval process.
+   * @param tags
+   *    - Tags to categorize or label the `VectorStoreRetriever`. Defaults to an empty array if not provided.
+   * @param metadata
+   *    - Additional metadata as key-value pairs to add contextual information for the retrieval process.
+   * @param verbose
+   *    - If `true`, enables detailed logging for the retrieval process. Defaults to `false`.
+   *
+   * @returns
+   *    - A configured `VectorStoreRetriever` instance based on the provided parameters.
+   *
+   * @example
+   * Basic usage with a `k` value:
+   * ```typescript
+   * const retriever = myVectorStore.asRetriever(5);
+   * ```
+   *
+   * Usage with a configuration object:
+   * ```typescript
+   * const retriever = myVectorStore.asRetriever({
+   *   k: 10,
+   *   filter: myFilter,
+   *   tags: ['example', 'test'],
+   *   verbose: true,
+   *   searchType: 'mmr',
+   *   searchKwargs: { alpha: 0.5 },
+   * });
+   * ```
+   */
+  asRetriever(kOrFields, filter2, callbacks, tags, metadata, verbose) {
+    if (typeof kOrFields === "number") {
+      return new VectorStoreRetriever({
+        vectorStore: this,
+        k: kOrFields,
+        filter: filter2,
+        tags: [...tags ?? [], this._vectorstoreType()],
+        metadata,
+        verbose,
+        callbacks
+      });
+    } else {
+      const params = {
+        vectorStore: this,
+        k: kOrFields?.k,
+        filter: kOrFields?.filter,
+        tags: [...kOrFields?.tags ?? [], this._vectorstoreType()],
+        metadata: kOrFields?.metadata,
+        verbose: kOrFields?.verbose,
+        callbacks: kOrFields?.callbacks,
+        searchType: kOrFields?.searchType
+      };
+      if (kOrFields?.searchType === "mmr") {
+        return new VectorStoreRetriever({
+          ...params,
+          searchKwargs: kOrFields.searchKwargs
+        });
+      }
+      return new VectorStoreRetriever({ ...params });
+    }
+  }
+};
+
+// node_modules/@langchain/core/dist/documents/index.js
+init_document();
+
+// node_modules/@langchain/core/dist/documents/transformers.js
+init_base4();
+
+// node_modules/@langchain/core/dist/utils/ml-distance/similarities.js
+function cosine(a, b) {
+  let p = 0;
+  let p2 = 0;
+  let q2 = 0;
+  for (let i = 0; i < a.length; i++) {
+    p += a[i] * b[i];
+    p2 += a[i] * a[i];
+    q2 += b[i] * b[i];
+  }
+  return p / (Math.sqrt(p2) * Math.sqrt(q2));
+}
+
+// node_modules/@langchain/core/dist/utils/math.js
+function matrixFunc(X, Y, func) {
+  if (X.length === 0 || X[0].length === 0 || Y.length === 0 || Y[0].length === 0) {
+    return [[]];
+  }
+  if (X[0].length !== Y[0].length) {
+    throw new Error(`Number of columns in X and Y must be the same. X has shape ${[
+      X.length,
+      X[0].length
+    ]} and Y has shape ${[Y.length, Y[0].length]}.`);
+  }
+  return X.map((xVector) => Y.map((yVector) => func(xVector, yVector)).map((similarity) => Number.isNaN(similarity) ? 0 : similarity));
+}
+function cosineSimilarity(X, Y) {
+  return matrixFunc(X, Y, cosine);
+}
+function maximalMarginalRelevance(queryEmbedding, embeddingList, lambda = 0.5, k = 4) {
+  if (Math.min(k, embeddingList.length) <= 0) {
+    return [];
+  }
+  const queryEmbeddingExpanded = Array.isArray(queryEmbedding[0]) ? queryEmbedding : [queryEmbedding];
+  const similarityToQuery = cosineSimilarity(queryEmbeddingExpanded, embeddingList)[0];
+  const mostSimilarEmbeddingIndex = argMax(similarityToQuery).maxIndex;
+  const selectedEmbeddings = [embeddingList[mostSimilarEmbeddingIndex]];
+  const selectedEmbeddingsIndexes = [mostSimilarEmbeddingIndex];
+  while (selectedEmbeddingsIndexes.length < Math.min(k, embeddingList.length)) {
+    let bestScore = -Infinity;
+    let bestIndex = -1;
+    const similarityToSelected = cosineSimilarity(embeddingList, selectedEmbeddings);
+    similarityToQuery.forEach((queryScore, queryScoreIndex) => {
+      if (selectedEmbeddingsIndexes.includes(queryScoreIndex)) {
+        return;
+      }
+      const maxSimilarityToSelected = Math.max(...similarityToSelected[queryScoreIndex]);
+      const score = lambda * queryScore - (1 - lambda) * maxSimilarityToSelected;
+      if (score > bestScore) {
+        bestScore = score;
+        bestIndex = queryScoreIndex;
+      }
+    });
+    selectedEmbeddings.push(embeddingList[bestIndex]);
+    selectedEmbeddingsIndexes.push(bestIndex);
+  }
+  return selectedEmbeddingsIndexes;
+}
+function argMax(array) {
+  if (array.length === 0) {
+    return {
+      maxIndex: -1,
+      maxValue: NaN
+    };
+  }
+  let maxValue = array[0];
+  let maxIndex = 0;
+  for (let i = 1; i < array.length; i += 1) {
+    if (array[i] > maxValue) {
+      maxIndex = i;
+      maxValue = array[i];
+    }
+  }
+  return { maxIndex, maxValue };
+}
+
+// node_modules/@langchain/pinecone/dist/vectorstores.js
+var PineconeStore = class _PineconeStore extends VectorStore {
+  _vectorstoreType() {
+    return "pinecone";
+  }
+  constructor(embeddings, params) {
+    super(embeddings, params);
+    Object.defineProperty(this, "textKey", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "namespace", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "pineconeIndex", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "filter", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "caller", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.embeddings = embeddings;
+    const { namespace, pineconeIndex, textKey, filter: filter2, pineconeConfig, ...asyncCallerArgs } = params;
+    this.namespace = namespace;
+    if (!pineconeIndex && !pineconeConfig) {
+      throw new Error("pineconeConfig or pineconeIndex must be provided.");
+    }
+    if (pineconeIndex && pineconeConfig) {
+      throw new Error("Only one of pineconeConfig or pineconeIndex can be provided.");
+    }
+    if (pineconeIndex) {
+      this.pineconeIndex = pineconeIndex;
+    } else if (pineconeConfig) {
+      this.pineconeIndex = new import_pinecone.Index(pineconeConfig.indexName, {
+        ...pineconeConfig.config,
+        sourceTag: "langchainjs"
+      }, pineconeConfig.namespace, pineconeConfig.indexHostUrl, pineconeConfig.additionalHeaders);
+    }
+    this.textKey = textKey ?? "text";
+    this.filter = filter2;
+    this.caller = new AsyncCaller2(asyncCallerArgs);
+  }
+  /**
+   * Method that adds documents to the Pinecone database.
+   *
+   * @param documents Array of documents to add to the Pinecone database.
+   * @param options Optional ids for the documents.
+   * @returns Promise that resolves with the ids of the added documents.
+   */
+  async addDocuments(documents, options) {
+    const texts = documents.map(({ pageContent }) => pageContent);
+    return this.addVectors(await this.embeddings.embedDocuments(texts), documents, options);
+  }
+  /**
+   * Method that adds vectors to the Pinecone database.
+   *
+   * @param vectors Array of vectors to add to the Pinecone database.
+   * @param documents Array of documents associated with the vectors.
+   * @param options Optional ids for the vectors.
+   * @returns Promise that resolves with the ids of the added vectors.
+   */
+  async addVectors(vectors, documents, options) {
+    const ids = Array.isArray(options) ? options : options?.ids;
+    const documentIds = ids == null ? documents.map(() => v4_default()) : ids;
+    const pineconeVectors = vectors.map((values, idx) => {
+      const documentMetadata = { ...documents[idx].metadata };
+      const stringArrays = {};
+      for (const key of Object.keys(documentMetadata)) {
+        if (Array.isArray(documentMetadata[key]) && // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
+        documentMetadata[key].every((el) => typeof el === "string")) {
+          stringArrays[key] = documentMetadata[key];
+          delete documentMetadata[key];
+        }
+      }
+      const metadata = {
+        ...(0, import_flat.default)(documentMetadata),
+        ...stringArrays,
+        [this.textKey]: documents[idx].pageContent
+      };
+      for (const key of Object.keys(metadata)) {
+        if (metadata[key] == null) {
+          delete metadata[key];
+        } else if (typeof metadata[key] === "object" && Object.keys(metadata[key]).length === 0) {
+          delete metadata[key];
+        }
+      }
+      return {
+        id: documentIds[idx],
+        metadata,
+        values
+      };
+    });
+    const optionsNamespace = !Array.isArray(options) && options?.namespace ? options.namespace : this.namespace;
+    const namespace = this.pineconeIndex.namespace(optionsNamespace ?? "");
+    const chunkSize = 100;
+    const chunkedVectors = chunkArray(pineconeVectors, chunkSize);
+    const batchRequests = chunkedVectors.map((chunk) => this.caller.call(async () => namespace.upsert(chunk)));
+    await Promise.all(batchRequests);
+    return documentIds;
+  }
+  /**
+   * Method that deletes vectors from the Pinecone database.
+   * @param params Parameters for the delete operation.
+   * @returns Promise that resolves when the delete operation is complete.
+   */
+  async delete(params) {
+    const { deleteAll, ids, filter: filter2 } = params;
+    const optionsNamespace = params.namespace ?? this.namespace;
+    const namespace = this.pineconeIndex.namespace(optionsNamespace ?? "");
+    if (deleteAll) {
+      await namespace.deleteAll();
+    } else if (ids) {
+      const batchSize = 1e3;
+      for (let i = 0; i < ids.length; i += batchSize) {
+        const batchIds = ids.slice(i, i + batchSize);
+        await namespace.deleteMany(batchIds);
+      }
+    } else if (filter2) {
+      await namespace.deleteMany(filter2);
+    } else {
+      throw new Error("Either ids or delete_all must be provided.");
+    }
+  }
+  async _runPineconeQuery(query, k, filter2, options) {
+    if (filter2 && this.filter) {
+      throw new Error("cannot provide both `filter` and `this.filter`");
+    }
+    const _filter = filter2 ?? this.filter;
+    let optionsNamespace = this.namespace ?? "";
+    if (_filter && "namespace" in _filter) {
+      optionsNamespace = _filter.namespace;
+      delete _filter.namespace;
+    }
+    const namespace = this.pineconeIndex.namespace(optionsNamespace ?? "");
+    const results = await namespace.query({
+      includeMetadata: true,
+      topK: k,
+      vector: query,
+      filter: _filter,
+      ...options
+    });
+    return results;
+  }
+  /**
+   * Format the matching results from the Pinecone query.
+   * @param matches Matching results from the Pinecone query.
+   * @returns An array of arrays, where each inner array contains a document and its score.
+   */
+  _formatMatches(matches = []) {
+    const documentsWithScores = [];
+    for (const record of matches) {
+      const { id, score, metadata: { [this.textKey]: pageContent, ...metadata } = {
+        [this.textKey]: ""
+      } } = record;
+      if (score) {
+        documentsWithScores.push([
+          new Document({
+            id,
+            pageContent: pageContent?.toString() ?? "",
+            metadata
+          }),
+          score
+        ]);
+      }
+    }
+    return documentsWithScores;
+  }
+  /**
+   * Method that performs a similarity search in the Pinecone database and
+   * returns the results along with their scores.
+   * @param query Query vector for the similarity search.
+   * @param k Number of top results to return.
+   * @param filter Optional filter to apply to the search.
+   * @returns Promise that resolves with an array of documents and their scores.
+   */
+  async similaritySearchVectorWithScore(query, k, filter2) {
+    const { matches = [] } = await this._runPineconeQuery(query, k, filter2);
+    const records = this._formatMatches(matches);
+    return records;
+  }
+  /**
+   * Return documents selected using the maximal marginal relevance.
+   * Maximal marginal relevance optimizes for similarity to the query AND diversity
+   * among selected documents.
+   *
+   * @param {string} query - Text to look up documents similar to.
+   * @param {number} options.k - Number of documents to return.
+   * @param {number} options.fetchK=20 - Number of documents to fetch before passing to the MMR algorithm.
+   * @param {number} options.lambda=0.5 - Number between 0 and 1 that determines the degree of diversity among the results,
+   *                 where 0 corresponds to maximum diversity and 1 to minimum diversity.
+   * @param {PineconeMetadata} options.filter - Optional filter to apply to the search.
+   *
+   * @returns {Promise<DocumentInterface[]>} - List of documents selected by maximal marginal relevance.
+   */
+  async maxMarginalRelevanceSearch(query, options) {
+    const queryEmbedding = await this.embeddings.embedQuery(query);
+    const results = await this._runPineconeQuery(queryEmbedding, options.fetchK ?? 20, options.filter, { includeValues: true });
+    const { matches = [] } = results;
+    const embeddingList = matches.map((match) => match.values);
+    const mmrIndexes = maximalMarginalRelevance(queryEmbedding, embeddingList, options.lambda, options.k);
+    const topMmrMatches = mmrIndexes.map((idx) => matches[idx]);
+    const records = this._formatMatches(topMmrMatches);
+    return records.map(([doc, _score]) => doc);
+  }
+  /**
+   * Static method that creates a new instance of the PineconeStore class
+   * from texts.
+   * @param texts Array of texts to add to the Pinecone database.
+   * @param metadatas Metadata associated with the texts.
+   * @param embeddings Embeddings to use for the texts.
+   * @param dbConfig Configuration for the Pinecone database.
+   * @returns Promise that resolves with a new instance of the PineconeStore class.
+   */
+  static async fromTexts(texts, metadatas, embeddings, dbConfig) {
+    const docs = [];
+    for (let i = 0; i < texts.length; i += 1) {
+      const metadata = Array.isArray(metadatas) ? metadatas[i] : metadatas;
+      const newDoc = new Document({
+        pageContent: texts[i],
+        metadata
+      });
+      docs.push(newDoc);
+    }
+    const args = {
+      pineconeIndex: dbConfig.pineconeIndex,
+      textKey: dbConfig.textKey,
+      namespace: dbConfig.namespace
+    };
+    return _PineconeStore.fromDocuments(docs, embeddings, args);
+  }
+  /**
+   * Static method that creates a new instance of the PineconeStore class
+   * from documents.
+   * @param docs Array of documents to add to the Pinecone database.
+   * @param embeddings Embeddings to use for the documents.
+   * @param dbConfig Configuration for the Pinecone database.
+   * @returns Promise that resolves with a new instance of the PineconeStore class.
+   */
+  static async fromDocuments(docs, embeddings, dbConfig) {
+    const args = dbConfig;
+    args.textKey = dbConfig.textKey ?? "text";
+    const instance = new this(embeddings, args);
+    await instance.addDocuments(docs);
+    return instance;
+  }
+  /**
+   * Static method that creates a new instance of the PineconeStore class
+   * from an existing index.
+   * @param embeddings Embeddings to use for the documents.
+   * @param dbConfig Configuration for the Pinecone database.
+   * @returns Promise that resolves with a new instance of the PineconeStore class.
+   */
+  static async fromExistingIndex(embeddings, dbConfig) {
+    const instance = new this(embeddings, dbConfig);
+    return instance;
+  }
+};
+
+// node_modules/@langchain/pinecone/dist/client.js
+var import_pinecone2 = __toESM(require_dist3(), 1);
+function getPineconeClient(config5) {
+  if (getEnvironmentVariable("PINECONE_API_KEY") === void 0 || getEnvironmentVariable("PINECONE_API_KEY") === "") {
+    throw new Error("PINECONE_API_KEY must be set in environment");
+  }
+  if (!config5) {
+    return new import_pinecone2.Pinecone();
+  } else {
+    return new import_pinecone2.Pinecone(config5);
+  }
+}
+
+// node_modules/@langchain/pinecone/dist/embeddings.js
+var PineconeEmbeddings = class extends Embeddings {
+  constructor(fields) {
+    const defaultFields = { maxRetries: 3, ...fields };
+    super(defaultFields);
+    Object.defineProperty(this, "client", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "model", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    Object.defineProperty(this, "params", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    if (defaultFields.apiKey) {
+      const config5 = {
+        apiKey: defaultFields.apiKey,
+        controllerHostUrl: defaultFields.controllerHostUrl,
+        fetchApi: defaultFields.fetchApi,
+        additionalHeaders: defaultFields.additionalHeaders,
+        sourceTag: defaultFields.sourceTag
+      };
+      this.client = getPineconeClient(config5);
+    } else {
+      this.client = getPineconeClient();
+    }
+    if (!defaultFields.model) {
+      this.model = "multilingual-e5-large";
+    } else {
+      this.model = defaultFields.model;
+    }
+    const defaultParams = { inputType: "passage" };
+    if (defaultFields.params) {
+      this.params = { ...defaultFields.params, ...defaultParams };
+    } else {
+      this.params = defaultParams;
+    }
+  }
+  /* Generate embeddings for a list of input strings using a specified embedding model.
+   *
+   * @param texts - List of input strings for which to generate embeddings.
+   * */
+  async embedDocuments(texts) {
+    if (texts.length === 0) {
+      throw new Error("At least one document is required to generate embeddings");
+    }
+    let embeddings;
+    if (this.params) {
+      embeddings = await this.caller.call(async () => {
+        const result = await this.client.inference.embed(this.model, texts, this.params);
+        return result;
+      });
+    } else {
+      embeddings = await this.caller.call(async () => {
+        const result = await this.client.inference.embed(this.model, texts, {});
+        return result;
+      });
+    }
+    const embeddingsList = [];
+    for (let i = 0; i < embeddings.length; i += 1) {
+      if (embeddings[i].values) {
+        embeddingsList.push(embeddings[i].values);
+      }
+    }
+    return embeddingsList;
+  }
+  /* Generate embeddings for a given query string using a specified embedding model.
+   * @param text - Query string for which to generate embeddings.
+   * */
+  async embedQuery(text) {
+    this.params.inputType = "query";
+    if (!text) {
+      throw new Error("No query passed for which to generate embeddings");
+    }
+    let embeddings;
+    if (this.params) {
+      embeddings = await this.caller.call(async () => {
+        return await this.client.inference.embed(this.model, [text], this.params);
+      });
+    } else {
+      embeddings = await this.caller.call(async () => {
+        return await this.client.inference.embed(this.model, [text], {});
+      });
+    }
+    if (embeddings[0].values) {
+      return embeddings[0].values;
+    } else {
+      return [];
+    }
+  }
+};
+
+// src/services/pinecone.js
+var import_pinecone4 = __toESM(require_dist3());
+var import_dotenv2 = __toESM(require_main());
+(0, import_dotenv2.config)();
+var init = async () => {
+  const embeddings = new PineconeEmbeddings({
+    model: "multilingual-e5-large"
+  });
+  const pinecone = new import_pinecone4.Pinecone();
+  const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX);
+  const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
+    pineconeIndex,
+    // Maximum number of batch requests to allow at once. Each batch is 1000 vectors.
+    maxConcurrency: 5
+    // You can pass a namespace here too
+    // namespace: "foo",
+  });
+  return vectorStore;
+};
+var addStores = async (datas = [], primaryKey = "id") => {
+  const vectorStore = await init();
+  const documents = datas;
+  let ids = [];
+  for (let index = 0; index < documents.length; index++) {
+    ids.push(documents[index][primaryKey]);
+  }
+  return await vectorStore.addDocuments(documents, { ids });
+};
+
+// src/rag.js
+var getInformasiProductKonek = async (prompting) => {
+  try {
+    const vectorStore = await init();
+    const prompt2 = ChatPromptTemplate.fromTemplate(`
+            Jawab pertanyaan hanya berdasarkan pada context yang disediakan.
+    
+            Context: {context}
+    
+            Question: {question}
+        `);
+    const ragChain = RunnableSequence.from([
+      {
+        context: vectorStore.asRetriever(),
+        question: new RunnablePassthrough()
+      },
+      prompt2,
+      model,
+      new StringOutputParser()
+    ]);
+    const data = await ragChain.invoke(prompting);
+    return data;
+  } catch (error) {
+    return "Error";
+  }
+};
+
 // src/tools.js
-var listProductDigital = tool(async () => {
-  console.log("fetch tools");
-  const response = await fetchProductDigitals();
-  return JSON.stringify(response);
+var listProductDigital = tool(async ({ prompt: prompt2 }) => {
+  console.log("prompt", prompt2);
+  const response = await getInformasiProductKonek(prompt2);
+  return response;
 }, {
   name: "list_product_digital",
-  description: "Seluruh list produk digital yang tersedia pada platform. Harap menyimpan id dari data produk digital karena akan digunakan untuk mengisi paket_addon_id pada saat membuat order"
+  description: "Gunakan tools ini untuk informasi mengenai produk konek market. Harap menyimpan id dari data produk digital karena akan digunakan untuk mengisi paket_addon_id pada saat membuat order",
+  schema: z.object({
+    prompt: z.string().describe("Prompt untuk mencari data produk. Data tidak boleh berupa string kosong")
+  })
 });
 var orderProduct = tool(async ({ name, phone, paket_addon_id, subscription_type, duration, user }) => {
   try {
     const response = await orderProductDigital(name, phone, paket_addon_id, subscription_type, duration, user);
-    console.log("response :", response);
     if (response.status == 200) {
       return "link pembayaran : " + response.data.data.checkout_link;
     }
   } catch (error) {
-    console.log("error response :", error);
     return "gagal membuat pembayaran";
   }
 }, {
   name: "create_order",
   description: `
-    Membuat order produk digital. Fungsi ini digunakan untuk membuat order atau pesanan produk digital. Sebelum menggunakan fungsi ini dapatkan 
+    Gunakan tools ini untuk membuat order. Sebelum menggunakan fungsi ini dapatkan 
     nama pelanggan, no telepon, paket produk digital yang dipilih berupa id yang di dapat dari list_product_digital dan id sama dengan , tipe langganan (Contoh bulanan, harian, tahunan) dan jumlah profil ataupun akun yang dipesan. 
     Ketika berhasil tampilkan apa adanya return dari fungsi ini
   `,
   schema: z.object({
     name: z.string().describe("Nama dari pelanggan yang ingin atau tertarik membeli produk digital. Wajib didapatkan sebelum menggunakan fungsi ini."),
     phone: z.string().describe("Nomor telepon dari pelanggan yang ingin atau tertarik membeli produk digital. Wajib didapatkan sebelum menggunakan fungsi ini."),
-    paket_addon_id: z.string().describe("paket_addon_id didapat dari id menggunakan tools list_product_digital yang berupa angka. Wajib mendapatkan id dari tools list_product_digital cari sesuai produk yang dipilih pelanggan."),
+    paket_addon_id: z.string().describe('gunakan tools list_product_digital untuk mengambil id dari paket yang ingin diorder user dengan prompt "ambil id dari nama paket". Wajib mendapatkan id dari tools list_product_digital cari sesuai produk yang dipilih pelanggan.'),
     subscription_type: z.enum(["monthly", "daily"]).describe("Tipe langganan yang dipilih oleh pelanggan. Biasanya berupa bulanan, harian dan tahunan. ketika pelanggan sudah memilih tipe langganan, ubah bentuk data menjadi monthly, daily, yearly hanya saat menggunakan tools. Wajib didapatkan sebelum menggunakan fungsi ini."),
     duration: z.number().default(1).describe("Lama durasi langganan pelanggan. Wajib didapatkan sebelum menggunakan fungsi ini. jika harian dimulai dari angka 1. jika monthly dimulai dari angka 1"),
     user: z.number().default(1).describe("Jumlah akun atau profil produk digital yang ingin dibeli. Biasanya berupa angka yang diberikan oleh pelanggan. Wajib didapatkan sebelum menggunakan fungsi ini.")
@@ -120571,7 +134814,7 @@ var AgentExecutor = class _AgentExecutor extends BaseChain {
     return this.maxIterations === void 0 || iterations < this.maxIterations;
   }
   /** @ignore */
-  async _call(inputs, runManager, config4) {
+  async _call(inputs, runManager, config5) {
     const toolsByName = Object.fromEntries(this.tools.map((t) => [t.name.toLowerCase(), t]));
     const steps = [];
     let iterations = 0;
@@ -120593,7 +134836,7 @@ var AgentExecutor = class _AgentExecutor extends BaseChain {
     while (this.shouldContinue(iterations)) {
       let output;
       try {
-        output = await this.agent.plan(steps, inputs, runManager?.getChild(), config4);
+        output = await this.agent.plan(steps, inputs, runManager?.getChild(), config5);
       } catch (e) {
         if (e instanceof OutputParserException) {
           let observation;
@@ -120635,7 +134878,7 @@ var AgentExecutor = class _AgentExecutor extends BaseChain {
         const tool2 = action.tool === "_Exception" ? new ExceptionTool() : toolsByName[action.tool?.toLowerCase()];
         let observation;
         try {
-          observation = tool2 ? await tool2.invoke(action.toolInput, patchConfig(config4, { callbacks: runManager?.getChild() })) : `${action.tool} is not a valid tool, try another one.`;
+          observation = tool2 ? await tool2.invoke(action.toolInput, patchConfig(config5, { callbacks: runManager?.getChild() })) : `${action.tool} is not a valid tool, try another one.`;
           if (typeof observation !== "string") {
             throw new Error("Received unsupported non-string response from tool call.");
           }
@@ -120672,10 +134915,10 @@ var AgentExecutor = class _AgentExecutor extends BaseChain {
     const finish = await this.agent.returnStoppedResponse(this.earlyStoppingMethod, steps, inputs);
     return getOutput(finish);
   }
-  async _takeNextStep(nameToolMap, inputs, intermediateSteps, runManager, config4) {
+  async _takeNextStep(nameToolMap, inputs, intermediateSteps, runManager, config5) {
     let output;
     try {
-      output = await this.agent.plan(intermediateSteps, inputs, runManager?.getChild(), config4);
+      output = await this.agent.plan(intermediateSteps, inputs, runManager?.getChild(), config5);
     } catch (e) {
       if (e instanceof OutputParserException) {
         let observation;
@@ -121069,7 +135312,7 @@ function _isBaseChatModel(x) {
   const model2 = x;
   return typeof model2._modelType === "function" && model2._modelType() === "base_chat_model";
 }
-function createToolCallingAgent({ llm, tools: tools2, prompt: prompt2, streamRunnable }) {
+function createToolCallingAgent({ llm, tools, prompt: prompt2, streamRunnable }) {
   if (!prompt2.inputVariables.includes("agent_scratchpad")) {
     throw new Error([
       `Prompt must have an input variable named "agent_scratchpad".`,
@@ -121081,7 +135324,7 @@ function createToolCallingAgent({ llm, tools: tools2, prompt: prompt2, streamRun
     if (llm.bindTools === void 0) {
       throw new Error(`This agent requires that the "bind_tools()" method be implemented on the input model.`);
     }
-    modelWithTools = llm.bindTools(tools2);
+    modelWithTools = llm.bindTools(tools);
   } else {
     modelWithTools = llm;
   }
@@ -121118,25 +135361,7 @@ var model = new ChatVertexAI({
   location: "us-central1",
   maxRetries: 1
 });
-var tools = [listProductDigital, orderProduct];
 var prompt = ChatPromptTemplate.fromMessages([
-  // ["system", `anda adalah customer service yang bernama eda yang menjual produk digital secara online.
-  //                 seorang wanita berusia 20 tahun.
-  //                 Anda hanya menggunakan informasi produk digital yang hanya tersedia pada tools list_product_digital.
-  //                 Anda dapat memberikan informasi yang relevan dengan pertanyaan pengguna atau ringkasan dari konten.
-  //                 Jika mereka bertanya tentang sesuatu Anda dapat memberikan jawaban sebatas ruang lingkup informasi produk digital.
-  //                 Jika pengguna tampak tertarik, Anda dapat menyarankan mereka untuk mendaftar atau membeli produk digital.
-  //                 Jika pengguna tertarik tanyakan durasi berlangganan paket produk digital.
-  //                 Anda wajib mengingat produk digital yang dipilih pelanggan berupa id dan nama. 
-  //                 Jika anda tidak mengetahui id produk digital dipilih, cari berdasarkan nama produk digital dan simpan data tersebut.
-  //                 anda tidak perlu bereaksi ketika sudah mengingat produk digital yang dipilih dan lanjut mendapatkan informasi untuk kebutuhan pembuatan order.
-  //                 Data pembuatan order seperti name, phone, paket_addon_id, subscription_type, duration, user.
-  //                 Sebelum menanyakan data tersebut cek riwayat percakapan sebelumnya apa bila sudah diberikan tidak perlu ditanyakan lagi.
-  //                 Jika anda merasa informasi order ada yang kurang tanyakan kembali ke pelanggan.
-  //                 Gunakan kamu sebagai kata ganti pelanggan.
-  //                 Jangan mengaku sebagai bot jika ada yang bertanya akan tetapi informasikan anda sebagai customer service dari konek market. 
-  //                 anda akan mengambil data berupa url website yang didapat setelah order berhasil dibuat dan memberikan informasi ke user. 
-  //                 Jangan menambahkan enter diakhir jawaban`],
   ["system", `Kamu adalah Eda, seorang CS di Konek Market. Kamu adalah gen z yang kelahiran tahun 2000. Kamu paham banget soal teknologi dan produk dan layanan di Konek Market.
 
                 Fokus utama kamu adalah:
@@ -121178,7 +135403,8 @@ var prompt = ChatPromptTemplate.fromMessages([
   ["placeholder", "{agent_scratchpad}"]
 ]);
 var agentExecutor = async () => {
-  const agent = await createToolCallingAgent({ llm: model, tools, prompt });
+  const tools = [orderProduct, listProductDigital];
+  const agent = createToolCallingAgent({ llm: model, tools, prompt });
   const agentExecutor2 = new AgentExecutor({
     agent,
     tools
@@ -121188,8 +135414,8 @@ var agentExecutor = async () => {
 
 // src/services/mysql.js
 var import_promise2 = __toESM(require_promise());
-var import_dotenv2 = __toESM(require_main());
-(0, import_dotenv2.config)();
+var import_dotenv3 = __toESM(require_main());
+(0, import_dotenv3.config)();
 var db = import_promise2.default.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
@@ -121214,14 +135440,12 @@ var askAgen = async (session_id, content) => {
     await mysql2.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '" + session_id + "', 'user', '" + content + "');");
     const [chat_history] = await mysql2.execute("SELECT role, content FROM `chat_agen` WHERE session_id = '" + session_id + "'");
     const prompt2 = `
-             kamu adalah ai assistant dengan pengetahuan ketat terbatas, semua pengetahuan tentan produk dapat diakses menggunakan tools list_product_digital. 
+             kamu adalah ai assistant dengan pengetahuan ketat terbatas, yang menjual produk streaming video dan streaming music.
+             gunakan tools list_product_digital untuk mencari segala informasi berkaitan dengan produk tersebut.
              Kamu menyimpulkan respon berdasarkan query berikut "${content}"
-             gunakan data berikut jika seorang user melakukan order paket :
-             - nomor telepon ${session_id}
-             
-             jika seorang user membahas atau bertanya diluar konteks konek market maka kamu dapat merespon penolakan dan hanya mengetahui tentang konek market saja.
-             jika seorang user bertanya tentang produk yang tidak ada pada tools list_product_digital maka respon dengan penolakan dan berikan saran paket yang tersedia di konek market menggunakan tools list_product_digital.
-            `;
+             jika seorang user membahas atau bertanya diluar konteks konek market maka kamu dapat merespon penolakan terkait topik atau pertanyaan user.
+             gunakan tools create_order untuk memproses order user dan ambil link pembayaran.
+        `;
     const response = await agen.invoke({
       chat_history,
       input: prompt2
@@ -121230,7 +135454,6 @@ var askAgen = async (session_id, content) => {
     await mysql2.execute("INSERT INTO `chat_agen` (`id`, `session_id`, `role`, `content`) VALUES (NULL, '" + session_id + "', 'assistant', '" + output + "');");
     return response;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -121301,10 +135524,37 @@ router.post("/chat", checkValidation, async (req, res) => {
     content: response.output
   });
 });
+router.post("/generate-vector", async (req, res) => {
+  const response = await fetchProductDigitals();
+  const data = response.map((item) => {
+    let pricing_desc = "";
+    for (let index = 0; index < item.price.length; index++) {
+      const price = item.price[index];
+      const duration = price.subscription_type == "monthly" ? 30 : 1;
+      pricing_desc += `
+ - user: ${price.user}, duration:  ${duration}, price:  ${price.price}, subscription_type: ${price.subscription_type}`;
+    }
+    return {
+      pageContent: "id: " + item.id + ", description: " + item.name + ", " + pricing_desc,
+      metadata: {},
+      id: item.id + ""
+    };
+  });
+  try {
+    await addStores(data);
+    res.status(201).json({
+      message: "Generate data vector success"
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Gagal membuat vektor"
+    });
+  }
+});
 var agenRoutes_default = router;
 
 // src/app.js
-(0, import_dotenv3.config)();
+(0, import_dotenv4.config)();
 var credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
 if (credentials) {
   import_fs.default.writeFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE, credentials);

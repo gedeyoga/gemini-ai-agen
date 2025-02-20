@@ -1,31 +1,30 @@
 
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
-import { fetchProductDigitals, orderProductDigital } from "./openaccess-client.js";
+import { orderProductDigital } from "./openaccess-client.js";
+// import { init } from "./services/pinecone.js";
+import { getInformasiProductKonek } from "./rag.js";
 
-const listProductDigital = tool(async () => {
-   
-  console.log('fetch tools');
-  const response = await fetchProductDigitals();
-  return JSON.stringify(response);
+const listProductDigital = tool(async ({prompt}) => {
+  console.log('prompt' ,prompt);
+  const response = await getInformasiProductKonek(prompt);
+  return response;
+  // return JSON.stringify(response);
 } , {
   name: "list_product_digital",
-  description:
-    "Seluruh list produk digital yang tersedia pada platform. Harap menyimpan id dari data produk digital karena akan digunakan untuk mengisi paket_addon_id pada saat membuat order",
+  description: "Gunakan tools ini untuk informasi mengenai produk konek market. Harap menyimpan id dari data produk digital karena akan digunakan untuk mengisi paket_addon_id pada saat membuat order",
+  schema: z.object({
+    prompt: z.string().describe('Prompt untuk mencari data produk. Data tidak boleh berupa string kosong')
+  })
 });
 
 const orderProduct = tool(async ({name, phone, paket_addon_id, subscription_type, duration, user}) => {
   try {
     const response = await orderProductDigital(name, phone, paket_addon_id, subscription_type, duration, user);
-
-    console.log( 'response :', response);
-
     if(response.status == 200) {
       return 'link pembayaran : ' + response.data.data.checkout_link;
     }
   } catch (error) {
-
-    console.log( 'error response :', error);
     return 'gagal membuat pembayaran'
     
   }
@@ -33,7 +32,7 @@ const orderProduct = tool(async ({name, phone, paket_addon_id, subscription_type
 }, {
   name: "create_order",
   description: `
-    Membuat order produk digital. Fungsi ini digunakan untuk membuat order atau pesanan produk digital. Sebelum menggunakan fungsi ini dapatkan 
+    Gunakan tools ini untuk membuat order. Sebelum menggunakan fungsi ini dapatkan 
     nama pelanggan, no telepon, paket produk digital yang dipilih berupa id yang di dapat dari list_product_digital dan id sama dengan , tipe langganan (Contoh bulanan, harian, tahunan) dan jumlah profil ataupun akun yang dipesan. 
     Ketika berhasil tampilkan apa adanya return dari fungsi ini
   `,
@@ -48,4 +47,4 @@ const orderProduct = tool(async ({name, phone, paket_addon_id, subscription_type
 })
 
 
-export {orderProduct, listProductDigital};
+export  {orderProduct , listProductDigital};

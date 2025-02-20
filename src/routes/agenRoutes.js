@@ -3,6 +3,8 @@ import { body, validationResult } from 'express-validator';
 import { askAgen } from '../repositories/agenRepository';
 import { sendWhatsapp } from '../services/fonnteClient';
 import { removeTrailingNewlines } from '../helpers/stringHelper';
+import { addStores, init } from '../services/pinecone';
+import { fetchProductDigitals } from '../openaccess-client';
 
 const router = Router();
 
@@ -63,4 +65,33 @@ router.post('/chat' , checkValidation, async (req, res) => {
   
 });
 
+router.post('/generate-vector' , async(req, res) => {
+    const response = await fetchProductDigitals();
+
+    const data = response.map((item) => {
+        let pricing_desc = '';
+        for (let index = 0; index < item.price.length; index++) {
+            const price = item.price[index];
+            const duration = price.subscription_type == 'monthly' ? 30 : 1;
+            
+            pricing_desc += `\n - user: ${price.user}, duration:  ${duration}, price:  ${price.price}, subscription_type: ${price.subscription_type}`;
+        }
+      return {
+        pageContent: 'id: ' + item.id + ', description: ' + item.name + ', ' + pricing_desc,
+        metadata: {},
+        id: item.id + '',
+      }  
+    });
+
+    try {
+        await addStores(data);
+        res.status(201).json({
+            message: 'Generate data vector success',
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Gagal membuat vektor',
+        });
+    }
+})
 export default router;
